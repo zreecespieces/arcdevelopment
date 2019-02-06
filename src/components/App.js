@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import logo from "../logo.png";
+import styles from "../App.css";
 
 class App extends Component {
   render() {
-    return (
-      <img
-        alt="company-logo"
-        src={logo}
-        style={{ width: "100%", height: "100%" }}
-      />
-    );
+    return <div alt="company-logo" style={styles} />;
   }
 }
 
