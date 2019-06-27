@@ -1,29 +1,54 @@
 import React, { useState, useEffect } from "react";
-
-import { withStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
+import CustomTheme from "./CustomTheme";
+import ArcLogo from "./Arc Header.svg";
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
   flex: {
     flex: 1
   },
   tabRoot: {
-    minWidth: 10
+    minWidth: 10,
+    marginLeft: "25px",
+    textTransform: "none",
+    fontWeight: "bold"
   },
+  tabGroup: {
+    marginLeft: "auto"
+  },
+  appBar: {
+    flexGrow: 1
+  },
+  toolBar: {
+    paddingLeft: 0
+  },
+  imageContainer: {
+    "&:hover": {
+      backgroundColor: "transparent"
+    },
+    padding: 0
+  },
+  arcLogo: { height: "100px" },
   title: {
     flex: 1,
     textDecoration: "none"
   },
   buttonStyle: {
+    backgroundColor: CustomTheme.palette.secondary.main,
+    color: "white",
+    "&:hover": {
+      backgroundColor: CustomTheme.palette.secondary.light
+    },
+    borderRadius: "50px",
+    fontFamily: "Pacifico",
+    textTransform: "none",
+    fontWeight: "10",
     marginLeft: "50px"
   },
   toolbarMargin: theme.mixins.toolbar
@@ -51,49 +76,53 @@ function Header(props) {
   }, []);
 
   return (
-    <div className={props.classes.root}>
-      <AppBar>
-        <Toolbar>
-          <Typography
+    <MuiThemeProvider theme={CustomTheme}>
+      <AppBar className={props.classes.appBar}>
+        <Toolbar className={props.classes.toolBar}>
+          <Button
             component={Link}
-            to="/"
             onClick={() => setValue(0)}
-            color="inherit"
-            className={props.classes.title}
+            to="/"
+            disableRipple
+            className={props.classes.imageContainer}
           >
-            Arc Development
-          </Typography>
-          <Tabs indicatorColor="primary" value={value} onChange={onChange}>
+            <img
+              alt="Arc Logo"
+              className={props.classes.arcLogo}
+              src={ArcLogo}
+            />
+          </Button>
+          <Tabs
+            className={props.classes.tabGroup}
+            indicatorColor="primary"
+            value={value}
+            onChange={onChange}
+          >
             <Tab
-              value={0}
               classes={{ root: props.classes.tabRoot }}
               component={Link}
               to="/"
               label="Home"
             />
             <Tab
-              value={1}
               classes={{ root: props.classes.tabRoot }}
               component={Link}
               to="/services"
               label="Services"
             />
             <Tab
-              value={2}
               classes={{ root: props.classes.tabRoot }}
               component={Link}
               to="/revolution"
               label="The Revolution"
             />
             <Tab
-              value={3}
               classes={{ root: props.classes.tabRoot }}
               component={Link}
               to="/about"
               label="About Us"
             />
             <Tab
-              value={4}
               classes={{ root: props.classes.tabRoot }}
               component={Link}
               to="/contact"
@@ -112,7 +141,7 @@ function Header(props) {
         </Toolbar>
       </AppBar>
       <div className={props.classes.toolbarMargin} />
-    </div>
+    </MuiThemeProvider>
   );
 }
 

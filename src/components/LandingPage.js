@@ -1,10 +1,14 @@
-import React, { Component } from "react";
-import "./styles.css";
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
 
-class LandingPage extends Component {
-  render() {
-    return <div className="arc">You just landed here!</div>;
-  }
+const styles = theme => ({
+  toolbarMargin: theme.mixins.toolbar
+});
+
+function LandingPage(props) {
+  return (
+    <div className={props.classes.toolbarMargin}>You just landed here!</div>
+  );
 }
 
-export default LandingPage;
+export default withStyles(styles)(LandingPage);
