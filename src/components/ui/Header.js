@@ -17,7 +17,8 @@ const styles = theme => ({
     minWidth: 10,
     marginLeft: "25px",
     textTransform: "none",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: "17px"
   },
   tabGroup: {
     marginLeft: "auto"
@@ -51,7 +52,10 @@ const styles = theme => ({
     fontWeight: "10",
     marginLeft: "50px"
   },
-  toolbarMargin: theme.mixins.toolbar
+  toolbarMargin: {
+    ...theme.mixins.toolbar,
+    marginBottom: "50px"
+  }
 });
 
 function Header(props) {

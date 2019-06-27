@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./ui/Header";
+import Footer from "./ui/Footer";
 import LandingPage from "./LandingPage";
 import ContactPage from "./ContactPage";
 import AboutUs from "./AboutUs";
@@ -29,6 +30,7 @@ class App extends Component {
               <Route path="/mobileapps" exact component={MobileApps} />
               <Route path="/websites" exact component={Websites} />
             </Switch>
+            <Footer />
           </div>
         </BrowserRouter>
       </div>
