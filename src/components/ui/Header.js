@@ -76,6 +76,8 @@ function Header(props) {
       setValue(3);
     } else if (window.location.pathname === "/contact") {
       setValue(4);
+    } else if (window.location.pathname === "/estimate") {
+      setValue(9);
     }
   }, []);
 
