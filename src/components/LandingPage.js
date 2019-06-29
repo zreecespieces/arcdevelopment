@@ -5,11 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-
 import Grid from "@material-ui/core/Grid";
-
 import CustomTheme from "./ui/CustomTheme";
-
 import landingAnimation from "./animations/landinganimation/data.json";
 
 import customSoftwareIcon from "../assets/Custom Software Icon.svg";
@@ -17,6 +14,7 @@ import mobileAppsIcon from "../assets/mobileIcon.svg";
 import websiteIcon from "../assets/websiteIcon.svg";
 
 import repeatingBackground from "../assets/repeatingBackgroundLarge.svg";
+import infoBackground from "../assets/infoBackground.svg";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -89,6 +87,22 @@ const useStyles = makeStyles(theme => ({
     fontSize: "15px",
     height: "45px"
   },
+  learnButtonInfo: {
+    borderColor: "white",
+    borderWidth: 2,
+    textTransform: "none",
+    color: "white",
+    borderRadius: "50px",
+    fontFamily: "Roboto",
+    fontWeight: "bold",
+    fontSize: "11px",
+    height: "35px",
+    paddingTop: "5px",
+    paddingBottom: "5px",
+    paddingLeft: "7px",
+    paddingRight: "7px",
+    marginTop: "2%"
+  },
   leftIcon: {
     backfaceVisibility: "hidden",
     marginLeft: "20%"
@@ -134,7 +148,7 @@ const useStyles = makeStyles(theme => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    padding: "5%"
+    padding: "7%"
   },
   revolutionTitle: {
     ...CustomTheme.typography.main,
@@ -148,6 +162,36 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.typography.secondary,
     textAlign: "center",
     marginBottom: "2%"
+  },
+  infoContainer: {
+    height: "1400px",
+    position: "relative"
+  },
+  infoSubcontainer: {
+    position: "absolute",
+    top: "50%",
+    paddingLeft: "5%",
+    paddingRight: "5%"
+  },
+  infoTitle: {
+    ...CustomTheme.typography.main,
+    color: "white",
+    fontSize: 40
+  },
+  infoSubtitle: {
+    ...CustomTheme.typography.secondary,
+    fontSize: 20,
+    fontWeight: "none",
+    color: "white",
+    marginTop: "5%",
+    marginBottom: "5%"
+  },
+  infoBackground: {
+    backgroundImage: `url(${infoBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100%"
   }
 }));
 
@@ -161,6 +205,19 @@ export default function LandingPage() {
       width="10"
       height="10"
       fill={CustomTheme.palette.primary.main}
+      viewBox="0 0 18 18"
+    >
+      <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
+    </svg>
+  );
+
+  const whiteArrow = (
+    <svg
+      className={classes.arrow}
+      xmlns="http://www.w3.org/2000/svg"
+      width="10"
+      height="10"
+      fill="white"
       viewBox="0 0 18 18"
     >
       <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
@@ -342,6 +399,53 @@ export default function LandingPage() {
           </CardContent>
         </Card>
         <div className={classes.repeatingBackground} />
+      </Grid>
+      <Grid className={classes.infoContainer} item>
+        <Grid
+          justify="space-between"
+          direction="row"
+          className={classes.infoSubcontainer}
+          container
+        >
+          <Grid item>
+            <Grid direction="column" container>
+              <Grid item>
+                <div className={classes.infoTitle}>About Us</div>
+              </Grid>
+              <Grid item>
+                <div className={classes.infoSubtitle}>Let's get personal.</div>
+              </Grid>
+              <Grid item>
+                <Button className={classes.learnButtonInfo} variant="outlined">
+                  <span style={{ marginRight: 5 }}>Learn More</span>
+                  {whiteArrow}
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid direction="column" align="right" container>
+              <Grid item>
+                <div className={classes.infoTitle}>Contact Us</div>
+              </Grid>
+              <Grid item>
+                <div className={classes.infoSubtitle}>
+                  Say hello!{" "}
+                  <span role="img" aria-label="Waving hand">
+                    👋🏻
+                  </span>
+                </div>
+              </Grid>
+              <Grid item>
+                <Button className={classes.learnButtonInfo} variant="outlined">
+                  <span style={{ marginRight: 5 }}>Learn More</span>
+                  {whiteArrow}
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        <div className={classes.infoBackground} />
       </Grid>
     </Grid>
   );
