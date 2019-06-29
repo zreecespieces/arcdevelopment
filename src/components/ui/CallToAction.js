@@ -43,6 +43,7 @@ const useStyles = makeStyles(theme => ({
     padding: "8%",
     backgroundImage: `url(${background})`,
     backgroundPosition: "center",
+    backgroundAttachment: "fixed",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat"
   },

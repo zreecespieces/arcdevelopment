@@ -60,7 +60,7 @@ const styles = theme => ({
   },
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: "50px"
+    marginBottom: "5%"
   }
 });
 

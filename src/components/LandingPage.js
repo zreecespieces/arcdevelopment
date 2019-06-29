@@ -31,7 +31,6 @@ const useStyles = makeStyles(theme => ({
     height: "400px"
   },
   landingAnimation: {
-    marginTop: "2%",
     marginLeft: "8%"
   },
   estimateButton: {
