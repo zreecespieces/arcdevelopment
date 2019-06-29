@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -18,7 +18,8 @@ const styles = theme => ({
     marginLeft: "25px",
     textTransform: "none",
     fontWeight: "bold",
-    fontSize: "17px"
+    fontSize: "17px",
+    fontFamily: "Raleway"
   },
   tabGroup: {
     marginLeft: "auto"
@@ -35,7 +36,10 @@ const styles = theme => ({
     },
     padding: 0
   },
-  arcLogo: { height: "100px" },
+  arcLogo: {
+    height: "120px",
+    backfaceVisibility: "hidden"
+  },
   title: {
     flex: 1,
     textDecoration: "none"
@@ -50,7 +54,9 @@ const styles = theme => ({
     fontFamily: "Pacifico",
     textTransform: "none",
     fontWeight: "10",
-    marginLeft: "50px"
+    fontSize: "15px",
+    marginLeft: "50px",
+    height: "45px"
   },
   toolbarMargin: {
     ...theme.mixins.toolbar,
@@ -59,27 +65,24 @@ const styles = theme => ({
 });
 
 function Header(props) {
-  const [value, setValue] = useState(0);
-
-  const onChange = (e, value) => {
-    setValue(value);
-  };
-
-  useEffect(() => {
-    if (window.location.pathname === "/") {
-      setValue(0);
-    } else if (window.location.pathname === "/services") {
-      setValue(1);
-    } else if (window.location.pathname === "/revolution") {
-      setValue(2);
-    } else if (window.location.pathname === "/about") {
-      setValue(3);
-    } else if (window.location.pathname === "/contact") {
-      setValue(4);
-    } else if (window.location.pathname === "/estimate") {
-      setValue(9);
-    }
-  }, []);
+  useEffect(
+    () => {
+      if (window.location.pathname === "/") {
+        props.handleRoute(0);
+      } else if (window.location.pathname === "/services") {
+        props.handleRoute(1);
+      } else if (window.location.pathname === "/revolution") {
+        props.handleRoute(2);
+      } else if (window.location.pathname === "/about") {
+        props.handleRoute(3);
+      } else if (window.location.pathname === "/contact") {
+        props.handleRoute(4);
+      } else if (window.location.pathname === "/estimate") {
+        props.handleRoute(false);
+      }
+    },
+    [props]
+  );
 
   return (
     <MuiThemeProvider theme={CustomTheme}>
@@ -87,7 +90,7 @@ function Header(props) {
         <Toolbar className={props.classes.toolBar}>
           <Button
             component={Link}
-            onClick={() => setValue(0)}
+            onClick={() => props.handleRoute(0)}
             to="/"
             disableRipple
             className={props.classes.imageContainer}
@@ -101,8 +104,7 @@ function Header(props) {
           <Tabs
             className={props.classes.tabGroup}
             indicatorColor="primary"
-            value={value}
-            onChange={onChange}
+            value={props.activeTab}
           >
             <Tab
               classes={{ root: props.classes.tabRoot }}
@@ -138,7 +140,6 @@ function Header(props) {
           <Button
             component={Link}
             to="/estimate"
-            onClick={() => setValue(9)}
             className={props.classes.buttonStyle}
             variant="contained"
           >

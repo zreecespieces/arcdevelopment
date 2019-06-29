@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -19,8 +19,6 @@ const StyledContainer = withStyles({
 const useStyles = makeStyles(theme => ({
   footer: {
     width: "100%",
-    height: "15%",
-    position: "fixed",
     marginTop: "auto",
     left: 0,
     bottom: 0,
@@ -33,7 +31,8 @@ const useStyles = makeStyles(theme => ({
     width: "20%",
     height: "20%",
     marginLeft: "5%",
-    marginRight: "5%"
+    marginRight: "5%",
+    backfaceVisibility: "hidden"
   },
   socialContainer: {
     position: "absolute",
@@ -44,21 +43,27 @@ const useStyles = makeStyles(theme => ({
   gridContainer: {
     margin: "2.5%"
   },
+  buttonStyle: {
+    padding: 0
+  },
   adornment: {
     left: 0,
-    width: "60%"
+    width: "60%",
+    verticalAlign: "bottom",
+    backfaceVisibility: "hidden"
   },
   footerLinks: {
     color: "white",
     fontFamily: "Arial",
     fontWeight: "bold",
-    fontSize: "10px"
+    fontSize: "11px",
+    textDecoration: "none"
   }
 }));
 
 export default function Footer() {
   const classes = useStyles();
-  const verticalSpacing = 1;
+  const verticalSpacing = 2;
 
   return (
     <footer className={classes.footer}>
@@ -71,62 +76,132 @@ export default function Footer() {
         >
           <Grid className={classes.gridContainer} item>
             <Grid container spacing={verticalSpacing} direction="column">
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/"
+                className={classes.footerLinks}
+              >
                 Home
               </Grid>
             </Grid>
           </Grid>
           <Grid className={classes.gridContainer} item>
             <Grid container spacing={verticalSpacing} direction="column">
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/services"
+                className={classes.footerLinks}
+              >
                 Services
               </Grid>
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/customsoftware"
+                className={classes.footerLinks}
+              >
                 Custom Software Development
               </Grid>
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/mobileapps"
+                className={classes.footerLinks}
+              >
                 iOS/Android App Development
               </Grid>
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/websites"
+                className={classes.footerLinks}
+              >
                 Website Development
               </Grid>
             </Grid>
           </Grid>
           <Grid className={classes.gridContainer} item>
             <Grid container spacing={verticalSpacing} direction="column">
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/revolution"
+                className={classes.footerLinks}
+              >
                 The Revolution
               </Grid>
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/revolution"
+                className={classes.footerLinks}
+              >
                 Vision
               </Grid>
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/revolution"
+                className={classes.footerLinks}
+              >
                 Technology
               </Grid>
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/revolution"
+                className={classes.footerLinks}
+              >
                 Process
               </Grid>
             </Grid>
           </Grid>
           <Grid className={classes.gridContainer} item>
             <Grid container spacing={verticalSpacing} direction="column">
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/about"
+                className={classes.footerLinks}
+              >
                 About Us
               </Grid>
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/about"
+                className={classes.footerLinks}
+              >
                 Mission Statement
               </Grid>
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/about"
+                className={classes.footerLinks}
+              >
                 History
               </Grid>
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/about"
+                className={classes.footerLinks}
+              >
                 Team
               </Grid>
             </Grid>
           </Grid>
           <Grid className={classes.gridContainer} item>
             <Grid container spacing={verticalSpacing} direction="column">
-              <Grid item component={Typography} className={classes.footerLinks}>
+              <Grid
+                item
+                component={Link}
+                to="/contact"
+                className={classes.footerLinks}
+              >
                 Contact Us
               </Grid>
             </Grid>
@@ -138,23 +213,39 @@ export default function Footer() {
           src={footerAdornment}
         />
         <div className={classes.socialContainer}>
-          <img
-            alt="Instagram Logo"
-            className={classes.social}
-            src={LogoInstagram}
-          />
-
-          <img
-            alt="Twitter Logo"
-            className={classes.social}
-            src={LogoTwitter}
-          />
-
-          <img
-            alt="Facebook Logo"
-            className={classes.social}
-            src={LogoFacebook}
-          />
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/development_arc"
+          >
+            <img
+              alt="Instagram Logo"
+              className={classes.social}
+              src={LogoInstagram}
+            />
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/development_arc"
+          >
+            <img
+              alt="Twitter Logo"
+              className={classes.social}
+              src={LogoTwitter}
+            />
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com"
+          >
+            <img
+              alt="Facebook Logo"
+              className={classes.social}
+              src={LogoFacebook}
+            />
+          </a>
         </div>
       </StyledContainer>
     </footer>

@@ -13,12 +13,24 @@ import MobileApps from "./MobileApps";
 import Websites from "./Websites";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { active: 0 };
+  }
+
+  onRouteChange = index => {
+    this.setState({ active: index });
+  };
+
   render() {
     return (
-      <div className="ui container">
+      <div style={{ flex: 1, position: "relative" }} className="ui container">
         <BrowserRouter>
           <div>
-            <Header />
+            <Header
+              activeTab={this.state.active}
+              handleRoute={this.onRouteChange}
+            />
             <Switch>
               <Route path="/" exact component={LandingPage} />
               <Route path="/contact" exact component={ContactPage} />
