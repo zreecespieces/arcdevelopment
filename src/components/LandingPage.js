@@ -1,14 +1,22 @@
 import React from "react";
 import Lottie from "react-lottie";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import CustomTheme from "./ui/CustomTheme";
-import landingAnimation from "./animations/landinganimation/data.json";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+
 import Grid from "@material-ui/core/Grid";
+
+import CustomTheme from "./ui/CustomTheme";
+
+import landingAnimation from "./animations/landinganimation/data.json";
 
 import customSoftwareIcon from "../assets/Custom Software Icon.svg";
 import mobileAppsIcon from "../assets/mobileIcon.svg";
 import websiteIcon from "../assets/websiteIcon.svg";
+
+import repeatingBackground from "../assets/repeatingBackgroundLarge.svg";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -19,6 +27,9 @@ const useStyles = makeStyles(theme => ({
   },
   subContainerRight: {
     paddingRight: "5%"
+  },
+  gridItem: {
+    height: "400px"
   },
   landingAnimation: {
     marginTop: "2%",
@@ -67,6 +78,17 @@ const useStyles = makeStyles(theme => ({
     paddingRight: "7px",
     marginTop: "2%"
   },
+  learnButtonRevolution: {
+    borderColor: CustomTheme.palette.primary.main,
+    borderWidth: 2,
+    textTransform: "none",
+    color: CustomTheme.palette.primary.main,
+    borderRadius: "50px",
+    fontFamily: "Roboto",
+    fontWeight: "bold",
+    fontSize: "15px",
+    height: "45px"
+  },
   leftIcon: {
     backfaceVisibility: "hidden",
     marginLeft: "20%"
@@ -92,6 +114,40 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Pacifico",
     fontWeight: 1,
     color: CustomTheme.palette.secondary.main
+  },
+  repeatingContainer: {
+    height: "1400px",
+    position: "relative"
+  },
+  repeatingBackground: {
+    backgroundImage: `url(${repeatingBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100%"
+  },
+  revolutionCard: {
+    maxWidth: "1000px",
+    position: "absolute",
+    borderRadius: "30px",
+    boxShadow: theme.shadows[10],
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    padding: "5%"
+  },
+  revolutionTitle: {
+    ...CustomTheme.typography.main,
+    fontWeight: "none",
+    fontFamily: "Pacifico",
+    textAlign: "center",
+    fontSize: 40,
+    marginBottom: "5%"
+  },
+  revolutionSubtitle: {
+    ...CustomTheme.typography.secondary,
+    textAlign: "center",
+    marginBottom: "2%"
   }
 }));
 
@@ -158,7 +214,7 @@ export default function LandingPage() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
+      <Grid className={classes.gridItem} item>
         <Grid
           className={classes.subContainer}
           container
@@ -189,7 +245,7 @@ export default function LandingPage() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
+      <Grid className={classes.gridItem} item>
         <Grid
           className={classes.subContainerRight}
           container
@@ -220,7 +276,7 @@ export default function LandingPage() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
+      <Grid className={classes.gridItem} item>
         <Grid
           className={classes.subContainer}
           container
@@ -233,7 +289,7 @@ export default function LandingPage() {
               Reach More. Discover More. Sell More.
             </div>
             <div className={classes.subtext}>
-              Optimized for Search Engines
+              Optimized for Search Engines,
               <br />
               built for speed.
             </div>
@@ -250,6 +306,42 @@ export default function LandingPage() {
             />
           </Grid>
         </Grid>
+      </Grid>
+      <Grid className={classes.repeatingContainer} item>
+        <Card className={classes.revolutionCard}>
+          <CardContent style={{ alignContent: "center" }}>
+            <Grid justify="center" container>
+              <Grid item>
+                <div className={classes.revolutionTitle}>The Revolution</div>
+              </Grid>
+              <Grid item>
+                <div className={classes.revolutionSubtitle}>
+                  Visionary insights coupled with cutting-edge technology is a
+                  recipe for revolution.
+                </div>
+              </Grid>
+              <Grid item>
+                <Button
+                  className={classes.learnButtonRevolution}
+                  variant="outlined"
+                >
+                  <span style={{ marginRight: 10 }}>Learn More</span>
+                  <svg
+                    className={classes.arrow}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="15"
+                    height="15"
+                    fill={CustomTheme.palette.primary.main}
+                    viewBox="0 0 18 18"
+                  >
+                    <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
+                  </svg>
+                </Button>
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+        <div className={classes.repeatingBackground} />
       </Grid>
     </Grid>
   );
