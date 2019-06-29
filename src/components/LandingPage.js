@@ -8,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import CustomTheme from "./ui/CustomTheme";
 import landingAnimation from "./animations/landinganimation/data.json";
+import CallToAction from "./ui/CallToAction";
 
 import customSoftwareIcon from "../assets/Custom Software Icon.svg";
 import mobileAppsIcon from "../assets/mobileIcon.svg";
@@ -446,6 +447,9 @@ export default function LandingPage() {
           </Grid>
         </Grid>
         <div className={classes.infoBackground} />
+      </Grid>
+      <Grid item>
+        <CallToAction />
       </Grid>
     </Grid>
   );
