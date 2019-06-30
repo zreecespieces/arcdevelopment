@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
 import { makeStyles } from "@material-ui/core/styles";
 import backArrow from "../assets/backArrow.svg";
@@ -34,10 +36,12 @@ const useStyles = makeStyles(theme => ({
     marginRight: "5%"
   },
   arrow: {
-    marginTop: "1.25%"
+    marginTop: ".65%",
+    marginRight: "2%"
   },
   arrowRight: {
-    marginTop: "1.25%"
+    marginTop: ".65%",
+    marginLeft: "45%"
   },
   mainContainer: {
     paddingLeft: "5%",
@@ -52,12 +56,14 @@ export default function CustomSoftware() {
     <Grid className={classes.mainContainer} container direction="column">
       <Grid item>
         <Grid container direction="row">
+          <Grid className={classes.arrow} item>
+            <Button component={Link} to="/services">
+              <img alt="Back Arrow" src={backArrow} />
+            </Button>
+          </Grid>
           <Grid item>
             <Grid container>
-              <Grid className={classes.arrow} item>
-                <img alt="Back Arrow" src={backArrow} />
-              </Grid>
-              <Grid item>
+              <Grid item className={classes.mainText}>
                 <Grid container direction="column">
                   <Grid item>
                     <div className={classes.title}>
@@ -91,10 +97,12 @@ export default function CustomSoftware() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid className={classes.arrowRight} item>
-                <img alt="Forward Arrow" src={forwardArrow} />
-              </Grid>
             </Grid>
+          </Grid>
+          <Grid className={classes.arrowRight} item>
+            <Button component={Link} to="/mobileapps">
+              <img alt="Forward Arrow" src={forwardArrow} />
+            </Button>
           </Grid>
         </Grid>
       </Grid>
