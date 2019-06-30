@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
-
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
@@ -245,12 +245,22 @@ export default function LandingPage() {
             </div>
             <Grid alignItems="center" justify="center" spacing={5} container>
               <Grid item>
-                <Button className={classes.estimateButton} variant="contained">
+                <Button
+                  component={Link}
+                  to="/estimate"
+                  className={classes.estimateButton}
+                  variant="contained"
+                >
                   Free Estimate
                 </Button>
               </Grid>
               <Grid item>
-                <Button className={classes.learnButtonHero} variant="outlined">
+                <Button
+                  component={Link}
+                  to="/revolution"
+                  className={classes.learnButtonHero}
+                  variant="outlined"
+                >
                   <span style={{ marginRight: 10 }}>Learn More</span>
                   <svg
                     className={classes.arrow}
@@ -288,7 +298,12 @@ export default function LandingPage() {
               <br /> to{" "}
               <span className={classes.specialText}>celebration.</span>
             </div>
-            <Button className={classes.learnButton} variant="outlined">
+            <Button
+              component={Link}
+              to="/customsoftware"
+              className={classes.learnButton}
+              variant="outlined"
+            >
               <span style={{ marginRight: 5 }}>Learn More</span>
               {arrowSVG}
             </Button>
@@ -319,7 +334,12 @@ export default function LandingPage() {
               <br />
               with either mobile platform.
             </div>
-            <Button className={classes.learnButton} variant="outlined">
+            <Button
+              component={Link}
+              to="/mobileapps"
+              className={classes.learnButton}
+              variant="outlined"
+            >
               <span style={{ marginRight: 5 }}>Learn More</span>
               {arrowSVG}
             </Button>
@@ -350,7 +370,12 @@ export default function LandingPage() {
               <br />
               built for speed.
             </div>
-            <Button className={classes.learnButton} variant="outlined">
+            <Button
+              component={Link}
+              to="/websites"
+              className={classes.learnButton}
+              variant="outlined"
+            >
               <span style={{ marginRight: 5 }}>Learn More</span>
               {arrowSVG}
             </Button>
@@ -379,6 +404,8 @@ export default function LandingPage() {
               </Grid>
               <Grid item>
                 <Button
+                  component={Link}
+                  to="/revolution"
                   className={classes.learnButtonRevolution}
                   variant="outlined"
                 >
@@ -416,7 +443,12 @@ export default function LandingPage() {
                 <div className={classes.infoSubtitle}>Let's get personal.</div>
               </Grid>
               <Grid item>
-                <Button className={classes.learnButtonInfo} variant="outlined">
+                <Button
+                  component={Link}
+                  to="/about"
+                  className={classes.learnButtonInfo}
+                  variant="outlined"
+                >
                   <span style={{ marginRight: 5 }}>Learn More</span>
                   {whiteArrow}
                 </Button>
@@ -437,7 +469,12 @@ export default function LandingPage() {
                 </div>
               </Grid>
               <Grid item>
-                <Button className={classes.learnButtonInfo} variant="outlined">
+                <Button
+                  component={Link}
+                  to="/contact"
+                  className={classes.learnButtonInfo}
+                  variant="outlined"
+                >
                   <span style={{ marginRight: 5 }}>Learn More</span>
                   {whiteArrow}
                 </Button>

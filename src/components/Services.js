@@ -14,11 +14,11 @@ const useStyles = makeStyles(theme => ({
   },
   gridItemSoftware: {
     height: "400px",
-    marginTop: "60%"
+    marginTop: "65%"
   },
   gridItemIos: {
     height: "400px",
-    marginTop: "10%",
+    marginTop: "15%",
     marginBottom: "20%"
   },
   learnButton: {
@@ -134,7 +134,12 @@ export default function Services() {
                   <br />
                   with either mobile platform.
                 </div>
-                <Button className={classes.learnButton} variant="outlined">
+                <Button
+                  component={Link}
+                  to="/mobileapps"
+                  className={classes.learnButton}
+                  variant="outlined"
+                >
                   <span style={{ marginRight: 5 }}>Learn More</span>
                   {arrowSVG}
                 </Button>
@@ -163,7 +168,12 @@ export default function Services() {
                   <br />
                   built for speed.
                 </div>
-                <Button className={classes.learnButton} variant="outlined">
+                <Button
+                  component={Link}
+                  to="/websites"
+                  className={classes.learnButton}
+                  variant="outlined"
+                >
                   <span style={{ marginRight: 5 }}>Learn More</span>
                   {arrowSVG}
                 </Button>

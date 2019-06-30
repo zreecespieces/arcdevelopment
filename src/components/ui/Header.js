@@ -69,7 +69,12 @@ function Header(props) {
     () => {
       if (window.location.pathname === "/") {
         props.handleRoute(0);
-      } else if (window.location.pathname === "/services") {
+      } else if (
+        window.location.pathname === "/services" ||
+        window.location.pathname === "/customsoftware" ||
+        window.location.pathname === "/mobileapps" ||
+        window.location.pathname === "/websites"
+      ) {
         props.handleRoute(1);
       } else if (window.location.pathname === "/revolution") {
         props.handleRoute(2);
