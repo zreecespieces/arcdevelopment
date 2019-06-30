@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
@@ -8,18 +9,16 @@ import websiteIcon from "../assets/websiteIcon.svg";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-  subContainer: {},
-  subContainerRight: {},
   gridItem: {
     height: "400px"
   },
   gridItemSoftware: {
     height: "400px",
-    marginTop: "65%"
+    marginTop: "60%"
   },
   gridItemIos: {
     height: "400px",
-    marginTop: "15%",
+    marginTop: "10%",
     marginBottom: "20%"
   },
   learnButton: {
@@ -94,7 +93,12 @@ export default function Services() {
                   <br /> to{" "}
                   <span className={classes.specialText}>celebration.</span>
                 </div>
-                <Button className={classes.learnButton} variant="outlined">
+                <Button
+                  component={Link}
+                  to="/customsoftware"
+                  className={classes.learnButton}
+                  variant="outlined"
+                >
                   <span style={{ marginRight: 5 }}>Learn More</span>
                   {arrowSVG}
                 </Button>
