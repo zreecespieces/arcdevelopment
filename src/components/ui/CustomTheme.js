@@ -25,6 +25,12 @@ export default createMuiTheme({
       fontWeight: "bold",
       color: `${arcGrey}`
     },
+    blueSecondary: {
+      fontFamily: "Roboto-Light",
+      fontSize: 20,
+      fontWeight: "bold",
+      color: `${arcBlue}`
+    },
     heroText: {
       fontFamily: "Raleway",
       fontWeight: "bold",
@@ -36,6 +42,39 @@ export default createMuiTheme({
       fontSize: 24,
       fontStyle: "italic",
       color: `${arcBlue}`
+    }
+  },
+  input: {
+    fontFamily: "Roboto-Light",
+    fontWeight: "bold",
+    color: `${arcGrey}`,
+    underline: `${arcBlue}`
+  },
+  messageInput: {
+    fontFamily: "Roboto-Light",
+    fontWeight: "bold",
+    color: `${arcGrey}`,
+    underline: `${arcBlue}`,
+    border: `2px solid ${arcBlue}`,
+    borderRadius: "5px"
+  },
+  overrides: {
+    MuiFormLabel: {
+      root: {
+        color: `${arcBlue}`
+      }
+    },
+    MuiInput: {
+      underline: {
+        "&:before": {
+          //underline color when textfield is inactive
+          borderBottom: `2px solid ${arcBlue}`
+        },
+        "&:hover:not($disabled):before": {
+          //underline color when hovered
+          borderBottom: `2px solid ${arcBlue}`
+        }
+      }
     }
   }
 });

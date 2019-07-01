@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -92,7 +93,16 @@ export default function CallToAction() {
             Take advantage of the 21st Century.
           </Grid>
           <Grid item>
-            <Button className={classes.learnButton} variant="outlined">
+            <Button
+              component={Link}
+              to={
+                window.location.pathname === "/revolution"
+                  ? "/services"
+                  : "/revolution"
+              }
+              className={classes.learnButton}
+              variant="outlined"
+            >
               <span style={{ marginRight: 5 }}>Learn More</span>
               {arrowSVG}
             </Button>
@@ -100,7 +110,12 @@ export default function CallToAction() {
         </Grid>
       </Grid>
       <Grid item>
-        <Button className={classes.estimateButton} variant="contained">
+        <Button
+          component={Link}
+          to="/estimate"
+          className={classes.estimateButton}
+          variant="contained"
+        >
           {"Free Estimate "}
         </Button>
       </Grid>
