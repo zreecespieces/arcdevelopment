@@ -13,6 +13,8 @@ import launchBackground from "../assets/launch.svg";
 import iterateBackground from "../assets/iterate.svg";
 import maintainBackground from "../assets/maintain.svg";
 
+import CallToAction from "./ui/CallToAction";
+
 const useStyles = makeStyles(theme => ({
   title: {
     ...CustomTheme.typography.heroText,
@@ -25,14 +27,28 @@ const useStyles = makeStyles(theme => ({
   heading: {
     ...CustomTheme.typography.main
   },
+  headingDark: {
+    ...CustomTheme.typography.main,
+    color: "black"
+  },
   paragraphMain: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
     maxWidth: "700px"
   },
+  paragraphSmall: {
+    ...CustomTheme.typography.secondary,
+    color: "white",
+    maxWidth: "410px"
+  },
+  paragraphContainer: {
+    position: "absolute",
+    paddingTop: "10%",
+    paddingLeft: "5%"
+  },
   technologyContainer: {
     marginTop: "15%",
-    marginBottom: "15%"
+    marginBottom: "25%"
   },
   visionContainer: {
     marginTop: "10%"
@@ -112,7 +128,7 @@ export default function TheRevolution() {
   const classes = useStyles();
 
   return (
-    <Grid className={classes.mainContainer} container direction="column">
+    <Grid container direction="column">
       <Grid className={classes.titleContainer} item>
         <Grid container>
           <Grid item>
@@ -197,7 +213,7 @@ export default function TheRevolution() {
                   Instead of having to master two completely separate
                   development platforms, you can leverage the knowledge you
                   already possessed from building websites and reapply it
-                  directly! This was a <strong>huge</strong> leap forward.
+                  directly! This was a huge leap forward.
                 </p>
                 <p className={classes.paragraphMain}>
                   This technology is now being used by companies like AirBnB,
@@ -236,31 +252,274 @@ export default function TheRevolution() {
         </Grid>
       </Grid>
       <Grid className={classes.sectionContainer} item>
+        <Grid
+          className={classes.paragraphContainer}
+          container
+          direction="column"
+        >
+          <Grid item>
+            <div className={classes.headingDark}>Consultation</div>
+          </Grid>
+          <Grid item>
+            <p className={classes.paragraphSmall}>
+              Our process begins the moment you realize you need a piece of
+              technology for your business. Whether you already have an idea for
+              where to start and what to do, or if you just know you want to
+              step things up, our initial consultation will help you examine
+              your business holistically to find the best solutions.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Detailed notes will be taken on your requirements and constraints,
+              while taking care to identify other potential areas for
+              consideration.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Cutting-edge advancements in machine learning like object
+              detection and natural language processing allow computers to do
+              things previously unimaginable, and our expertise and intuition
+              will help usher you into this new future of possibilities.
+            </p>
+          </Grid>
+        </Grid>
         <div className={classes.consultationBackground} />
       </Grid>
       <Grid className={classes.sectionContainer} item>
+        <Grid
+          className={classes.paragraphContainer}
+          container
+          direction="column"
+        >
+          <Grid item>
+            <div className={classes.headingDark}>Mockup</div>
+          </Grid>
+          <Grid item>
+            <p className={classes.paragraphSmall}>
+              After we settle on the best path forward and decide on a solution
+              to pursue, details like the cost and timeline will be finalized.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Then it’s time for us to start on your minimum viable product.
+              That’s just a fancy term for a mockup, which doesn’t include
+              colors, images, or any other polished design elements, but
+              captures the essential layout structure and functionality.
+            </p>
+            <p className={classes.paragraphSmall}>
+              This helps us understand and refine the solution itself before
+              getting distracted by specifics and looks.
+            </p>
+          </Grid>
+        </Grid>
         <div className={classes.mockupBackground} />
       </Grid>
       <Grid className={classes.sectionContainer} item>
+        <Grid
+          className={classes.paragraphContainer}
+          container
+          direction="column"
+        >
+          <Grid item>
+            <div className={classes.headingDark}>Review</div>
+          </Grid>
+          <Grid item>
+            <p className={classes.paragraphSmall}>
+              Before moving any farther we come back to you with our progress.
+              This gives you the freedom to discuss any changes you may want or
+              any ideas you may have come up with before any heavy lifting has
+              been done.
+            </p>
+            <p className={classes.paragraphSmall}>
+              We give you an interactive demonstration of the mockups,
+              thoroughly explaining the thought process that went into each
+              screen and every anticipated feature.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Once you’re completely satisfied with the vision for our solution
+              we get down to the nitty gritty, fine-details of design.
+            </p>
+          </Grid>
+        </Grid>
         <div className={classes.reviewBackground} />
       </Grid>
       <Grid className={classes.sectionContainer} item>
+        <Grid
+          className={classes.paragraphContainer}
+          container
+          direction="column"
+        >
+          <Grid item>
+            <div className={classes.headingDark}>Design</div>
+          </Grid>
+          <Grid item>
+            <p className={classes.paragraphSmall}>
+              Using the mockups and notes taken during the consultation as
+              guides, we will start ironing out what the final product will look
+              like. This also involves using any brand material like fonts,
+              colors, and logos to extend the experience you've already
+              established.
+            </p>
+            <p className={classes.paragraphSmall}>
+              No aspect is superfluous, and care will be taken with every
+              decision.
+            </p>
+          </Grid>
+        </Grid>
         <div className={classes.designBackground} />
       </Grid>
       <Grid className={classes.sectionContainer} item>
+        <Grid
+          className={classes.paragraphContainer}
+          container
+          direction="column"
+        >
+          <Grid item>
+            <div className={classes.headingDark}>Review</div>
+          </Grid>
+          <Grid item>
+            <p className={classes.paragraphSmall}>
+              A second round of review is essential to our goal of creating
+              exactly what you want, exactly how you want it.
+            </p>
+            <p className={classes.paragraphSmall}>
+              This time we’ll be going over the finalized designs in another
+              fully interactive demonstration. Again this gives you an
+              opportunity to tweak things and make sure we get everything right
+              the first time.
+            </p>
+          </Grid>
+        </Grid>
         <div className={classes.reviewBackground} />
       </Grid>
       <Grid className={classes.sectionContainer} item>
+        <Grid
+          className={classes.paragraphContainer}
+          container
+          direction="column"
+        >
+          <Grid item>
+            <div className={classes.headingDark}>Build</div>
+          </Grid>
+          <Grid item>
+            <p className={classes.paragraphSmall}>
+              Here’s where we get down to business.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Engineering begins after your approval on the final designs. We
+              start by scaffolding out the project at a high level, prioritizing
+              some areas over others.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Each area is then developed in order of importance until ready to
+              be connected to the next piece.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Typically the backend, behind the scenes operations, are completed
+              first. Once all the services are in place we can then create the
+              front end, user side of things.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Finishing the application doesn’t mean we’re done though, because
+              we use extensive testing to guarantee compatibility with all
+              intended devices.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Only after our rigorous examinations will we accept a product as
+              finished, then pushing it through the production pipeline. This
+              produces an optimized, compressed, consumer version of the code
+              and assets ready for deployment.
+            </p>
+          </Grid>
+        </Grid>
         <div className={classes.buildBackground} />
       </Grid>
       <Grid className={classes.sectionContainer} item>
+        <Grid
+          className={classes.paragraphContainer}
+          container
+          direction="column"
+        >
+          <Grid item>
+            <div className={classes.headingDark}>Launch</div>
+          </Grid>
+          <Grid item>
+            <p className={classes.paragraphSmall}>
+              The moment we’ve all been waiting for.
+            </p>
+            <p className={classes.paragraphSmall}>
+              When construction comes to a close you’re the first one to know.
+              We’ll give our final demonstration to show off your shiny new
+              software in the wild so you know exactly how it will look to your
+              users.
+            </p>
+            <p className={classes.paragraphSmall}>
+              When you say the word, we press the button and launch your project
+              out to the public. We’re there to ensure everything goes to plan
+              so you can start reaping the rewards of your technological
+              investment immediately.
+            </p>
+          </Grid>
+        </Grid>
         <div className={classes.launchBackground} />
       </Grid>
       <Grid className={classes.sectionContainer} item>
+        <Grid
+          className={classes.paragraphContainer}
+          container
+          direction="column"
+        >
+          <Grid item>
+            <div className={classes.headingDark}>Maintain</div>
+          </Grid>
+          <Grid item>
+            <p className={classes.paragraphSmall}>
+              Our work doesn’t end there.
+            </p>
+            <p className={classes.paragraphSmall}>
+              After a successful launch we keep in close contact to listen to
+              feedback and hear how the project is being received.
+            </p>
+            <p className={classes.paragraphSmall}>
+              From there on out we make sure your application is kept up to date
+              and taking advantage of the best features and practices available.
+              When new developments arise or new techniques are discovered in
+              future projects, we will implement those advancements in your
+              project as part of our routine maintenance.
+            </p>
+          </Grid>
+        </Grid>
         <div className={classes.maintainBackground} />
       </Grid>
       <Grid className={classes.sectionContainer} item>
+        <Grid
+          className={classes.paragraphContainer}
+          container
+          direction="column"
+        >
+          <Grid item>
+            <div className={classes.headingDark}>Iterate</div>
+          </Grid>
+          <Grid item>
+            <p className={classes.paragraphSmall}>
+              The cycle repeats whenever you come up with a new idea for
+              extending your current project, or come up with a brand new system
+              entirely.
+            </p>
+            <p className={classes.paragraphSmall}>
+              By planning for future features and changes, we can build and
+              evolve your application over time. As new use cases and customer
+              needs develop we can respond with continuous integration of new
+              content.
+            </p>
+            <p className={classes.paragraphSmall}>
+              Our iterative process will keep you current and competitive,
+              allowing you to quickly implement changes instead of waiting
+              months for a single update.
+            </p>
+          </Grid>
+        </Grid>
         <div className={classes.iterateBackground} />
+      </Grid>
+      <Grid item>
+        <CallToAction />
       </Grid>
     </Grid>
   );

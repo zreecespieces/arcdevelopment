@@ -30,6 +30,12 @@ export default createMuiTheme({
       fontWeight: "bold",
       fontSize: "40px",
       color: `${arcBlue}`
+    },
+    mission: {
+      fontFamily: "Raleway",
+      fontSize: 24,
+      fontStyle: "italic",
+      color: `${arcBlue}`
     }
   }
 });
