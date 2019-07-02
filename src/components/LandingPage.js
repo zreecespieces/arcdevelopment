@@ -310,7 +310,7 @@ export default function LandingPage() {
           </Grid>
           <Grid item>
             <img
-              alt="Custom Software Icon"
+              alt="three rectangles floating on top of eachother"
               className={classes.leftIcon}
               src={customSoftwareIcon}
             />
