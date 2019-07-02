@@ -1,4 +1,6 @@
 import React from "react";
+import Lottie from "react-lottie";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
@@ -10,6 +12,8 @@ import mobileAppsIcon from "../assets/mobileIcon.svg";
 import websiteIcon from "../assets/websiteIcon.svg";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
+
+import estimateAnimation from "./animations/estimateAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -40,7 +44,9 @@ const useStyles = makeStyles(theme => ({
     height: "6vh",
     width: "10vw"
   },
-  questionsContainer: {},
+  animation: {
+    marginTop: "10%"
+  },
   questions: {
     marginTop: "15%",
     marginBottom: "10%"
@@ -65,6 +71,15 @@ const useStyles = makeStyles(theme => ({
 export default function FreeEstimate() {
   const classes = useStyles();
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: estimateAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
   return (
     <MuiThemeProvider theme={CustomTheme}>
       <Grid container justify="space-between" direction="row">
@@ -72,6 +87,9 @@ export default function FreeEstimate() {
           <Grid container direction="column">
             <Grid item>
               <div className={classes.title}>Estimate</div>
+            </Grid>
+            <Grid className={classes.animation} item>
+              <Lottie options={defaultOptions} height={400} width={600} />
             </Grid>
           </Grid>
         </Grid>

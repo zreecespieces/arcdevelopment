@@ -1,4 +1,6 @@
 import React from "react";
+import Lottie from "react-lottie";
+
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -9,6 +11,9 @@ import forwardArrow from "../assets/forwardArrow.svg";
 import knife from "../assets/swissKnife.svg";
 import access from "../assets/extendAccess.svg";
 import engagement from "../assets/increaseEngagement.svg";
+import CallToAction from "./ui/CallToAction";
+
+import integrationAnimation from "./animations/integrationAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -33,10 +38,10 @@ const useStyles = makeStyles(theme => ({
   },
   middleIconMiddle: {
     marginLeft: "1%",
-    marginRight: "1%"
+    marginRight: "1%",
+    marginTop: "-10%"
   },
   bottomIcons: {
-    marginTop: "15%",
     marginBottom: "25%"
   },
   arrow: {
@@ -47,10 +52,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: ".55%",
     marginLeft: "45%"
   },
-  mainContainer: {
-    paddingLeft: "5%",
-    paddingRight: "5%"
-  },
+  mainContainer: {},
   extendAccess: {
     marginTop: "5%"
   }
@@ -58,6 +60,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function MobileApps() {
   const classes = useStyles();
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: integrationAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
   return (
     <Grid className={classes.mainContainer} container direction="column">
@@ -132,7 +143,7 @@ export default function MobileApps() {
                 </Grid>
               </Grid>
               <Grid className={classes.middleIconMiddle} item>
-                <div>Phone Animation</div>
+                <Lottie options={defaultOptions} height={700} width={400} />
               </Grid>
               <Grid className={classes.middleIconRight} item>
                 <Grid container align="right">
@@ -204,6 +215,9 @@ export default function MobileApps() {
             </Grid>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item>
+        <CallToAction />
       </Grid>
     </Grid>
   );

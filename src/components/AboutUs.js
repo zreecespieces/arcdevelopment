@@ -101,21 +101,16 @@ export default function AboutUs() {
                 <div className={classes.boldLine}>
                   We're the new kid on the block
                 </div>
-              </Grid>
-              <Grid item>
                 <p className={classes.paragraphMain}>
                   Founded in 2019, we're ready to get our hands on the world's
                   business problems.
                 </p>
-              </Grid>
-              <Grid item>
                 <p className={classes.paragraphMain}>
-                  There are many different answers to that question: economic
-                  barriers, social barriers, educational barriers, and sometimes
-                  institutional barriers.
+                  It all started with one question: Why aren’t all businesses
+                  using available technology? There are many different answers
+                  to that question: economic barriers, social barriers,
+                  educational barriers, and sometimes institutional barriers.
                 </p>
-              </Grid>
-              <Grid item>
                 <p className={classes.paragraphMain}>
                   We aim to be a powerful force in overcoming these obstacles.
                   Recent developments in software engineering and computing
@@ -126,8 +121,6 @@ export default function AboutUs() {
                   created daily. Taking full advantage of these advancements is
                   the name of the game.
                 </p>
-              </Grid>
-              <Grid item>
                 <p className={classes.paragraphMain}>
                   All this change can be a lot to keep up with, and that’s where
                   we come in.

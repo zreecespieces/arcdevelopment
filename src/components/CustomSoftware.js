@@ -1,4 +1,6 @@
 import React from "react";
+import Lottie from "react-lottie";
+
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -9,6 +11,13 @@ import forwardArrow from "../assets/forwardArrow.svg";
 import cash from "../assets/cash.svg";
 import bulb from "../assets/bulb.svg";
 import stopwatch from "../assets/stopwatch.svg";
+import roots from "../assets/root.svg";
+import CallToAction from "./ui/CallToAction";
+
+import documentsAnimation from "./animations/documentsAnimation/data.json";
+import automationAnimation from "./animations/automationAnimation/data.json";
+import uxAnimation from "./animations/uxAnimation/data.json";
+import scaleAnimation from "./animations/scaleAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -25,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   paragraph: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
-    maxWidth: "300px"
+    maxWidth: "400px"
   },
   middleIcons: {
     marginTop: "15%",
@@ -36,21 +45,72 @@ const useStyles = makeStyles(theme => ({
     marginRight: "5%"
   },
   arrow: {
-    marginTop: ".65%",
+    marginTop: ".45%",
     marginRight: "2%"
   },
   arrowRight: {
-    marginTop: ".65%",
+    marginTop: ".45%",
     marginLeft: "45%"
   },
-  mainContainer: {
-    paddingLeft: "5%",
-    paddingRight: "5%"
+  automationContainer: {
+    marginLeft: "-15%"
+  },
+  rootsContainer: {
+    height: "20vh",
+    width: "20vw",
+    marginBottom: "45%",
+    marginTop: "20%"
+  },
+  uxAnimation: {
+    marginTop: "-40%"
+  },
+  lastRow: {
+    marginTop: "20%",
+    marginBottom: "15%"
+  },
+  scaleContainer: {
+    marginTop: "-5%"
   }
 }));
 
 export default function CustomSoftware() {
   const classes = useStyles();
+
+  const documentsOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: documentsAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
+  const automationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: automationAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
+  const uxOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: uxAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
+  const scaleOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: scaleAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
   return (
     <Grid className={classes.mainContainer} container direction="column">
@@ -141,7 +201,7 @@ export default function CustomSoftware() {
         </Grid>
       </Grid>
       <Grid item>
-        <Grid container justify="space-between" direction="row">
+        <Grid container justify="space-around" direction="row">
           <Grid item>
             <Grid container>
               <Grid item>
@@ -170,14 +230,14 @@ export default function CustomSoftware() {
                 </Grid>
               </Grid>
               <Grid item>
-                <div>Digital Documents Icon</div>
+                <Lottie options={documentsOptions} height={500} width={300} />
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
             <Grid align="right" container>
-              <Grid item>
-                <div>Scale Icon</div>
+              <Grid className={classes.scaleContainer} item>
+                <Lottie options={scaleOptions} height={500} width={300} />
               </Grid>
               <Grid item>
                 <Grid container direction="column">
@@ -187,8 +247,8 @@ export default function CustomSoftware() {
                   <Grid item>
                     <p className={classes.paragraph}>
                       Whether you're a large brand, just getting started, or
-                      taking off right now, our application architecture ensures
-                      pain-free growth and reliability.
+                      things are taking off right now, our application
+                      architecture ensures pain-free growth and reliability.
                     </p>
                   </Grid>
                 </Grid>
@@ -201,8 +261,8 @@ export default function CustomSoftware() {
         <Grid container justify="center" direction="row">
           <Grid item>
             <Grid container align="center" direction="column">
-              <Grid item>
-                <div>Root Cause Analysis Icon</div>
+              <Grid className={classes.rootsContainer} item>
+                <img alt="tree with long roots" src={roots} />
               </Grid>
               <Grid item>
                 <div className={classes.heading}>Root-Cause Analysis</div>
@@ -222,8 +282,8 @@ export default function CustomSoftware() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
-        <Grid container justify="space-between" direction="row">
+      <Grid className={classes.lastRow} item>
+        <Grid container justify="space-around" direction="row">
           <Grid item>
             <Grid container>
               <Grid item>
@@ -246,15 +306,15 @@ export default function CustomSoftware() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item>
-                <div>Automation Icon</div>
+              <Grid className={classes.automationContainer} item>
+                <Lottie options={automationOptions} height={350} width={500} />
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
             <Grid align="right" container>
-              <Grid item>
-                <div>User Experience Icon</div>
+              <Grid className={classes.uxAnimation} item>
+                <Lottie options={uxOptions} height={800} width={200} />
               </Grid>
               <Grid item>
                 <Grid container direction="column">
@@ -284,6 +344,7 @@ export default function CustomSoftware() {
           </Grid>
         </Grid>
       </Grid>
+      <CallToAction />
     </Grid>
   );
 }

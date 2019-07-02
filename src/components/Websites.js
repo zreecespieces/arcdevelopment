@@ -10,6 +10,7 @@ import analytics from "../assets/analytics.svg";
 import ecommerce from "../assets/ecommerce.svg";
 import outreach from "../assets/outreach.svg";
 import seo from "../assets/seo.svg";
+import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -64,10 +65,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: ".4%",
     marginLeft: "50%"
   },
-  mainContainer: {
-    paddingLeft: "5%",
-    paddingRight: "5%"
-  },
+  mainContainer: {},
   analytics: {
     marginLeft: "-13%"
   },
@@ -77,7 +75,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "15%"
   },
   ecommerceContainer: {
-    marginBottom: "15%"
+    marginBottom: "15%",
+    marginRight: "5%"
   },
   ecommerce: {
     marginLeft: "0%"
@@ -230,6 +229,9 @@ export default function Websites() {
             </p>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item>
+        <CallToAction />
       </Grid>
     </Grid>
   );

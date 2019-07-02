@@ -1,4 +1,6 @@
 import React from "react";
+import Lottie from "react-lottie";
+
 import Grid from "@material-ui/core/Grid";
 import CustomTheme from "../components/ui/CustomTheme";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,6 +14,7 @@ import buildBackground from "../assets/construction.svg";
 import launchBackground from "../assets/launch.svg";
 import iterateBackground from "../assets/iterate.svg";
 import maintainBackground from "../assets/maintain.svg";
+import technologyAnimation from "./animations/technologyAnimation/data.json";
 
 import CallToAction from "./ui/CallToAction";
 
@@ -56,9 +59,7 @@ const useStyles = makeStyles(theme => ({
   imageContainer: {
     marginTop: "4%"
   },
-  imageContainer2: {
-    marginTop: "10%"
-  },
+  animationContainer: {},
   processHeading: {
     marginBottom: "50%"
   },
@@ -126,6 +127,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function TheRevolution() {
   const classes = useStyles();
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: technologyAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
   return (
     <Grid container direction="column">
@@ -239,8 +249,8 @@ export default function TheRevolution() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid className={classes.imageContainer2} item>
-            <img alt="mountain viewed through binoculars" src={vision} />
+          <Grid className={classes.animationContainer} item>
+            <Lottie options={defaultOptions} height={800} width={800} />
           </Grid>
         </Grid>
       </Grid>
