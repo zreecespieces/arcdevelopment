@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Snackbar from "@material-ui/core/Snackbar";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
 import background from "../assets/background.jpg";
@@ -15,6 +21,12 @@ import send from "../assets/send.svg";
 const useStyles = makeStyles(theme => ({
   title: {
     ...CustomTheme.typography.heroText
+  },
+  confirmTitle: {
+    ...CustomTheme.typography.heroText,
+    fontSize: 32,
+    marginTop: "5%",
+    marginBottom: "2%"
   },
   subtitle: {
     ...CustomTheme.typography.blueSecondary
@@ -66,6 +78,11 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.messageInput,
     padding: "5%"
   },
+  messageInputConfirm: {
+    ...CustomTheme.messageInput,
+    padding: "5%",
+    marginTop: "10%"
+  },
   messageContainer: {
     marginTop: "20%",
     borderBottom: "none !important"
@@ -82,6 +99,19 @@ const useStyles = makeStyles(theme => ({
     marginTop: "10%",
     fontSize: "15px",
     height: "45px"
+  },
+  buttonConfirm: {
+    backgroundColor: CustomTheme.palette.secondary.main,
+    color: "white",
+    "&:hover": {
+      backgroundColor: CustomTheme.palette.secondary.light
+    },
+    borderRadius: "50px",
+    fontFamily: "Pacifico",
+    textTransform: "none",
+    fontSize: "15px",
+    height: "45px",
+    width: "10vw"
   },
   send: {
     paddingLeft: "10%",
@@ -118,16 +148,110 @@ const useStyles = makeStyles(theme => ({
     width: "205px",
     marginLeft: "20%",
     marginTop: "50%"
+  },
+  dialog: {
+    maxHeight: "100%",
+    height: "45vh"
+  },
+  dialogContent: {
+    paddingLeft: "35%",
+    paddingRight: "35%"
+  },
+  buttonContainer: {
+    marginTop: "25%"
+  },
+  cancelButton: {
+    marginTop: "2%"
   }
 }));
 
 export default function ContactPage() {
   const classes = useStyles();
 
-  const [name, setName] = useState("");
-  const [phoneField, setPhone] = useState("");
-  const [emailField, setEmail] = useState("");
   const [messageField, setMessage] = useState("");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
+  const defaultState = [
+    {
+      id: "name",
+      label: "Name",
+      value: "",
+      error: false,
+      helperText: null,
+      getHelperText: error => (error ? null : null),
+      isValid: value => true
+    },
+    {
+      id: "phone",
+      label: "Phone",
+      value: "",
+      error: false,
+      helperText: null,
+      getHelperText: error => (error ? "Phone number invalid" : null),
+      isValid: value =>
+        /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value)
+    },
+    {
+      id: "email",
+      label: "Email",
+      value: "",
+      error: false,
+      helperText: null,
+      getHelperText: error => (error ? "Email invalid" : null),
+      isValid: value => /\S+@\S+\.\S+/.test(value)
+    }
+  ];
+
+  const [inputs, setInputs] = useState(defaultState);
+
+  const onChange = ({ target: { id, value } }) => {
+    const newInputs = [...inputs];
+    const index = inputs.findIndex(input => input.id === id);
+
+    const input = inputs[index];
+    const isValid = input.isValid(value);
+
+    newInputs[index] = {
+      ...input,
+      value: value,
+      error: !isValid,
+      helperText: input.getHelperText(!isValid)
+    };
+
+    setInputs(newInputs);
+  };
+
+  const onDialogOpen = () => {
+    setDialogOpen(true);
+  };
+
+  const onDialogClose = () => {
+    setDialogOpen(false);
+  };
+
+  const onDialogSend = () => {
+    setDialogOpen(false);
+    setMessage("");
+    setInputs(defaultState);
+  };
+
+  const onSnackbarClose = (e, reason) => {
+    if (reason === "clickaway") {
+      setSnackbarOpen(false);
+      setSnackbarMessage("");
+    }
+
+    setSnackbarOpen(false);
+    setSnackbarMessage("");
+  };
+
+  const onMessageSend = () => {
+    setSnackbarOpen(true);
+    setSnackbarMessage("Message sent successfully");
+    onDialogSend();
+  };
 
   const arrowSVG = (
     <svg
@@ -175,48 +299,24 @@ export default function ContactPage() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item>
-              <TextField
-                InputProps={{
-                  classes: {
-                    input: classes.input
-                  }
-                }}
-                fullWidth
-                id="name"
-                label="Name"
-                value={name}
-                onChange={e => setName(e.target.value)}
-              />
-            </Grid>
-            <Grid item>
-              <TextField
-                InputProps={{
-                  classes: {
-                    input: classes.input
-                  }
-                }}
-                fullWidth
-                id="phone"
-                label="Phone"
-                value={phoneField}
-                onChange={e => setPhone(e.target.value)}
-              />
-            </Grid>
-            <Grid item>
-              <TextField
-                InputProps={{
-                  classes: {
-                    input: classes.input
-                  }
-                }}
-                fullWidth
-                id="email"
-                label="Email"
-                value={emailField}
-                onChange={e => setEmail(e.target.value)}
-              />
-            </Grid>
+            {inputs.map(input => (
+              <Grid item key={input.id}>
+                <TextField
+                  InputProps={{
+                    classes: {
+                      input: classes.input
+                    }
+                  }}
+                  fullWidth
+                  id={input.id}
+                  label={input.label}
+                  helperText={input.helperText}
+                  value={input.value}
+                  onChange={onChange}
+                  error={input.error}
+                />
+              </Grid>
+            ))}
             <Grid className={classes.messageContainer} item>
               <TextField
                 InputProps={{
@@ -233,13 +333,98 @@ export default function ContactPage() {
               />
             </Grid>
             <Grid align="center" item>
-              <Button className={classes.buttonStyle} variant="contained">
+              <Button
+                disabled={messageField === "" ? true : false}
+                onClick={onDialogOpen}
+                className={classes.buttonStyle}
+                variant="contained"
+              >
                 Send Message
                 <img className={classes.send} alt="paper airplane" src={send} />
               </Button>
             </Grid>
           </Grid>
         </Grid>
+        <Dialog
+          classes={{
+            paper: classes.dialog
+          }}
+          open={dialogOpen}
+          fullWidth={true}
+          maxWidth="md"
+          onClose={onDialogClose}
+        >
+          <div className={classes.confirmTitle} style={{ textAlign: "center" }}>
+            Confirm Message
+          </div>
+          <DialogContent className={classes.dialogContent}>
+            <Grid container direction="column">
+              {inputs.map(input => (
+                <Grid item key={input.id}>
+                  <TextField
+                    InputProps={{
+                      classes: {
+                        input: classes.input
+                      }
+                    }}
+                    fullWidth
+                    id={input.id}
+                    label={input.label}
+                    helperText={input.helperText}
+                    value={input.value}
+                    onChange={onChange}
+                    error={input.error}
+                  />
+                </Grid>
+              ))}
+              <Grid item>
+                <TextField
+                  InputProps={{
+                    classes: {
+                      input: classes.messageInputConfirm
+                    },
+                    disableUnderline: true
+                  }}
+                  multiline
+                  rows={4}
+                  fullWidth
+                  value={messageField}
+                  onChange={e => setMessage(e.target.value)}
+                />
+              </Grid>
+            </Grid>
+            <Grid className={classes.buttonContainer} item>
+              <Grid container direction="row" justify="space-around">
+                <Grid className={classes.cancelButton} item>
+                  <Button onClick={onDialogClose} color="primary">
+                    Cancel
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    onClick={onMessageSend}
+                    className={classes.buttonConfirm}
+                    variant="contained"
+                  >
+                    Send Message
+                    <img
+                      className={classes.send}
+                      alt="paper airplane"
+                      src={send}
+                    />
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
+          </DialogContent>
+        </Dialog>
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={snackbarOpen}
+          message={snackbarMessage}
+          onClose={onSnackbarClose}
+          autoHideDuration={35}
+        />
         <Grid className={classes.backgroundContainer} item>
           <Grid className={classes.backgroundText} container>
             <Grid item>
