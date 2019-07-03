@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     height: "100%"
   },
   backgroundContainer: {
-    height: "73.5vh",
+    height: "74vh",
     width: "75%",
     position: "relative",
     marginTop: "-3%"
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   backgroundText: {
     position: "absolute",
     marginTop: "20%",
-    marginLeft: "5%"
+    paddingLeft: "5%"
   },
   phoneContainer: {
     marginTop: "10%"
