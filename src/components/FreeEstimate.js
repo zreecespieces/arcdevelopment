@@ -7,11 +7,24 @@ import CustomTheme from "../components/ui/CustomTheme";
 import { makeStyles } from "@material-ui/core/styles";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
-import customSoftwareIcon from "../assets/Custom Software Icon.svg";
-import mobileAppsIcon from "../assets/mobileIcon.svg";
-import websiteIcon from "../assets/websiteIcon.svg";
+import software from "../assets/software.svg";
+import mobile from "../assets/mobile.svg";
+import website from "../assets/website.svg";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
+import camera from "../assets/camera.svg";
+import upload from "../assets/upload.svg";
+import person from "../assets/person.svg";
+import persons from "../assets/persons.svg";
+import info from "../assets/info.svg";
+import bell from "../assets/bell.svg";
+import people from "../assets/people.svg";
+import users from "../assets/users.svg";
+import iPhone from "../assets/iphone.svg";
+import gps from "../assets/gps.svg";
+import customized from "../assets/customized.svg";
+import data from "../assets/data.svg";
+import android from "../assets/android.svg";
 
 import estimateAnimation from "./animations/estimateAnimation/data.json";
 
@@ -27,6 +40,10 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.typography.main,
     fontWeight: "none",
     fontSize: 40
+  },
+  subheading: {
+    ...CustomTheme.typography.secondary,
+    fontSize: 16
   },
   estimateButton: {
     backgroundColor: CustomTheme.palette.secondary.main,
@@ -58,7 +75,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "5%"
   },
   questionIcon: {
-    width: "50%"
+    width: "80%"
   },
   questionContainer: {
     width: "375px"
@@ -79,21 +96,24 @@ export default function FreeEstimate() {
         {
           id: 1,
           title: "Custom Software Development",
-          icon: customSoftwareIcon,
+          subtitle: null,
+          icon: software,
           iconAlt: "three rectangles floating on top of eachother",
           selected: false
         },
         {
           id: 2,
           title: "iOS/Android App Development",
-          icon: mobileAppsIcon,
+          subtitle: null,
+          icon: mobile,
           iconAlt: "outlines of phones and tablets",
           selected: false
         },
         {
           id: 3,
           title: "Website Development",
-          icon: websiteIcon,
+          subtitle: null,
+          icon: website,
           iconAlt: "computer outline",
           selected: false
         }
@@ -102,27 +122,154 @@ export default function FreeEstimate() {
     },
     {
       id: 2,
-      title: "How many people will be using the product?",
+      title: "Which platforms do you need supported?",
       options: [
         {
           id: 1,
-          title: "0-10",
-          icon: websiteIcon,
+          title: "Web Application",
+          subtitle: null,
+          icon: website,
           iconAlt: "computer outline",
           selected: false
         },
         {
           id: 2,
-          title: "10-50",
-          icon: customSoftwareIcon,
-          iconAlt: "three rectangles floating on top of eachother",
+          title: "iOS Application",
+          subtitle: null,
+          icon: iPhone,
+          iconAlt: "outline of iphone",
+          selected: false
+        },
+        {
+          id: 3,
+          title: "Android Application",
+          subtitle: null,
+          icon: android,
+          iconAlt: "outlines of android phone",
+          selected: false
+        }
+      ],
+      active: false
+    },
+    {
+      id: 3,
+      title: "Which features do you expect to use?",
+      options: [
+        {
+          id: 1,
+          title: "Photo/Video",
+          subtitle: null,
+          icon: camera,
+          iconAlt: "camera outline",
+          selected: false
+        },
+        {
+          id: 2,
+          title: "GPS",
+          subtitle: null,
+          icon: gps,
+          iconAlt: "gps pin",
+          selected: false
+        },
+        {
+          id: 3,
+          title: "File Transfer",
+          subtitle: null,
+          icon: upload,
+          iconAlt: "outline of cloud with arrow pointing up",
+          selected: false
+        }
+      ],
+      active: false
+    },
+    {
+      id: 4,
+      title: "Which features do you expect to use?",
+      options: [
+        {
+          id: 1,
+          title: "Users/Authentication",
+          subtitle: null,
+          icon: users,
+          iconAlt: "outline of a person with a plus sign",
+          selected: false
+        },
+        {
+          id: 2,
+          title: null,
+          subtitle: null,
+          icon: null,
+          iconAlt: null,
+          selected: false
+        },
+        {
+          id: 3,
+          title: "Push Notifications",
+          subtitle: null,
+          icon: bell,
+          iconAlt: "outline of a bell",
+          selected: false
+        }
+      ],
+      active: false
+    },
+    {
+      id: 5,
+      title: "What type of custom features do you expect to need?",
+      options: [
+        {
+          id: 1,
+          title: "Low Complexity",
+          subtitle: "(Informational)",
+          icon: info,
+          iconAlt: "'i' inside a circle",
+          selected: false
+        },
+        {
+          id: 2,
+          title: "Medium Complexity",
+          subtitle: "(Interactive, Customizable, Realtime)",
+          icon: customized,
+          iconAlt: "two toggle switches",
           selected: true
         },
         {
           id: 3,
-          title: "50-100+",
-          icon: mobileAppsIcon,
-          iconAlt: "outlines of phones and tablets",
+          title: "High Complexity",
+          subtitle: "(Data Modeling and Computation)",
+          icon: data,
+          iconAlt: "outline of line graph",
+          selected: false
+        }
+      ],
+      active: false
+    },
+    {
+      id: 6,
+      title: "How many users do you expect to have?",
+      options: [
+        {
+          id: 1,
+          title: "0-10",
+          subtitle: null,
+          icon: person,
+          iconAlt: "person outline",
+          selected: false
+        },
+        {
+          id: 2,
+          title: "10-100",
+          subtitle: null,
+          icon: persons,
+          iconAlt: "outline of two people",
+          selected: true
+        },
+        {
+          id: 3,
+          title: "100-1000+",
+          subtitle: null,
+          icon: people,
+          iconAlt: "outline of three people",
           selected: false
         }
       ],
@@ -248,6 +395,9 @@ export default function FreeEstimate() {
                           >
                             <Grid className={classes.questionTitle} item>
                               <div>{option.title}</div>
+                              <div className={classes.subheading}>
+                                {option.subtitle}
+                              </div>
                             </Grid>
                             <Grid item>
                               <img
