@@ -25,6 +25,7 @@ import gps from "../assets/gps.svg";
 import customized from "../assets/customized.svg";
 import data from "../assets/data.svg";
 import android from "../assets/android.svg";
+import globe from "../assets/globe.svg";
 
 import estimateAnimation from "./animations/estimateAnimation/data.json";
 
@@ -43,7 +44,8 @@ const useStyles = makeStyles(theme => ({
   },
   subheading: {
     ...CustomTheme.typography.secondary,
-    fontSize: 16
+    fontSize: 16,
+    textTransform: "none"
   },
   estimateButton: {
     backgroundColor: CustomTheme.palette.secondary.main,
@@ -71,6 +73,7 @@ const useStyles = makeStyles(theme => ({
   questionTitle: {
     ...CustomTheme.typography.main,
     fontWeight: "none",
+    textTransform: "none",
     fontSize: 20,
     marginBottom: "5%"
   },
@@ -118,10 +121,14 @@ export default function FreeEstimate() {
           selected: false
         }
       ],
-      active: true
-    },
+      active: true,
+      hidden: false
+    }
+  ];
+
+  const softwareQuestions = [
     {
-      id: 2,
+      id: 1,
       title: "Which platforms do you need supported?",
       options: [
         {
@@ -149,10 +156,11 @@ export default function FreeEstimate() {
           selected: false
         }
       ],
-      active: false
+      active: true,
+      hidden: false
     },
     {
-      id: 3,
+      id: 2,
       title: "Which features do you expect to use?",
       options: [
         {
@@ -180,10 +188,11 @@ export default function FreeEstimate() {
           selected: false
         }
       ],
-      active: false
+      active: false,
+      hidden: false
     },
     {
-      id: 4,
+      id: 3,
       title: "Which features do you expect to use?",
       options: [
         {
@@ -211,10 +220,11 @@ export default function FreeEstimate() {
           selected: false
         }
       ],
-      active: false
+      active: false,
+      hidden: false
     },
     {
-      id: 5,
+      id: 4,
       title: "What type of custom features do you expect to need?",
       options: [
         {
@@ -242,10 +252,11 @@ export default function FreeEstimate() {
           selected: false
         }
       ],
-      active: false
+      active: false,
+      hidden: false
     },
     {
-      id: 6,
+      id: 5,
       title: "How many users do you expect to have?",
       options: [
         {
@@ -273,7 +284,43 @@ export default function FreeEstimate() {
           selected: false
         }
       ],
-      active: false
+      active: false,
+      hidden: false
+    }
+  ];
+
+  const websiteQuestions = [
+    {
+      id: 1,
+      title: "Which type of website are you wanting?",
+      options: [
+        {
+          id: 1,
+          title: "Basic",
+          subtitle: "(Informational)",
+          icon: info,
+          iconAlt: "person outline",
+          selected: false
+        },
+        {
+          id: 2,
+          title: "Interactive",
+          subtitle: "(Users, API's, Messaging)",
+          icon: customized,
+          iconAlt: "outline of two people",
+          selected: true
+        },
+        {
+          id: 3,
+          title: "E-Commerce",
+          subtitle: "(Sales)",
+          icon: globe,
+          iconAlt: "outline of three people",
+          selected: false
+        }
+      ],
+      active: true,
+      hidden: false
     }
   ];
 
@@ -285,8 +332,13 @@ export default function FreeEstimate() {
     const currentlyActive = newQuestions.filter(question => question.active);
     const activeIndex = currentlyActive[0].id - 1;
 
+    const filterHidden = newQuestions.filter(question => !question.hidden);
+    const filterActiveIndex = filterHidden.indexOf(currentlyActive[0]);
+
+    const nextNotHidden = filterHidden[filterActiveIndex + 1].id;
+
     const nextActive = newQuestions.filter(
-      question => question.id === currentlyActive[0].id + 1
+      question => question.id === nextNotHidden
     );
     const nextIndex = nextActive[0].id - 1;
 
@@ -302,8 +354,13 @@ export default function FreeEstimate() {
     const currentlyActive = newQuestions.filter(question => question.active);
     const activeIndex = currentlyActive[0].id - 1;
 
+    const filterHidden = newQuestions.filter(question => !question.hidden);
+    const filterActiveIndex = filterHidden.indexOf(currentlyActive[0]);
+
+    const nextNotHidden = filterHidden[filterActiveIndex - 1].id;
+
     const nextActive = newQuestions.filter(
-      question => question.id === currentlyActive[0].id - 1
+      question => question.id === nextNotHidden
     );
     const nextIndex = nextActive[0].id - 1;
 
@@ -328,7 +385,9 @@ export default function FreeEstimate() {
     const currentlyActive = questions.filter(question => question.active);
     const activeId = currentlyActive[0].id;
 
-    if (activeId === questions.length) {
+    const filterHidden = questions.filter(question => !question.hidden);
+
+    if (activeId === filterHidden[filterHidden.length - 1].id) {
       return true;
     } else {
       return false;
@@ -349,6 +408,33 @@ export default function FreeEstimate() {
       return false;
     } else {
       return true;
+    }
+  };
+
+  const handleSelect = id => {
+    const newQuestions = [...questions];
+
+    const currentlyActive = newQuestions.filter(question => question.active);
+    const activeId = currentlyActive[0].id;
+
+    const currentlySelected = newQuestions[activeId - 1].options[id];
+
+    newQuestions[activeId - 1].options[
+      id
+    ].selected = !currentlySelected.selected;
+
+    switch (currentlySelected.title) {
+      case "Custom Software Development":
+        setQuestions(softwareQuestions);
+        break;
+      case "iOS/Android App Development":
+        setQuestions(softwareQuestions);
+        break;
+      case "Website Development":
+        setQuestions(websiteQuestions);
+        break;
+      default:
+        setQuestions(newQuestions);
     }
   };
 
@@ -377,7 +463,7 @@ export default function FreeEstimate() {
         <Grid className={classes.questionsContainer} item>
           <Grid container justify="center" align="center" direction="column">
             {questions
-              .filter(question => question.active)
+              .filter(question => question.active && !question.hidden)
               .map((question, index) => (
                 <React.Fragment>
                   <Grid item>
@@ -386,7 +472,15 @@ export default function FreeEstimate() {
                   <Grid item className={classes.questions}>
                     <Grid container justify="space-between" direction="row">
                       {question.options.map((option, index) => (
-                        <Grid md={4} className={classes.questionContainer} item>
+                        <Grid
+                          md={4}
+                          component={Button}
+                          onClick={() => {
+                            handleSelect(index);
+                          }}
+                          className={classes.questionContainer}
+                          item
+                        >
                           <Grid
                             container
                             align="center"
