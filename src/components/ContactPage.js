@@ -7,9 +7,7 @@ import CustomTheme from "../components/ui/CustomTheme";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import Snackbar from "@material-ui/core/Snackbar";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
@@ -191,7 +189,7 @@ export default function ContactPage() {
       helperText: null,
       getHelperText: error => (error ? "Phone number invalid" : null),
       isValid: value =>
-        /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value)
+        /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(value)
     },
     {
       id: "email",
