@@ -26,6 +26,7 @@ import customized from "../assets/customized.svg";
 import data from "../assets/data.svg";
 import android from "../assets/android.svg";
 import globe from "../assets/globe.svg";
+import biometrics from "../assets/biometrics.svg";
 
 import estimateAnimation from "./animations/estimateAnimation/data.json";
 
@@ -36,6 +37,13 @@ const useStyles = makeStyles(theme => ({
   titleContainer: {
     paddingLeft: "5%",
     paddingRight: "3%"
+  },
+  titleHelper: {
+    ...CustomTheme.typography.mainGrey,
+    fontWeight: "none",
+    textTransform: "none",
+    fontSize: 20,
+    marginTop: "2%"
   },
   heading: {
     ...CustomTheme.typography.main,
@@ -81,7 +89,19 @@ const useStyles = makeStyles(theme => ({
     width: "80%"
   },
   questionContainer: {
-    width: "375px"
+    width: "375px",
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.1)"
+    },
+    borderRadius: "0px !important"
+  },
+  selectedContainer: {
+    width: "375px",
+    backgroundColor: CustomTheme.palette.secondary.main,
+    "&:hover": {
+      backgroundColor: CustomTheme.palette.secondary.dark
+    },
+    borderRadius: "0px !important"
   },
   spacer: {
     width: "200px"
@@ -129,7 +149,40 @@ export default function FreeEstimate() {
   const softwareQuestions = [
     {
       id: 1,
+      title: "Which service are you interested in?",
+      options: [
+        {
+          id: 1,
+          title: "Custom Software Development",
+          subtitle: null,
+          icon: software,
+          iconAlt: "three rectangles floating on top of eachother",
+          selected: false
+        },
+        {
+          id: 2,
+          title: "iOS/Android App Development",
+          subtitle: null,
+          icon: mobile,
+          iconAlt: "outlines of phones and tablets",
+          selected: false
+        },
+        {
+          id: 3,
+          title: "Website Development",
+          subtitle: null,
+          icon: website,
+          iconAlt: "computer outline",
+          selected: false
+        }
+      ],
+      active: false,
+      hidden: false
+    },
+    {
+      id: 2,
       title: "Which platforms do you need supported?",
+      subtitle: "Select all that apply.",
       options: [
         {
           id: 1,
@@ -160,8 +213,9 @@ export default function FreeEstimate() {
       hidden: false
     },
     {
-      id: 2,
+      id: 3,
       title: "Which features do you expect to use?",
+      subtitle: "Select all that apply.",
       options: [
         {
           id: 1,
@@ -192,8 +246,9 @@ export default function FreeEstimate() {
       hidden: false
     },
     {
-      id: 3,
+      id: 4,
       title: "Which features do you expect to use?",
+      subtitle: "Select all that apply.",
       options: [
         {
           id: 1,
@@ -205,10 +260,10 @@ export default function FreeEstimate() {
         },
         {
           id: 2,
-          title: null,
+          title: "Biometrics",
           subtitle: null,
-          icon: null,
-          iconAlt: null,
+          icon: biometrics,
+          iconAlt: "fingerprint",
           selected: false
         },
         {
@@ -224,8 +279,9 @@ export default function FreeEstimate() {
       hidden: false
     },
     {
-      id: 4,
+      id: 5,
       title: "What type of custom features do you expect to need?",
+      subtitle: "Select one.",
       options: [
         {
           id: 1,
@@ -256,8 +312,9 @@ export default function FreeEstimate() {
       hidden: false
     },
     {
-      id: 5,
+      id: 6,
       title: "How many users do you expect to have?",
+      subtitle: "Select one.",
       options: [
         {
           id: 1,
@@ -273,7 +330,7 @@ export default function FreeEstimate() {
           subtitle: null,
           icon: persons,
           iconAlt: "outline of two people",
-          selected: true
+          selected: false
         },
         {
           id: 3,
@@ -292,7 +349,40 @@ export default function FreeEstimate() {
   const websiteQuestions = [
     {
       id: 1,
+      title: "Which service are you interested in?",
+      options: [
+        {
+          id: 1,
+          title: "Custom Software Development",
+          subtitle: null,
+          icon: software,
+          iconAlt: "three rectangles floating on top of eachother",
+          selected: false
+        },
+        {
+          id: 2,
+          title: "iOS/Android App Development",
+          subtitle: null,
+          icon: mobile,
+          iconAlt: "outlines of phones and tablets",
+          selected: false
+        },
+        {
+          id: 3,
+          title: "Website Development",
+          subtitle: null,
+          icon: website,
+          iconAlt: "computer outline",
+          selected: false
+        }
+      ],
+      active: false,
+      hidden: false
+    },
+    {
+      id: 2,
       title: "Which type of website are you wanting?",
+      subtitle: "Select one.",
       options: [
         {
           id: 1,
@@ -308,7 +398,7 @@ export default function FreeEstimate() {
           subtitle: "(Users, API's, Messaging)",
           icon: customized,
           iconAlt: "outline of two people",
-          selected: true
+          selected: false
         },
         {
           id: 3,
@@ -334,6 +424,10 @@ export default function FreeEstimate() {
 
     const filterHidden = newQuestions.filter(question => !question.hidden);
     const filterActiveIndex = filterHidden.indexOf(currentlyActive[0]);
+
+    if (filterActiveIndex + 1 === filterHidden.length) {
+      return;
+    }
 
     const nextNotHidden = filterHidden[filterActiveIndex + 1].id;
 
@@ -417,6 +511,19 @@ export default function FreeEstimate() {
     const currentlyActive = newQuestions.filter(question => question.active);
     const activeId = currentlyActive[0].id;
 
+    switch (newQuestions[activeId - 1].subtitle) {
+      case "Select one.":
+        const previousSelected = currentlyActive[0].options.filter(
+          option => option.selected
+        );
+
+        if (previousSelected.length > 0) {
+          previousSelected[0].selected = !previousSelected[0].selected;
+        }
+        break;
+      default:
+    }
+
     const currentlySelected = newQuestions[activeId - 1].options[id];
 
     newQuestions[activeId - 1].options[
@@ -468,6 +575,9 @@ export default function FreeEstimate() {
                 <React.Fragment>
                   <Grid item>
                     <div className={classes.heading}>{question.title}</div>
+                    <div className={classes.titleHelper}>
+                      {question.subtitle}
+                    </div>
                   </Grid>
                   <Grid item className={classes.questions}>
                     <Grid container justify="space-between" direction="row">
@@ -478,7 +588,11 @@ export default function FreeEstimate() {
                           onClick={() => {
                             handleSelect(index);
                           }}
-                          className={classes.questionContainer}
+                          className={
+                            option.selected
+                              ? classes.selectedContainer
+                              : classes.questionContainer
+                          }
                           item
                         >
                           <Grid

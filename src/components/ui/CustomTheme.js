@@ -9,7 +9,8 @@ export default createMuiTheme({
       main: `${arcBlue}`
     },
     secondary: {
-      main: "#FFBA60"
+      main: "#FFBA60",
+      dark: "#FF9000"
     }
   },
   typography: {
@@ -17,6 +18,12 @@ export default createMuiTheme({
       fontFamily: "Raleway",
       fontSize: 32,
       color: `${arcBlue}`,
+      fontWeight: "bold"
+    },
+    mainGrey: {
+      fontFamily: "Raleway",
+      fontSize: 32,
+      color: `${arcGrey}`,
       fontWeight: "bold"
     },
     secondary: {
