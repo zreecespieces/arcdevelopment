@@ -25,7 +25,7 @@ import persons from "../assets/persons.svg";
 import info from "../assets/info.svg";
 import bell from "../assets/bell.svg";
 import people from "../assets/people.svg";
-import users from "../assets/users.svg";
+import usersIcon from "../assets/users.svg";
 import iPhone from "../assets/iphone.svg";
 import gps from "../assets/gps.svg";
 import customized from "../assets/customized.svg";
@@ -126,7 +126,7 @@ const useStyles = makeStyles(theme => ({
   },
   dialog: {
     maxHeight: "100%",
-    height: "55vh",
+    height: "60vh",
     width: "55vw",
     maxWidth: "100%"
   },
@@ -136,7 +136,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: "10%"
   },
   buttonContainer: {
-    marginTop: "60%",
+    marginTop: "50%",
     marginLeft: "20%"
   },
   buttonConfirm: {
@@ -164,6 +164,7 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.typography.secondary,
     fontSize: 16,
     maxWidth: "350px",
+    minWidth: "350px",
     width: "100%",
     marginLeft: "10%"
   },
@@ -173,15 +174,14 @@ const useStyles = makeStyles(theme => ({
     fontSize: 32,
     marginLeft: "5%"
   },
-  choicesContainer: {
-    marginTop: "4%",
-    marginBottom: "4%"
-  },
-  check: {
-    marginTop: "25%"
-  },
+  // check: {
+  //   marginTop: "75%"
+  // },
   inputContainer: {
     marginTop: "3%"
+  },
+  choicesContainer: {
+    marginTop: "5%"
   }
 }));
 
@@ -343,7 +343,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "Users/Authentication",
           subtitle: null,
-          icon: users,
+          icon: usersIcon,
           iconAlt: "outline of a person with a plus sign",
           selected: false,
           cost: 250
@@ -519,6 +519,12 @@ export default function FreeEstimate() {
   ];
 
   const [questions, setQuestions] = useState(defaultQuestions);
+  const [service, setService] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
+  const [features, setFeatures] = useState([]);
+  const [customFeatures, setCustomFeatures] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [category, setCategory] = useState("");
   const [total, setTotal] = useState(0);
 
   const nextQuestion = () => {
@@ -632,7 +638,7 @@ export default function FreeEstimate() {
             if (currentlySelected === previousSelected[0]) {
               currentlySelected.selected = !currentlySelected.selected;
               setTotal(total / previousSelected[0].cost);
-              return;
+              break;
             } else {
               currentlySelected.selected = !currentlySelected.selected;
               previousSelected[0].selected = !previousSelected[0].selected;
@@ -642,12 +648,12 @@ export default function FreeEstimate() {
               const differenceNew = differenceOld * currentlySelected.cost;
 
               setTotal(differenceNew);
-              return;
+              break;
             }
           } else {
             currentlySelected.selected = !currentlySelected.selected;
             setTotal(total * currentlySelected.cost);
-            return;
+            break;
           }
         }
 
@@ -655,7 +661,7 @@ export default function FreeEstimate() {
           if (currentlySelected === previousSelected[0]) {
             currentlySelected.selected = !currentlySelected.selected;
             setTotal(total - previousSelected[0].cost);
-            return;
+            break;
           } else {
             currentlySelected.selected = !currentlySelected.selected;
             previousSelected[0].selected = !previousSelected[0].selected;
@@ -682,19 +688,27 @@ export default function FreeEstimate() {
     switch (currentlySelected.title) {
       case "Custom Software Development":
         setTotal(0);
+        softwareQuestions[0].options[0].selected = !softwareQuestions[0]
+          .options[0].selected;
         setQuestions(softwareQuestions);
         break;
       case "iOS/Android App Development":
         setTotal(0);
+        softwareQuestions[0].options[1].selected = !softwareQuestions[0]
+          .options[1].selected;
         setQuestions(softwareQuestions);
         break;
       case "Website Development":
         setTotal(0);
+        websiteQuestions[0].options[2].selected = !websiteQuestions[0]
+          .options[2].selected;
         setQuestions(websiteQuestions);
         break;
       default:
         setQuestions(newQuestions);
     }
+
+    selectedOptions();
   };
 
   const defaultOptions = {
@@ -791,15 +805,179 @@ export default function FreeEstimate() {
     onDialogSend();
   };
 
-  const disabledEstimate = () => {
+  const disableRequest = () => {
     const blankInputs = inputs.filter(input => input.value === "");
 
-    if (blankInputs.length > 0 || messageField === "") {
+    if (blankInputs.length > 0 || messageField === "" || total < 1000) {
       return true;
     } else {
       return false;
     }
   };
+
+  const selectedOptions = () => {
+    const selected = questions.filter(question =>
+      question.options.filter(option => option.selected)
+    );
+
+    setService(selected[0].options.filter(option => option.selected)[0].title);
+
+    if (selected.length > 1) {
+      switch (selected[0].options.filter(option => option.selected)[0].title) {
+        case "Website Development":
+          const websiteCategory = selected[1].options.filter(
+            option => option.selected
+          )[0].title;
+          setCategory(websiteCategory);
+          break;
+        case "Custom Software Development":
+          const featuresFirst = selected[2].options.filter(
+            option => option.selected
+          );
+          const featuresSecond = selected[3].options.filter(
+            option => option.selected
+          );
+          setPlatforms(selected[1].options.filter(option => option.selected));
+          setFeatures(featuresFirst.concat(featuresSecond));
+          setCustomFeatures(
+            selected[4].options.filter(option => option.selected)
+          );
+          setUsers(selected[5].options.filter(option => option.selected));
+          break;
+        case "iOS/Android App Development":
+          const featuresNew = selected[2].options.filter(
+            option => option.selected
+          );
+          const featuresExtra = selected[3].options.filter(
+            option => option.selected
+          );
+          setPlatforms(selected[1].options.filter(option => option.selected));
+          setFeatures(featuresNew.concat(featuresExtra));
+          setCustomFeatures(
+            selected[4].options.filter(option => option.selected)
+          );
+          setUsers(selected[5].options.filter(option => option.selected));
+          break;
+        default:
+          break;
+      }
+    }
+
+    return;
+  };
+
+  const websiteChoicesGrid = (
+    <React.Fragment>
+      <Grid item>
+        <Grid className={classes.choicesContainer} container direction="row">
+          <Grid item>
+            <img className={classes.check} alt="checkmark" src={check} />
+          </Grid>
+          <Grid item>
+            <p className={classes.choices}>
+              {category === "Basic"
+                ? `You want a Basic website`
+                : `You want an ${category} website`}
+            </p>
+          </Grid>
+        </Grid>
+      </Grid>
+    </React.Fragment>
+  );
+
+  const softwareChoicesGrid = (
+    <React.Fragment>
+      <Grid item>
+        <Grid
+          className={classes.choicesContainer}
+          container
+          alignItems="center"
+          direction="row"
+        >
+          <Grid item>
+            <img className={classes.check} alt="checkmark" src={check} />
+          </Grid>
+          <Grid item>
+            <p className={classes.choices}>
+              {service ? `You want ${service} ` : "No service selected"}
+              {platforms.length > 0
+                ? `for ${
+                    platforms[0].title === "Web Application" &&
+                    platforms.length === 1
+                      ? "a Web Application."
+                      : platforms[0].title === "Web Application" &&
+                        platforms.length === 2
+                      ? `a Web Application and an ${platforms[1].title}.`
+                      : platforms[0].title === "Web Application"
+                      ? `a Web Application, an ${platforms[1].title}, and an ${
+                          platforms[2].title
+                        }.`
+                      : platforms.length === 1
+                      ? `an ${platforms[0].title}`
+                      : platforms.length === 2 &&
+                        platforms[1].title === "Web Application"
+                      ? `a Web Application and an ${platforms[0].title}.`
+                      : platforms.length === 2
+                      ? "an iOS Application and an Android Application."
+                      : platforms.length === 3
+                      ? "a Web Application, an iOS Application, and an Android Application."
+                      : null
+                  }`
+                : "with NO platform selected"}
+            </p>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid container alignItems="center" direction="row">
+          <Grid item>
+            <img className={classes.check} alt="checkmark" src={check} />
+          </Grid>
+          <Grid item>
+            <p className={classes.choices}>
+              {features.length > 0 ? "with " : "No features selected."}
+              {features.length > 0
+                ? features.length === 1
+                  ? `${features[0].title}.`
+                  : features.length === 2
+                    ? `${features[0].title} and ${features[1].title}.`
+                    : features
+                  .filter((feature, index) => index !== features.length - 1)
+                  .map(feature => <span>{`${feature.title}, `}</span>)
+                : null}
+              {features.length > 0 &&
+                features.length !== 1 &&
+                features.length !== 2
+                  ? ` and ${features[features.length - 1].title}.`
+                  : null}
+            </p>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid alignItems="center" container direction="row">
+          <Grid item>
+            <img className={classes.check} alt="checkmark" src={check} />
+          </Grid>
+          <Grid item>
+            <p className={classes.choices}>
+              {customFeatures.length > 0
+                ? "The custom features will be of "
+                : "No custom features selected"}
+              {customFeatures.map(customFeature => (
+                <span>{`${customFeature.title.toLowerCase()}, `}</span>
+              ))}
+              {customFeatures.length > 0
+                ? `and the project will be used by about ${
+                    users[0] ? users[0].title : null
+                  } users.`
+                : null}
+            </p>
+          </Grid>
+        </Grid>
+      </Grid>
+    </React.Fragment>
+  );
 
   return (
     <MuiThemeProvider theme={CustomTheme}>
@@ -932,7 +1110,9 @@ export default function FreeEstimate() {
                             <p className={classes.paragraph}>
                               We can create this custom digital solution for an
                               estimated{" "}
-                              <span className={classes.special}>${total}</span>
+                              <span className={classes.special}>
+                                ${total.toFixed(2)}
+                              </span>
                             </p>
                             <p className={classes.paragraph}>
                               Fill out your name, number, and email, place your
@@ -944,70 +1124,16 @@ export default function FreeEstimate() {
                       </Grid>
                       <Grid item>
                         <Grid container direction="column">
-                          <Grid item>
-                            <Grid
-                              className={classes.choicesContainer}
-                              container
-                              direction="row"
-                            >
-                              <Grid item>
-                                <img
-                                  className={classes.check}
-                                  alt="checkmark"
-                                  src={check}
-                                />
-                              </Grid>
-                              <Grid item>
-                                <p className={classes.choices}>
-                                  You want an iOS & Android App
-                                </p>
-                              </Grid>
-                            </Grid>
-                          </Grid>
-                          <Grid item>
-                            <Grid
-                              className={classes.choicesContainer}
-                              container
-                              direction="row"
-                            >
-                              <Grid item>
-                                <img
-                                  className={classes.check}
-                                  alt="checkmark"
-                                  src={check}
-                                />
-                              </Grid>
-                              <Grid item>
-                                <p className={classes.choices}>
-                                  for more than 500 users
-                                </p>
-                              </Grid>
-                            </Grid>
-                          </Grid>
-                          <Grid item>
-                            <Grid
-                              className={classes.choicesContainer}
-                              container
-                              direction="row"
-                            >
-                              <Grid item>
-                                <img
-                                  className={classes.check}
-                                  alt="checkmark"
-                                  src={check}
-                                />
-                              </Grid>
-                              <Grid item>
-                                <p className={classes.choices}>
-                                  using camera, GPS, and a backend API.
-                                </p>
-                              </Grid>
-                            </Grid>
-                          </Grid>
+                          {service === "Custom Software Development" ||
+                          service === "iOS/Android App Development"
+                            ? softwareChoicesGrid
+                            : service === "Website Development"
+                            ? websiteChoicesGrid
+                            : null}
                           <Grid className={classes.buttonContainer} item>
                             <Button
                               onClick={onMessageSend}
-                              disabled={disabledEstimate()}
+                              disabled={disableRequest()}
                               className={classes.buttonConfirm}
                               variant="contained"
                             >
