@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Lottie from "react-lottie";
+import axios from "axios";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -700,6 +701,10 @@ export default function FreeEstimate() {
         break;
       case "Website Development":
         setTotal(0);
+        setPlatforms([]);
+        setFeatures([]);
+        setCustomFeatures([]);
+        setUsers([]);
         websiteQuestions[0].options[2].selected = !websiteQuestions[0]
           .options[2].selected;
         setQuestions(websiteQuestions);
@@ -752,6 +757,7 @@ export default function FreeEstimate() {
   ];
 
   const [inputs, setInputs] = useState(defaultInputs);
+  const subject = "Estimate Request!";
   const [messageField, setMessage] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -784,9 +790,47 @@ export default function FreeEstimate() {
   };
 
   const onDialogSend = () => {
-    setDialogOpen(false);
-    setMessage("");
-    setInputs(defaultInputs);
+    if (service === "Website Development") {
+      axios
+        .post(
+          `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&subj=${subject}&name=${
+            inputs[0].value
+          }&number=${inputs[1].value}&email=${
+            inputs[2].value
+          }&message=${messageField}&estimate=${total.toString()}&service=${service}&category=${category.toString()}`
+        )
+        .then(function(response) {
+          setDialogOpen(false);
+          setMessage("");
+          setInputs(defaultInputs);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    } else {
+      axios
+        .post(
+          `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&subj=${subject}&name=${
+            inputs[0].value
+          }&number=${inputs[1].value}&email=${
+            inputs[2].value
+          }&message=${messageField}&estimate=${total.toString()}&service=${service}&platforms=${platforms
+            .map(platform => platform.title)
+            .toString()}&features=${features
+            .map(feature => feature.title)
+            .toString()}&customFeatures=${
+            customFeatures[0].title
+          }&users=${users[0].title.toString()}&category=${category.toString()}`
+        )
+        .then(function(response) {
+          setDialogOpen(false);
+          setMessage("");
+          setInputs(defaultInputs);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
   };
 
   const onSnackbarClose = (e, reason) => {
@@ -876,8 +920,8 @@ export default function FreeEstimate() {
           <Grid item>
             <p className={classes.choices}>
               {category === "Basic"
-                ? `You want a Basic website`
-                : `You want an ${category} website`}
+                ? `You want a Basic Website.`
+                : `You want an ${category} Website.`}
             </p>
           </Grid>
         </Grid>
@@ -940,16 +984,16 @@ export default function FreeEstimate() {
                 ? features.length === 1
                   ? `${features[0].title}.`
                   : features.length === 2
-                    ? `${features[0].title} and ${features[1].title}.`
-                    : features
-                  .filter((feature, index) => index !== features.length - 1)
-                  .map(feature => <span>{`${feature.title}, `}</span>)
+                  ? `${features[0].title} and ${features[1].title}.`
+                  : features
+                      .filter((feature, index) => index !== features.length - 1)
+                      .map(feature => <span>{`${feature.title}, `}</span>)
                 : null}
               {features.length > 0 &&
-                features.length !== 1 &&
-                features.length !== 2
-                  ? ` and ${features[features.length - 1].title}.`
-                  : null}
+              features.length !== 1 &&
+              features.length !== 2
+                ? ` and ${features[features.length - 1].title}.`
+                : null}
             </p>
           </Grid>
         </Grid>

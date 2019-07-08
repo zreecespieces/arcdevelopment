@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -167,6 +168,7 @@ export default function ContactPage() {
   const classes = useStyles();
 
   const [messageField, setMessage] = useState("");
+  const subject = "Message recieved.";
   const [dialogOpen, setDialogOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -230,9 +232,22 @@ export default function ContactPage() {
   };
 
   const onDialogSend = () => {
-    setDialogOpen(false);
-    setMessage("");
-    setInputs(defaultState);
+    axios
+      .post(
+        `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&subj=${subject}&name=${
+          inputs[0].value
+        }&number=${inputs[1].value}&email=${
+          inputs[2].value
+        }&message=${messageField}`
+      )
+      .then(function(response) {
+        setDialogOpen(false);
+        setMessage("");
+        setInputs(defaultState);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   const onSnackbarClose = (e, reason) => {
