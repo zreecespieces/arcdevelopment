@@ -244,6 +244,18 @@ export default function ContactPage() {
         setDialogOpen(false);
         setMessage("");
         setInputs(defaultState);
+
+        axios
+          .post(
+            `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=${
+              inputs[2].value
+            }&subj=${subject}&name=${inputs[0].value}&number=${
+              inputs[1].value
+            }&email=${inputs[2].value}&message=${messageField}`
+          )
+          .catch(function(error) {
+            console.log(error);
+          });
       })
       .catch(function(error) {
         console.log(error);

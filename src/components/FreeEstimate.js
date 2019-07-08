@@ -803,6 +803,20 @@ export default function FreeEstimate() {
           setDialogOpen(false);
           setMessage("");
           setInputs(defaultInputs);
+
+          axios
+            .post(
+              `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=${
+                inputs[2].value
+              }&subj=${subject}&name=${inputs[0].value}&number=${
+                inputs[1].value
+              }&email=${
+                inputs[2].value
+              }&message=${messageField}&estimate=${total.toString()}&service=${service}&category=${category.toString()}`
+            )
+            .catch(function(error) {
+              console.log(error);
+            });
         })
         .catch(function(error) {
           console.log(error);
@@ -826,6 +840,26 @@ export default function FreeEstimate() {
           setDialogOpen(false);
           setMessage("");
           setInputs(defaultInputs);
+
+          axios
+            .post(
+              `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=${
+                inputs[2].value
+              }&subj=${subject}&name=${inputs[0].value}&number=${
+                inputs[1].value
+              }&email=${
+                inputs[2].value
+              }&message=${messageField}&estimate=${total.toString()}&service=${service}&platforms=${platforms
+                .map(platform => platform.title)
+                .toString()}&features=${features
+                .map(feature => feature.title)
+                .toString()}&customFeatures=${
+                customFeatures[0].title
+              }&users=${users[0].title.toString()}&category=${category.toString()}`
+            )
+            .catch(function(error) {
+              console.log(error);
+            });
         })
         .catch(function(error) {
           console.log(error);
