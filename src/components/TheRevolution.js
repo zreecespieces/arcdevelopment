@@ -44,6 +44,12 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     maxWidth: "410px"
   },
+  paragraphSmallBuild: {
+    ...CustomTheme.typography.secondary,
+    color: "white",
+    fontSize: "1.125vw",
+    maxWidth: "410px"
+  },
   paragraphContainer: {
     position: "absolute",
     paddingTop: "10%",
@@ -409,29 +415,29 @@ export default function TheRevolution() {
             <div className={classes.headingDark}>Build</div>
           </Grid>
           <Grid item>
-            <p className={classes.paragraphSmall}>
+            <p className={classes.paragraphSmallBuild}>
               Here’s where we get down to business.
             </p>
-            <p className={classes.paragraphSmall}>
+            <p className={classes.paragraphSmallBuild}>
               Engineering begins after your approval on the final designs. We
               start by scaffolding out the project at a high level, prioritizing
               some areas over others.
             </p>
-            <p className={classes.paragraphSmall}>
+            <p className={classes.paragraphSmallBuild}>
               Each area is then developed in order of importance until ready to
               be connected to the next piece.
             </p>
-            <p className={classes.paragraphSmall}>
+            <p className={classes.paragraphSmallBuild}>
               Typically the backend, behind the scenes operations, are completed
               first. Once all the services are in place we can then create the
               front end, user side of things.
             </p>
-            <p className={classes.paragraphSmall}>
+            <p className={classes.paragraphSmallBuild}>
               Finishing the application doesn’t mean we’re done though, because
               we use extensive testing to guarantee compatibility with all
               intended devices.
             </p>
-            <p className={classes.paragraphSmall}>
+            <p className={classes.paragraphSmallBuild}>
               Only after our rigorous examinations will we accept a product as
               finished, then pushing it through the production pipeline. This
               produces an optimized, compressed, consumer version of the code

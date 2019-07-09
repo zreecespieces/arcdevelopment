@@ -1,13 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
+import {
+  withStyles,
+  MuiThemeProvider,
+  useTheme
+} from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import CustomTheme from "./CustomTheme";
 import ArcLogo from "./Arc Header.svg";
+import mobileArcLogo from "./Arc Header.png";
 
 const styles = theme => ({
   flex: {
@@ -24,6 +36,14 @@ const styles = theme => ({
   tabGroup: {
     marginLeft: "auto"
   },
+  drawerIcon: {
+    height: "50px",
+    marginLeft: "65%",
+    width: "50px"
+  },
+  drawerItem: {
+    ...CustomTheme.typography.secondary
+  },
   appBar: {
     flexGrow: 1
   },
@@ -37,7 +57,10 @@ const styles = theme => ({
     padding: 0
   },
   arcLogo: {
-    height: "120px",
+    height: "10vh",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "-2%"
+    },
     backfaceVisibility: "hidden"
   },
   title: {
@@ -60,7 +83,10 @@ const styles = theme => ({
   },
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: "5%"
+    marginBottom: "5%",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "10%"
+    }
   }
 });
 
@@ -89,6 +115,135 @@ function Header(props) {
     [props]
   );
 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const [open, setOpen] = useState(false);
+  var drawer = null;
+
+  var tabs = (
+    <React.Fragment>
+      <Tabs
+        className={props.classes.tabGroup}
+        indicatorColor="primary"
+        value={props.activeTab}
+      >
+        <Tab
+          classes={{ root: props.classes.tabRoot }}
+          component={Link}
+          to="/"
+          label="Home"
+        />
+        <Tab
+          classes={{ root: props.classes.tabRoot }}
+          component={Link}
+          to="/services"
+          label="Services"
+        />
+        <Tab
+          classes={{ root: props.classes.tabRoot }}
+          component={Link}
+          to="/revolution"
+          label="The Revolution"
+        />
+        <Tab
+          classes={{ root: props.classes.tabRoot }}
+          component={Link}
+          to="/about"
+          label="About Us"
+        />
+        <Tab
+          classes={{ root: props.classes.tabRoot }}
+          component={Link}
+          to="/contact"
+          label="Contact Us"
+        />
+      </Tabs>
+      <Button
+        component={Link}
+        to="/estimate"
+        className={props.classes.buttonStyle}
+        variant="contained"
+      >
+        Free Estimate
+      </Button>
+    </React.Fragment>
+  );
+
+  if (matches) {
+    tabs = null;
+    drawer = (
+      <React.Fragment>
+        <Drawer variant="temporary" open={open} onClose={() => setOpen(false)}>
+          <List>
+            <ListItem
+              button
+              component={Link}
+              to="/"
+              onClick={() => setOpen(false)}
+            >
+              <ListItemText className={props.classes.drawerItem}>
+                Home
+              </ListItemText>
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to="/services"
+              onClick={() => setOpen(false)}
+            >
+              <ListItemText className={props.classes.drawerItem}>
+                Services
+              </ListItemText>
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to="/revolution"
+              onClick={() => setOpen(false)}
+            >
+              <ListItemText className={props.classes.drawerItem}>
+                The Revolution
+              </ListItemText>
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to="/about"
+              onClick={() => setOpen(false)}
+            >
+              <ListItemText className={props.classes.drawerItem}>
+                About Us
+              </ListItemText>
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to="/contact"
+              onClick={() => setOpen(false)}
+            >
+              <ListItemText className={props.classes.drawerItem}>
+                Contact Us
+              </ListItemText>
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to="/estimate"
+              onClick={() => setOpen(false)}
+            >
+              <ListItemText className={props.classes.drawerItem}>
+                Free Estimate
+              </ListItemText>
+            </ListItem>
+          </List>
+        </Drawer>
+        <IconButton onClick={() => setOpen(!open)}>
+          <MenuIcon className={props.classes.drawerIcon} />
+        </IconButton>
+      </React.Fragment>
+    );
+  }
+
   return (
     <MuiThemeProvider theme={CustomTheme}>
       <AppBar className={props.classes.appBar}>
@@ -103,53 +258,10 @@ function Header(props) {
             <img
               alt="Arc Logo"
               className={props.classes.arcLogo}
-              src={ArcLogo}
+              src={matches ? mobileArcLogo : ArcLogo}
             />
           </Button>
-          <Tabs
-            className={props.classes.tabGroup}
-            indicatorColor="primary"
-            value={props.activeTab}
-          >
-            <Tab
-              classes={{ root: props.classes.tabRoot }}
-              component={Link}
-              to="/"
-              label="Home"
-            />
-            <Tab
-              classes={{ root: props.classes.tabRoot }}
-              component={Link}
-              to="/services"
-              label="Services"
-            />
-            <Tab
-              classes={{ root: props.classes.tabRoot }}
-              component={Link}
-              to="/revolution"
-              label="The Revolution"
-            />
-            <Tab
-              classes={{ root: props.classes.tabRoot }}
-              component={Link}
-              to="/about"
-              label="About Us"
-            />
-            <Tab
-              classes={{ root: props.classes.tabRoot }}
-              component={Link}
-              to="/contact"
-              label="Contact Us"
-            />
-          </Tabs>
-          <Button
-            component={Link}
-            to="/estimate"
-            className={props.classes.buttonStyle}
-            variant="contained"
-          >
-            Free Estimate
-          </Button>
+          {matches ? drawer : tabs}
         </Toolbar>
       </AppBar>
       <div className={props.classes.toolbarMargin} />

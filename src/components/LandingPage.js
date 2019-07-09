@@ -108,7 +108,8 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "20%"
   },
   mobileIcon: {
-    backfaceVisibility: "hidden"
+    backfaceVisibility: "hidden",
+    marginLeft: "15%"
   },
   heroText: {
     ...CustomTheme.typography.heroText
@@ -118,11 +119,19 @@ const useStyles = makeStyles(theme => ({
   },
   subtitle: {
     ...CustomTheme.typography.secondary,
-    marginTop: "1%"
+    marginTop: "1%",
+    [theme.breakpoints.down("md")]: {
+      fontFamily: "Roboto",
+      fontWeight: "normal"
+    }
   },
   subtext: {
     ...CustomTheme.typography.secondary,
-    marginTop: "6%"
+    marginTop: "6%",
+    [theme.breakpoints.down("md")]: {
+      fontFamily: "Roboto",
+      fontWeight: "normal"
+    }
   },
   specialText: {
     fontFamily: "Pacifico",
@@ -277,7 +286,7 @@ export default function LandingPage() {
             </Grid>
           </Grid>
           <Grid className={classes.landingAnimation} item>
-            <Lottie options={defaultOptions} height={600} width={815} />
+            <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
           </Grid>
         </Grid>
       </Grid>

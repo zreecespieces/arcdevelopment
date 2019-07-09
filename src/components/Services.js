@@ -14,11 +14,11 @@ const useStyles = makeStyles(theme => ({
   },
   gridItemSoftware: {
     height: "400px",
-    marginTop: "65%"
+    marginTop: "60%"
   },
   gridItemIos: {
     height: "400px",
-    marginTop: "15%",
+    marginTop: "10%",
     marginBottom: "20%"
   },
   learnButton: {
@@ -147,6 +147,7 @@ export default function Services() {
               <Grid item>
                 <img
                   alt="Mobile Phones and Tablets Icon"
+                  className={classes.icon}
                   src={mobileAppsIcon}
                 />
               </Grid>

@@ -16,37 +16,37 @@ export default createMuiTheme({
   typography: {
     main: {
       fontFamily: "Raleway",
-      fontSize: 32,
+      fontSize: "2em",
       color: `${arcBlue}`,
       fontWeight: "bold"
     },
     mainGrey: {
       fontFamily: "Raleway",
-      fontSize: 32,
+      fontSize: "2em",
       color: `${arcGrey}`,
       fontWeight: "bold"
     },
     secondary: {
       fontFamily: "Roboto-Light",
-      fontSize: 24,
+      fontSize: "1.5em",
       fontWeight: "bold",
       color: `${arcGrey}`
     },
     blueSecondary: {
       fontFamily: "Roboto-Light",
-      fontSize: 20,
+      fontSize: "1.25em",
       fontWeight: "bold",
       color: `${arcBlue}`
     },
     heroText: {
       fontFamily: "Raleway",
       fontWeight: "bold",
-      fontSize: "40px",
+      fontSize: "2.5em",
       color: `${arcBlue}`
     },
     mission: {
       fontFamily: "Raleway",
-      fontSize: 24,
+      fontSize: "1.5em",
       fontStyle: "italic",
       color: `${arcBlue}`
     }

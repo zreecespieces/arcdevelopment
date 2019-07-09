@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     ...CustomTheme.typography.heroText,
-    marginBottom: "5%"
+    marginBottom: "2%"
   },
   subTitle: {
     ...CustomTheme.typography.secondary,
