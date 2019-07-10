@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "100%",
     backfaceVisibility: "hidden",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       width: "100%",
       height: "100%",
       marginLeft: "10%",
@@ -44,9 +44,10 @@ const useStyles = makeStyles(theme => ({
     width: "10%",
     right: 25,
     bottom: 0,
-    marginBottom: "1%",
-    [theme.breakpoints.down("md")]: {
-      width: "20%"
+    marginBottom: "0.5%",
+    [theme.breakpoints.down("sm")]: {
+      width: "20%",
+      marginBottom: "1.25%"
     }
   },
   gridContainer: {
@@ -61,7 +62,10 @@ const useStyles = makeStyles(theme => ({
     zIndex: 1,
     verticalAlign: "bottom",
     backfaceVisibility: "hidden",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "1.45%"
+    },
+    [theme.breakpoints.down("xs")]: {
       marginTop: "1%"
     }
   },
@@ -72,7 +76,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: "11px",
     zIndex: 2,
     textDecoration: "none",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "10px"
+    },
+    [theme.breakpoints.down("xs")]: {
       fontSize: "6px"
     }
   }

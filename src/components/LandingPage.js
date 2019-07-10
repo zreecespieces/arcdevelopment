@@ -27,8 +27,12 @@ const useStyles = makeStyles(theme => ({
   },
   subContainerRight: {
     paddingRight: "5%",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       marginTop: "30%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "0%",
+      marginLeft: "-7%"
     }
   },
   gridItem: {
@@ -64,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "15px",
     marginTop: "20%",
     height: "45px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       marginBottom: "40%"
     }
   },
@@ -115,34 +119,41 @@ const useStyles = makeStyles(theme => ({
     backfaceVisibility: "hidden",
     marginLeft: "20%",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "-20%"
+      marginTop: "0%"
     },
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "75%"
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-40%",
+      marginLeft: "85%"
     }
   },
   websiteIcon: {
     backfaceVisibility: "hidden",
     marginLeft: "20%",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "0%",
-      paddingLeft: "15%"
+      marginLeft: "20%",
+      marginTop: "120%"
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "10%",
       marginLeft: "25%"
     }
   },
   mobileIcon: {
     backfaceVisibility: "hidden",
     marginLeft: "15%",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "0%"
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "20%",
+      marginTop: "40%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "5%",
+      marginTop: "0%"
     }
   },
   heroText: {
     ...CustomTheme.typography.heroText,
     marginLeft: "20%",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       marginLeft: "5%",
       marginRight: "5%",
       fontSize: "2.25em"
@@ -150,19 +161,27 @@ const useStyles = makeStyles(theme => ({
   },
   heroContainer: {
     marginBottom: "15%",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       marginBottom: "25%"
     }
   },
   iosContainer: {
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "5%",
+      maxWidth: "350px",
+      paddingLeft: "2%",
       marginTop: "15%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "10%",
+      marginTop: "75%"
     }
   },
   websiteContainer: {
     [theme.breakpoints.down("sm")]: {
-      marginTop: "110%"
+      marginTop: "40%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "200%"
     }
   },
   headline: {
@@ -171,7 +190,7 @@ const useStyles = makeStyles(theme => ({
   subtitle: {
     ...CustomTheme.typography.secondary,
     marginTop: "1%",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       fontFamily: "Roboto",
       fontWeight: "normal"
     }
@@ -179,7 +198,7 @@ const useStyles = makeStyles(theme => ({
   subtext: {
     ...CustomTheme.typography.secondary,
     marginTop: "6%",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       fontFamily: "Roboto",
       fontWeight: "normal"
     }
@@ -193,7 +212,10 @@ const useStyles = makeStyles(theme => ({
     height: "1400px",
     position: "relative",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "150%"
+      marginTop: "60%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "300%"
     }
   },
   repeatingBackground: {
@@ -212,7 +234,7 @@ const useStyles = makeStyles(theme => ({
     left: "50%",
     transform: "translate(-50%, -50%)",
     padding: "7%",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       padding: "10%",
       width: "80%",
       borderRadius: 0
@@ -225,7 +247,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     fontSize: 40,
     marginBottom: "5%",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       lineHeight: "1.25em"
     }
   },
@@ -233,7 +255,7 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.typography.secondary,
     textAlign: "center",
     marginBottom: "2%",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       fontWeight: "normal",
       marginTop: "10%",
       marginBottom: "20%"
@@ -243,6 +265,9 @@ const useStyles = makeStyles(theme => ({
     height: "1400px",
     position: "relative",
     [theme.breakpoints.down("sm")]: {
+      height: "1200px"
+    },
+    [theme.breakpoints.down("xs")]: {
       height: "1000px"
     }
   },
@@ -252,7 +277,10 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: "5%",
     paddingRight: "5%",
     [theme.breakpoints.down("sm")]: {
-      top: "30%"
+      top: "50%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      top: "40%"
     }
   },
   infoTitle: {
@@ -276,7 +304,7 @@ const useStyles = makeStyles(theme => ({
     height: "100%"
   },
   aboutContainer: {
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       marginBottom: "50%"
     }
   }
