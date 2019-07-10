@@ -115,11 +115,10 @@ const useStyles = makeStyles(theme => ({
     backfaceVisibility: "hidden",
     marginLeft: "20%",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "-20%",
-      paddingLeft: "50%"
+      marginTop: "-20%"
     },
     [theme.breakpoints.down("md")]: {
-      marginLeft: "25%"
+      marginLeft: "75%"
     }
   },
   websiteIcon: {
@@ -214,8 +213,9 @@ const useStyles = makeStyles(theme => ({
     transform: "translate(-50%, -50%)",
     padding: "7%",
     [theme.breakpoints.down("sm")]: {
-      padding: "15%",
-      width: "80%"
+      padding: "10%",
+      width: "80%",
+      borderRadius: 0
     }
   },
   revolutionTitle: {
@@ -241,13 +241,19 @@ const useStyles = makeStyles(theme => ({
   },
   infoContainer: {
     height: "1400px",
-    position: "relative"
+    position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      height: "1000px"
+    }
   },
   infoSubcontainer: {
     position: "absolute",
     top: "50%",
     paddingLeft: "5%",
-    paddingRight: "5%"
+    paddingRight: "5%",
+    [theme.breakpoints.down("sm")]: {
+      top: "30%"
+    }
   },
   infoTitle: {
     ...CustomTheme.typography.main,
@@ -268,6 +274,11 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%"
+  },
+  aboutContainer: {
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "50%"
+    }
   }
 }));
 
@@ -322,7 +333,11 @@ export default function LandingPage() {
               <br />
               to the Midwest
             </div>
-            <Grid justify="center" spacing={matches ? 1 : 5} container>
+            <Grid
+              justify={matches ? "space-around" : "center"}
+              spacing={matches ? 0 : 5}
+              container
+            >
               <Grid item>
                 <Button
                   component={Link}
@@ -508,12 +523,16 @@ export default function LandingPage() {
       </Grid>
       <Grid className={classes.infoContainer} item>
         <Grid
-          justify="space-between"
+          justify={matches ? "center" : "space-between"}
           direction="row"
           className={classes.infoSubcontainer}
           container
         >
-          <Grid item>
+          <Grid
+            className={classes.aboutContainer}
+            xs={matches ? true : false}
+            item
+          >
             <Grid direction="column" container>
               <Grid item>
                 <div className={classes.infoTitle}>About Us</div>
@@ -534,7 +553,11 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid
+            className={classes.contactContainer}
+            xs={matches ? true : false}
+            item
+          >
             <Grid direction="column" align="right" container>
               <Grid item>
                 <div className={classes.infoTitle}>Contact Us</div>
