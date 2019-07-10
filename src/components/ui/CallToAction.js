@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import CustomTheme from "./CustomTheme";
 
 import background from "../../assets/background.jpg";
+import mobileBackground from "../../assets/mobileBackground.svg";
 
 const useStyles = makeStyles(theme => ({
   estimateButton: {
@@ -46,7 +47,12 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundAttachment: "fixed",
     backgroundSize: "cover",
-    backgroundRepeat: "no-repeat"
+    backgroundRepeat: "no-repeat",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${mobileBackground})`,
+      backgroundAttachment: "initial",
+      marginBottom: "-1%"
+    }
   },
   title: {
     ...CustomTheme.typography.heroText,

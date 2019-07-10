@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import CustomTheme from "./CustomTheme";
@@ -28,17 +29,25 @@ const useStyles = makeStyles(theme => ({
     position: "absolute"
   },
   social: {
-    width: "20%",
-    height: "20%",
-    marginLeft: "5%",
-    marginRight: "5%",
-    backfaceVisibility: "hidden"
+    width: "100%",
+    height: "100%",
+    backfaceVisibility: "hidden",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      height: "100%",
+      marginLeft: "10%",
+      marginRight: "10%"
+    }
   },
   socialContainer: {
     position: "absolute",
     width: "10%",
-    right: 0,
-    bottom: 0
+    right: 25,
+    bottom: 0,
+    marginBottom: "1%",
+    [theme.breakpoints.down("md")]: {
+      width: "20%"
+    }
   },
   gridContainer: {
     margin: "2.5%"
@@ -49,21 +58,36 @@ const useStyles = makeStyles(theme => ({
   adornment: {
     left: 0,
     width: "60%",
+    zIndex: 1,
     verticalAlign: "bottom",
-    backfaceVisibility: "hidden"
+    backfaceVisibility: "hidden",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "1%"
+    }
   },
   footerLinks: {
     color: "white",
     fontFamily: "Arial",
     fontWeight: "bold",
     fontSize: "11px",
-    textDecoration: "none"
+    zIndex: 2,
+    textDecoration: "none",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "6px"
+    }
   }
 }));
 
 export default function Footer() {
   const classes = useStyles();
-  const verticalSpacing = 2;
+  var verticalSpacing = 2;
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+  if (matches) {
+    verticalSpacing = 1;
+  }
 
   return (
     <footer className={classes.footer}>
@@ -213,39 +237,47 @@ export default function Footer() {
           src={footerAdornment}
         />
         <div className={classes.socialContainer}>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.instagram.com/development_arc"
-          >
-            <img
-              alt="Instagram Logo"
-              className={classes.social}
-              src={LogoInstagram}
-            />
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://twitter.com/development_arc"
-          >
-            <img
-              alt="Twitter Logo"
-              className={classes.social}
-              src={LogoTwitter}
-            />
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.facebook.com"
-          >
-            <img
-              alt="Facebook Logo"
-              className={classes.social}
-              src={LogoFacebook}
-            />
-          </a>
+          <Grid spacing={matches ? 1 : 2} container>
+            <Grid xs item>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.instagram.com/development_arc"
+              >
+                <img
+                  alt="Instagram Logo"
+                  className={classes.social}
+                  src={LogoInstagram}
+                />
+              </a>
+            </Grid>
+            <Grid xs item>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://twitter.com/development_arc"
+              >
+                <img
+                  alt="Twitter Logo"
+                  className={classes.social}
+                  src={LogoTwitter}
+                />
+              </a>
+            </Grid>
+            <Grid xs item>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.facebook.com"
+              >
+                <img
+                  alt="Facebook Logo"
+                  className={classes.social}
+                  src={LogoFacebook}
+                />
+              </a>
+            </Grid>
+          </Grid>
         </div>
       </StyledContainer>
     </footer>
