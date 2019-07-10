@@ -38,8 +38,13 @@ const styles = theme => ({
   },
   drawerIcon: {
     height: "50px",
-    marginLeft: "65%",
+    marginLeft: "50%",
     width: "50px"
+  },
+  drawerContainer: {
+    "&:hover": {
+      backgroundColor: "transparent"
+    }
   },
   drawerItem: {
     ...CustomTheme.typography.secondary
@@ -54,12 +59,16 @@ const styles = theme => ({
     "&:hover": {
       backgroundColor: "transparent"
     },
-    padding: 0
+    padding: 0,
+    justifyContent: "flex-start",
+    flex: 1
   },
   arcLogo: {
     height: "10vh",
     [theme.breakpoints.down("md")]: {
-      marginLeft: "-2%"
+      marginLeft: "-1%",
+      marginTop: "-1%",
+      height: "10.5vh"
     },
     backfaceVisibility: "hidden"
   },
@@ -237,7 +246,11 @@ function Header(props) {
             </ListItem>
           </List>
         </Drawer>
-        <IconButton onClick={() => setOpen(!open)}>
+        <IconButton
+          className={props.classes.drawerContainer}
+          disableRipple
+          onClick={() => setOpen(!open)}
+        >
           <MenuIcon className={props.classes.drawerIcon} />
         </IconButton>
       </React.Fragment>

@@ -27,13 +27,13 @@ export default createMuiTheme({
       fontWeight: "bold"
     },
     secondary: {
-      fontFamily: "Roboto-Light",
+      fontFamily: "Roboto-Light, Roboto",
       fontSize: "1.5em",
       fontWeight: "bold",
       color: `${arcGrey}`
     },
     blueSecondary: {
-      fontFamily: "Roboto-Light",
+      fontFamily: "Roboto-Light, Roboto",
       fontSize: "1.25em",
       fontWeight: "bold",
       color: `${arcBlue}`
