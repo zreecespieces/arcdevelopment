@@ -27,12 +27,15 @@ const useStyles = makeStyles(theme => ({
   },
   subContainerRight: {
     paddingRight: "5%",
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "30%"
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "5%"
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "0%",
-      marginLeft: "-7%"
+      marginLeft: "0%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "30%"
     }
   },
   gridItem: {
@@ -142,11 +145,11 @@ const useStyles = makeStyles(theme => ({
     backfaceVisibility: "hidden",
     marginLeft: "15%",
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "20%",
+      marginLeft: "17.5%",
       marginTop: "40%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "5%",
+      marginLeft: "18%",
       marginTop: "0%"
     }
   },
@@ -168,12 +171,11 @@ const useStyles = makeStyles(theme => ({
   iosContainer: {
     [theme.breakpoints.down("sm")]: {
       maxWidth: "350px",
-      paddingLeft: "2%",
+      marginLeft: "5%",
       marginTop: "15%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "10%",
-      marginTop: "75%"
+      marginTop: "55%"
     }
   },
   websiteContainer: {
@@ -181,7 +183,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: "40%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "200%"
+      marginTop: "225%"
     }
   },
   headline: {
@@ -215,7 +217,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: "60%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "300%"
+      marginTop: "325%"
     }
   },
   repeatingBackground: {
@@ -349,21 +351,22 @@ export default function LandingPage() {
   };
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesSmall = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesMedium = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Grid className={classes.container} container direction="column">
       <Grid className={classes.heroContainer} item>
         <Grid alignItems="center" justify="flex-end" container direction="row">
-          <Grid sm align={matches ? "center" : null} item>
+          <Grid sm align={matchesSmall ? "center" : null} item>
             <div className={classes.heroText}>
               Bringing West Coast Technology
               <br />
               to the Midwest
             </div>
             <Grid
-              justify={matches ? "space-around" : "center"}
-              spacing={matches ? 0 : 5}
+              justify={matchesSmall ? "space-around" : "center"}
+              spacing={matchesSmall ? 0 : 5}
               container
             >
               <Grid item>
@@ -443,7 +446,7 @@ export default function LandingPage() {
         <Grid
           className={classes.subContainerRight}
           container
-          justify="flex-end"
+          justify={matchesMedium ? "flex-start" : "flex-end"}
           direction="row"
         >
           <Grid className={classes.iosContainer} item>
@@ -551,14 +554,14 @@ export default function LandingPage() {
       </Grid>
       <Grid className={classes.infoContainer} item>
         <Grid
-          justify={matches ? "center" : "space-between"}
+          justify={matchesSmall ? "center" : "space-between"}
           direction="row"
           className={classes.infoSubcontainer}
           container
         >
           <Grid
             className={classes.aboutContainer}
-            xs={matches ? true : false}
+            xs={matchesSmall ? true : false}
             item
           >
             <Grid direction="column" container>
@@ -583,7 +586,7 @@ export default function LandingPage() {
           </Grid>
           <Grid
             className={classes.contactContainer}
-            xs={matches ? true : false}
+            xs={matchesSmall ? true : false}
             item
           >
             <Grid direction="column" align="right" container>
