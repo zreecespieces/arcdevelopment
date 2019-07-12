@@ -48,6 +48,11 @@ const useStyles = makeStyles(theme => ({
     backgroundAttachment: "fixed",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${mobileBackground})`,
+      backgroundAttachment: "initial",
+      paddingTop: "40%"
+    },
     [theme.breakpoints.down("sm")]: {
       backgroundImage: `url(${mobileBackground})`,
       backgroundAttachment: "initial",

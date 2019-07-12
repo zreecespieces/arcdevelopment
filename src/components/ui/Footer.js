@@ -63,7 +63,11 @@ const useStyles = makeStyles(theme => ({
     verticalAlign: "bottom",
     backfaceVisibility: "hidden",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "1.45%"
+      marginTop: "1.45%",
+      "@media (orientation: landscape)": {
+        // eslint-disable-line no-useless-computed-key,
+        marginTop: "1.333%"
+      }
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "1%"

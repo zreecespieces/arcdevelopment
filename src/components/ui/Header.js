@@ -68,7 +68,22 @@ const styles = theme => ({
     [theme.breakpoints.down("md")]: {
       marginLeft: "-1%",
       marginTop: "-1%",
-      height: "10.5vh"
+      height: "12vh",
+      "@media (orientation: landscape)": {
+        // eslint-disable-line no-useless-computed-key
+        height: "15vh",
+        marginTop: "0%"
+      }
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "-1%",
+      marginTop: "-1%",
+      height: "11vh",
+      "@media (orientation: landscape)": {
+        // eslint-disable-line no-useless-computed-key
+        height: "22vh",
+        marginTop: "0%"
+      }
     },
     backfaceVisibility: "hidden"
   },
