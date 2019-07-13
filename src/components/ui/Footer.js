@@ -48,6 +48,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "20%",
       marginBottom: "1.25%"
+    },
+    [theme.breakpoints.down("lg")]: {
+      width: "10%",
+      marginBottom: "1.25%"
     }
   },
   gridContainer: {

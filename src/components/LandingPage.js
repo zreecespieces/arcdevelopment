@@ -589,7 +589,9 @@ export default function LandingPage() {
           >
             <Grid direction="column" container>
               <Grid item>
-                <div className={classes.infoTitle}>About Us</div>
+                <div className={classes.infoTitle}>
+                  About{matchesMedium ? <br /> : " "}Us
+                </div>
               </Grid>
               <Grid item>
                 <div className={classes.infoSubtitle}>Let's get personal.</div>
@@ -614,7 +616,9 @@ export default function LandingPage() {
           >
             <Grid direction="column" align="right" container>
               <Grid item>
-                <div className={classes.infoTitle}>Contact Us</div>
+                <div className={classes.infoTitle}>
+                  Contact{matchesMedium ? <br /> : " "}Us
+                </div>
               </Grid>
               <Grid item>
                 <div className={classes.infoSubtitle}>
