@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Hidden from "@material-ui/core/Hidden";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 import analytics from "../assets/analytics.svg";
@@ -22,40 +24,63 @@ const useStyles = makeStyles(theme => ({
   paragraphMain: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
-    maxWidth: "700px"
+    maxWidth: "700px",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal"
+    }
   },
   paragraphAnalytics: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
     maxWidth: "450px",
-    marginTop: "22%"
+    marginTop: "22%",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal",
+      marginTop: "15%"
+    }
   },
   paragraphEcommerce: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
     maxWidth: "500px",
     marginTop: "22%",
-    marginLeft: "10%"
+    marginLeft: "10%",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal",
+      marginLeft: "0%"
+    }
   },
   paragraphSEOFirst: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
     maxWidth: "500px",
     marginTop: "10%",
-    marginLeft: "10%"
+    marginLeft: "10%",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal",
+      marginLeft: "0%"
+    }
   },
   paragraphSEO: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
     maxWidth: "500px",
-    marginLeft: "10%"
+    marginLeft: "10%",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal",
+      marginLeft: "0%"
+    }
   },
   paragraphOutreach: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
     maxWidth: "450px",
     marginTop: "15%",
-    marginLeft: "10%"
+    marginLeft: "10%",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal",
+      marginLeft: "0%"
+    }
   },
   arrow: {
     marginTop: ".4%",
@@ -65,46 +90,87 @@ const useStyles = makeStyles(theme => ({
     marginTop: ".4%",
     marginLeft: "50%"
   },
-  mainContainer: {},
   analytics: {
-    marginLeft: "-13%"
+    marginLeft: "-13%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%"
+    }
   },
   analyticsContainer: {
     marginLeft: "5%",
     marginTop: "15%",
-    marginBottom: "15%"
+    marginBottom: "15%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%",
+      marginBottom: "50%"
+    }
   },
   ecommerceContainer: {
     marginBottom: "15%",
-    marginRight: "5%"
+    marginRight: "5%",
+    [theme.breakpoints.down("xs")]: {
+      marginRight: "0%",
+      marginBottom: "50%"
+    }
   },
   ecommerce: {
     marginLeft: "0%"
   },
   outreachContainer: {
     marginLeft: "5%",
-    marginBottom: "15%"
+    marginBottom: "15%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%",
+      marginBottom: "50%"
+    }
   },
   seo: {
-    marginLeft: "38%"
+    marginLeft: "38%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%"
+    }
+  },
+  seoContainer: {
+    marginBottom: "15%",
+    marginRight: "5%",
+    [theme.breakpoints.down("xs")]: {
+      marginRight: "0%",
+      marginBottom: "100%"
+    }
+  },
+  mainTextContainer: {
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "2.5%",
+      paddingRight: "2.5%",
+      marginBottom: "50%"
+    }
   }
 }));
 
 export default function Websites() {
   const classes = useStyles();
 
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Grid className={classes.mainContainer} container direction="column">
       <Grid item>
         <Grid container direction="row">
-          <Grid className={classes.arrow} item>
-            <Button component={Link} to="/mobileapps">
-              <img alt="Back Arrow" src={backArrow} />
-            </Button>
-          </Grid>
+          <Hidden mdDown>
+            <Grid className={classes.arrow} item>
+              <Button component={Link} to="/mobileapps">
+                <img alt="Back Arrow" src={backArrow} />
+              </Button>
+            </Grid>
+          </Hidden>
           <Grid item>
             <Grid container>
-              <Grid item className={classes.mainText}>
+              <Grid
+                item
+                className={classes.mainTextContainer}
+                align={matchesMD ? "center" : null}
+              >
                 <Grid container direction="column">
                   <Grid item>
                     <div className={classes.title}>Website Development</div>
@@ -127,15 +193,21 @@ export default function Websites() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid className={classes.arrowRight} item>
-            <Button component={Link} to="/services">
-              <img alt="Forward Arrow" src={forwardArrow} />
-            </Button>
-          </Grid>
+          <Hidden mdDown>
+            <Grid className={classes.arrowRight} item>
+              <Button component={Link} to="/services">
+                <img alt="Forward Arrow" src={forwardArrow} />
+              </Button>
+            </Grid>
+          </Hidden>
         </Grid>
       </Grid>
-      <Grid className={classes.analyticsContainer} item>
-        <Grid container direction="row">
+      <Grid
+        className={classes.analyticsContainer}
+        align={matchesMD ? "center" : null}
+        item
+      >
+        <Grid container justify={matchesMD ? "center" : null} direction="row">
           <Grid item>
             <Grid container direction="column">
               <Grid item>
@@ -155,8 +227,16 @@ export default function Websites() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid className={classes.ecommerceContainer} item>
-        <Grid container justify="flex-end" direction="row">
+      <Grid
+        className={classes.ecommerceContainer}
+        align={matchesMD ? "center" : null}
+        item
+      >
+        <Grid
+          container
+          justify={matchesMD ? "center" : "flex-end"}
+          direction="row"
+        >
           <Grid item>
             <Grid container align="center" direction="column">
               <Grid item>
@@ -178,8 +258,12 @@ export default function Websites() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid className={classes.outreachContainer} item>
-        <Grid container direction="row">
+      <Grid
+        className={classes.outreachContainer}
+        align={matchesMD ? "center" : null}
+        item
+      >
+        <Grid container justify={matchesMD ? "center" : null} direction="row">
           <Grid item>
             <Grid container direction="column">
               <Grid item>
@@ -199,8 +283,16 @@ export default function Websites() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid className={classes.ecommerceContainer} item>
-        <Grid container justify="flex-end" direction="row">
+      <Grid
+        className={classes.seoContainer}
+        align={matchesMD ? "center" : null}
+        item
+      >
+        <Grid
+          container
+          justify={matchesMD ? "center" : "flex-end"}
+          direction="row"
+        >
           <Grid item>
             <Grid container direction="column">
               <Grid item>
