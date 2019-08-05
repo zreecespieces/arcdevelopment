@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
-import { makeStyles } from "@material-ui/core/styles";
+import Hidden from "@material-ui/core/Hidden";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 import cash from "../assets/cash.svg";
@@ -21,20 +23,32 @@ import scaleAnimation from "./animations/scaleAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
   title: {
-    ...CustomTheme.typography.heroText
+    ...CustomTheme.typography.heroText,
+    marginTop: "-1%"
   },
   heading: {
-    ...CustomTheme.typography.main
+    ...CustomTheme.typography.main,
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "0%"
+    }
   },
   paragraphMain: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
-    maxWidth: "800px"
+    maxWidth: "800px",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal",
+      padding: "5%"
+    }
   },
   paragraph: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
-    maxWidth: "400px"
+    maxWidth: "400px",
+    [theme.breakpoints.down("md")]: {
+      padding: "5%",
+      fontWeight: "normal"
+    }
   },
   middleIcons: {
     marginTop: "15%",
@@ -42,39 +56,71 @@ const useStyles = makeStyles(theme => ({
   },
   middleIconSpace: {
     marginLeft: "5%",
-    marginRight: "5%"
+    marginRight: "5%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "50%",
+      marginBottom: "50%"
+    }
   },
   arrow: {
-    marginTop: ".45%",
     marginRight: "2%"
   },
-  arrowRight: {
-    marginTop: ".45%",
-    marginLeft: "45%"
-  },
-  automationContainer: {
-    marginLeft: "-15%"
+  automationAnimation: {
+    marginLeft: "-15%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "-10%"
+    }
   },
   rootsContainer: {
     height: "20vh",
     width: "20vw",
     marginBottom: "45%",
-    marginTop: "20%"
+    marginTop: "20%",
+    [theme.breakpoints.down("xs")]: {
+      height: "80vh",
+      width: "80vw",
+      marginTop: "50%",
+      marginBottom: "-70%"
+    }
   },
   uxAnimation: {
-    marginTop: "-40%"
+    marginTop: "-40%",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "0%",
+      marginBottom: "-50%",
+      marginLeft: "24%"
+    }
   },
   lastRow: {
     marginTop: "20%",
     marginBottom: "15%"
   },
   scaleContainer: {
-    marginTop: "-5%"
+    marginTop: "-5%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "10%",
+      marginBottom: "-20%"
+    }
+  },
+  documentsContainer: {
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "10%",
+      marginTop: "-10%"
+    }
+  },
+  uxContainer: {
+    [theme.breakpoints.down("xs")]: {
+      padding: "2%",
+      marginBottom: "50%"
+    }
   }
 }));
 
 export default function CustomSoftware() {
   const classes = useStyles();
+
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const documentsOptions = {
     loop: true,
@@ -116,14 +162,16 @@ export default function CustomSoftware() {
     <Grid className={classes.mainContainer} container direction="column">
       <Grid item>
         <Grid container direction="row">
-          <Grid className={classes.arrow} item>
-            <Button component={Link} to="/services">
-              <img alt="Back Arrow" src={backArrow} />
-            </Button>
-          </Grid>
+          <Hidden mdDown>
+            <Grid className={classes.arrow} item>
+              <Button component={Link} to="/services">
+                <img alt="Back Arrow" src={backArrow} />
+              </Button>
+            </Grid>
+          </Hidden>
           <Grid item>
             <Grid container>
-              <Grid item className={classes.mainText}>
+              <Grid align={matchesMD ? "center" : null} item>
                 <Grid container direction="column">
                   <Grid item>
                     <div className={classes.title}>
@@ -140,7 +188,7 @@ export default function CustomSoftware() {
                       Using regular commercial software leaves you with a lot of
                       stuff you don’t need, without some of the stuff you do
                       need, and ultimately controls the way you work. Without
-                      using any software at all you risk falling behind
+                      using any software at all, you risk falling behind
                       competitors and missing out on huge savings from increased
                       efficiency.
                     </p>
@@ -159,11 +207,13 @@ export default function CustomSoftware() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid className={classes.arrowRight} item>
-            <Button component={Link} to="/mobileapps">
-              <img alt="Forward Arrow" src={forwardArrow} />
-            </Button>
-          </Grid>
+          <Hidden mdDown>
+            <Grid className={classes.arrowRight} item>
+              <Button component={Link} to="/mobileapps">
+                <img alt="Forward Arrow" src={forwardArrow} />
+              </Button>
+            </Grid>
+          </Hidden>
         </Grid>
       </Grid>
       <Grid className={classes.middleIcons} item>
@@ -201,10 +251,14 @@ export default function CustomSoftware() {
         </Grid>
       </Grid>
       <Grid item>
-        <Grid container justify="space-around" direction="row">
+        <Grid
+          container
+          justify={matchesMD ? null : "space-around"}
+          direction="row"
+        >
           <Grid item>
             <Grid container>
-              <Grid item>
+              <Grid align={matchesMD ? "center" : null} item>
                 <Grid container direction="column">
                   <Grid item>
                     <div className={classes.heading}>
@@ -229,13 +283,13 @@ export default function CustomSoftware() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item>
+              <Grid className={classes.documentsContainer} item>
                 <Lottie options={documentsOptions} height={500} width={300} />
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
-            <Grid align="right" container>
+            <Grid align={matchesMD ? "center" : "right"} container>
               <Grid className={classes.scaleContainer} item>
                 <Lottie options={scaleOptions} height={500} width={300} />
               </Grid>
@@ -286,7 +340,7 @@ export default function CustomSoftware() {
         <Grid container justify="space-around" direction="row">
           <Grid item>
             <Grid container>
-              <Grid item>
+              <Grid align={matchesMD ? "center" : null} item>
                 <Grid container direction="column">
                   <Grid item>
                     <div className={classes.heading}>Automation</div>
@@ -306,8 +360,12 @@ export default function CustomSoftware() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid className={classes.automationContainer} item>
-                <Lottie options={automationOptions} height={350} width={500} />
+              <Grid className={classes.automationAnimation} item>
+                <Lottie
+                  options={automationOptions}
+                  height={matchesMD ? 275 : 350}
+                  width={matchesMD ? 375 : 500}
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -316,7 +374,11 @@ export default function CustomSoftware() {
               <Grid className={classes.uxAnimation} item>
                 <Lottie options={uxOptions} height={800} width={200} />
               </Grid>
-              <Grid item>
+              <Grid
+                className={classes.uxContainer}
+                align={matchesMD ? "center" : null}
+                item
+              >
                 <Grid container direction="column">
                   <Grid item>
                     <div className={classes.heading}>
