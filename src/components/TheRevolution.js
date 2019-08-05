@@ -3,17 +3,25 @@ import Lottie from "react-lottie";
 
 import Grid from "@material-ui/core/Grid";
 import CustomTheme from "../components/ui/CustomTheme";
-import { makeStyles } from "@material-ui/core/styles";
-
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import vision from "../assets/vision.svg";
 import consultationBackground from "../assets/consultation.svg";
+import consultationMobile from "../assets/consultation_mobile.svg";
 import mockupBackground from "../assets/mockup.svg";
+import mockupMobile from "../assets/mockup_mobile.svg";
 import reviewBackground from "../assets/review.svg";
+import reviewMobile from "../assets/review_mobile.svg";
 import designBackground from "../assets/design.svg";
+import designMobile from "../assets/design_mobile.svg";
 import buildBackground from "../assets/construction.svg";
+import buildMobile from "../assets/construction_mobile.svg";
 import launchBackground from "../assets/launch.svg";
+import launchMobile from "../assets/launch_mobile.svg";
 import iterateBackground from "../assets/iterate.svg";
+import iterateMobile from "../assets/iterate_mobile.svg";
 import maintainBackground from "../assets/maintain.svg";
+import maintainMobile from "../assets/maintain_mobile.svg";
 import technologyAnimation from "./animations/technologyAnimation/data.json";
 
 import CallToAction from "./ui/CallToAction";
@@ -22,10 +30,17 @@ const useStyles = makeStyles(theme => ({
   title: {
     ...CustomTheme.typography.heroText,
     fontFamily: "Pacifico",
-    fontSize: 50
+    fontSize: 50,
+    [theme.breakpoints.down("xs")]: {
+      lineHeight: 1
+    }
   },
   titleContainer: {
-    marginLeft: "7%"
+    marginLeft: "7%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%",
+      marginTop: "5%"
+    }
   },
   heading: {
     ...CustomTheme.typography.main
@@ -37,93 +52,146 @@ const useStyles = makeStyles(theme => ({
   paragraphMain: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
-    maxWidth: "700px"
+    maxWidth: "700px",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal"
+    }
   },
   paragraphSmall: {
     ...CustomTheme.typography.secondary,
     color: "white",
-    maxWidth: "410px"
+    maxWidth: "410px",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal"
+    }
   },
   paragraphSmallBuild: {
     ...CustomTheme.typography.secondary,
     color: "white",
     fontSize: "1.125vw",
-    maxWidth: "410px"
+    maxWidth: "410px",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal",
+      fontSize: "1.25em"
+    }
   },
   paragraphContainer: {
     position: "absolute",
     paddingTop: "10%",
-    paddingLeft: "5%"
+    paddingLeft: "5%",
+    [theme.breakpoints.down("xs")]: {
+      padding: "5%",
+      paddingTop: "10%"
+    }
   },
   technologyContainer: {
     marginTop: "15%",
     marginBottom: "25%"
   },
   visionContainer: {
-    marginTop: "10%"
+    marginTop: "10%",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "50%"
+    }
+  },
+  mobileText: {
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "2.5%",
+      paddingRight: "2.5%"
+    }
   },
   imageContainer: {
-    marginTop: "4%"
+    marginTop: "4%",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-5%"
+    }
   },
-  animationContainer: {},
   processHeading: {
-    marginBottom: "50%"
+    marginBottom: "50%",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "10%",
+      marginTop: "40%"
+    }
   },
   consultationBackground: {
     backgroundImage: `url(${consultationBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "100%"
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${consultationMobile})`
+    }
   },
   mockupBackground: {
     backgroundImage: `url(${mockupBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "100%"
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${mockupMobile})`
+    }
   },
   reviewBackground: {
     backgroundImage: `url(${reviewBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "100%"
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${reviewMobile})`
+    }
   },
   designBackground: {
     backgroundImage: `url(${designBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "100%"
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${designMobile})`
+    }
   },
   buildBackground: {
     backgroundImage: `url(${buildBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "100%"
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${buildMobile})`
+    }
   },
   launchBackground: {
     backgroundImage: `url(${launchBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "100%"
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${launchMobile})`
+    }
   },
   maintainBackground: {
     backgroundImage: `url(${maintainBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "100%"
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${maintainMobile})`
+    }
   },
   iterateBackground: {
     backgroundImage: `url(${iterateBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "100%"
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${iterateMobile})`
+    }
   },
   sectionContainer: {
     height: "1400px",
@@ -133,6 +201,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function TheRevolution() {
   const classes = useStyles();
+
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const defaultOptions = {
     loop: true,
@@ -146,7 +217,7 @@ export default function TheRevolution() {
   return (
     <Grid container direction="column">
       <Grid className={classes.titleContainer} item>
-        <Grid container>
+        <Grid justify={matchesMD ? "center" : null} container>
           <Grid item>
             <div className={classes.title}>The Revolution</div>
           </Grid>
@@ -155,10 +226,19 @@ export default function TheRevolution() {
       <Grid className={classes.visionContainer} item>
         <Grid container justify="space-around" direction="row">
           <Grid className={classes.imageContainer} item>
-            <img alt="mountain viewed through binoculars" src={vision} />
+            <img
+              alt="mountain viewed through binoculars"
+              height={matchesMD ? 400 : null}
+              width={matchesMD ? 300 : null}
+              src={vision}
+            />
           </Grid>
-          <Grid item>
-            <Grid container align="right" direction="column">
+          <Grid item className={classes.mobileText}>
+            <Grid
+              container
+              align={matchesMD ? "center" : "right"}
+              direction="column"
+            >
               <Grid item>
                 <div className={classes.heading}>Vision</div>
               </Grid>
@@ -205,8 +285,12 @@ export default function TheRevolution() {
           justify="space-around"
           direction="row"
         >
-          <Grid item>
-            <Grid container direction="column">
+          <Grid className={classes.mobileText} item>
+            <Grid
+              container
+              align={matchesMD ? "center" : null}
+              direction="column"
+            >
               <Grid item>
                 <div className={classes.heading}>Technology</div>
               </Grid>
@@ -256,7 +340,11 @@ export default function TheRevolution() {
             </Grid>
           </Grid>
           <Grid className={classes.animationContainer} item>
-            <Lottie options={defaultOptions} height={800} width={800} />
+            <Lottie
+              options={defaultOptions}
+              height={matchesMD ? 300 : 800}
+              width={matchesMD ? 250 : 800}
+            />
           </Grid>
         </Grid>
       </Grid>
@@ -271,6 +359,7 @@ export default function TheRevolution() {
         <Grid
           className={classes.paragraphContainer}
           container
+          align={matchesMD ? "center" : null}
           direction="column"
         >
           <Grid item>
@@ -302,6 +391,7 @@ export default function TheRevolution() {
       <Grid className={classes.sectionContainer} item>
         <Grid
           className={classes.paragraphContainer}
+          align={matchesMD ? "center" : null}
           container
           direction="column"
         >
@@ -330,6 +420,7 @@ export default function TheRevolution() {
       <Grid className={classes.sectionContainer} item>
         <Grid
           className={classes.paragraphContainer}
+          align={matchesMD ? "center" : null}
           container
           direction="column"
         >
@@ -359,6 +450,7 @@ export default function TheRevolution() {
       <Grid className={classes.sectionContainer} item>
         <Grid
           className={classes.paragraphContainer}
+          align={matchesMD ? "center" : null}
           container
           direction="column"
         >
@@ -384,6 +476,7 @@ export default function TheRevolution() {
       <Grid className={classes.sectionContainer} item>
         <Grid
           className={classes.paragraphContainer}
+          align={matchesMD ? "center" : null}
           container
           direction="column"
         >
@@ -408,6 +501,7 @@ export default function TheRevolution() {
       <Grid className={classes.sectionContainer} item>
         <Grid
           className={classes.paragraphContainer}
+          align={matchesMD ? "center" : null}
           container
           direction="column"
         >
@@ -450,6 +544,7 @@ export default function TheRevolution() {
       <Grid className={classes.sectionContainer} item>
         <Grid
           className={classes.paragraphContainer}
+          align={matchesMD ? "center" : null}
           container
           direction="column"
         >
@@ -479,6 +574,7 @@ export default function TheRevolution() {
       <Grid className={classes.sectionContainer} item>
         <Grid
           className={classes.paragraphContainer}
+          align={matchesMD ? "center" : null}
           container
           direction="column"
         >
@@ -507,6 +603,7 @@ export default function TheRevolution() {
       <Grid className={classes.sectionContainer} item>
         <Grid
           className={classes.paragraphContainer}
+          align={matchesMD ? "center" : null}
           container
           direction="column"
         >

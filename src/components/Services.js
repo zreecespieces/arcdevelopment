@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     height: "400px",
     [theme.breakpoints.down("xs")]: {
       marginTop: "50%",
-      marginBottom: "40%",
+      marginBottom: "100%",
       marginLeft: "5%"
     }
   },
@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {},
     [theme.breakpoints.down("xs")]: {
       marginTop: "2%",
-      marginLeft: "5%"
+      marginLeft: "5%",
+      marginBottom: "50%"
     }
   },
   gridItemIos: {
@@ -32,7 +33,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "20%",
     [theme.breakpoints.down("xs")]: {
       marginTop: "40%",
-      marginLeft: "5%"
+      marginLeft: "5%",
+      marginBottom: "70%"
     }
   },
   learnButton: {
