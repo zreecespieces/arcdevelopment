@@ -60,7 +60,8 @@ const useStyles = makeStyles(theme => ({
       paddingTop: "50%"
     },
     [theme.breakpoints.down("xs")]: {
-      paddingTop: "0%"
+      paddingTop: "0%",
+      marginBottom: "0%"
     }
   },
   title: {

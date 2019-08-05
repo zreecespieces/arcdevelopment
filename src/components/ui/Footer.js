@@ -23,7 +23,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: "auto",
     left: 0,
     bottom: 0,
-    backgroundColor: CustomTheme.palette.primary.main
+    backgroundColor: CustomTheme.palette.primary.main,
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-0.125%"
+    }
   },
   mainContainer: {
     position: "absolute"
@@ -45,17 +48,17 @@ const useStyles = makeStyles(theme => ({
     right: 25,
     bottom: 0,
     marginBottom: "0.5%",
-    [theme.breakpoints.down("sm")]: {
-      width: "20%",
-      marginBottom: "1.25%"
-    },
     [theme.breakpoints.down("lg")]: {
       width: "10%",
+      marginBottom: "1.25%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "20%",
       marginBottom: "1.25%"
     }
   },
   gridContainer: {
-    margin: "2.5%"
+    margin: "2%"
   },
   buttonStyle: {
     padding: 0
@@ -74,7 +77,7 @@ const useStyles = makeStyles(theme => ({
       }
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "1%"
+      marginTop: "0%"
     }
   },
   footerLinks: {
@@ -98,13 +101,72 @@ export default function Footer() {
   var verticalSpacing = 2;
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesMedium = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesXL = useMediaQuery(theme.breakpoints.down("xl"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
-  if (matches) {
+  if (matchesMedium) {
     verticalSpacing = 1;
+  } else if (matchesXL) {
+    verticalSpacing = 2;
   }
 
-  return (
+  const mobileFooter = (
+    <footer className={classes.footer}>
+      <StyledContainer className={classes.root} maxWidth="sm">
+        <img
+          alt="black decorative slash"
+          className={classes.adornment}
+          src={footerAdornment}
+        />
+        <div className={classes.socialContainer}>
+          <Grid spacing={matchesMedium ? 1 : 2} container>
+            <Grid xs item>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.instagram.com/development_arc"
+              >
+                <img
+                  alt="Instagram Logo"
+                  className={classes.social}
+                  src={LogoInstagram}
+                />
+              </a>
+            </Grid>
+            <Grid xs item>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://twitter.com/development_arc"
+              >
+                <img
+                  alt="Twitter Logo"
+                  className={classes.social}
+                  src={LogoTwitter}
+                />
+              </a>
+            </Grid>
+            <Grid xs item>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.facebook.com"
+              >
+                <img
+                  alt="Facebook Logo"
+                  className={classes.social}
+                  src={LogoFacebook}
+                />
+              </a>
+            </Grid>
+          </Grid>
+        </div>
+      </StyledContainer>
+    </footer>
+  );
+
+  const mainFooter = (
     <footer className={classes.footer}>
       <StyledContainer className={classes.root} maxWidth="sm">
         <Grid
@@ -252,7 +314,7 @@ export default function Footer() {
           src={footerAdornment}
         />
         <div className={classes.socialContainer}>
-          <Grid spacing={matches ? 1 : 2} container>
+          <Grid spacing={matchesMedium ? 1 : 2} container>
             <Grid xs item>
               <a
                 target="_blank"
@@ -297,4 +359,6 @@ export default function Footer() {
       </StyledContainer>
     </footer>
   );
+
+  return matchesXS ? mobileFooter : mainFooter;
 }

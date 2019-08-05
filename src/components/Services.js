@@ -10,16 +10,30 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   gridItem: {
-    height: "400px"
+    height: "400px",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "50%",
+      marginBottom: "40%",
+      marginLeft: "5%"
+    }
   },
   gridItemSoftware: {
     height: "400px",
-    marginTop: "60%"
+    marginTop: "60%",
+    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "2%",
+      marginLeft: "5%"
+    }
   },
   gridItemIos: {
     height: "400px",
     marginTop: "10%",
-    marginBottom: "20%"
+    marginBottom: "20%",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "40%",
+      marginLeft: "5%"
+    }
   },
   learnButton: {
     borderColor: CustomTheme.palette.primary.main,
@@ -41,16 +55,38 @@ const useStyles = makeStyles(theme => ({
     backfaceVisibility: "hidden",
     marginLeft: "15%"
   },
+  softwareIcon: {
+    backfaceVisibility: "hidden",
+    marginLeft: "15%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "85%",
+      marginTop: "-35%"
+    }
+  },
+  websiteIcon: {
+    backfaceVisibility: "hidden",
+    marginLeft: "15%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "21%",
+      marginTop: "10%"
+    }
+  },
   headline: {
     ...CustomTheme.typography.main
   },
   subtitle: {
     ...CustomTheme.typography.secondary,
-    marginTop: "1%"
+    marginTop: "1%",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal"
+    }
   },
   subtext: {
     ...CustomTheme.typography.secondary,
-    marginTop: "6%"
+    marginTop: "6%",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal"
+    }
   },
   specialText: {
     fontFamily: "Pacifico",
@@ -106,7 +142,7 @@ export default function Services() {
               <Grid item>
                 <img
                   alt="Custom Software Icon"
-                  className={classes.icon}
+                  className={classes.softwareIcon}
                   src={customSoftwareIcon}
                 />
               </Grid>
@@ -182,7 +218,7 @@ export default function Services() {
               <Grid item>
                 <img
                   alt="Website Icon"
-                  className={classes.icon}
+                  className={classes.websiteIcon}
                   src={websiteIcon}
                 />
               </Grid>
