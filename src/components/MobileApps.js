@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Hidden from "@material-ui/core/Hidden";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 import knife from "../assets/swissKnife.svg";
@@ -25,12 +27,19 @@ const useStyles = makeStyles(theme => ({
   paragraphMain: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
-    maxWidth: "800px"
+    maxWidth: "800px",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal",
+      padding: "5%"
+    }
   },
   paragraph: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
-    maxWidth: "450px"
+    maxWidth: "450px",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal"
+    }
   },
   middleIcons: {
     marginTop: "15%",
@@ -39,7 +48,10 @@ const useStyles = makeStyles(theme => ({
   middleIconMiddle: {
     marginLeft: "1%",
     marginRight: "1%",
-    marginTop: "-10%"
+    marginTop: "-10%",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-5%"
+    }
   },
   bottomIcons: {
     marginBottom: "25%"
@@ -52,14 +64,42 @@ const useStyles = makeStyles(theme => ({
     marginTop: ".55%",
     marginLeft: "45%"
   },
-  mainContainer: {},
   extendAccess: {
-    marginTop: "5%"
+    marginTop: "5%",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-25%"
+    }
+  },
+  integrationContainer: {
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "50%",
+      padding: "5%"
+    }
+  },
+  platformContainer: {
+    [theme.breakpoints.down("xs")]: {
+      padding: "5%",
+      marginBottom: "75%"
+    }
+  },
+  middleIconSpace: {
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "30%"
+    }
+  },
+  extendContainer: {
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "30%",
+      marginTop: "30%"
+    }
   }
 }));
 
 export default function MobileApps() {
   const classes = useStyles();
+
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const defaultOptions = {
     loop: true,
@@ -74,14 +114,20 @@ export default function MobileApps() {
     <Grid className={classes.mainContainer} container direction="column">
       <Grid item>
         <Grid container direction="row">
-          <Grid className={classes.arrow} item>
-            <Button component={Link} to="/customsoftware">
-              <img alt="Back Arrow" src={backArrow} />
-            </Button>
-          </Grid>
+          <Hidden mdDown>
+            <Grid className={classes.arrow} item>
+              <Button component={Link} to="/customsoftware">
+                <img alt="Back Arrow" src={backArrow} />
+              </Button>
+            </Grid>
+          </Hidden>
           <Grid item>
             <Grid container>
-              <Grid item className={classes.mainText}>
+              <Grid
+                item
+                className={classes.mainText}
+                align={matchesMD ? "center" : null}
+              >
                 <Grid container direction="column">
                   <Grid item>
                     <div className={classes.title}>
@@ -108,18 +154,24 @@ export default function MobileApps() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid className={classes.arrowRight} item>
-            <Button component={Link} to="/websites">
-              <img alt="Forward Arrow" src={forwardArrow} />
-            </Button>
-          </Grid>
+          <Hidden mdDown>
+            <Grid className={classes.arrowRight} item>
+              <Button component={Link} to="/websites">
+                <img alt="Forward Arrow" src={forwardArrow} />
+              </Button>
+            </Grid>
+          </Hidden>
         </Grid>
       </Grid>
-      <Grid className={classes.middleIcons} item>
+      <Grid
+        align={matchesMD ? "center" : null}
+        className={classes.middleIcons}
+        item
+      >
         <Grid container direction="column">
           <Grid item>
             <Grid container justify="space-around" direction="row">
-              <Grid className={classes.middleIconLeft} item>
+              <Grid className={classes.integrationContainer} item>
                 <Grid container>
                   <Grid item>
                     <Grid container direction="column">
@@ -143,10 +195,14 @@ export default function MobileApps() {
                 </Grid>
               </Grid>
               <Grid className={classes.middleIconMiddle} item>
-                <Lottie options={defaultOptions} height={700} width={400} />
+                <Lottie
+                  options={defaultOptions}
+                  height={matchesMD ? 400 : 700}
+                  width={matchesMD ? 300 : 400}
+                />
               </Grid>
-              <Grid className={classes.middleIconRight} item>
-                <Grid container align="right">
+              <Grid className={classes.platformContainer} item>
+                <Grid container align={matchesMD ? "center" : "right"}>
                   <Grid item>
                     <Grid container direction="column">
                       <Grid item>
@@ -187,17 +243,22 @@ export default function MobileApps() {
                       </div>
                     </Grid>
                     <Grid item>
-                      <img alt="Lightbulb Icon" src={knife} />
+                      <img alt="swiss army knife" src={knife} />
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid className={classes.middleIconSpace} item>
+                <Grid className={classes.extendContainer} item>
                   <Grid container spacing={3} direction="column">
                     <Grid item>
                       <div className={classes.heading}>Extend Access</div>
                     </Grid>
                     <Grid item className={classes.extendAccess}>
-                      <img alt="Stopwatch Icon" src={access} />
+                      <img
+                        alt="tear one off sign"
+                        src={access}
+                        height={matchesMD ? 300 : null}
+                        width={matchesMD ? 325 : null}
+                      />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -207,7 +268,7 @@ export default function MobileApps() {
                       <div className={classes.heading}>Increase Engagement</div>
                     </Grid>
                     <Grid item>
-                      <img alt="Money Icon" src={engagement} />
+                      <img alt="mobile app notification" src={engagement} />
                     </Grid>
                   </Grid>
                 </Grid>
