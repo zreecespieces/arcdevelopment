@@ -56,7 +56,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       backgroundImage: `url(${mobileBackground})`,
       backgroundAttachment: "initial",
-      marginBottom: "-1%",
       paddingTop: "50%"
     },
     [theme.breakpoints.down("xs")]: {

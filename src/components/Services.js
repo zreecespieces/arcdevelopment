@@ -6,11 +6,21 @@ import CustomTheme from "../components/ui/CustomTheme";
 import customSoftwareIcon from "../assets/Custom Software Icon.svg";
 import mobileAppsIcon from "../assets/mobileIcon.svg";
 import websiteIcon from "../assets/websiteIcon.svg";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles(theme => ({
   gridItem: {
     height: "400px",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "18.5%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "6.25%",
+      "@media (orientation: landscape)": {
+        marginLeft: "4%"
+      }
+    },
     [theme.breakpoints.down("xs")]: {
       marginTop: "50%",
       marginBottom: "100%",
@@ -20,9 +30,10 @@ const useStyles = makeStyles(theme => ({
   gridItemSoftware: {
     height: "400px",
     marginTop: "60%",
-    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("md")]: {
+      marginTop: "2%"
+    },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "2%",
       marginLeft: "5%",
       marginBottom: "50%"
     }
@@ -31,6 +42,11 @@ const useStyles = makeStyles(theme => ({
     height: "400px",
     marginTop: "10%",
     marginBottom: "20%",
+    [theme.breakpoints.down("sm")]: {
+      "@media (orientation: landscape)": {
+        marginLeft: "-2%"
+      }
+    },
     [theme.breakpoints.down("xs")]: {
       marginTop: "40%",
       marginLeft: "5%",
@@ -55,7 +71,21 @@ const useStyles = makeStyles(theme => ({
   },
   icon: {
     backfaceVisibility: "hidden",
-    marginLeft: "15%"
+    marginLeft: "15%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "10%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "80%",
+      height: "80%",
+      "@media (orientation: landscape)": {
+        marginLeft: "10%"
+      }
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      height: "100%"
+    }
   },
   softwareIcon: {
     backfaceVisibility: "hidden",
@@ -68,6 +98,11 @@ const useStyles = makeStyles(theme => ({
   websiteIcon: {
     backfaceVisibility: "hidden",
     marginLeft: "15%",
+    [theme.breakpoints.down("sm")]: {
+      "@media (orientation: landscape)": {
+        marginLeft: "10%"
+      }
+    },
     [theme.breakpoints.down("xs")]: {
       marginLeft: "21%",
       marginTop: "10%"
@@ -94,11 +129,28 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Pacifico",
     fontWeight: 1,
     color: CustomTheme.palette.secondary.main
+  },
+  iosTextContainer: {
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "40%",
+      marginLeft: "18%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "50%",
+      marginLeft: "6.25%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "100%",
+      marginLeft: "0%"
+    }
   }
 }));
 
 export default function Services() {
   const classes = useStyles();
+
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const arrowSVG = (
     <svg
@@ -160,7 +212,7 @@ export default function Services() {
               container
               direction="row"
             >
-              <Grid item>
+              <Grid className={classes.iosTextContainer} item>
                 <div className={classes.headline}>
                   iOS/Android App Development
                 </div>
@@ -169,7 +221,7 @@ export default function Services() {
                 </div>
                 <div className={classes.subtext}>
                   Integrate your web experience or create a standalone app
-                  <br />
+                  {matchesMD ? " " : <br />}
                   with either mobile platform.
                 </div>
                 <Button

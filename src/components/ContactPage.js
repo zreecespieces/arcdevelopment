@@ -26,7 +26,9 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.typography.heroText
   },
   titleContainer: {
-    marginLeft: "5%"
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "5%"
+    }
   },
   confirmTitle: {
     ...CustomTheme.typography.heroText,

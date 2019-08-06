@@ -70,10 +70,9 @@ const useStyles = makeStyles(theme => ({
     verticalAlign: "bottom",
     backfaceVisibility: "hidden",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "1.45%",
+      marginTop: "0.16%",
       "@media (orientation: landscape)": {
-        // eslint-disable-line no-useless-computed-key,
-        marginTop: "1.333%"
+        marginTop: "0%"
       }
     },
     [theme.breakpoints.down("xs")]: {
@@ -93,6 +92,11 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       fontSize: "6px"
     }
+  },
+  decoration: {
+    backgroundColor: "red",
+    height: "100%",
+    width: "100%"
   }
 }));
 
@@ -103,7 +107,7 @@ export default function Footer() {
   const theme = useTheme();
   const matchesMedium = useMediaQuery(theme.breakpoints.down("md"));
   const matchesXL = useMediaQuery(theme.breakpoints.down("xl"));
-  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
   if (matchesMedium) {
     verticalSpacing = 1;
@@ -360,5 +364,5 @@ export default function Footer() {
     </footer>
   );
 
-  return matchesXS ? mobileFooter : mainFooter;
+  return matchesSM ? mobileFooter : mainFooter;
 }
