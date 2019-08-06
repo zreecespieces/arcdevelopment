@@ -172,7 +172,11 @@ export default function MobileApps() {
                 className={classes.mainText}
                 align={matchesMD ? "center" : null}
               >
-                <Grid container direction="column">
+                <Grid
+                  container
+                  justify={matchesMD ? "center" : null}
+                  direction="column"
+                >
                   <Grid item>
                     <div className={classes.title}>
                       iOS/Android App Development
