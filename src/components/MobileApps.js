@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "800px",
     [theme.breakpoints.down("md")]: {
       fontWeight: "normal",
-      padding: "5%"
+      paddingLeft: "5%",
+      paddingRight: "5%"
     }
   },
   paragraph: {
@@ -43,18 +44,38 @@ const useStyles = makeStyles(theme => ({
   },
   middleIcons: {
     marginTop: "15%",
-    marginBottom: "10%"
+    marginBottom: "10%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "3%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "0%"
+    }
   },
   middleIconMiddle: {
     marginLeft: "1%",
     marginRight: "1%",
     marginTop: "-10%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "5%",
+      marginTop: "-5%",
+      marginBottom: "0%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "2%",
+      marginTop: "0%",
+      marginBottom: "0%"
+    },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "-5%"
+      marginTop: "-5%",
+      marginLeft: "1%"
     }
   },
   bottomIcons: {
-    marginBottom: "25%"
+    marginBottom: "25%",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "50%"
+    }
   },
   arrow: {
     marginTop: ".55%",
@@ -66,7 +87,7 @@ const useStyles = makeStyles(theme => ({
   },
   extendAccess: {
     marginTop: "5%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       marginTop: "-25%"
     }
   },
@@ -77,6 +98,13 @@ const useStyles = makeStyles(theme => ({
     }
   },
   platformContainer: {
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "20%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "40%",
+      marginTop: "0%"
+    },
     [theme.breakpoints.down("xs")]: {
       padding: "5%",
       marginBottom: "75%"
@@ -88,9 +116,25 @@ const useStyles = makeStyles(theme => ({
     }
   },
   extendContainer: {
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "10%",
+      marginRight: "10%",
+      marginTop: "40%",
+      marginBottom: "40%"
+    },
     [theme.breakpoints.down("xs")]: {
       marginBottom: "30%",
-      marginTop: "30%"
+      marginTop: "30%",
+      marginLeft: "0%",
+      marginRight: "0%"
+    }
+  },
+  mainText: {
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "18%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "0%"
     }
   }
 }));
