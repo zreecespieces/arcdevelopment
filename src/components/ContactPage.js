@@ -5,14 +5,18 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  MuiThemeProvider,
+  makeStyles,
+  useTheme
+} from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Snackbar from "@material-ui/core/Snackbar";
-import { MuiThemeProvider } from "@material-ui/core/styles";
-
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import background from "../assets/background.jpg";
+import mobileBackground from "../assets/mobileBackground.svg";
 import phone from "../assets/phone.svg";
 import email from "../assets/email.svg";
 import send from "../assets/send.svg";
@@ -20,6 +24,9 @@ import send from "../assets/send.svg";
 const useStyles = makeStyles(theme => ({
   title: {
     ...CustomTheme.typography.heroText
+  },
+  titleContainer: {
+    marginLeft: "5%"
   },
   confirmTitle: {
     ...CustomTheme.typography.heroText,
@@ -39,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "none",
     color: "white"
   },
-  titleContainer: {
+  container: {
     paddingLeft: "5%",
     paddingRight: "3%"
   },
@@ -51,13 +58,19 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "100%"
+    height: "100%",
+    [theme.breakpoints.down("xs")]: {
+      backgroundImage: `url(${mobileBackground})`
+    }
   },
   backgroundContainer: {
     height: "74vh",
     width: "75%",
     position: "relative",
-    marginTop: "-3%"
+    marginTop: "-3%",
+    [theme.breakpoints.down("xs")]: {
+      width: "100%"
+    }
   },
   backgroundText: {
     position: "absolute",
@@ -65,7 +78,11 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: "5%"
   },
   phoneContainer: {
-    marginTop: "10%"
+    marginTop: "10%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "5%",
+      marginTop: "15%"
+    }
   },
   info: {
     ...CustomTheme.typography.blueSecondary,
@@ -75,14 +92,25 @@ const useStyles = makeStyles(theme => ({
     }
   },
   emailContainer: {
-    marginBottom: "10%"
+    marginBottom: "10%",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-8%",
+      marginLeft: "5%",
+      marginBottom: "15%"
+    }
   },
   input: {
     ...CustomTheme.input
   },
+  inputContainer: {
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "5%"
+    }
+  },
   messageInput: {
     ...CustomTheme.messageInput,
-    padding: "5%"
+    padding: "5%",
+    marginLeft: "5%"
   },
   messageInputConfirm: {
     ...CustomTheme.messageInput,
@@ -104,7 +132,12 @@ const useStyles = makeStyles(theme => ({
     textTransform: "none",
     marginTop: "10%",
     fontSize: "15px",
-    height: "45px"
+    height: "45px",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "5%",
+      marginBottom: "100%",
+      width: "50%"
+    }
   },
   buttonConfirm: {
     backgroundColor: CustomTheme.palette.secondary.main,
@@ -153,7 +186,10 @@ const useStyles = makeStyles(theme => ({
     height: "80px",
     width: "205px",
     marginLeft: "20%",
-    marginTop: "50%"
+    marginTop: "50%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%"
+    }
   },
   dialog: {
     maxHeight: "100%",
@@ -173,6 +209,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function ContactPage() {
   const classes = useStyles();
+
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const [messageField, setMessage] = useState("");
   const subject = "Message recieved.";
@@ -301,54 +340,70 @@ export default function ContactPage() {
   return (
     <MuiThemeProvider theme={CustomTheme}>
       <Grid container justify="space-between" direction="row">
-        <Grid className={classes.titleContainer} item>
+        <Grid className={classes.container} item>
           <Grid container spacing={1} direction="column">
-            <Grid item>
+            <Grid
+              align={matchesMD ? "center" : null}
+              className={classes.titleContainer}
+              item
+            >
               <div className={classes.title}>Contact Us</div>
               <div className={classes.subtitle}>We're waiting.</div>
             </Grid>
             <Grid className={classes.phoneContainer} item>
-              <Grid container spacing={2} direction="row">
+              <Grid container spacing={1} direction="row">
                 <Grid item>
                   <img alt="phone icon" src={phone} />
                 </Grid>
                 <Grid className={classes.info} item>
-                  <div>(316) 358-9320</div>
+                  <a
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    href="tel:(316) 358-9320"
+                  >
+                    (316) 358-9320
+                  </a>
                 </Grid>
               </Grid>
             </Grid>
             <Grid className={classes.emailContainer} item>
               <Grid container spacing={2} direction="row">
-                <Grid item>
+                <Grid xs={1} item>
                   <img
                     style={{ verticalAlign: "middle" }}
                     alt="email icon"
                     src={email}
                   />
                 </Grid>
-                <Grid className={classes.info} item>
-                  <div>zachary@arcsoftwaredevelopment.com</div>
+                <Grid className={classes.info} xs={11} item>
+                  <a
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    href="mailto:zachary@arcsoftwaredevelopment.com"
+                  >
+                    zachary@arcsoftwaredevelopment.com
+                  </a>
                 </Grid>
               </Grid>
             </Grid>
-            {inputs.map(input => (
-              <Grid item key={input.id}>
-                <TextField
-                  InputProps={{
-                    classes: {
-                      input: classes.input
-                    }
-                  }}
-                  fullWidth
-                  id={input.id}
-                  label={input.label}
-                  helperText={input.helperText}
-                  value={input.value}
-                  onChange={onChange}
-                  error={input.error}
-                />
-              </Grid>
-            ))}
+            <div className={classes.inputContainer}>
+              {inputs.map(input => (
+                <Grid item key={input.id}>
+                  <TextField
+                    InputProps={{
+                      classes: {
+                        input: classes.input
+                      }
+                    }}
+                    fullWidth
+                    id={input.id}
+                    label={input.label}
+                    helperText={input.helperText}
+                    value={input.value}
+                    onChange={onChange}
+                    error={input.error}
+                  />
+                </Grid>
+              ))}
+            </div>
             <Grid className={classes.messageContainer} item>
               <TextField
                 InputProps={{
@@ -458,7 +513,11 @@ export default function ContactPage() {
           autoHideDuration={35}
         />
         <Grid className={classes.backgroundContainer} item>
-          <Grid className={classes.backgroundText} container>
+          <Grid
+            className={classes.backgroundText}
+            justify={matchesMD ? "center" : null}
+            container
+          >
             <Grid item>
               <Grid container direction="column">
                 <Grid item>
