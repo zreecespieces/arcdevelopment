@@ -1,10 +1,11 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import CustomTheme from "../components/ui/CustomTheme";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Avatar from "@material-ui/core/Avatar";
 import CallToAction from "./ui/CallToAction";
-
+import Hidden from "@material-ui/core/Hidden";
 import history from "../assets/history.svg";
 import founder from "../assets/founder.jpg";
 import yearbook from "../assets/yearbook.svg";
@@ -15,7 +16,10 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.typography.heroText
   },
   titleContainer: {
-    marginLeft: "7%"
+    marginLeft: "7%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%"
+    }
   },
   heading: {
     ...CustomTheme.typography.main
@@ -23,15 +27,25 @@ const useStyles = makeStyles(theme => ({
   paragraphMain: {
     ...CustomTheme.typography.secondary,
     fontSize: 20,
-    maxWidth: "700px"
+    maxWidth: "700px",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal"
+    }
   },
   mission: {
     ...CustomTheme.typography.mission,
-    maxWidth: "1300px"
+    maxWidth: "1300px",
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "2.5%",
+      paddingRight: "2.5%"
+    }
   },
   missionContainer: {
     marginTop: "5%",
-    marginBottom: "10%"
+    marginBottom: "10%",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "50%"
+    }
   },
   boldLine: {
     ...CustomTheme.typography.secondary,
@@ -40,33 +54,61 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Roboto"
   },
   historyContainer: {
-    marginBottom: "10%"
+    marginBottom: "10%",
+    [theme.breakpoints.down("xs")]: {
+      padding: "5%"
+    }
   },
   historyImageContainer: {
-    marginTop: "3%"
+    marginTop: "3%",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-5%",
+      marginBottom: "50%"
+    }
   },
   historyHeading: {
     marginBottom: "3%"
   },
   avatar: {
     width: "40%",
-    height: "40%"
+    height: "40%",
+    [theme.breakpoints.down("xs")]: {
+      width: "80%",
+      height: "80%"
+    }
   },
   puppyContainer: {
-    marginRight: "8%"
+    marginRight: "8%",
+    [theme.breakpoints.down("xs")]: {
+      marginRight: "0%",
+      marginBottom: "50%"
+    }
   },
   yearbookContainer: {
-    marginLeft: "8%"
+    marginLeft: "8%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%",
+      marginTop: "20%"
+    }
+  },
+  bioContainer: {
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "2.5%",
+      paddingRight: "2.5%"
+    }
   }
 }));
 
 export default function AboutUs() {
   const classes = useStyles();
 
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Grid container direction="column">
       <Grid className={classes.titleContainer} item>
-        <Grid container>
+        <Grid justify={matchesMD ? "center" : null} container>
           <Grid item>
             <div className={classes.title}>About Us</div>
           </Grid>
@@ -80,7 +122,7 @@ export default function AboutUs() {
               individual to their interests, technology is meant to bring us
               closer to what we care about in the best way possible. Arc
               Development will use that principle to provide fast, modern,
-              inexpensive, and aesthetic software to the Midwest and beyond.
+              affordable, and aesthetic software to the Midwest and beyond.
             </p>
           </Grid>
         </Grid>
@@ -90,6 +132,7 @@ export default function AboutUs() {
           className={classes.historyContainer}
           container
           justify="space-around"
+          align={matchesMD ? "center" : null}
           direction="row"
         >
           <Grid item>
@@ -131,6 +174,8 @@ export default function AboutUs() {
           <Grid className={classes.historyImageContainer} item>
             <img
               alt="open book with feather quill laying on top"
+              height={matchesMD ? 300 : null}
+              width={matchesMD ? 300 : null}
               src={history}
             />
           </Grid>
@@ -150,15 +195,40 @@ export default function AboutUs() {
           <Grid item>
             <Avatar alt="founder" src={founder} className={classes.avatar} />
           </Grid>
+          <Hidden lgUp>
+            <Grid className={classes.bioContainer} item>
+              <Grid container align="center" direction="column">
+                <Grid item>
+                  <p className={classes.paragraphMain}>
+                    I taught myself basic coding from a library book in third
+                    grade, and ever since then my passion has solely been set on
+                    learning — learning about computers, learning mathematics
+                    and philosophy, studying design, always just learning.
+                  </p>
+                  <p className={classes.paragraphMain}>
+                    Now I’m ready to apply everything I’ve learned, and to help
+                    others with the intuition I have developed.
+                  </p>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Hidden>
         </Grid>
       </Grid>
       <Grid item>
-        <Grid container justify="space-around" direction="row">
+        <Grid
+          container
+          justify="space-around"
+          align={matchesMD ? "center" : null}
+          direction="row"
+        >
           <Grid className={classes.yearbookContainer} item>
             <Grid container direction="column">
               <Grid item>
                 <img
                   alt="story titled 'Techno Guru: Computer Expertise Helps Teen Assist Tech Department'"
+                  height={matchesMD ? 300 : null}
+                  width={matchesMD ? 300 : null}
                   src={yearbook}
                 />
               </Grid>
@@ -169,24 +239,30 @@ export default function AboutUs() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
-            <Grid container align="center" direction="column">
-              <Grid item>
-                <p className={classes.paragraphMain}>
-                  I taught myself basic coding from a library book in third
-                  grade, and ever since then my passion has solely been set on
-                  learning — learning about computers, learning mathematics and
-                  philosophy, studying design, always just learning.
-                </p>
-                <p className={classes.paragraphMain}>
-                  Now I’m ready to apply everything I’ve learned, and to help
-                  others with the intuition I have developed.
-                </p>
+          <Hidden mdDown>
+            <Grid item>
+              <Grid container align="center" direction="column">
+                <Grid item>
+                  <p className={classes.paragraphMain}>
+                    I taught myself basic coding from a library book in third
+                    grade, and ever since then my passion has solely been set on
+                    learning — learning about computers, learning mathematics
+                    and philosophy, studying design, always just learning.
+                  </p>
+                  <p className={classes.paragraphMain}>
+                    Now I’m ready to apply everything I’ve learned, and to help
+                    others with the intuition I have developed.
+                  </p>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
+          </Hidden>
           <Grid className={classes.puppyContainer} item>
-            <Grid container align="right" direction="column">
+            <Grid
+              container
+              align={matchesMD ? "center" : "right"}
+              direction="column"
+            >
               <Grid item>
                 <img alt="multi-colored dachshund puppy sleeping" src={puppy} />
               </Grid>

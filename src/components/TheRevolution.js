@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
   paragraphSmallBuild: {
     ...CustomTheme.typography.secondary,
     color: "white",
-    fontSize: "1.125vw",
+    fontSize: "1.5em",
     maxWidth: "410px",
     [theme.breakpoints.down("md")]: {
       fontWeight: "normal",
