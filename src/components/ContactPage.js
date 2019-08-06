@@ -28,7 +28,11 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "2%"
   },
   subtitle: {
-    ...CustomTheme.typography.blueSecondary
+    ...CustomTheme.typography.blueSecondary,
+    marginLeft: "1%",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal"
+    }
   },
   subtitleWhite: {
     ...CustomTheme.typography.secondary,
@@ -65,7 +69,10 @@ const useStyles = makeStyles(theme => ({
   },
   info: {
     ...CustomTheme.typography.blueSecondary,
-    fontSize: 16
+    fontSize: 16,
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal"
+    }
   },
   emailContainer: {
     marginBottom: "10%"
@@ -314,7 +321,7 @@ export default function ContactPage() {
               <Grid container spacing={2} direction="row">
                 <Grid item>
                   <img
-                    style={{ verticalAlign: "bottom" }}
+                    style={{ verticalAlign: "middle" }}
                     alt="email icon"
                     src={email}
                   />

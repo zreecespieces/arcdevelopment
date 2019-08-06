@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import Lottie from "react-lottie";
 import axios from "axios";
-
+import Hidden from "@material-ui/core/Hidden";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import TextField from "@material-ui/core/TextField";
 import Snackbar from "@material-ui/core/Snackbar";
-
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import check from "../assets/check.svg";
 import send from "../assets/send.svg";
 import software from "../assets/software.svg";
@@ -43,14 +43,21 @@ const useStyles = makeStyles(theme => ({
   },
   titleContainer: {
     paddingLeft: "5%",
-    paddingRight: "3%"
+    paddingRight: "3%",
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "0%",
+      paddingRight: "0%"
+    }
   },
   titleHelper: {
     ...CustomTheme.typography.mainGrey,
     fontWeight: "none",
     textTransform: "none",
     fontSize: 20,
-    marginTop: "2%"
+    marginTop: "2%",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "-20%"
+    }
   },
   confirmTitle: {
     ...CustomTheme.typography.heroText,
@@ -68,7 +75,10 @@ const useStyles = makeStyles(theme => ({
   subheading: {
     ...CustomTheme.typography.secondary,
     fontSize: 16,
-    textTransform: "none"
+    textTransform: "none",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal"
+    }
   },
   estimateButton: {
     backgroundColor: CustomTheme.palette.secondary.main,
@@ -84,10 +94,17 @@ const useStyles = makeStyles(theme => ({
     marginTop: "50%",
     marginBottom: "80%",
     height: "6vh",
-    width: "10vw"
+    width: "10vw",
+    [theme.breakpoints.down("xs")]: {
+      width: "50vw",
+      height: "8vh"
+    }
   },
   animation: {
-    marginTop: "10%"
+    marginTop: "10%",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "50%"
+    }
   },
   questions: {
     marginTop: "15%",
@@ -108,7 +125,10 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: "rgba(0, 0, 0, 0.1)"
     },
-    borderRadius: "0px !important"
+    borderRadius: "0px !important",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "30%"
+    }
   },
   selectedContainer: {
     width: "375px",
@@ -116,7 +136,11 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: CustomTheme.palette.secondary.dark
     },
-    borderRadius: "0px !important"
+    borderRadius: "0px !important",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "15%",
+      marginBottom: "15%"
+    }
   },
   spacer: {
     width: "200px"
@@ -129,16 +153,29 @@ const useStyles = makeStyles(theme => ({
     maxHeight: "100%",
     height: "60vh",
     width: "55vw",
-    maxWidth: "100%"
+    maxWidth: "100%",
+    [theme.breakpoints.down("xs")]: {
+      height: "80vh",
+      width: "100vw"
+    }
   },
   messageInputConfirm: {
     ...CustomTheme.messageInput,
     padding: "5%",
-    marginTop: "10%"
+    marginTop: "10%",
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "normal",
+      fontFamily: "Arial"
+    }
   },
   buttonContainer: {
     marginTop: "50%",
-    marginLeft: "20%"
+    marginLeft: "20%",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%",
+      marginTop: "25%",
+      marginBottom: "25%"
+    }
   },
   buttonConfirm: {
     backgroundColor: CustomTheme.palette.secondary.main,
@@ -151,7 +188,11 @@ const useStyles = makeStyles(theme => ({
     textTransform: "none",
     fontSize: "20px",
     height: "6vh",
-    width: "10vw"
+    width: "10vw",
+    [theme.breakpoints.down("xs")]: {
+      width: "55vw",
+      height: "8vh"
+    }
   },
   paragraph: {
     ...CustomTheme.typography.secondary,
@@ -188,6 +229,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function FreeEstimate() {
   const classes = useStyles();
+
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const defaultQuestions = [
     {
@@ -1059,14 +1103,26 @@ export default function FreeEstimate() {
 
   return (
     <MuiThemeProvider theme={CustomTheme}>
-      <Grid container justify="space-between" direction="row">
-        <Grid className={classes.titleContainer} item>
+      <Grid
+        container
+        justify={matchesMD ? "center" : "space-between"}
+        direction="row"
+      >
+        <Grid
+          className={classes.titleContainer}
+          align={matchesMD ? "center" : null}
+          item
+        >
           <Grid container direction="column">
             <Grid item>
               <div className={classes.title}>Estimate</div>
             </Grid>
             <Grid className={classes.animation} item>
-              <Lottie options={defaultOptions} height={400} width={600} />
+              <Lottie
+                options={defaultOptions}
+                height={matchesMD ? 200 : 400}
+                width={matchesMD ? 300 : 600}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -1184,7 +1240,11 @@ export default function FreeEstimate() {
                             />
                           </Grid>
 
-                          <Grid className={classes.paragraphContainer} item>
+                          <Grid
+                            className={classes.paragraphContainer}
+                            align={matchesMD ? "center" : null}
+                            item
+                          >
                             <p className={classes.paragraph}>
                               We can create this custom digital solution for an
                               estimated{" "}
@@ -1202,13 +1262,21 @@ export default function FreeEstimate() {
                       </Grid>
                       <Grid item>
                         <Grid container direction="column">
-                          {service === "Custom Software Development" ||
-                          service === "iOS/Android App Development"
-                            ? softwareChoicesGrid
-                            : service === "Website Development"
-                            ? websiteChoicesGrid
-                            : null}
-                          <Grid className={classes.buttonContainer} item>
+                          <Hidden mdDown>
+                            {service === "Custom Software Development" ||
+                            service === "iOS/Android App Development"
+                              ? softwareChoicesGrid
+                              : service === "Website Development"
+                              ? websiteChoicesGrid
+                              : null}
+                          </Hidden>
+
+                          <Grid
+                            className={classes.buttonContainer}
+                            align={matchesMD ? "center" : null}
+                            justify={matchesMD ? "center" : null}
+                            item
+                          >
                             <Button
                               onClick={onMessageSend}
                               disabled={disableRequest()}
