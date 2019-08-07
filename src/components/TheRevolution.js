@@ -37,6 +37,10 @@ const useStyles = makeStyles(theme => ({
   },
   titleContainer: {
     marginLeft: "7%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "0%",
+      marginTop: "-3%"
+    },
     [theme.breakpoints.down("xs")]: {
       marginLeft: "0%",
       marginTop: "5%"
@@ -79,9 +83,11 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     paddingTop: "10%",
     paddingLeft: "5%",
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: "0%"
+    },
     [theme.breakpoints.down("xs")]: {
-      padding: "5%",
-      paddingTop: "10%"
+      padding: "5%"
     }
   },
   technologyContainer: {
@@ -90,6 +96,9 @@ const useStyles = makeStyles(theme => ({
   },
   visionContainer: {
     marginTop: "10%",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "20%"
+    },
     [theme.breakpoints.down("xs")]: {
       marginBottom: "50%"
     }
@@ -102,15 +111,20 @@ const useStyles = makeStyles(theme => ({
   },
   imageContainer: {
     marginTop: "4%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "-20%"
+    },
     [theme.breakpoints.down("xs")]: {
       marginTop: "-5%"
     }
   },
   processHeading: {
     marginBottom: "50%",
-    [theme.breakpoints.down("xs")]: {
-      marginBottom: "10%",
-      marginTop: "40%"
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "0%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "0%"
     }
   },
   consultationBackground: {
@@ -196,6 +210,16 @@ const useStyles = makeStyles(theme => ({
   sectionContainer: {
     height: "1400px",
     position: "relative"
+  },
+  consultationContainer: {
+    [theme.breakpoints.down("md")]: {
+      marginTop: "10%"
+    }
+  },
+  animationContainer: {
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "30%"
+    }
   }
 }));
 
@@ -204,6 +228,8 @@ export default function TheRevolution() {
 
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const defaultOptions = {
     loop: true,
@@ -228,8 +254,8 @@ export default function TheRevolution() {
           <Grid className={classes.imageContainer} item>
             <img
               alt="mountain viewed through binoculars"
-              height={matchesMD ? 400 : null}
-              width={matchesMD ? 300 : null}
+              height={matchesXS ? 400 : matchesMD ? 800 : null}
+              width={matchesXS ? 300 : matchesMD ? 600 : null}
               src={vision}
             />
           </Grid>
@@ -342,8 +368,8 @@ export default function TheRevolution() {
           <Grid className={classes.animationContainer} item>
             <Lottie
               options={defaultOptions}
-              height={matchesMD ? 300 : 800}
-              width={matchesMD ? 250 : 800}
+              height={matchesXS ? 300 : matchesMD ? 700 : 800}
+              width={matchesXS ? 250 : matchesMD ? 700 : 800}
             />
           </Grid>
         </Grid>
@@ -355,7 +381,10 @@ export default function TheRevolution() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid className={classes.sectionContainer} item>
+      <Grid
+        className={[classes.sectionContainer, classes.consultationContainer]}
+        item
+      >
         <Grid
           className={classes.paragraphContainer}
           container

@@ -151,11 +151,12 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "15%",
     marginRight: "5%",
     [theme.breakpoints.down("md")]: {
-      marginLeft: "5%",
+      marginRight: "0%",
       marginBottom: "30%"
     },
     [theme.breakpoints.down("sm")]: {
       marginLeft: "0%",
+      marginRight: "5%",
       marginBottom: "50%"
     },
     [theme.breakpoints.down("xs")]: {

@@ -116,6 +116,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   extendContainer: {
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "-5%",
+      marginRight: "-5%"
+    },
     [theme.breakpoints.down("sm")]: {
       marginLeft: "10%",
       marginRight: "10%",
