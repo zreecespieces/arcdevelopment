@@ -65,6 +65,12 @@ const useStyles = makeStyles(theme => ({
   },
   historyImageContainer: {
     marginTop: "3%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "10%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "3%"
+    },
     [theme.breakpoints.down("xs")]: {
       marginTop: "-5%",
       marginBottom: "50%"

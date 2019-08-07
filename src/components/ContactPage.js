@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   subtitle: {
     ...CustomTheme.typography.blueSecondary,
     marginLeft: "1%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
       fontWeight: "normal"
     }
   },
@@ -50,7 +50,16 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     paddingLeft: "5%",
-    paddingRight: "3%"
+    paddingRight: "3%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "30%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "25%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%"
+    }
   },
   heading: {
     ...CustomTheme.typography.main
@@ -61,7 +70,7 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${mobileBackground})`
     }
   },
@@ -70,26 +79,36 @@ const useStyles = makeStyles(theme => ({
     width: "75%",
     position: "relative",
     marginTop: "-3%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
       width: "100%"
     }
   },
   backgroundText: {
     position: "absolute",
     marginTop: "20%",
-    paddingLeft: "5%"
+    paddingLeft: "5%",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "35%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "20%"
+    }
   },
   phoneContainer: {
     marginTop: "10%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "15%",
+      marginBottom: "-5%"
+    },
     [theme.breakpoints.down("xs")]: {
       marginLeft: "5%",
-      marginTop: "15%"
+      marginBottom: "0%"
     }
   },
   info: {
     ...CustomTheme.typography.blueSecondary,
     fontSize: 16,
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
       fontWeight: "normal"
     }
   },
@@ -112,7 +131,13 @@ const useStyles = makeStyles(theme => ({
   messageInput: {
     ...CustomTheme.messageInput,
     padding: "5%",
-    marginLeft: "5%"
+    marginLeft: "5%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "0%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "5%"
+    }
   },
   messageInputConfirm: {
     ...CustomTheme.messageInput,
@@ -135,10 +160,12 @@ const useStyles = makeStyles(theme => ({
     marginTop: "10%",
     fontSize: "15px",
     height: "45px",
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: "5%",
+    [theme.breakpoints.down("md")]: {
       marginBottom: "100%",
       width: "50%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "5%"
     }
   },
   buttonConfirm: {
@@ -152,7 +179,13 @@ const useStyles = makeStyles(theme => ({
     textTransform: "none",
     fontSize: "15px",
     height: "45px",
-    width: "10vw"
+    width: "10vw",
+    [theme.breakpoints.down("md")]: {
+      width: "35vw"
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "50vw"
+    }
   },
   send: {
     paddingLeft: "10%",
@@ -195,11 +228,24 @@ const useStyles = makeStyles(theme => ({
   },
   dialog: {
     maxHeight: "100%",
-    height: "45vh"
+    height: "45vh",
+    [theme.breakpoints.down("md")]: {
+      height: "80vh"
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "60vh"
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "70vh"
+    }
   },
   dialogContent: {
     paddingLeft: "35%",
-    paddingRight: "35%"
+    paddingRight: "35%",
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "20%",
+      paddingRight: "20%"
+    }
   },
   buttonContainer: {
     marginTop: "25%"
@@ -227,6 +273,7 @@ export default function ContactPage() {
       label: "Name",
       value: "",
       error: false,
+      type: "default",
       helperText: null,
       getHelperText: error => (error ? null : null),
       isValid: value => true
@@ -236,6 +283,7 @@ export default function ContactPage() {
       label: "Phone",
       value: "",
       error: false,
+      type: "tel",
       helperText: null,
       getHelperText: error => (error ? "Phone number invalid" : null),
       isValid: value =>
@@ -244,6 +292,7 @@ export default function ContactPage() {
     {
       id: "email",
       label: "Email",
+      type: "email",
       value: "",
       error: false,
       helperText: null,
@@ -393,7 +442,8 @@ export default function ContactPage() {
                     InputProps={{
                       classes: {
                         input: classes.input
-                      }
+                      },
+                      type: input.type
                     }}
                     fullWidth
                     id={input.id}

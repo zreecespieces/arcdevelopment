@@ -774,6 +774,7 @@ export default function FreeEstimate() {
       id: "name",
       label: "Name",
       value: "",
+      type: "default",
       error: false,
       helperText: null,
       getHelperText: error => (error ? null : null),
@@ -783,6 +784,7 @@ export default function FreeEstimate() {
       id: "phone",
       label: "Phone",
       value: "",
+      type: "tel",
       error: false,
       helperText: null,
       getHelperText: error => (error ? "Phone number invalid" : null),
@@ -793,6 +795,7 @@ export default function FreeEstimate() {
       id: "email",
       label: "Email",
       value: "",
+      type: "email",
       error: false,
       helperText: null,
       getHelperText: error => (error ? "Email invalid" : null),
@@ -1211,7 +1214,8 @@ export default function FreeEstimate() {
                                 InputProps={{
                                   classes: {
                                     input: classes.input
-                                  }
+                                  },
+                                  type: input.type
                                 }}
                                 fullWidth
                                 id={input.id}
