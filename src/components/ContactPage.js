@@ -121,7 +121,11 @@ const useStyles = makeStyles(theme => ({
     }
   },
   input: {
-    ...CustomTheme.input
+    ...CustomTheme.input,
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal",
+      fontFamily: "Roboto"
+    }
   },
   inputContainer: {
     [theme.breakpoints.down("xs")]: {
@@ -133,7 +137,9 @@ const useStyles = makeStyles(theme => ({
     padding: "5%",
     marginLeft: "5%",
     [theme.breakpoints.down("md")]: {
-      marginLeft: "0%"
+      marginLeft: "0%",
+      fontWeight: "normal",
+      fontFamily: "Roboto"
     },
     [theme.breakpoints.down("xs")]: {
       marginLeft: "5%"
@@ -142,7 +148,11 @@ const useStyles = makeStyles(theme => ({
   messageInputConfirm: {
     ...CustomTheme.messageInput,
     padding: "5%",
-    marginTop: "10%"
+    marginTop: "10%",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "normal",
+      fontFamily: "Roboto"
+    }
   },
   messageContainer: {
     marginTop: "20%",

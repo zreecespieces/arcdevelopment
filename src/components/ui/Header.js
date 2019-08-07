@@ -64,26 +64,13 @@ const styles = theme => ({
     flex: 1
   },
   arcLogo: {
-    height: "10vh",
+    height: "8em",
     [theme.breakpoints.down("md")]: {
       marginLeft: "-1%",
-      marginTop: "-1%",
-      height: "12vh",
-      "@media (orientation: landscape)": {
-        // eslint-disable-line no-useless-computed-key
-        height: "15vh",
-        marginTop: "0%"
-      }
+      height: "7em"
     },
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "-1%",
-      marginTop: "-1%",
-      height: "11vh",
-      "@media (orientation: landscape)": {
-        // eslint-disable-line no-useless-computed-key
-        height: "22vh",
-        marginTop: "0%"
-      }
+    [theme.breakpoints.down("xs")]: {
+      height: "5.5em"
     },
     backfaceVisibility: "hidden"
   },
