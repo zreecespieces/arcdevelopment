@@ -62,7 +62,13 @@ const useStyles = makeStyles(theme => ({
   confirmTitle: {
     ...CustomTheme.typography.heroText,
     fontSize: 32,
-    marginTop: "5%"
+    marginTop: "5%",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "-2%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "0%"
+    }
   },
   input: {
     ...CustomTheme.input
@@ -76,7 +82,7 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.typography.secondary,
     fontSize: 16,
     textTransform: "none",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
       fontWeight: "normal"
     }
   },
@@ -95,6 +101,12 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "80%",
     height: "6vh",
     width: "10vw",
+    [theme.breakpoints.down("md")]: {
+      width: "20vw"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "40vw"
+    },
     [theme.breakpoints.down("xs")]: {
       width: "50vw",
       height: "8vh"
@@ -102,7 +114,10 @@ const useStyles = makeStyles(theme => ({
   },
   animation: {
     marginTop: "10%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "20%"
+    },
+    [theme.breakpoints.down("sm")]: {
       marginBottom: "50%"
     }
   },
@@ -154,6 +169,10 @@ const useStyles = makeStyles(theme => ({
     height: "60vh",
     width: "55vw",
     maxWidth: "100%",
+    [theme.breakpoints.down("md")]: {
+      height: "80vh",
+      width: "80vw"
+    },
     [theme.breakpoints.down("xs")]: {
       height: "80vh",
       width: "100vw"
@@ -189,9 +208,23 @@ const useStyles = makeStyles(theme => ({
     fontSize: "20px",
     height: "6vh",
     width: "10vw",
+    [theme.breakpoints.down("md")]: {
+      width: "20vw",
+      height: "10vh",
+      marginTop: "40%",
+      marginLeft: "-25%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "40vw",
+      height: "6vh",
+      marginTop: "-20%",
+      marginLeft: "-25%"
+    },
     [theme.breakpoints.down("xs")]: {
       width: "55vw",
-      height: "8vh"
+      height: "8vh",
+      marginTop: "0%",
+      marginLeft: "0%"
     }
   },
   paragraph: {
@@ -232,6 +265,7 @@ export default function FreeEstimate() {
 
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const defaultQuestions = [
     {
@@ -947,7 +981,8 @@ export default function FreeEstimate() {
 
     setService(selected[0].options.filter(option => option.selected)[0].title);
 
-    if (selected.length > 1) {
+    //Changed selected.length > 1 to selected.length > 2 because of error, tweak if more issues
+    if (selected.length > 2) {
       switch (selected[0].options.filter(option => option.selected)[0].title) {
         case "Website Development":
           const websiteCategory = selected[1].options.filter(
@@ -1123,8 +1158,8 @@ export default function FreeEstimate() {
             <Grid className={classes.animation} item>
               <Lottie
                 options={defaultOptions}
-                height={matchesMD ? 200 : 400}
-                width={matchesMD ? 300 : 600}
+                height={matchesXS ? 200 : matchesMD ? 300 : 400}
+                width={matchesXS ? 300 : matchesMD ? 400 : 600}
               />
             </Grid>
           </Grid>
@@ -1145,7 +1180,7 @@ export default function FreeEstimate() {
                     <Grid container justify="space-between" direction="row">
                       {question.options.map((option, index) => (
                         <Grid
-                          md={4}
+                          sm={4}
                           component={Button}
                           onClick={() => {
                             handleSelect(index);
