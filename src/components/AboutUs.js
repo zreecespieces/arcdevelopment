@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
   titleContainer: {
     marginLeft: "7%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       marginLeft: "0%"
     }
   },
@@ -28,13 +28,17 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.typography.secondary,
     fontSize: 20,
     maxWidth: "700px",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
       fontWeight: "normal"
     }
   },
   mission: {
     ...CustomTheme.typography.mission,
     maxWidth: "1300px",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "5%",
+      paddingRight: "5%"
+    },
     [theme.breakpoints.down("xs")]: {
       paddingLeft: "2.5%",
       paddingRight: "2.5%"
@@ -79,6 +83,10 @@ const useStyles = makeStyles(theme => ({
   },
   puppyContainer: {
     marginRight: "8%",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "1%",
+      marginBottom: "50%"
+    },
     [theme.breakpoints.down("xs")]: {
       marginRight: "0%",
       marginBottom: "50%"
@@ -86,8 +94,11 @@ const useStyles = makeStyles(theme => ({
   },
   yearbookContainer: {
     marginLeft: "8%",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "8%",
+      marginTop: "20%"
+    },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "0%",
       marginTop: "20%"
     }
   },
@@ -96,6 +107,9 @@ const useStyles = makeStyles(theme => ({
       paddingLeft: "2.5%",
       paddingRight: "2.5%"
     }
+  },
+  caption: {
+    marginTop: "-5%"
   }
 }));
 
@@ -104,6 +118,7 @@ export default function AboutUs() {
 
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <Grid container direction="column">
@@ -227,12 +242,12 @@ export default function AboutUs() {
               <Grid item>
                 <img
                   alt="story titled 'Techno Guru: Computer Expertise Helps Teen Assist Tech Department'"
-                  height={matchesMD ? 300 : null}
-                  width={matchesMD ? 300 : null}
+                  height={matchesXS ? 300 : matchesMD ? 400 : null}
+                  width={matchesXS ? 300 : matchesMD ? 400 : null}
                   src={yearbook}
                 />
               </Grid>
-              <Grid item>
+              <Grid className={classes.caption} item>
                 <p className={classes.paragraphMain}>
                   a page from my Sophomore yearbook
                 </p>
@@ -266,7 +281,7 @@ export default function AboutUs() {
               <Grid item>
                 <img alt="multi-colored dachshund puppy sleeping" src={puppy} />
               </Grid>
-              <Grid item>
+              <Grid className={classes.caption} item>
                 <p className={classes.paragraphMain}>
                   my miniature dapple dachshund, Sterling
                 </p>
