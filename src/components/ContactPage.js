@@ -25,11 +25,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     ...CustomTheme.typography.heroText
   },
-  titleContainer: {
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: "5%"
-    }
-  },
+  titleContainer: {},
   confirmTitle: {
     ...CustomTheme.typography.heroText,
     fontSize: 32,
@@ -58,7 +54,8 @@ const useStyles = makeStyles(theme => ({
       marginLeft: "25%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "0%"
+      marginLeft: "0%",
+      paddingLeft: "3%"
     }
   },
   heading: {
@@ -97,12 +94,11 @@ const useStyles = makeStyles(theme => ({
   phoneContainer: {
     marginTop: "10%",
     [theme.breakpoints.down("md")]: {
-      marginTop: "15%",
-      marginBottom: "-5%"
+      marginTop: "15%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "5%",
-      marginBottom: "0%"
+      marginLeft: "0%",
+      marginBottom: "7%"
     }
   },
   info: {
@@ -116,7 +112,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "10%",
     [theme.breakpoints.down("xs")]: {
       marginTop: "-8%",
-      marginLeft: "5%",
+      marginLeft: "0%",
       marginBottom: "15%"
     }
   },
@@ -127,11 +123,6 @@ const useStyles = makeStyles(theme => ({
       fontFamily: "Roboto"
     }
   },
-  inputContainer: {
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: "5%"
-    }
-  },
   messageInput: {
     ...CustomTheme.messageInput,
     padding: "5%",
@@ -140,9 +131,6 @@ const useStyles = makeStyles(theme => ({
       marginLeft: "0%",
       fontWeight: "normal",
       fontFamily: "Roboto"
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: "5%"
     }
   },
   messageInputConfirm: {
@@ -233,7 +221,10 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "20%",
     marginTop: "50%",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "0%"
+      marginLeft: "0%",
+      width: "160px",
+      height: "60px",
+      fontSize: "20px"
     }
   },
   dialog: {
@@ -270,6 +261,7 @@ export default function ContactPage() {
 
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const [messageField, setMessage] = useState("");
   const subject = "Message recieved.";
@@ -400,7 +392,11 @@ export default function ContactPage() {
 
   return (
     <MuiThemeProvider theme={CustomTheme}>
-      <Grid container justify="space-between" direction="row">
+      <Grid
+        container
+        justify={matchesXS ? "center" : "space-between"}
+        direction="row"
+      >
         <Grid className={classes.container} item>
           <Grid container spacing={1} direction="column">
             <Grid

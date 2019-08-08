@@ -137,29 +137,31 @@ const useStyles = makeStyles(theme => ({
     backfaceVisibility: "hidden",
     marginLeft: "20%",
     [theme.breakpoints.down("md")]: {
-      marginTop: "100%"
+      marginTop: "55%",
+      marginLeft: "10%"
     },
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "10%",
-      marginTop: "120%"
+      marginTop: "85%"
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "10%",
-      marginLeft: "25%"
+      marginLeft: "12%"
     }
   },
   mobileIcon: {
     backfaceVisibility: "hidden",
     marginLeft: "15%",
     [theme.breakpoints.down("md")]: {
-      marginTop: "35%"
+      marginTop: "35%",
+      maxWidth: "130%"
     },
     [theme.breakpoints.down("sm")]: {
       marginLeft: "10%",
-      marginTop: "40%"
+      marginTop: "75%",
+      maxWidth: "140%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "12%",
+      marginLeft: "8%",
       marginTop: "0%"
     }
   },
@@ -446,7 +448,7 @@ export default function LandingPage() {
           justify="flex-start"
           direction="row"
         >
-          <Grid item>
+          <Grid sm={matchesMedium ? 6 : matchesSmall ? 8 : null} item>
             <div className={classes.headline}>Custom Software Development</div>
             <div className={classes.subtitle}>
               Save Energy. Save Time. Save Money.
@@ -466,7 +468,7 @@ export default function LandingPage() {
               {arrowSVG}
             </Button>
           </Grid>
-          <Grid item>
+          <Grid sm={matchesMedium ? 6 : matchesSmall ? 4 : null} item>
             <img
               alt="three rectangles floating on top of eachother"
               className={classes.softwareIcon}
@@ -482,7 +484,11 @@ export default function LandingPage() {
           justify={matchesMedium ? "flex-start" : "flex-end"}
           direction="row"
         >
-          <Grid className={classes.iosContainer} item>
+          <Grid
+            className={classes.iosContainer}
+            sm={matchesMedium ? 9 : null}
+            item
+          >
             <div className={classes.headline}>iOS/Android App Development</div>
             <div className={classes.subtitle}>
               Extend Functionality. Extend Access. Increase Engagement.
@@ -502,7 +508,7 @@ export default function LandingPage() {
               {arrowSVG}
             </Button>
           </Grid>
-          <Grid item>
+          <Grid sm={matchesMedium ? 3 : null} item>
             <img
               alt="Mobile Phones and Tablets Icon"
               className={classes.mobileIcon}
@@ -518,7 +524,11 @@ export default function LandingPage() {
           justify="flex-start"
           direction="row"
         >
-          <Grid className={classes.websiteContainer} item>
+          <Grid
+            className={classes.websiteContainer}
+            sm={matchesMedium ? 6 : null}
+            item
+          >
             <div className={classes.headline}>Website Development</div>
             <div className={classes.subtitle}>
               Reach More. Discover More. Sell More.
@@ -538,7 +548,7 @@ export default function LandingPage() {
               {arrowSVG}
             </Button>
           </Grid>
-          <Grid item>
+          <Grid sm={matchesMedium ? 6 : null} item>
             <img
               alt="Website Icon"
               className={classes.websiteIcon}
