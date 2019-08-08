@@ -285,7 +285,12 @@ export default function AboutUs() {
               direction="column"
             >
               <Grid item>
-                <img alt="multi-colored dachshund puppy sleeping" src={puppy} />
+                <img
+                  height={matchesXS ? 300 : matchesMD ? 400 : null}
+                  width={matchesXS ? 300 : matchesMD ? 400 : null}
+                  alt="multi-colored dachshund puppy sleeping"
+                  src={puppy}
+                />
               </Grid>
               <Grid className={classes.caption} item>
                 <p className={classes.paragraphMain}>

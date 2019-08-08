@@ -93,27 +93,17 @@ const useStyles = makeStyles(theme => ({
     }
   },
   rootsContainer: {
-    height: "20vh",
-    width: "20vw",
-    marginBottom: "45%",
-    marginTop: "20%",
+    height: "30em",
+    width: "30em",
+    marginBottom: "10%",
+    marginTop: "50%",
     [theme.breakpoints.down("md")]: {
-      height: "35vh",
-      width: "35vw",
-      marginTop: "0%",
-      marginBottom: "30%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: "60vh",
-      width: "60vw",
-      marginBottom: "0%",
       marginTop: "0%"
     },
     [theme.breakpoints.down("xs")]: {
-      height: "80vh",
-      width: "80vw",
-      marginTop: "50%",
-      marginBottom: "-70%"
+      height: "20em",
+      width: "20em",
+      marginTop: "50%"
     }
   },
   uxAnimation: {
@@ -163,7 +153,8 @@ const useStyles = makeStyles(theme => ({
   documentsContainer: {
     [theme.breakpoints.down("md")]: {
       marginBottom: "30%",
-      marginLeft: "15%",
+      marginLeft: "auto",
+      marginRight: "auto",
       marginTop: "30%"
     },
     [theme.breakpoints.down("sm")]: {
@@ -200,7 +191,8 @@ const useStyles = makeStyles(theme => ({
   },
   headingContainer: {
     [theme.breakpoints.down("md")]: {
-      marginLeft: "7%"
+      marginLeft: "auto",
+      marginRight: "auto"
     },
     [theme.breakpoints.down("sm")]: {
       marginLeft: "0%"
@@ -456,7 +448,7 @@ export default function CustomSoftware() {
                 <Lottie
                   options={automationOptions}
                   height={matchesMD ? 275 : 350}
-                  width={matchesMD ? 375 : 500}
+                  width={matchesMD ? 360 : 500}
                 />
               </Grid>
             </Grid>

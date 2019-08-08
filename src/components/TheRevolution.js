@@ -212,6 +212,8 @@ const useStyles = makeStyles(theme => ({
     position: "relative"
   },
   consultationContainer: {
+    height: "1400px",
+    position: "relative",
     [theme.breakpoints.down("md")]: {
       marginTop: "10%"
     }
@@ -380,10 +382,7 @@ export default function TheRevolution() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid
-        className={[classes.sectionContainer, classes.consultationContainer]}
-        item
-      >
+      <Grid className={classes.consultationContainer} item>
         <Grid
           className={classes.paragraphContainer}
           container
