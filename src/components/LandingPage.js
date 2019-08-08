@@ -23,7 +23,10 @@ const useStyles = makeStyles(theme => ({
     width: "100%"
   },
   subContainer: {
-    paddingLeft: "5%"
+    paddingLeft: "5%",
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "10%"
+    }
   },
   subContainerRight: {
     paddingRight: "5%",
@@ -31,11 +34,11 @@ const useStyles = makeStyles(theme => ({
       marginLeft: "0%"
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "0%",
-      marginLeft: "0%"
+      marginTop: "0%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "30%"
+      marginTop: "30%",
+      paddingLeft: "5%"
     }
   },
   gridItem: {
@@ -127,7 +130,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "-40%",
-      marginLeft: "80%"
+      marginLeft: "70%"
     }
   },
   websiteIcon: {

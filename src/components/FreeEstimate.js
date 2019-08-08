@@ -1177,7 +1177,11 @@ export default function FreeEstimate() {
                     </div>
                   </Grid>
                   <Grid item className={classes.questions}>
-                    <Grid container justify="space-between" direction="row">
+                    <Grid
+                      container
+                      justify={matchesXS ? "center" : "space-between"}
+                      direction="row"
+                    >
                       {question.options.map((option, index) => (
                         <Grid
                           sm={4}

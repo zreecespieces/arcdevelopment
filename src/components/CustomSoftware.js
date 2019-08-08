@@ -87,10 +87,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: "2%"
   },
   automationAnimation: {
-    marginLeft: "-15%",
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: "-10%"
-    }
+    marginLeft: "-15%"
   },
   rootsContainer: {
     height: "30em",
@@ -111,7 +108,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       marginTop: "0%",
       marginBottom: "-50%",
-      marginLeft: "24%"
+      marginLeft: "0%"
     }
   },
   lastRow: {
@@ -121,13 +118,11 @@ const useStyles = makeStyles(theme => ({
   scaleAnimationContainer: {
     marginTop: "-5%",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "10%",
       marginBottom: "-20%"
     }
   },
   documentsAnimationContainer: {
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "10%",
       marginTop: "-10%"
     }
   },
@@ -205,6 +200,7 @@ export default function CustomSoftware() {
 
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const documentsOptions = {
     loop: true,
@@ -341,7 +337,7 @@ export default function CustomSoftware() {
           direction="row"
         >
           <Grid className={classes.documentsContainer} item>
-            <Grid container>
+            <Grid justify={matchesXS ? "center" : null} container>
               <Grid align={matchesMD ? "center" : null} item>
                 <Grid container direction="column">
                   <Grid item>
@@ -373,7 +369,11 @@ export default function CustomSoftware() {
             </Grid>
           </Grid>
           <Grid className={classes.scaleContainer} item>
-            <Grid align={matchesMD ? "center" : "right"} container>
+            <Grid
+              justify={matchesXS ? "center" : null}
+              align={matchesMD ? "center" : "right"}
+              container
+            >
               <Grid className={classes.scaleAnimationContainer} item>
                 <Lottie options={scaleOptions} height={500} width={300} />
               </Grid>
@@ -423,7 +423,7 @@ export default function CustomSoftware() {
       <Grid className={classes.lastRow} item>
         <Grid container justify="space-around" direction="row">
           <Grid className={classes.automationContainer} item>
-            <Grid container>
+            <Grid justify={matchesXS ? "center" : null} container>
               <Grid align={matchesMD ? "center" : null} item>
                 <Grid container direction="column">
                   <Grid item>
@@ -454,7 +454,7 @@ export default function CustomSoftware() {
             </Grid>
           </Grid>
           <Grid className={classes.uxContainer} item>
-            <Grid align="right" container>
+            <Grid align="right" justify={matchesXS ? "center" : null} container>
               <Grid className={classes.uxAnimation} item>
                 <Lottie options={uxOptions} height={800} width={200} />
               </Grid>
