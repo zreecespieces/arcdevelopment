@@ -91,7 +91,7 @@ const useStyles = makeStyles(theme => ({
     backfaceVisibility: "hidden",
     marginLeft: "15%",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "85%",
+      marginLeft: "75%",
       marginTop: "-35%"
     }
   },
@@ -116,6 +116,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: "1%",
     [theme.breakpoints.down("md")]: {
       fontWeight: "normal"
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "95%"
     }
   },
   subtext: {
@@ -123,6 +126,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: "6%",
     [theme.breakpoints.down("md")]: {
       fontWeight: "normal"
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "95%"
     }
   },
   specialText: {
@@ -141,6 +147,12 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       maxWidth: "100%",
+      marginLeft: "0%"
+    }
+  },
+  websiteContainer: {
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "95%",
       marginLeft: "0%"
     }
   }
@@ -249,7 +261,7 @@ export default function Services() {
               container
               direction="row"
             >
-              <Grid item>
+              <Grid className={classes.websiteContainer} item>
                 <div className={classes.headline}>Website Development</div>
                 <div className={classes.subtitle}>
                   Reach More. Discover More. Sell More.

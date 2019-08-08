@@ -127,7 +127,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "-40%",
-      marginLeft: "85%"
+      marginLeft: "80%"
     }
   },
   websiteIcon: {
@@ -156,7 +156,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: "40%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "18%",
+      marginLeft: "12%",
       marginTop: "0%"
     }
   },
@@ -198,7 +198,8 @@ const useStyles = makeStyles(theme => ({
       marginTop: "40%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "225%"
+      marginTop: "225%",
+      maxWidth: "95%"
     }
   },
   headline: {
@@ -210,6 +211,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontFamily: "Roboto",
       fontWeight: "normal"
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "95%"
     }
   },
   subtext: {
@@ -218,6 +222,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontFamily: "Roboto",
       fontWeight: "normal"
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "95%"
     }
   },
   specialText: {
