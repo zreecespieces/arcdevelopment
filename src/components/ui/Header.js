@@ -104,7 +104,7 @@ const styles = theme => ({
 function Header(props) {
   useEffect(
     () => {
-      if (window.location.pathname === "/") {
+      if (window.location.pathname === "/" && props.activeTab !== 0) {
         props.handleRoute(0);
       } else if (
         window.location.pathname === "/services" ||
@@ -112,14 +112,28 @@ function Header(props) {
         window.location.pathname === "/mobileapps" ||
         window.location.pathname === "/websites"
       ) {
-        props.handleRoute(1);
-      } else if (window.location.pathname === "/revolution") {
+        if (props.activeTab !== 1) {
+          props.handleRoute(1);
+        }
+      } else if (
+        window.location.pathname === "/revolution" &&
+        props.activeTab !== 2
+      ) {
         props.handleRoute(2);
-      } else if (window.location.pathname === "/about") {
+      } else if (
+        window.location.pathname === "/about" &&
+        props.activeTab !== 3
+      ) {
         props.handleRoute(3);
-      } else if (window.location.pathname === "/contact") {
+      } else if (
+        window.location.pathname === "/contact" &&
+        props.activeTab !== 4
+      ) {
         props.handleRoute(4);
-      } else if (window.location.pathname === "/estimate") {
+      } else if (
+        window.location.pathname === "/estimate" &&
+        props.activeTab !== false
+      ) {
         props.handleRoute(false);
       }
     },
@@ -127,6 +141,7 @@ function Header(props) {
   );
 
   const theme = useTheme();
+  console.log("Hello");
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const [open, setOpen] = useState(false);
   var drawer = null;
