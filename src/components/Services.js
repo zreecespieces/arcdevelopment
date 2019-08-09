@@ -12,44 +12,41 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 const useStyles = makeStyles(theme => ({
   gridItem: {
     height: "400px",
+    marginLeft: "50%",
     [theme.breakpoints.down("md")]: {
-      marginLeft: "18.5%"
+      marginLeft: "30%"
     },
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "6.25%",
-      "@media (orientation: landscape)": {
-        marginLeft: "4%"
-      }
+      marginLeft: "5%"
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "50%",
       marginBottom: "100%",
-      marginLeft: "5%"
+      marginLeft: "10%"
     }
   },
   gridItemSoftware: {
     height: "400px",
-    marginTop: "60%",
-    [theme.breakpoints.down("md")]: {
-      marginTop: "2%"
-    },
+    marginLeft: "5%",
+    marginTop: "2%",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "5%",
-      marginBottom: "50%"
+      marginBottom: "50%",
+      marginLeft: "10%"
     }
   },
   gridItemIos: {
     height: "400px",
-    marginTop: "10%",
-    marginBottom: "20%",
+    marginLeft: "50%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "30%",
+      marginTop: "0%"
+    },
     [theme.breakpoints.down("sm")]: {
-      "@media (orientation: landscape)": {
-        marginLeft: "-2%"
-      }
+      marginLeft: "5%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "40%",
-      marginLeft: "5%",
+      marginLeft: "10%",
+      marginTop: "10%",
       marginBottom: "70%"
     }
   },
@@ -71,40 +68,40 @@ const useStyles = makeStyles(theme => ({
   },
   icon: {
     backfaceVisibility: "hidden",
-    marginLeft: "15%",
+    marginLeft: "10%",
+    maxWidth: "85%",
     [theme.breakpoints.down("md")]: {
-      marginLeft: "10%"
+      marginLeft: "10%",
+      marginTop: "5%"
     },
     [theme.breakpoints.down("sm")]: {
       width: "80%",
-      height: "80%",
-      "@media (orientation: landscape)": {
-        marginLeft: "10%"
-      }
+      height: "80%"
     },
     [theme.breakpoints.down("xs")]: {
       width: "100%",
-      height: "100%"
+      height: "100%",
+      marginLeft: "20%"
     }
   },
   softwareIcon: {
     backfaceVisibility: "hidden",
-    marginLeft: "15%",
+    marginLeft: "50%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "10%",
+      marginLeft: "5%"
+    },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "75%",
+      marginLeft: "65%",
       marginTop: "-35%"
     }
   },
   websiteIcon: {
     backfaceVisibility: "hidden",
-    marginLeft: "15%",
-    [theme.breakpoints.down("sm")]: {
-      "@media (orientation: landscape)": {
-        marginLeft: "10%"
-      }
-    },
+    marginLeft: "5%",
+    marginTop: "2%",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "21%",
+      marginLeft: "12%",
       marginTop: "10%"
     }
   },
@@ -137,17 +134,11 @@ const useStyles = makeStyles(theme => ({
     color: CustomTheme.palette.secondary.main
   },
   iosTextContainer: {
-    [theme.breakpoints.down("md")]: {
-      maxWidth: "40%",
-      marginLeft: "18%"
-    },
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "50%",
-      marginLeft: "6.25%"
+      maxWidth: "50%"
     },
     [theme.breakpoints.down("xs")]: {
-      maxWidth: "100%",
-      marginLeft: "0%"
+      maxWidth: "100%"
     }
   },
   websiteContainer: {
@@ -163,6 +154,8 @@ export default function Services() {
 
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesSmall = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const arrowSVG = (
     <svg
@@ -178,12 +171,46 @@ export default function Services() {
   );
 
   return (
-    <Grid container justify="space-around" direction="row">
+    <Grid container direction="column">
+      <Grid className={classes.gridItemIos} item>
+        <Grid container direction="row">
+          <Grid
+            className={classes.iosTextContainer}
+            sm={matchesMD ? 6 : matchesSmall ? 8 : 7}
+            item
+          >
+            <div className={classes.headline}>iOS/Android App Development</div>
+            <div className={classes.subtitle}>
+              Extend Functionality. Extend Access. Increase Engagement.
+            </div>
+            <div className={classes.subtext}>
+              Integrate your web experience or create a standalone app with
+              either mobile platform.
+            </div>
+            <Button
+              component={Link}
+              to="/mobileapps"
+              className={classes.learnButton}
+              variant="outlined"
+            >
+              <span style={{ marginRight: 5 }}>Learn More</span>
+              {arrowSVG}
+            </Button>
+          </Grid>
+          <Grid sm={matchesMD ? 6 : matchesSmall ? 4 : 5} item>
+            <img
+              alt="Mobile Phones and Tablets Icon"
+              className={classes.icon}
+              src={mobileAppsIcon}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
       <Grid item>
-        <Grid container>
+        <Grid container direction="row" justify="flex-start">
           <Grid className={classes.gridItemSoftware} item>
             <Grid className={classes.subContainer} container direction="row">
-              <Grid item>
+              <Grid sm={matchesMD ? 6 : matchesSmall ? 8 : null} item>
                 <div className={classes.headline}>
                   Custom Software Development
                 </div>
@@ -205,7 +232,7 @@ export default function Services() {
                   {arrowSVG}
                 </Button>
               </Grid>
-              <Grid item>
+              <Grid sm={matchesMD ? 6 : matchesSmall ? 4 : null} item>
                 <img
                   alt="Custom Software Icon"
                   className={classes.softwareIcon}
@@ -216,79 +243,38 @@ export default function Services() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
-        <Grid container direction="column">
-          <Grid className={classes.gridItemIos} item>
-            <Grid
-              className={classes.subContainerRight}
-              container
-              direction="row"
+      <Grid className={classes.gridItem} item>
+        <Grid container direction="row">
+          <Grid
+            className={classes.websiteContainer}
+            sm={matchesMD ? 6 : matchesSmall ? 8 : 5}
+            item
+          >
+            <div className={classes.headline}>Website Development</div>
+            <div className={classes.subtitle}>
+              Reach More. Discover More. Sell More.
+            </div>
+            <div className={classes.subtext}>
+              Optimized for Search Engines,
+              <br />
+              built for speed.
+            </div>
+            <Button
+              component={Link}
+              to="/websites"
+              className={classes.learnButton}
+              variant="outlined"
             >
-              <Grid className={classes.iosTextContainer} item>
-                <div className={classes.headline}>
-                  iOS/Android App Development
-                </div>
-                <div className={classes.subtitle}>
-                  Extend Functionality. Extend Access. Increase Engagement.
-                </div>
-                <div className={classes.subtext}>
-                  Integrate your web experience or create a standalone app
-                  {matchesMD ? " " : <br />}
-                  with either mobile platform.
-                </div>
-                <Button
-                  component={Link}
-                  to="/mobileapps"
-                  className={classes.learnButton}
-                  variant="outlined"
-                >
-                  <span style={{ marginRight: 5 }}>Learn More</span>
-                  {arrowSVG}
-                </Button>
-              </Grid>
-              <Grid item>
-                <img
-                  alt="Mobile Phones and Tablets Icon"
-                  className={classes.icon}
-                  src={mobileAppsIcon}
-                />
-              </Grid>
-            </Grid>
+              <span style={{ marginRight: 5 }}>Learn More</span>
+              {arrowSVG}
+            </Button>
           </Grid>
-          <Grid className={classes.gridItem} item>
-            <Grid
-              className={classes.subContainerRight}
-              container
-              direction="row"
-            >
-              <Grid className={classes.websiteContainer} item>
-                <div className={classes.headline}>Website Development</div>
-                <div className={classes.subtitle}>
-                  Reach More. Discover More. Sell More.
-                </div>
-                <div className={classes.subtext}>
-                  Optimized for Search Engines,
-                  <br />
-                  built for speed.
-                </div>
-                <Button
-                  component={Link}
-                  to="/websites"
-                  className={classes.learnButton}
-                  variant="outlined"
-                >
-                  <span style={{ marginRight: 5 }}>Learn More</span>
-                  {arrowSVG}
-                </Button>
-              </Grid>
-              <Grid item>
-                <img
-                  alt="Website Icon"
-                  className={classes.websiteIcon}
-                  src={websiteIcon}
-                />
-              </Grid>
-            </Grid>
+          <Grid sm={matchesMD ? 6 : matchesSmall ? 4 : 7} item>
+            <img
+              alt="Website Icon"
+              className={classes.websiteIcon}
+              src={websiteIcon}
+            />
           </Grid>
         </Grid>
       </Grid>
