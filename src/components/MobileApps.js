@@ -19,7 +19,8 @@ import integrationAnimation from "./animations/integrationAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
   title: {
-    ...CustomTheme.typography.heroText
+    ...CustomTheme.typography.heroText,
+    marginTop: "-1%"
   },
   heading: {
     ...CustomTheme.typography.main
@@ -56,6 +57,11 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "1%",
     marginRight: "1%",
     marginTop: "-10%",
+    [theme.breakpoints.down("lg")]: {
+      marginLeft: "-5%",
+      marginRight: "-5%",
+      marginTop: "-5%"
+    },
     [theme.breakpoints.down("md")]: {
       marginLeft: "5%",
       marginTop: "-5%",
@@ -73,20 +79,25 @@ const useStyles = makeStyles(theme => ({
   },
   bottomIcons: {
     marginBottom: "25%",
+    marginTop: "-5%",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "15%"
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "0%"
+    },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "50%"
     }
   },
   arrow: {
-    marginTop: ".55%",
     marginRight: "2%"
-  },
-  arrowRight: {
-    marginTop: ".55%",
-    marginLeft: "45%"
   },
   extendAccess: {
     marginTop: "5%",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "2%"
+    },
     [theme.breakpoints.down("sm")]: {
       marginTop: "-25%"
     }
@@ -147,6 +158,7 @@ export default function MobileApps() {
   const classes = useStyles();
 
   const theme = useTheme();
+  const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const defaultOptions = {
@@ -159,7 +171,7 @@ export default function MobileApps() {
   };
 
   return (
-    <Grid className={classes.mainContainer} container direction="column">
+    <Grid container direction="column">
       <Grid item>
         <Grid container direction="row">
           <Hidden mdDown>
@@ -207,7 +219,7 @@ export default function MobileApps() {
             </Grid>
           </Grid>
           <Hidden mdDown>
-            <Grid className={classes.arrowRight} item>
+            <Grid item>
               <Button component={Link} to="/websites">
                 <img alt="Forward Arrow" src={forwardArrow} />
               </Button>
@@ -249,8 +261,8 @@ export default function MobileApps() {
               <Grid className={classes.middleIconMiddle} item>
                 <Lottie
                   options={defaultOptions}
-                  height={matchesMD ? 400 : 700}
-                  width={matchesMD ? 300 : 400}
+                  height={matchesMD ? 400 : matchesLG ? 500 : 700}
+                  width={matchesMD ? 300 : matchesLG ? 250 : 400}
                 />
               </Grid>
               <Grid className={classes.platformContainer} item>
@@ -308,8 +320,8 @@ export default function MobileApps() {
                       <img
                         alt="tear one off sign"
                         src={access}
-                        height={matchesMD ? 300 : null}
-                        width={matchesMD ? 325 : null}
+                        height={matchesMD ? 300 : matchesLG ? 300 : null}
+                        width={matchesMD ? 325 : matchesLG ? 450 : null}
                       />
                     </Grid>
                   </Grid>

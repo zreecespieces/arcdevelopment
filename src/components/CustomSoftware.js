@@ -388,7 +388,7 @@ export default function CustomSoftware() {
             </Grid>
           </Grid>
           <Hidden mdDown>
-            <Grid className={classes.arrowRight} item>
+            <Grid item>
               <Button component={Link} to="/mobileapps">
                 <img alt="Forward Arrow" src={forwardArrow} />
               </Button>
