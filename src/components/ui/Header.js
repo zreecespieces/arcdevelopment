@@ -141,7 +141,6 @@ function Header(props) {
   );
 
   const theme = useTheme();
-  console.log("Hello");
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const [open, setOpen] = useState(false);
   var drawer = null;

@@ -60,6 +60,8 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "-60%"
     },
     [theme.breakpoints.down("sm")]: {
+      marginTop: "-20%",
+      marginBottom: "20%",
       "@media (orientation: landscape)": {
         marginBottom: "10%"
       }
@@ -70,26 +72,36 @@ const useStyles = makeStyles(theme => ({
     }
   },
   middleIconSpace: {
-    marginLeft: "5%",
-    marginRight: "5%",
+    marginLeft: "-2%",
+    marginRight: "-2%",
     [theme.breakpoints.down("md")]: {
       marginTop: "50%",
       marginBottom: "50%"
     },
     [theme.breakpoints.down("sm")]: {
-      "@media (orientation: landscape)": {
-        marginLeft: "0%",
-        marginRight: "0%"
-      }
+      maxWidth: "35%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "100%",
+      marginTop: "15%",
+      marginBottom: "15%"
     }
   },
   arrow: {
     marginRight: "2%"
   },
   automationAnimation: {
-    marginLeft: "-15%"
+    marginLeft: "-15%",
+    [theme.breakpoints.down("lg")]: {
+      marginLeft: "-20%",
+      marginTop: "2%"
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "0%",
+      marginLeft: "-12%"
+    }
   },
-  rootsContainer: {
+  rootsImage: {
     height: "30em",
     width: "30em",
     marginBottom: "10%",
@@ -105,10 +117,15 @@ const useStyles = makeStyles(theme => ({
   },
   uxAnimation: {
     marginTop: "-40%",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "-30%"
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "-40%"
+    },
     [theme.breakpoints.down("xs")]: {
       marginTop: "0%",
-      marginBottom: "-50%",
-      marginLeft: "0%"
+      marginBottom: "-35%"
     }
   },
   lastRow: {
@@ -117,13 +134,29 @@ const useStyles = makeStyles(theme => ({
   },
   scaleAnimationContainer: {
     marginTop: "-5%",
+    [theme.breakpoints.down("lg")]: {
+      marginRight: "-15%",
+      marginTop: "5%",
+      marginLeft: "10%"
+    },
+    [theme.breakpoints.down("md")]: {
+      marginRight: "0%",
+      marginTop: "0%",
+      marginLeft: "0%"
+    },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "-20%"
+      marginBottom: "-10%"
     }
   },
   documentsAnimationContainer: {
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "10%"
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "0%"
+    },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "-10%"
+      marginTop: "-5%"
     }
   },
   uxTextContainer: {
@@ -133,13 +166,16 @@ const useStyles = makeStyles(theme => ({
     }
   },
   scaleContainer: {
+    [theme.breakpoints.down("lg")]: {
+      marginLeft: "-5%"
+    },
     [theme.breakpoints.down("md")]: {
       marginBottom: "30%",
-      marginLeft: "15%"
+      marginLeft: "auto",
+      marginRight: "auto"
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: "30%",
-      marginLeft: "0%"
+      marginBottom: "30%"
     },
     [theme.breakpoints.down("xs")]: {
       marginBottom: "0%"
@@ -150,15 +186,15 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "30%",
       marginLeft: "auto",
       marginRight: "auto",
-      marginTop: "30%"
+      marginTop: "100%"
     },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "30%",
-      marginLeft: "0%",
       marginTop: "0%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "0%"
+      marginBottom: "0%",
+      marginTop: "50%"
     }
   },
   automationContainer: {
@@ -169,7 +205,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "50%",
-      marginLeft: "3%"
+      marginLeft: "4%"
     },
     [theme.breakpoints.down("xs")]: {
       marginBottom: "0%",
@@ -177,8 +213,13 @@ const useStyles = makeStyles(theme => ({
     }
   },
   uxContainer: {
+    [theme.breakpoints.down("lg")]: {
+      marginLeft: "-15%"
+    },
     [theme.breakpoints.down("md")]: {
-      marginBottom: "30%"
+      marginBottom: "30%",
+      marginLeft: "auto",
+      marginRight: "auto"
     },
     [theme.breakpoints.down("xs")]: {
       marginBottom: "0%"
@@ -188,6 +229,37 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       marginLeft: "auto",
       marginRight: "auto"
+    }
+  },
+  automationText: {
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "75%"
+    },
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100%"
+    }
+  },
+  scaleText: {
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "55%"
+    },
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100%"
+    }
+  },
+  documentsText: {
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "75%",
+      marginLeft: "25%"
+    },
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100%",
+      marginLeft: "0%"
+    }
+  },
+  rootsContainer: {
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "5%"
     },
     [theme.breakpoints.down("sm")]: {
       marginLeft: "0%"
@@ -199,6 +271,7 @@ export default function CustomSoftware() {
   const classes = useStyles();
 
   const theme = useTheme();
+  const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -297,8 +370,13 @@ export default function CustomSoftware() {
         </Grid>
       </Grid>
       <Grid className={classes.middleIcons} item>
-        <Grid container justify="center" align="center" direction="row">
-          <Grid className={classes.middleIconSpace} item>
+        <Grid
+          container
+          justify="center"
+          align="center"
+          direction={matchesXS ? "column" : "row"}
+        >
+          <Grid className={classes.middleIconSpace} sm={12} md={4} item>
             <Grid container spacing={3} direction="column">
               <Grid item>
                 <div className={classes.heading}>Save Energy</div>
@@ -308,7 +386,7 @@ export default function CustomSoftware() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid className={classes.middleIconSpace} item>
+          <Grid className={classes.middleIconSpace} sm={12} md={4} item>
             <Grid container spacing={3} direction="column">
               <Grid item>
                 <div className={classes.heading}>Save Time</div>
@@ -318,7 +396,7 @@ export default function CustomSoftware() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid className={classes.middleIconSpace} item>
+          <Grid className={classes.middleIconSpace} sm={12} md={4} item>
             <Grid container spacing={3} direction="column">
               <Grid item>
                 <div className={classes.heading}>Save Money</div>
@@ -339,7 +417,11 @@ export default function CustomSoftware() {
           <Grid className={classes.documentsContainer} item>
             <Grid justify={matchesXS ? "center" : null} container>
               <Grid align={matchesMD ? "center" : null} item>
-                <Grid container direction="column">
+                <Grid
+                  className={classes.documentsText}
+                  container
+                  direction="column"
+                >
                   <Grid item>
                     <div className={classes.heading}>
                       Digital Documents & Data
@@ -364,7 +446,11 @@ export default function CustomSoftware() {
                 </Grid>
               </Grid>
               <Grid className={classes.documentsAnimationContainer} item>
-                <Lottie options={documentsOptions} height={500} width={300} />
+                <Lottie
+                  options={documentsOptions}
+                  height={matchesLG ? 400 : 500}
+                  width={matchesLG ? 250 : 300}
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -375,9 +461,13 @@ export default function CustomSoftware() {
               container
             >
               <Grid className={classes.scaleAnimationContainer} item>
-                <Lottie options={scaleOptions} height={500} width={300} />
+                <Lottie
+                  options={scaleOptions}
+                  height={matchesLG ? 400 : 500}
+                  width={matchesLG ? 250 : 300}
+                />
               </Grid>
-              <Grid item>
+              <Grid className={classes.scaleText} item>
                 <Grid container direction="column">
                   <Grid item>
                     <div className={classes.heading}>Scale</div>
@@ -397,9 +487,9 @@ export default function CustomSoftware() {
       </Grid>
       <Grid item>
         <Grid container justify="center" direction="row">
-          <Grid item>
+          <Grid className={classes.rootsContainer} item>
             <Grid container align="center" direction="column">
-              <Grid className={classes.rootsContainer} item>
+              <Grid className={classes.rootsImage} item>
                 <img alt="tree with long roots" src={roots} />
               </Grid>
               <Grid item>
@@ -425,7 +515,11 @@ export default function CustomSoftware() {
           <Grid className={classes.automationContainer} item>
             <Grid justify={matchesXS ? "center" : null} container>
               <Grid align={matchesMD ? "center" : null} item>
-                <Grid container direction="column">
+                <Grid
+                  container
+                  className={classes.automationText}
+                  direction="column"
+                >
                   <Grid item>
                     <div className={classes.heading}>Automation</div>
                   </Grid>
@@ -444,19 +538,23 @@ export default function CustomSoftware() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid className={classes.automationAnimation} item>
+              <Grid sm={3} className={classes.automationAnimation} item>
                 <Lottie
                   options={automationOptions}
-                  height={matchesMD ? 275 : 350}
-                  width={matchesMD ? 360 : 500}
+                  height={matchesLG ? 275 : 350}
+                  width={matchesLG ? 360 : 500}
                 />
               </Grid>
             </Grid>
           </Grid>
           <Grid className={classes.uxContainer} item>
-            <Grid align="right" justify={matchesXS ? "center" : null} container>
-              <Grid className={classes.uxAnimation} item>
-                <Lottie options={uxOptions} height={800} width={200} />
+            <Grid align="right" justify={matchesMD ? "center" : null} container>
+              <Grid sm={3} className={classes.uxAnimation} item>
+                <Lottie
+                  options={uxOptions}
+                  height={matchesMD ? 800 : matchesLG ? 600 : 800}
+                  width={matchesMD ? 200 : matchesLG ? 150 : 200}
+                />
               </Grid>
               <Grid
                 className={classes.uxTextContainer}
