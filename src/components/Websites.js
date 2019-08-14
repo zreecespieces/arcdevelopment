@@ -137,7 +137,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   seo: {
-    marginLeft: "38%",
+    marginLeft: "20%",
     [theme.breakpoints.down("md")]: {
       marginLeft: "0%"
     }

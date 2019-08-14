@@ -7,20 +7,30 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import vision from "../assets/vision.svg";
 import consultationBackground from "../assets/consultation.svg";
+import consultationLarge from "../assets/consultation_large.svg";
 import consultationMobile from "../assets/consultation_mobile.svg";
 import mockupBackground from "../assets/mockup.svg";
+import mockupLarge from "../assets/mockup_large.svg";
 import mockupMobile from "../assets/mockup_mobile.svg";
 import reviewBackground from "../assets/review.svg";
+import reviewLarge from "../assets/review_large.svg";
 import reviewMobile from "../assets/review_mobile.svg";
 import designBackground from "../assets/design.svg";
 import designMobile from "../assets/design_mobile.svg";
 import buildBackground from "../assets/construction.svg";
+import buildLarge from "../assets/construction_large.svg";
+import buildMedium from "../assets/construction_medium.svg";
 import buildMobile from "../assets/construction_mobile.svg";
 import launchBackground from "../assets/launch.svg";
+import launchMedium from "../assets/launch_medium.svg";
 import launchMobile from "../assets/launch_mobile.svg";
 import iterateBackground from "../assets/iterate.svg";
+import iterateLarge from "../assets/iterate_large.svg";
+import iterateMedium from "../assets/iterate_medium.svg";
 import iterateMobile from "../assets/iterate_mobile.svg";
 import maintainBackground from "../assets/maintain.svg";
+import maintainLarge from "../assets/maintain_large.svg";
+import maintainMedium from "../assets/maintain_medium.svg";
 import maintainMobile from "../assets/maintain_mobile.svg";
 import technologyAnimation from "./animations/technologyAnimation/data.json";
 
@@ -92,7 +102,7 @@ const useStyles = makeStyles(theme => ({
   },
   technologyContainer: {
     marginTop: "15%",
-    marginBottom: "25%"
+    marginBottom: "40%"
   },
   visionContainer: {
     marginTop: "10%",
@@ -104,6 +114,15 @@ const useStyles = makeStyles(theme => ({
     }
   },
   mobileText: {
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "40%"
+    },
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "80%"
+    },
     [theme.breakpoints.down("xs")]: {
       paddingLeft: "2.5%",
       paddingRight: "2.5%"
@@ -111,6 +130,9 @@ const useStyles = makeStyles(theme => ({
   },
   imageContainer: {
     marginTop: "4%",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "-8%"
+    },
     [theme.breakpoints.down("md")]: {
       marginTop: "-20%"
     },
@@ -133,6 +155,9 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%",
+    [theme.breakpoints.down("lg")]: {
+      backgroundImage: `url(${consultationLarge})`
+    },
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${consultationMobile})`
     }
@@ -143,6 +168,9 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%",
+    [theme.breakpoints.down("lg")]: {
+      backgroundImage: `url(${mockupLarge})`
+    },
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${mockupMobile})`
     }
@@ -153,6 +181,9 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%",
+    [theme.breakpoints.down("lg")]: {
+      backgroundImage: `url(${reviewLarge})`
+    },
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${reviewMobile})`
     }
@@ -173,7 +204,13 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%",
+    [theme.breakpoints.down("lg")]: {
+      backgroundImage: `url(${buildLarge})`
+    },
     [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${buildMedium})`
+    },
+    [theme.breakpoints.down("sm")]: {
       backgroundImage: `url(${buildMobile})`
     }
   },
@@ -184,6 +221,9 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: "no-repeat",
     height: "100%",
     [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${launchMedium})`
+    },
+    [theme.breakpoints.down("sm")]: {
       backgroundImage: `url(${launchMobile})`
     }
   },
@@ -193,7 +233,13 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%",
+    [theme.breakpoints.down("lg")]: {
+      backgroundImage: `url(${maintainLarge})`
+    },
     [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${maintainMedium})`
+    },
+    [theme.breakpoints.down("sm")]: {
       backgroundImage: `url(${maintainMobile})`
     }
   },
@@ -203,7 +249,13 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%",
+    [theme.breakpoints.down("lg")]: {
+      backgroundImage: `url(${iterateLarge})`
+    },
     [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${iterateMedium})`
+    },
+    [theme.breakpoints.down("sm")]: {
       backgroundImage: `url(${iterateMobile})`
     }
   },
@@ -229,7 +281,9 @@ export default function TheRevolution() {
   const classes = useStyles();
 
   const theme = useTheme();
+  const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const defaultOptions = {
@@ -255,8 +309,10 @@ export default function TheRevolution() {
           <Grid className={classes.imageContainer} item>
             <img
               alt="mountain viewed through binoculars"
-              height={matchesXS ? 400 : matchesMD ? 800 : null}
-              width={matchesXS ? 300 : matchesMD ? 600 : null}
+              height={
+                matchesXS ? 400 : matchesSM ? 600 : matchesLG ? 800 : null
+              }
+              width={matchesXS ? 300 : matchesSM ? 500 : matchesLG ? 600 : null}
               src={vision}
             />
           </Grid>
@@ -369,8 +425,8 @@ export default function TheRevolution() {
           <Grid className={classes.animationContainer} item>
             <Lottie
               options={defaultOptions}
-              height={matchesXS ? 300 : matchesMD ? 700 : 800}
-              width={matchesXS ? 250 : matchesMD ? 700 : 800}
+              height={matchesXS ? 300 : matchesSM ? 500 : matchesMD ? 700 : 800}
+              width={matchesXS ? 250 : matchesSM ? 400 : matchesMD ? 700 : 600}
             />
           </Grid>
         </Grid>
