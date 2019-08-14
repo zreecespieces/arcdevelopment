@@ -16,8 +16,8 @@ const useStyles = makeStyles(theme => ({
     ...CustomTheme.typography.heroText
   },
   titleContainer: {
-    marginLeft: "7%",
-    [theme.breakpoints.down("sm")]: {
+    marginLeft: "5%",
+    [theme.breakpoints.down("md")]: {
       marginLeft: "0%"
     }
   },
@@ -35,13 +35,9 @@ const useStyles = makeStyles(theme => ({
   mission: {
     ...CustomTheme.typography.mission,
     maxWidth: "1300px",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("lg")]: {
       paddingLeft: "5%",
       paddingRight: "5%"
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingLeft: "2.5%",
-      paddingRight: "2.5%"
     }
   },
   missionContainer: {
@@ -58,8 +54,8 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Roboto"
   },
   historyContainer: {
-    marginBottom: "10%",
-    [theme.breakpoints.down("xs")]: {
+    marginBottom: "25%",
+    [theme.breakpoints.down("sm")]: {
       padding: "5%"
     }
   },
@@ -89,13 +85,16 @@ const useStyles = makeStyles(theme => ({
   },
   puppyContainer: {
     marginRight: "8%",
+    marginBottom: "30%",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "0%"
+    },
     [theme.breakpoints.down("sm")]: {
       marginRight: "1%",
       marginBottom: "50%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginRight: "0%",
-      marginBottom: "50%"
+      marginRight: "0%"
     }
   },
   yearbookContainer: {
@@ -103,19 +102,22 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       marginRight: "8%",
       marginTop: "20%"
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "20%"
     }
   },
   bioContainer: {
-    [theme.breakpoints.down("xs")]: {
+    marginLeft: "10%",
+    marginRight: "10%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "0%",
+      marginRight: "0%"
+    },
+    [theme.breakpoints.down("sm")]: {
       paddingLeft: "2.5%",
       paddingRight: "2.5%"
     }
   },
   caption: {
-    marginTop: "-5%"
+    marginTop: "-3%"
   }
 }));
 
@@ -123,6 +125,7 @@ export default function AboutUs() {
   const classes = useStyles();
 
   const theme = useTheme();
+  const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -156,7 +159,7 @@ export default function AboutUs() {
           align={matchesMD ? "center" : null}
           direction="row"
         >
-          <Grid item>
+          <Grid className={classes.historyText} item>
             <Grid container direction="column">
               <Grid className={classes.historyHeading} item>
                 <div className={classes.heading}>History</div>
@@ -195,8 +198,8 @@ export default function AboutUs() {
           <Grid className={classes.historyImageContainer} item>
             <img
               alt="open book with feather quill laying on top"
-              height={matchesMD ? 300 : null}
-              width={matchesMD ? 300 : null}
+              height={matchesMD ? 300 : matchesLG ? 400 : null}
+              width={matchesMD ? 300 : matchesLG ? 400 : null}
               src={history}
             />
           </Grid>
@@ -217,9 +220,9 @@ export default function AboutUs() {
             <Avatar alt="founder" src={founder} className={classes.avatar} />
           </Grid>
           <Hidden lgUp>
-            <Grid className={classes.bioContainer} item>
+            <Grid item>
               <Grid container align="center" direction="column">
-                <Grid item>
+                <Grid className={classes.bioContainer} item>
                   <p className={classes.paragraphMain}>
                     I taught myself basic coding from a library book in third
                     grade, and ever since then my passion has solely been set on
@@ -243,7 +246,7 @@ export default function AboutUs() {
           align={matchesMD ? "center" : null}
           direction="row"
         >
-          <Grid className={classes.yearbookContainer} item>
+          <Grid className={classes.yearbookContainer} lg item>
             <Grid container direction="column">
               <Grid item>
                 <img
@@ -261,9 +264,9 @@ export default function AboutUs() {
             </Grid>
           </Grid>
           <Hidden mdDown>
-            <Grid item>
+            <Grid item lg>
               <Grid container align="center" direction="column">
-                <Grid item>
+                <Grid className={classes.bioContainer} item>
                   <p className={classes.paragraphMain}>
                     I taught myself basic coding from a library book in third
                     grade, and ever since then my passion has solely been set on
@@ -278,7 +281,7 @@ export default function AboutUs() {
               </Grid>
             </Grid>
           </Hidden>
-          <Grid className={classes.puppyContainer} item>
+          <Grid className={classes.puppyContainer} lg item>
             <Grid
               container
               align={matchesMD ? "center" : "right"}
