@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     ...CustomTheme.typography.heroText
   },
-  titleContainer: {},
   confirmTitle: {
     ...CustomTheme.typography.heroText,
     fontSize: 32,
@@ -45,17 +44,14 @@ const useStyles = makeStyles(theme => ({
     color: "white"
   },
   container: {
-    paddingLeft: "5%",
-    paddingRight: "3%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "1%",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "3%"
+    },
     [theme.breakpoints.down("md")]: {
-      marginLeft: "30%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "25%"
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: "0%",
-      paddingLeft: "3%"
+      marginTop: "-2%"
     }
   },
   heading: {
@@ -72,10 +68,13 @@ const useStyles = makeStyles(theme => ({
     }
   },
   backgroundContainer: {
-    height: "74vh",
+    height: "60em",
     width: "75%",
     position: "relative",
-    marginTop: "-3%",
+    marginTop: "-5%",
+    [theme.breakpoints.down("lg")]: {
+      width: "70%"
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%"
     }
@@ -84,11 +83,17 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     marginTop: "20%",
     paddingLeft: "5%",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "300px"
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "400px"
+    },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "35%"
+      marginTop: "45%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "20%"
+      marginTop: "60%"
     }
   },
   phoneContainer: {
@@ -177,7 +182,7 @@ const useStyles = makeStyles(theme => ({
     textTransform: "none",
     fontSize: "15px",
     height: "45px",
-    width: "10vw",
+    width: "14vw",
     [theme.breakpoints.down("md")]: {
       width: "35vw"
     },
@@ -220,6 +225,9 @@ const useStyles = makeStyles(theme => ({
     width: "205px",
     marginLeft: "20%",
     marginTop: "50%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "-2%"
+    },
     [theme.breakpoints.down("xs")]: {
       marginLeft: "0%",
       width: "160px",
@@ -229,9 +237,9 @@ const useStyles = makeStyles(theme => ({
   },
   dialog: {
     maxHeight: "100%",
-    height: "45vh",
+    height: "50vh",
     [theme.breakpoints.down("md")]: {
-      height: "80vh"
+      height: "60vh"
     },
     [theme.breakpoints.down("sm")]: {
       height: "60vh"
@@ -241,12 +249,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   dialogContent: {
-    paddingLeft: "35%",
-    paddingRight: "35%",
-    [theme.breakpoints.down("xs")]: {
-      paddingLeft: "20%",
-      paddingRight: "20%"
-    }
+    marginLeft: "auto",
+    marginRight: "auto"
   },
   buttonContainer: {
     marginTop: "25%"
