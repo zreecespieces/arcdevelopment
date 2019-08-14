@@ -16,7 +16,8 @@ import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles(theme => ({
   title: {
-    ...CustomTheme.typography.heroText
+    ...CustomTheme.typography.heroText,
+    marginTop: "-1%"
   },
   heading: {
     ...CustomTheme.typography.main
@@ -47,8 +48,10 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "10%",
     [theme.breakpoints.down("md")]: {
       fontWeight: "normal",
-      marginLeft: "0%",
       maxWidth: "300px"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%"
     }
   },
   paragraphSEOFirst: {
@@ -84,12 +87,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   arrow: {
-    marginTop: ".4%",
     marginRight: "2%"
-  },
-  arrowRight: {
-    marginTop: ".4%",
-    marginLeft: "50%"
   },
   analytics: {
     marginLeft: "-13%",
@@ -127,9 +125,6 @@ const useStyles = makeStyles(theme => ({
       marginRight: "0%"
     }
   },
-  ecommerce: {
-    marginLeft: "0%"
-  },
   outreachContainer: {
     marginLeft: "5%",
     marginBottom: "15%",
@@ -164,17 +159,21 @@ const useStyles = makeStyles(theme => ({
   },
   mainTextContainer: {
     [theme.breakpoints.down("md")]: {
-      marginLeft: "50%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "11%",
+      marginLeft: "auto",
+      marginRight: "auto",
       marginBottom: "10%"
     },
     [theme.breakpoints.down("xs")]: {
       paddingLeft: "2.5%",
       paddingRight: "2.5%",
-      marginBottom: "50%",
-      marginLeft: "0%"
+      marginBottom: "50%"
+    }
+  },
+  outreach: {
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "5%",
+      marginTop: "10%",
+      marginBottom: "-10%"
     }
   }
 }));
@@ -196,13 +195,9 @@ export default function Websites() {
               </Button>
             </Grid>
           </Hidden>
-          <Grid item>
+          <Grid className={classes.mainTextContainer} item>
             <Grid container>
-              <Grid
-                item
-                className={classes.mainTextContainer}
-                align={matchesMD ? "center" : null}
-              >
+              <Grid item align={matchesMD ? "center" : null}>
                 <Grid container direction="column">
                   <Grid item>
                     <div className={classes.title}>Website Development</div>
@@ -226,7 +221,7 @@ export default function Websites() {
             </Grid>
           </Grid>
           <Hidden mdDown>
-            <Grid className={classes.arrowRight} item>
+            <Grid item>
               <Button component={Link} to="/services">
                 <img alt="Forward Arrow" src={forwardArrow} />
               </Button>
@@ -301,8 +296,12 @@ export default function Websites() {
               <Grid item>
                 <div className={classes.heading}>Outreach</div>
               </Grid>
-              <Grid className={classes.outreach} item>
-                <img alt="Megaphone with noise coming out" src={outreach} />
+              <Grid item>
+                <img
+                  className={classes.outreach}
+                  alt="Megaphone with noise coming out"
+                  src={outreach}
+                />
               </Grid>
             </Grid>
           </Grid>
