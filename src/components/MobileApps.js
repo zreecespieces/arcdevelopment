@@ -45,13 +45,7 @@ const useStyles = makeStyles(theme => ({
   },
   middleIcons: {
     marginTop: "15%",
-    marginBottom: "10%",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "3%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "0%"
-    }
+    marginBottom: "10%"
   },
   middleIconMiddle: {
     marginLeft: "1%",
@@ -63,18 +57,15 @@ const useStyles = makeStyles(theme => ({
       marginTop: "-5%"
     },
     [theme.breakpoints.down("md")]: {
-      marginLeft: "5%",
+      marginLeft: "-20%",
+      marginRight: "-20%",
       marginTop: "-5%",
-      marginBottom: "0%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "2%",
-      marginTop: "0%",
-      marginBottom: "0%"
+      zIndex: 0
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "-5%",
-      marginLeft: "1%"
+      marginLeft: "20%",
+      marginRight: "20%"
     }
   },
   bottomIcons: {
@@ -98,19 +89,26 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("lg")]: {
       marginTop: "2%"
     },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "-25%"
+    [theme.breakpoints.down("md")]: {
+      marginTop: "20%"
     }
   },
   integrationContainer: {
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "30%",
+      zIndex: 1
+    },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "50%",
-      padding: "5%"
+      marginTop: "25%",
+      padding: "5%",
+      maxWidth: "100%"
     }
   },
   platformContainer: {
     [theme.breakpoints.down("md")]: {
-      marginBottom: "20%"
+      marginBottom: "20%",
+      maxWidth: "30%",
+      zIndex: 1
     },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "40%",
@@ -118,12 +116,8 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       padding: "5%",
-      marginBottom: "75%"
-    }
-  },
-  middleIconSpace: {
-    [theme.breakpoints.down("xs")]: {
-      marginBottom: "30%"
+      marginBottom: "75%",
+      maxWidth: "100%"
     }
   },
   extendContainer: {
@@ -132,24 +126,20 @@ const useStyles = makeStyles(theme => ({
       marginRight: "-5%"
     },
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "10%",
-      marginRight: "10%",
+      marginLeft: "100%",
+      marginRight: "100%",
       marginTop: "40%",
       marginBottom: "40%"
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "30%",
-      marginTop: "30%",
-      marginLeft: "0%",
-      marginRight: "0%"
+      marginTop: "50%",
+      marginBottom: "50%"
     }
   },
-  mainText: {
+  headingContainer: {
     [theme.breakpoints.down("md")]: {
-      marginLeft: "18%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "0%"
+      marginLeft: "auto",
+      marginRight: "auto"
     }
   }
 }));
@@ -160,6 +150,7 @@ export default function MobileApps() {
   const theme = useTheme();
   const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
   const defaultOptions = {
     loop: true,
@@ -181,13 +172,9 @@ export default function MobileApps() {
               </Button>
             </Grid>
           </Hidden>
-          <Grid item>
+          <Grid className={classes.headingContainer} item>
             <Grid container>
-              <Grid
-                item
-                className={classes.mainText}
-                align={matchesMD ? "center" : null}
-              >
+              <Grid item align={matchesMD ? "center" : null}>
                 <Grid
                   container
                   justify={matchesMD ? "center" : null}
@@ -227,16 +214,12 @@ export default function MobileApps() {
           </Hidden>
         </Grid>
       </Grid>
-      <Grid
-        align={matchesMD ? "center" : null}
-        className={classes.middleIcons}
-        item
-      >
+      <Grid className={classes.middleIcons} item>
         <Grid container direction="column">
           <Grid item>
             <Grid container justify="space-around" direction="row">
               <Grid className={classes.integrationContainer} item>
-                <Grid container>
+                <Grid align={matchesMD ? "center" : "left"} container>
                   <Grid item>
                     <Grid container direction="column">
                       <Grid item>
@@ -261,8 +244,12 @@ export default function MobileApps() {
               <Grid className={classes.middleIconMiddle} item>
                 <Lottie
                   options={defaultOptions}
-                  height={matchesMD ? 400 : matchesLG ? 500 : 700}
-                  width={matchesMD ? 300 : matchesLG ? 250 : 400}
+                  height={
+                    matchesSM ? 300 : matchesMD ? 400 : matchesLG ? 500 : 700
+                  }
+                  width={
+                    matchesSM ? 200 : matchesMD ? 300 : matchesLG ? 250 : 400
+                  }
                 />
               </Grid>
               <Grid className={classes.platformContainer} item>
@@ -299,7 +286,7 @@ export default function MobileApps() {
                 align="center"
                 direction="row"
               >
-                <Grid className={classes.middleIconSpace} item>
+                <Grid item>
                   <Grid container spacing={3} direction="column">
                     <Grid item>
                       <div className={classes.heading}>
@@ -320,13 +307,13 @@ export default function MobileApps() {
                       <img
                         alt="tear one off sign"
                         src={access}
-                        height={matchesMD ? 300 : matchesLG ? 300 : null}
+                        height={matchesMD ? 100 : matchesLG ? 300 : null}
                         width={matchesMD ? 325 : matchesLG ? 450 : null}
                       />
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid className={classes.middleIconSpace} item>
+                <Grid item>
                   <Grid container spacing={3} direction="column">
                     <Grid item>
                       <div className={classes.heading}>Increase Engagement</div>
