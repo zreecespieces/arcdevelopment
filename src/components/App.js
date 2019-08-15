@@ -11,6 +11,7 @@ import FreeEstimate from "./FreeEstimate";
 import CustomSoftware from "./CustomSoftware";
 import MobileApps from "./MobileApps";
 import Websites from "./Websites";
+import ScrollToTop from "./ScrollToTop";
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class App extends Component {
     return (
       <div style={{ flex: 1, position: "relative" }} className="ui container">
         <BrowserRouter>
-          <div>
+          <ScrollToTop>
             <Header
               activeTab={this.state.active}
               handleRoute={this.onRouteChange}
@@ -43,7 +44,7 @@ class App extends Component {
               <Route path="/websites" exact component={Websites} />
             </Switch>
             <Footer />
-          </div>
+          </ScrollToTop>
         </BrowserRouter>
       </div>
     );
