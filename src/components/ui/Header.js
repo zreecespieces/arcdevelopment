@@ -102,43 +102,37 @@ const styles = theme => ({
 });
 
 function Header(props) {
-  useEffect(
-    () => {
-      if (window.location.pathname === "/" && props.activeTab !== 0) {
-        props.handleRoute(0);
-      } else if (
-        window.location.pathname === "/services" ||
-        window.location.pathname === "/customsoftware" ||
-        window.location.pathname === "/mobileapps" ||
-        window.location.pathname === "/websites"
-      ) {
-        if (props.activeTab !== 1) {
-          props.handleRoute(1);
-        }
-      } else if (
-        window.location.pathname === "/revolution" &&
-        props.activeTab !== 2
-      ) {
-        props.handleRoute(2);
-      } else if (
-        window.location.pathname === "/about" &&
-        props.activeTab !== 3
-      ) {
-        props.handleRoute(3);
-      } else if (
-        window.location.pathname === "/contact" &&
-        props.activeTab !== 4
-      ) {
-        props.handleRoute(4);
-      } else if (
-        window.location.pathname === "/estimate" &&
-        props.activeTab !== false
-      ) {
-        props.handleRoute(false);
+  useEffect(() => {
+    if (window.location.pathname === "/" && props.activeTab !== 0) {
+      props.handleRoute(0);
+    } else if (
+      window.location.pathname === "/services" ||
+      window.location.pathname === "/customsoftware" ||
+      window.location.pathname === "/mobileapps" ||
+      window.location.pathname === "/websites"
+    ) {
+      if (props.activeTab !== 1) {
+        props.handleRoute(1);
       }
-    },
-    [props]
-  );
+    } else if (
+      window.location.pathname === "/revolution" &&
+      props.activeTab !== 2
+    ) {
+      props.handleRoute(2);
+    } else if (window.location.pathname === "/about" && props.activeTab !== 3) {
+      props.handleRoute(3);
+    } else if (
+      window.location.pathname === "/contact" &&
+      props.activeTab !== 4
+    ) {
+      props.handleRoute(4);
+    } else if (
+      window.location.pathname === "/estimate" &&
+      props.activeTab !== false
+    ) {
+      props.handleRoute(false);
+    }
+  }, [props]);
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));

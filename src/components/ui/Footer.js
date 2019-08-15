@@ -68,16 +68,7 @@ const useStyles = makeStyles(theme => ({
     width: "60%",
     zIndex: 1,
     verticalAlign: "bottom",
-    backfaceVisibility: "hidden",
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "0.16%",
-      "@media (orientation: landscape)": {
-        marginTop: "0%"
-      }
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "0%"
-    }
+    backfaceVisibility: "hidden"
   },
   footerLinks: {
     color: "white",
@@ -106,14 +97,7 @@ export default function Footer() {
 
   const theme = useTheme();
   const matchesMedium = useMediaQuery(theme.breakpoints.down("md"));
-  const matchesXL = useMediaQuery(theme.breakpoints.down("xl"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-
-  if (matchesMedium) {
-    verticalSpacing = 1;
-  } else if (matchesXL) {
-    verticalSpacing = 2;
-  }
 
   const mobileFooter = (
     <footer className={classes.footer}>

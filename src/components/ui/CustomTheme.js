@@ -15,51 +15,49 @@ export default createMuiTheme({
   },
   typography: {
     main: {
-      fontFamily: "Raleway",
+      fontFamily: "Raleway, sans-serif",
       fontSize: "2em",
       color: `${arcBlue}`,
       fontWeight: "bold"
     },
     mainGrey: {
-      fontFamily: "Raleway",
+      fontFamily: "Raleway, sans-serif",
       fontSize: "2em",
       color: `${arcGrey}`,
       fontWeight: "bold"
     },
     secondary: {
-      fontFamily: "Roboto-Light, Roboto",
+      fontFamily: "Roboto-Light, Roboto, sans-serif",
       fontSize: "1.5em",
       fontWeight: "bold",
       color: `${arcGrey}`
     },
     blueSecondary: {
-      fontFamily: "Roboto-Light, Roboto",
+      fontFamily: "Roboto-Light, Roboto, sans-serif",
       fontSize: "1.25em",
       fontWeight: "bold",
       color: `${arcBlue}`
     },
     heroText: {
-      fontFamily: "Raleway",
+      fontFamily: "Raleway, sans-serif",
       fontWeight: "bold",
       fontSize: "2.5em",
       color: `${arcBlue}`
     },
     mission: {
-      fontFamily: "Raleway",
+      fontFamily: "Raleway, sans-serif",
       fontSize: "1.5em",
       fontStyle: "italic",
       color: `${arcBlue}`
     }
   },
   input: {
-    fontFamily: "Roboto-Light",
-    fontWeight: "bold",
+    fontFamily: "Roboto-Light, sans-serif",
     color: `${arcGrey}`,
     underline: `${arcBlue}`
   },
   messageInput: {
-    fontFamily: "Roboto-Light",
-    fontWeight: "bold",
+    fontFamily: "Roboto-Light, sans-serif",
     color: `${arcGrey}`,
     underline: `${arcBlue}`,
     border: `2px solid ${arcBlue}`,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Lottie from "react-lottie";
 import axios from "axios";
 import Hidden from "@material-ui/core/Hidden";
@@ -34,7 +34,6 @@ import data from "../assets/data.svg";
 import android from "../assets/android.svg";
 import globe from "../assets/globe.svg";
 import biometrics from "../assets/biometrics.svg";
-
 import estimateAnimation from "./animations/estimateAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
@@ -62,13 +61,7 @@ const useStyles = makeStyles(theme => ({
   confirmTitle: {
     ...CustomTheme.typography.heroText,
     fontSize: 32,
-    marginTop: "5%",
-    [theme.breakpoints.down("md")]: {
-      marginBottom: "-2%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "0%"
-    }
+    marginTop: "5%"
   },
   input: {
     ...CustomTheme.input
@@ -96,21 +89,11 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Pacifico",
     textTransform: "none",
     fontWeight: "10",
-    fontSize: "2vh",
+    fontSize: "20px",
     marginTop: "50%",
-    marginBottom: "80%",
-    height: "6vh",
-    width: "10vw",
-    [theme.breakpoints.down("md")]: {
-      width: "20vw"
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "40vw"
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "50vw",
-      height: "8vh"
-    }
+    marginBottom: "20vh",
+    height: "60px",
+    width: "200px"
   },
   animation: {
     marginTop: "10%",
@@ -125,7 +108,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: "15%",
     marginBottom: "10%"
   },
-  questionTitle: {
+  optionTitle: {
     ...CustomTheme.typography.main,
     fontWeight: "none",
     textTransform: "none",
@@ -142,7 +125,8 @@ const useStyles = makeStyles(theme => ({
     },
     borderRadius: "0px !important",
     [theme.breakpoints.down("xs")]: {
-      marginTop: "30%"
+      marginTop: "30%",
+      width: "300px"
     }
   },
   selectedContainer: {
@@ -153,8 +137,8 @@ const useStyles = makeStyles(theme => ({
     },
     borderRadius: "0px !important",
     [theme.breakpoints.down("xs")]: {
-      marginTop: "15%",
-      marginBottom: "15%"
+      marginTop: "30%",
+      width: "300px"
     }
   },
   spacer: {
@@ -165,33 +149,26 @@ const useStyles = makeStyles(theme => ({
     verticalAlign: "middle"
   },
   dialog: {
-    maxHeight: "100%",
-    height: "60vh",
-    width: "55vw",
-    maxWidth: "100%",
-    [theme.breakpoints.down("md")]: {
-      height: "80vh",
-      width: "80vw"
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "80vh",
-      width: "100vw"
+    height: "40em",
+    width: "55em",
+    [theme.breakpoints.down("sm")]: {
+      width: "35em",
+      height: "50em"
     }
   },
   messageInputConfirm: {
     ...CustomTheme.messageInput,
     padding: "5%",
-    marginTop: "10%",
-    [theme.breakpoints.down("xs")]: {
-      fontWeight: "normal",
-      fontFamily: "Arial"
-    }
+    marginTop: "10%"
   },
   buttonContainer: {
-    marginTop: "50%",
+    marginTop: "40%",
     marginLeft: "20%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
       marginLeft: "0%",
+      marginTop: "25%"
+    },
+    [theme.breakpoints.down("sm")]: {
       marginTop: "25%",
       marginBottom: "25%"
     }
@@ -206,26 +183,8 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Pacifico",
     textTransform: "none",
     fontSize: "20px",
-    height: "6vh",
-    width: "10vw",
-    [theme.breakpoints.down("md")]: {
-      width: "20vw",
-      height: "10vh",
-      marginTop: "40%",
-      marginLeft: "-25%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "40vw",
-      height: "6vh",
-      marginTop: "-20%",
-      marginLeft: "-25%"
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "55vw",
-      height: "8vh",
-      marginTop: "0%",
-      marginLeft: "0%"
-    }
+    height: "60px",
+    width: "200px"
   },
   paragraph: {
     ...CustomTheme.typography.secondary,
@@ -249,21 +208,29 @@ const useStyles = makeStyles(theme => ({
     fontSize: 32,
     marginLeft: "5%"
   },
-  // check: {
-  //   marginTop: "75%"
-  // },
   inputContainer: {
     marginTop: "3%"
   },
   choicesContainer: {
     marginTop: "5%"
+  },
+  questionsContainer: {
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "50%"
+    },
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100%"
+    }
   }
 }));
 
 export default function FreeEstimate() {
   const classes = useStyles();
 
+  const myRef = useRef(null);
+
   const theme = useTheme();
+  const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -510,7 +477,7 @@ export default function FreeEstimate() {
         },
         {
           id: 3,
-          title: "100-1000+",
+          title: "100+",
           subtitle: null,
           icon: people,
           iconAlt: "outline of three people",
@@ -607,6 +574,10 @@ export default function FreeEstimate() {
   const [total, setTotal] = useState(0);
 
   const nextQuestion = () => {
+    if (matchesXS) {
+      window.scrollTo(0, myRef.current.offsetTop - 100);
+    }
+
     const newQuestions = [...questions];
 
     const currentlyActive = newQuestions.filter(question => question.active);
@@ -633,6 +604,10 @@ export default function FreeEstimate() {
   };
 
   const previousQuestion = () => {
+    if (matchesXS) {
+      window.scrollTo(0, myRef.current.offsetTop - 100);
+    }
+
     const newQuestions = [...questions];
 
     const currentlyActive = newQuestions.filter(question => question.active);
@@ -770,12 +745,18 @@ export default function FreeEstimate() {
         softwareQuestions[0].options[0].selected = !softwareQuestions[0]
           .options[0].selected;
         setQuestions(softwareQuestions);
+        if (matchesXS) {
+          window.scrollTo(0, myRef.current.offsetTop - 100);
+        }
         break;
       case "iOS/Android App Development":
         setTotal(0);
         softwareQuestions[0].options[1].selected = !softwareQuestions[0]
           .options[1].selected;
         setQuestions(softwareQuestions);
+        if (matchesXS) {
+          window.scrollTo(0, myRef.current.offsetTop - 100);
+        }
         break;
       case "Website Development":
         setTotal(0);
@@ -786,12 +767,13 @@ export default function FreeEstimate() {
         websiteQuestions[0].options[2].selected = !websiteQuestions[0]
           .options[2].selected;
         setQuestions(websiteQuestions);
+        if (matchesXS) {
+          window.scrollTo(0, myRef.current.offsetTop - 100);
+        }
         break;
       default:
         setQuestions(newQuestions);
     }
-
-    selectedOptions();
   };
 
   const defaultOptions = {
@@ -863,6 +845,7 @@ export default function FreeEstimate() {
   };
 
   const onDialogOpen = () => {
+    selectedOptions();
     setDialogOpen(true);
   };
 
@@ -975,14 +958,11 @@ export default function FreeEstimate() {
   };
 
   const selectedOptions = () => {
-    const selected = questions.filter(question =>
-      question.options.filter(option => option.selected)
-    );
+    const selected = [...questions];
 
     setService(selected[0].options.filter(option => option.selected)[0].title);
 
-    //Changed selected.length > 1 to selected.length > 2 because of error, tweak if more issues
-    if (selected.length > 2) {
+    if (selected.length > 1) {
       switch (selected[0].options.filter(option => option.selected)[0].title) {
         case "Website Development":
           const websiteCategory = selected[1].options.filter(
@@ -991,33 +971,41 @@ export default function FreeEstimate() {
           setCategory(websiteCategory);
           break;
         case "Custom Software Development":
-          const featuresFirst = selected[2].options.filter(
-            option => option.selected
-          );
-          const featuresSecond = selected[3].options.filter(
-            option => option.selected
-          );
-          setPlatforms(selected[1].options.filter(option => option.selected));
-          setFeatures(featuresFirst.concat(featuresSecond));
-          setCustomFeatures(
-            selected[4].options.filter(option => option.selected)
-          );
-          setUsers(selected[5].options.filter(option => option.selected));
-          break;
+          if (selected.length > 2) {
+            const featuresFirst = selected[2].options.filter(
+              option => option.selected
+            );
+            const featuresSecond = selected[3].options.filter(
+              option => option.selected
+            );
+            setPlatforms(selected[1].options.filter(option => option.selected));
+            setFeatures(featuresFirst.concat(featuresSecond));
+            setCustomFeatures(
+              selected[4].options.filter(option => option.selected)
+            );
+            setUsers(selected[5].options.filter(option => option.selected));
+            break;
+          } else {
+            break;
+          }
         case "iOS/Android App Development":
-          const featuresNew = selected[2].options.filter(
-            option => option.selected
-          );
-          const featuresExtra = selected[3].options.filter(
-            option => option.selected
-          );
-          setPlatforms(selected[1].options.filter(option => option.selected));
-          setFeatures(featuresNew.concat(featuresExtra));
-          setCustomFeatures(
-            selected[4].options.filter(option => option.selected)
-          );
-          setUsers(selected[5].options.filter(option => option.selected));
-          break;
+          if (selected.length > 2) {
+            const featuresNew = selected[2].options.filter(
+              option => option.selected
+            );
+            const featuresExtra = selected[3].options.filter(
+              option => option.selected
+            );
+            setPlatforms(selected[1].options.filter(option => option.selected));
+            setFeatures(featuresNew.concat(featuresExtra));
+            setCustomFeatures(
+              selected[4].options.filter(option => option.selected)
+            );
+            setUsers(selected[5].options.filter(option => option.selected));
+            break;
+          } else {
+            break;
+          }
         default:
           break;
       }
@@ -1069,9 +1057,7 @@ export default function FreeEstimate() {
                         platforms.length === 2
                       ? `a Web Application and an ${platforms[1].title}.`
                       : platforms[0].title === "Web Application"
-                      ? `a Web Application, an ${platforms[1].title}, and an ${
-                          platforms[2].title
-                        }.`
+                      ? `a Web Application, an ${platforms[1].title}, and an ${platforms[2].title}.`
                       : platforms.length === 1
                       ? `an ${platforms[0].title}`
                       : platforms.length === 2 &&
@@ -1103,7 +1089,9 @@ export default function FreeEstimate() {
                   ? `${features[0].title} and ${features[1].title}.`
                   : features
                       .filter((feature, index) => index !== features.length - 1)
-                      .map(feature => <span>{`${feature.title}, `}</span>)
+                      .map((feature, index) => (
+                        <span key={index}>{`${feature.title}, `}</span>
+                      ))
                 : null}
               {features.length > 0 &&
               features.length !== 1 &&
@@ -1124,8 +1112,10 @@ export default function FreeEstimate() {
               {customFeatures.length > 0
                 ? "The custom features will be of "
                 : "No custom features selected"}
-              {customFeatures.map(customFeature => (
-                <span>{`${customFeature.title.toLowerCase()}, `}</span>
+              {customFeatures.map((customFeature, index) => (
+                <span
+                  key={index}
+                >{`${customFeature.title.toLowerCase()}, `}</span>
               ))}
               {customFeatures.length > 0
                 ? `and the project will be used by about ${
@@ -1158,8 +1148,8 @@ export default function FreeEstimate() {
             <Grid className={classes.animation} item>
               <Lottie
                 options={defaultOptions}
-                height={matchesXS ? 200 : matchesMD ? 300 : 400}
-                width={matchesXS ? 300 : matchesMD ? 400 : 600}
+                height={matchesXS ? 200 : matchesLG ? 350 : 400}
+                width={matchesXS ? 300 : matchesLG ? 500 : 600}
               />
             </Grid>
           </Grid>
@@ -1169,9 +1159,11 @@ export default function FreeEstimate() {
             {questions
               .filter(question => question.active && !question.hidden)
               .map((question, index) => (
-                <React.Fragment>
+                <React.Fragment key={index}>
                   <Grid item>
-                    <div className={classes.heading}>{question.title}</div>
+                    <div ref={myRef} className={classes.heading}>
+                      {question.title}
+                    </div>
                     <div className={classes.titleHelper}>
                       {question.subtitle}
                     </div>
@@ -1195,6 +1187,7 @@ export default function FreeEstimate() {
                               : classes.questionContainer
                           }
                           item
+                          key={index}
                         >
                           <Grid
                             container
@@ -1202,7 +1195,7 @@ export default function FreeEstimate() {
                             justify="center"
                             direction="column"
                           >
-                            <Grid className={classes.questionTitle} item>
+                            <Grid className={classes.optionTitle} item>
                               <div>{option.title}</div>
                               <div className={classes.subheading}>
                                 {option.subtitle}
@@ -1305,7 +1298,7 @@ export default function FreeEstimate() {
                       </Grid>
                       <Grid item>
                         <Grid container direction="column">
-                          <Hidden mdDown>
+                          <Hidden smDown>
                             {service === "Custom Software Development" ||
                             service === "iOS/Android App Development"
                               ? softwareChoicesGrid
@@ -1317,8 +1310,6 @@ export default function FreeEstimate() {
                           <Grid
                             className={classes.buttonContainer}
                             align={matchesMD ? "center" : null}
-                            justify={matchesMD ? "center" : null}
-                            item
                           >
                             <Button
                               onClick={onMessageSend}
