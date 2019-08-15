@@ -1,25 +1,26 @@
 import React from "react";
 import Lottie from "react-lottie";
-
 import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import CustomTheme from "../components/ui/CustomTheme";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import backArrow from "../assets/backArrow.svg";
-import forwardArrow from "../assets/forwardArrow.svg";
-import cash from "../assets/cash.svg";
-import bulb from "../assets/bulb.svg";
-import stopwatch from "../assets/stopwatch.svg";
-import roots from "../assets/root.svg";
+import CustomTheme from "../components/ui/CustomTheme";
+
+import backArrow from "../assets/icons/backArrow.svg";
+import forwardArrow from "../assets/icons/forwardArrow.svg";
+import cash from "../assets/icons/cash.svg";
+import bulb from "../assets/icons/bulb.svg";
+import stopwatch from "../assets/icons/stopwatch.svg";
+import roots from "../assets/icons/root.svg";
 import CallToAction from "./ui/CallToAction";
 
-import documentsAnimation from "./animations/documentsAnimation/data.json";
-import automationAnimation from "./animations/automationAnimation/data.json";
-import uxAnimation from "./animations/uxAnimation/data.json";
-import scaleAnimation from "./animations/scaleAnimation/data.json";
+import documentsAnimation from "../assets/animations/documentsAnimation/data.json";
+import automationAnimation from "../assets/animations/automationAnimation/data.json";
+import uxAnimation from "../assets/animations/uxAnimation/data.json";
+import scaleAnimation from "../assets/animations/scaleAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
   title: {

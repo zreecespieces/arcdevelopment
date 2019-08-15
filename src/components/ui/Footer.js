@@ -5,10 +5,10 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import CustomTheme from "./CustomTheme";
-import footerAdornment from "./Footer Adornment.svg";
-import LogoInstagram from "./instagram.svg";
-import LogoTwitter from "./twitter.svg";
-import LogoFacebook from "./facebook.svg";
+import footerAdornment from "../../assets/icons/Footer Adornment.svg";
+import LogoInstagram from "../../assets/icons/instagram.svg";
+import LogoTwitter from "../../assets/icons/twitter.svg";
+import LogoFacebook from "../../assets/icons/facebook.svg";
 
 const StyledContainer = withStyles({
   root: {

@@ -5,8 +5,8 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import CustomTheme from "./CustomTheme";
 
-import background from "../../assets/background.jpg";
-import mobileBackground from "../../assets/mobileBackground.svg";
+import background from "../../assets/pictures/background.jpg";
+import mobileBackground from "../../assets/pictures/mobileBackground.svg";
 
 const useStyles = makeStyles(theme => ({
   estimateButton: {

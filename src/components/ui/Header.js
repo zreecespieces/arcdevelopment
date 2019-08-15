@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import {
   withStyles,
   MuiThemeProvider,
@@ -17,9 +18,11 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+
 import CustomTheme from "./CustomTheme";
-import ArcLogo from "./Arc Header.svg";
-import mobileArcLogo from "./Arc Header.png";
+
+import ArcLogo from "../../assets/pictures/Arc Header.svg";
+import mobileArcLogo from "../../assets/pictures/Arc Header.png";
 
 const styles = theme => ({
   flex: {

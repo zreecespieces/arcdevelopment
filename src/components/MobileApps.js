@@ -1,21 +1,22 @@
 import React from "react";
 import Lottie from "react-lottie";
-
 import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Hidden from "@material-ui/core/Hidden";
-import backArrow from "../assets/backArrow.svg";
-import forwardArrow from "../assets/forwardArrow.svg";
-import knife from "../assets/swissKnife.svg";
-import access from "../assets/extendAccess.svg";
-import engagement from "../assets/increaseEngagement.svg";
+
+import backArrow from "../assets/icons/backArrow.svg";
+import forwardArrow from "../assets/icons/forwardArrow.svg";
+import knife from "../assets/icons/swissKnife.svg";
+import access from "../assets/icons/extendAccess.svg";
+import engagement from "../assets/icons/increaseEngagement.svg";
 import CallToAction from "./ui/CallToAction";
 
-import integrationAnimation from "./animations/integrationAnimation/data.json";
+import integrationAnimation from "../assets/animations/integrationAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
   title: {

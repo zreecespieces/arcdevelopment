@@ -1,15 +1,18 @@
 import React from "react";
+
 import Grid from "@material-ui/core/Grid";
 import CustomTheme from "../components/ui/CustomTheme";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Avatar from "@material-ui/core/Avatar";
-import CallToAction from "./ui/CallToAction";
 import Hidden from "@material-ui/core/Hidden";
-import history from "../assets/history.svg";
-import founder from "../assets/founder.jpg";
-import yearbook from "../assets/yearbook.svg";
-import puppy from "../assets/puppy.svg";
+
+import CallToAction from "./ui/CallToAction";
+
+import history from "../assets/icons/history.svg";
+import founder from "../assets/pictures/founder.jpg";
+import yearbook from "../assets/pictures/yearbook.svg";
+import puppy from "../assets/pictures/puppy.svg";
 
 const useStyles = makeStyles(theme => ({
   title: {

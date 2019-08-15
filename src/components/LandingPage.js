@@ -1,22 +1,24 @@
 import React from "react";
 import Lottie from "react-lottie";
 import { Link } from "react-router-dom";
+
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 import CustomTheme from "./ui/CustomTheme";
-import landingAnimation from "./animations/landinganimation/data.json";
 import CallToAction from "./ui/CallToAction";
 
-import customSoftwareIcon from "../assets/Custom Software Icon.svg";
-import mobileAppsIcon from "../assets/mobileIcon.svg";
-import websiteIcon from "../assets/websiteIcon.svg";
+import landingAnimation from "../assets/animations/landinganimation/data.json";
+import customSoftwareIcon from "../assets/icons/Custom Software Icon.svg";
+import mobileAppsIcon from "../assets/icons/mobileIcon.svg";
+import websiteIcon from "../assets/icons/websiteIcon.svg";
 
-import repeatingBackground from "../assets/repeatingBackgroundLarge.svg";
-import infoBackground from "../assets/infoBackground.svg";
+import repeatingBackground from "../assets/pictures/repeatingBackgroundLarge.svg";
+import infoBackground from "../assets/pictures/infoBackground.svg";
 
 const useStyles = makeStyles(theme => ({
   container: {

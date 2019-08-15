@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import LandingPage from "./LandingPage";
@@ -11,7 +12,7 @@ import FreeEstimate from "./FreeEstimate";
 import CustomSoftware from "./CustomSoftware";
 import MobileApps from "./MobileApps";
 import Websites from "./Websites";
-import ScrollToTop from "./ScrollToTop";
+import ScrollToTop from "./ui/ScrollToTop";
 
 class App extends Component {
   constructor(props) {

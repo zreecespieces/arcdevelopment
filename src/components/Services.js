@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import CustomTheme from "../components/ui/CustomTheme";
-import customSoftwareIcon from "../assets/Custom Software Icon.svg";
-import mobileAppsIcon from "../assets/mobileIcon.svg";
-import websiteIcon from "../assets/websiteIcon.svg";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import CustomTheme from "../components/ui/CustomTheme";
+
+import customSoftwareIcon from "../assets/icons/Custom Software Icon.svg";
+import mobileAppsIcon from "../assets/icons/mobileIcon.svg";
+import websiteIcon from "../assets/icons/websiteIcon.svg";
 
 const useStyles = makeStyles(theme => ({
   gridItem: {

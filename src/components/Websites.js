@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CustomTheme from "../components/ui/CustomTheme";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Hidden from "@material-ui/core/Hidden";
-import backArrow from "../assets/backArrow.svg";
-import forwardArrow from "../assets/forwardArrow.svg";
-import analytics from "../assets/analytics.svg";
-import ecommerce from "../assets/ecommerce.svg";
-import outreach from "../assets/outreach.svg";
-import seo from "../assets/seo.svg";
+
+import backArrow from "../assets/icons/backArrow.svg";
+import forwardArrow from "../assets/icons/forwardArrow.svg";
+import analytics from "../assets/icons/analytics.svg";
+import ecommerce from "../assets/icons/ecommerce.svg";
+import outreach from "../assets/icons/outreach.svg";
+import seo from "../assets/icons/seo.svg";
 import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles(theme => ({

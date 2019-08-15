@@ -15,11 +15,12 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Snackbar from "@material-ui/core/Snackbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import background from "../assets/background.jpg";
-import mobileBackground from "../assets/mobileBackground.svg";
-import phone from "../assets/phone.svg";
-import email from "../assets/email.svg";
-import send from "../assets/send.svg";
+
+import background from "../assets/pictures/background.jpg";
+import mobileBackground from "../assets/pictures/mobileBackground.svg";
+import phone from "../assets/icons/phone.svg";
+import email from "../assets/icons/email.svg";
+import send from "../assets/icons/send.svg";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -337,11 +338,7 @@ export default function ContactPage() {
   const onDialogSend = () => {
     axios
       .post(
-        `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&subj=${subject}&name=${
-          inputs[0].value
-        }&number=${inputs[1].value}&email=${
-          inputs[2].value
-        }&message=${messageField}`
+        `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&subj=${subject}&name=${inputs[0].value}&number=${inputs[1].value}&email=${inputs[2].value}&message=${messageField}`
       )
       .then(function(response) {
         setDialogOpen(false);
@@ -350,11 +347,7 @@ export default function ContactPage() {
 
         axios
           .post(
-            `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=${
-              inputs[2].value
-            }&subj=${subject}&name=${inputs[0].value}&number=${
-              inputs[1].value
-            }&email=${inputs[2].value}&message=${messageField}`
+            `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=${inputs[2].value}&subj=${subject}&name=${inputs[0].value}&number=${inputs[1].value}&email=${inputs[2].value}&message=${messageField}`
           )
           .catch(function(error) {
             console.log(error);

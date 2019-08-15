@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Lottie from "react-lottie";
 import axios from "axios";
+
 import Hidden from "@material-ui/core/Hidden";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -12,29 +13,30 @@ import DialogContent from "@material-ui/core/DialogContent";
 import TextField from "@material-ui/core/TextField";
 import Snackbar from "@material-ui/core/Snackbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import check from "../assets/check.svg";
-import send from "../assets/send.svg";
-import software from "../assets/software.svg";
-import mobile from "../assets/mobile.svg";
-import website from "../assets/website.svg";
-import backArrow from "../assets/backArrow.svg";
-import forwardArrow from "../assets/forwardArrow.svg";
-import camera from "../assets/camera.svg";
-import upload from "../assets/upload.svg";
-import person from "../assets/person.svg";
-import persons from "../assets/persons.svg";
-import info from "../assets/info.svg";
-import bell from "../assets/bell.svg";
-import people from "../assets/people.svg";
-import usersIcon from "../assets/users.svg";
-import iPhone from "../assets/iphone.svg";
-import gps from "../assets/gps.svg";
-import customized from "../assets/customized.svg";
-import data from "../assets/data.svg";
-import android from "../assets/android.svg";
-import globe from "../assets/globe.svg";
-import biometrics from "../assets/biometrics.svg";
-import estimateAnimation from "./animations/estimateAnimation/data.json";
+
+import check from "../assets/icons/check.svg";
+import send from "../assets/icons/send.svg";
+import software from "../assets/icons/software.svg";
+import mobile from "../assets/icons/mobile.svg";
+import website from "../assets/icons/website.svg";
+import backArrow from "../assets/icons/backArrow.svg";
+import forwardArrow from "../assets/icons/forwardArrow.svg";
+import camera from "../assets/icons/camera.svg";
+import upload from "../assets/icons/upload.svg";
+import person from "../assets/icons/person.svg";
+import persons from "../assets/icons/persons.svg";
+import info from "../assets/icons/info.svg";
+import bell from "../assets/icons/bell.svg";
+import people from "../assets/icons/people.svg";
+import usersIcon from "../assets/icons/users.svg";
+import iPhone from "../assets/icons/iphone.svg";
+import gps from "../assets/icons/gps.svg";
+import customized from "../assets/icons/customized.svg";
+import data from "../assets/icons/data.svg";
+import android from "../assets/icons/android.svg";
+import globe from "../assets/icons/globe.svg";
+import biometrics from "../assets/icons/biometrics.svg";
+import estimateAnimation from "../assets/animations/estimateAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
   title: {
