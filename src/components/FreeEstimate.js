@@ -895,9 +895,9 @@ export default function FreeEstimate() {
           }&number=${inputs[1].value}&email=${
             inputs[2].value
           }&message=${messageField}&estimate=${total.toString()}&service=${service}&platforms=${platforms
-            .map(platform => platform.title)
+            .map(platform => " ".concat(platform.title))
             .toString()}&features=${features
-            .map(feature => feature.title)
+            .map(feature => " ".concat(feature.title))
             .toString()}&customFeatures=${
             customFeatures[0].title
           }&users=${users[0].title.toString()}&category=${category.toString()}`
@@ -916,9 +916,9 @@ export default function FreeEstimate() {
               }&email=${
                 inputs[2].value
               }&message=${messageField}&estimate=${total.toString()}&service=${service}&platforms=${platforms
-                .map(platform => platform.title)
+                .map(platform => " ".concat(platform.title))
                 .toString()}&features=${features
-                .map(feature => feature.title)
+                .map(feature => " ".concat(feature.title))
                 .toString()}&customFeatures=${
                 customFeatures[0].title
               }&users=${users[0].title.toString()}&category=${category.toString()}`

@@ -1,5 +1,6 @@
 /* eslint-disable */
 const functions = require("firebase-functions");
+const config = functions.config();
 const admin = require("firebase-admin");
 const nodemailer = require("nodemailer");
 const cors = require("cors")({ origin: true });
@@ -11,8 +12,8 @@ admin.initializeApp();
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "",
-    pass: ""
+    user: config.mailerconfig.email,
+    pass: config.mailerconfig.password
   }
 });
 
@@ -34,30 +35,47 @@ exports.sendMail = functions.https.onRequest((req, res) => {
     const users = req.query.users;
     const category = req.query.category;
 
-    const mailOptions = {
-      from: "Arc Development <testing.mailer@arcsoftwaredevelopment.com>",
-      to: dest,
-      subject: subject,
-      html: `<p style="font-size: 16px;">From: ${name}</p>
-             <p style="font-size: 16px;">Phone Number: ${number}</p>
-             <p style="font-size: 16px;">Email: ${email}</p>
-             <p style="font-size: 16px;">Message: ${message}</p>
-             <p style="font-size: 16px;">Service: ${service}</p>
-             <p style="font-size: 16px;">Platforms: ${platforms}</p>
-             <p style="font-size: 16px;">Features: ${features}</p>
-             <p style="font-size: 16px;">Custom Features: ${customFeatures}</p>
-             <p style="font-size: 16px;">Users: ${users}</p>
-             <p style="font-size: 16px;">Category: ${
-               category ? category : "Not a website"
-             }</p>
-             <p style="font-size: 16px;">Estimate: ${estimate}</p>
-            `
-    };
+    var mailOptions;
+
+    if (estimate) {
+      mailOptions = {
+        from: "Arc Development <noreply.arcdevelopment@gmail.com>",
+        to: dest,
+        subject: subject,
+        html: `<p style="font-size: 16px;">From: ${name}</p>
+                   <p style="font-size: 16px;">Phone Number: ${number}</p>
+                   <p style="font-size: 16px;">Email: ${email}</p>
+                   <p style="font-size: 16px;">Message: ${message}</p>
+                   <p style="font-size: 16px;">Service: ${service}</p>
+                   <p style="font-size: 16px;">Platforms: ${platforms}</p>
+                   <p style="font-size: 16px;">Features: ${features}</p>
+                   <p style="font-size: 16px;">Custom Features: ${customFeatures}</p>
+                   <p style="font-size: 16px;">Users: ${users}</p>
+                   ${
+                     category
+                       ? `<p style="font-size: 16px;">Category: ${category}</p>`
+                       : `\n`
+                   }
+                   <p style="font-size: 16px;">Estimate: ${estimate}</p>
+                  `
+      };
+    } else {
+      mailOptions = {
+        from: "Arc Development <noreply.arcdevelopment@gmail.com>",
+        to: dest,
+        subject: subject,
+        html: `<p style="font-size: 16px;">From: ${name}</p>
+                   <p style="font-size: 16px;">Phone Number: ${number}</p>
+                   <p style="font-size: 16px;">Email: ${email}</p>
+                   <p style="font-size: 16px;">Message: ${message}</p>
+                  `
+      };
+    }
 
     // returning result
-    return transporter.sendMail(mailOptions, (erro, info) => {
-      if (erro) {
-        return res.send("Something went wrong!");
+    return transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return res.send(error);
       }
       return res.send("Message sent successfully");
     });
