@@ -822,7 +822,6 @@ export default function FreeEstimate() {
   ];
 
   const [inputs, setInputs] = useState(defaultInputs);
-  const subject = "Estimate Request!";
   const [messageField, setMessage] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -859,7 +858,7 @@ export default function FreeEstimate() {
     if (service === "Website Development") {
       axios
         .post(
-          `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&subj=${subject}&name=${
+          `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&name=${
             inputs[0].value
           }&number=${inputs[1].value}&email=${
             inputs[2].value
@@ -874,9 +873,7 @@ export default function FreeEstimate() {
             .post(
               `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=${
                 inputs[2].value
-              }&subj=${subject}&name=${inputs[0].value}&number=${
-                inputs[1].value
-              }&email=${
+              }&name=${inputs[0].value}&number=${inputs[1].value}&email=${
                 inputs[2].value
               }&message=${messageField}&estimate=${total.toString()}&service=${service}&category=${category.toString()}`
             )
@@ -890,7 +887,7 @@ export default function FreeEstimate() {
     } else {
       axios
         .post(
-          `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&subj=${subject}&name=${
+          `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&name=${
             inputs[0].value
           }&number=${inputs[1].value}&email=${
             inputs[2].value
@@ -911,9 +908,7 @@ export default function FreeEstimate() {
             .post(
               `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=${
                 inputs[2].value
-              }&subj=${subject}&name=${inputs[0].value}&number=${
-                inputs[1].value
-              }&email=${
+              }&name=${inputs[0].value}&number=${inputs[1].value}&email=${
                 inputs[2].value
               }&message=${messageField}&estimate=${total.toString()}&service=${service}&platforms=${platforms
                 .map(platform => " ".concat(platform.title))

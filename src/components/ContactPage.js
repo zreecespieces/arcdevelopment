@@ -132,9 +132,7 @@ const useStyles = makeStyles(theme => ({
   messageInput: {
     ...CustomTheme.messageInput,
     padding: "5%",
-    marginLeft: "5%",
     [theme.breakpoints.down("md")]: {
-      marginLeft: "0%",
       fontWeight: "normal",
       fontFamily: "Roboto"
     }
@@ -258,6 +256,10 @@ const useStyles = makeStyles(theme => ({
   },
   cancelButton: {
     marginTop: "2%"
+  },
+  inputContainer: {
+    marginTop: "2.5%",
+    marginBottom: "2.5%"
   }
 }));
 
@@ -438,9 +440,9 @@ export default function ContactPage() {
                 </Grid>
               </Grid>
             </Grid>
-            <div className={classes.inputContainer}>
+            <div>
               {inputs.map(input => (
-                <Grid item key={input.id}>
+                <Grid item className={classes.inputContainer} key={input.id}>
                   <TextField
                     InputProps={{
                       classes: {
@@ -502,7 +504,7 @@ export default function ContactPage() {
           <DialogContent className={classes.dialogContent}>
             <Grid container direction="column">
               {inputs.map(input => (
-                <Grid item key={input.id}>
+                <Grid item className={classes.inputContainer} key={input.id}>
                   <TextField
                     InputProps={{
                       classes: {
