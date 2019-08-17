@@ -9,7 +9,7 @@ import {
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -42,18 +42,21 @@ const styles = theme => ({
   tabGroup: {
     marginLeft: "auto"
   },
+  drawer: {
+    backgroundColor: CustomTheme.palette.primary.main
+  },
   drawerIcon: {
     height: "50px",
     marginLeft: "50%",
     width: "50px"
   },
-  drawerContainer: {
+  drawerButtonContainer: {
     "&:hover": {
       backgroundColor: "transparent"
     }
   },
   drawerItem: {
-    ...CustomTheme.typography.secondary
+    color: "white"
   },
   appBar: {
     flexGrow: 1
@@ -150,6 +153,7 @@ function Header(props) {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const [open, setOpen] = useState(false);
   var drawer = null;
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   const handleHeaderEstimate = () => {
     ReactGA.event({
@@ -219,10 +223,20 @@ function Header(props) {
     tabs = null;
     drawer = (
       <React.Fragment>
-        <Drawer variant="temporary" open={open} onClose={() => setOpen(false)}>
+        <SwipeableDrawer
+          open={open}
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          disableBackdropTransition={!iOS}
+          disableDiscovery={iOS}
+          classes={{
+            paper: props.classes.drawer
+          }}
+        >
           <List>
             <ListItem
               button
+              divider
               component={Link}
               to="/"
               onClick={() => setOpen(false)}
@@ -233,6 +247,7 @@ function Header(props) {
             </ListItem>
             <ListItem
               button
+              divider
               component={Link}
               to="/services"
               onClick={() => setOpen(false)}
@@ -243,6 +258,7 @@ function Header(props) {
             </ListItem>
             <ListItem
               button
+              divider
               component={Link}
               to="/revolution"
               onClick={() => setOpen(false)}
@@ -253,6 +269,7 @@ function Header(props) {
             </ListItem>
             <ListItem
               button
+              divider
               component={Link}
               to="/about"
               onClick={() => setOpen(false)}
@@ -263,6 +280,7 @@ function Header(props) {
             </ListItem>
             <ListItem
               button
+              divider
               component={Link}
               to="/contact"
               onClick={() => setOpen(false)}
@@ -273,6 +291,7 @@ function Header(props) {
             </ListItem>
             <ListItem
               button
+              divider
               component={Link}
               to="/estimate"
               onClick={handleTabsEstimate}
@@ -282,9 +301,9 @@ function Header(props) {
               </ListItemText>
             </ListItem>
           </List>
-        </Drawer>
+        </SwipeableDrawer>
         <IconButton
-          className={props.classes.drawerContainer}
+          className={props.classes.drawerButtonContainer}
           disableRipple
           onClick={() => setOpen(!open)}
         >

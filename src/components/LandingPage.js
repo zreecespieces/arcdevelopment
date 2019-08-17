@@ -547,9 +547,7 @@ export default function LandingPage() {
               Reach More. Discover More. Sell More.
             </div>
             <div className={classes.subtext}>
-              Optimized for Search Engines,
-              <br />
-              built for speed.
+              Optimized for Search Engines, built for speed.
             </div>
             <Button
               component={Link}
