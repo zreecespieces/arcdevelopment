@@ -38,6 +38,9 @@ import globe from "../assets/icons/globe.svg";
 import biometrics from "../assets/icons/biometrics.svg";
 import estimateAnimation from "../assets/animations/estimateAnimation/data.json";
 
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-145847500-1");
+
 const useStyles = makeStyles(theme => ({
   title: {
     ...CustomTheme.typography.heroText
@@ -848,6 +851,10 @@ export default function FreeEstimate() {
   const onDialogOpen = () => {
     selectedOptions();
     setDialogOpen(true);
+    ReactGA.event({
+      category: "Estimate Check",
+      action: "Estimate Opened"
+    });
   };
 
   const onDialogClose = () => {
@@ -855,6 +862,11 @@ export default function FreeEstimate() {
   };
 
   const onDialogSend = () => {
+    ReactGA.event({
+      category: "Estimate Send",
+      action: `${service} Estimate`
+    });
+
     if (service === "Website Development") {
       axios
         .post(

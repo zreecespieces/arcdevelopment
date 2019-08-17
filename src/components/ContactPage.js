@@ -22,6 +22,9 @@ import phone from "../assets/icons/phone.svg";
 import email from "../assets/icons/email.svg";
 import send from "../assets/icons/send.svg";
 
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-145847500-1");
+
 const useStyles = makeStyles(theme => ({
   title: {
     ...CustomTheme.typography.heroText
@@ -389,6 +392,13 @@ export default function ContactPage() {
     </svg>
   );
 
+  const handleContactEstimate = () => {
+    ReactGA.event({
+      category: "Estimate Button",
+      action: `Estimate Button Contact Page Pressed`
+    });
+  };
+
   return (
     <MuiThemeProvider theme={CustomTheme}>
       <Grid
@@ -605,6 +615,7 @@ export default function ContactPage() {
                 to="/estimate"
                 className={classes.estimateButton}
                 variant="contained"
+                onClick={handleContactEstimate}
               >
                 {"Free Estimate   "}
               </Button>

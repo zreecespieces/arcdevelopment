@@ -8,6 +8,9 @@ import CustomTheme from "./CustomTheme";
 import background from "../../assets/pictures/background.jpg";
 import mobileBackground from "../../assets/pictures/mobileBackground.svg";
 
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-145847500-1");
+
 const useStyles = makeStyles(theme => ({
   estimateButton: {
     backgroundColor: CustomTheme.palette.secondary.main,
@@ -90,6 +93,13 @@ export default function CallToAction() {
     </svg>
   );
 
+  const handleCallToActionEstimate = () => {
+    ReactGA.event({
+      category: "Estimate Button",
+      action: `Estimate Button Call To Action Pressed`
+    });
+  };
+
   return (
     <Grid
       container
@@ -128,6 +138,7 @@ export default function CallToAction() {
         <Button
           component={Link}
           to="/estimate"
+          onClick={handleCallToActionEstimate}
           className={classes.estimateButton}
           variant="contained"
         >

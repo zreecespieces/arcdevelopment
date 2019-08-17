@@ -20,6 +20,9 @@ import websiteIcon from "../assets/icons/websiteIcon.svg";
 import repeatingBackground from "../assets/pictures/repeatingBackgroundLarge.svg";
 import infoBackground from "../assets/pictures/infoBackground.svg";
 
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-145847500-1");
+
 const useStyles = makeStyles(theme => ({
   container: {
     width: "100%"
@@ -391,6 +394,13 @@ export default function LandingPage() {
   const matchesSmall = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesMedium = useMediaQuery(theme.breakpoints.down("md"));
 
+  const handleHeroEstimate = () => {
+    ReactGA.event({
+      category: "Estimate Button",
+      action: `Estimate Button Hero Pressed`
+    });
+  };
+
   return (
     <Grid className={classes.container} container direction="column">
       <Grid className={classes.heroContainer} item>
@@ -410,6 +420,7 @@ export default function LandingPage() {
                 <Button
                   component={Link}
                   to="/estimate"
+                  onClick={handleHeroEstimate}
                   className={classes.estimateButton}
                   variant="contained"
                 >

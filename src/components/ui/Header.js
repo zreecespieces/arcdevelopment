@@ -24,6 +24,9 @@ import CustomTheme from "./CustomTheme";
 import ArcLogo from "../../assets/pictures/Arc Header.svg";
 import mobileArcLogo from "../../assets/pictures/Arc Header.png";
 
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-145847500-1");
+
 const styles = theme => ({
   flex: {
     flex: 1
@@ -107,6 +110,7 @@ const styles = theme => ({
 function Header(props) {
   useEffect(() => {
     if (window.location.pathname === "/" && props.activeTab !== 0) {
+      ReactGA.pageview(window.location.pathname + window.location.search);
       props.handleRoute(0);
     } else if (
       window.location.pathname === "/services" ||
@@ -115,24 +119,29 @@ function Header(props) {
       window.location.pathname === "/websites"
     ) {
       if (props.activeTab !== 1) {
+        ReactGA.pageview(window.location.pathname + window.location.search);
         props.handleRoute(1);
       }
     } else if (
       window.location.pathname === "/revolution" &&
       props.activeTab !== 2
     ) {
+      ReactGA.pageview(window.location.pathname + window.location.search);
       props.handleRoute(2);
     } else if (window.location.pathname === "/about" && props.activeTab !== 3) {
+      ReactGA.pageview(window.location.pathname + window.location.search);
       props.handleRoute(3);
     } else if (
       window.location.pathname === "/contact" &&
       props.activeTab !== 4
     ) {
+      ReactGA.pageview(window.location.pathname + window.location.search);
       props.handleRoute(4);
     } else if (
       window.location.pathname === "/estimate" &&
       props.activeTab !== false
     ) {
+      ReactGA.pageview(window.location.pathname + window.location.search);
       props.handleRoute(false);
     }
   }, [props]);
@@ -141,6 +150,20 @@ function Header(props) {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const [open, setOpen] = useState(false);
   var drawer = null;
+
+  const handleHeaderEstimate = () => {
+    ReactGA.event({
+      category: "Estimate Button",
+      action: `Estimate Button Header Pressed`
+    });
+  };
+
+  const handleTabsEstimate = () => {
+    ReactGA.event({
+      category: "Estimate Button",
+      action: `Estimate Button Tabs Pressed`
+    });
+  };
 
   var tabs = (
     <React.Fragment>
@@ -183,6 +206,7 @@ function Header(props) {
       <Button
         component={Link}
         to="/estimate"
+        onClick={handleHeaderEstimate}
         className={props.classes.buttonStyle}
         variant="contained"
       >
@@ -251,7 +275,7 @@ function Header(props) {
               button
               component={Link}
               to="/estimate"
-              onClick={() => setOpen(false)}
+              onClick={handleTabsEstimate}
             >
               <ListItemText className={props.classes.drawerItem}>
                 Free Estimate

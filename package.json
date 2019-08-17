@@ -12,6 +12,7 @@
     "npm": "^6.10.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
+    "react-ga": "^2.6.0",
     "react-ionicons": "^3.0.1",
     "react-lottie": "^1.2.3",
     "react-router-dom": "^4.3.1",
