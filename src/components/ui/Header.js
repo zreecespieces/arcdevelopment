@@ -56,7 +56,9 @@ const styles = theme => ({
     }
   },
   drawerItem: {
-    color: "white"
+    color: "white",
+    fontWeight: "bold",
+    fontFamily: "Roboto"
   },
   appBar: {
     flexGrow: 1
@@ -241,7 +243,10 @@ function Header(props) {
               to="/"
               onClick={() => setOpen(false)}
             >
-              <ListItemText className={props.classes.drawerItem}>
+              <ListItemText
+                disableTypography
+                className={props.classes.drawerItem}
+              >
                 Home
               </ListItemText>
             </ListItem>
@@ -252,7 +257,10 @@ function Header(props) {
               to="/services"
               onClick={() => setOpen(false)}
             >
-              <ListItemText className={props.classes.drawerItem}>
+              <ListItemText
+                disableTypography
+                className={props.classes.drawerItem}
+              >
                 Services
               </ListItemText>
             </ListItem>
@@ -263,7 +271,10 @@ function Header(props) {
               to="/revolution"
               onClick={() => setOpen(false)}
             >
-              <ListItemText className={props.classes.drawerItem}>
+              <ListItemText
+                disableTypography
+                className={props.classes.drawerItem}
+              >
                 The Revolution
               </ListItemText>
             </ListItem>
@@ -274,7 +285,10 @@ function Header(props) {
               to="/about"
               onClick={() => setOpen(false)}
             >
-              <ListItemText className={props.classes.drawerItem}>
+              <ListItemText
+                disableTypography
+                className={props.classes.drawerItem}
+              >
                 About Us
               </ListItemText>
             </ListItem>
@@ -285,7 +299,10 @@ function Header(props) {
               to="/contact"
               onClick={() => setOpen(false)}
             >
-              <ListItemText className={props.classes.drawerItem}>
+              <ListItemText
+                disableTypography
+                className={props.classes.drawerItem}
+              >
                 Contact Us
               </ListItemText>
             </ListItem>
@@ -296,7 +313,10 @@ function Header(props) {
               to="/estimate"
               onClick={handleTabsEstimate}
             >
-              <ListItemText className={props.classes.drawerItem}>
+              <ListItemText
+                disableTypography
+                className={props.classes.drawerItem}
+              >
                 Free Estimate
               </ListItemText>
             </ListItem>
