@@ -17,7 +17,7 @@ import ScrollToTop from "./ui/ScrollToTop";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { active: 0 };
+    this.state = { active: -1 };
   }
 
   onRouteChange = index => {

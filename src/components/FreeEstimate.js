@@ -1301,11 +1301,11 @@ export default function FreeEstimate() {
                         <Grid container direction="column">
                           <Hidden smDown>
                             {service === "Custom Software Development" ||
-                            service === "iOS/Android App Development"
-                              ? softwareChoicesGrid
-                              : service === "Website Development"
-                              ? websiteChoicesGrid
-                              : null}
+                              service === "iOS/Android App Development"
+                                ? softwareChoicesGrid
+                                : service === "Website Development"
+                                  ? websiteChoicesGrid
+                                  : null}
                           </Hidden>
 
                           <Grid
