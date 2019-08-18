@@ -10,6 +10,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import TextField from "@material-ui/core/TextField";
 import Snackbar from "@material-ui/core/Snackbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -826,6 +827,7 @@ export default function FreeEstimate() {
 
   const [inputs, setInputs] = useState(defaultInputs);
   const [messageField, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
@@ -862,10 +864,7 @@ export default function FreeEstimate() {
   };
 
   const onDialogSend = () => {
-    ReactGA.event({
-      category: "Estimate Send",
-      action: `${service} Estimate`
-    });
+    setLoading(true);
 
     if (service === "Website Development") {
       axios
@@ -880,6 +879,13 @@ export default function FreeEstimate() {
           setDialogOpen(false);
           setMessage("");
           setInputs(defaultInputs);
+          setSnackbarOpen(true);
+          setSnackbarMessage("Request placed successfully");
+          setLoading(false);
+          ReactGA.event({
+            category: "Estimate Send",
+            action: `${service} Estimate`
+          });
 
           axios
             .post(
@@ -895,6 +901,11 @@ export default function FreeEstimate() {
         })
         .catch(function(error) {
           console.log(error);
+          setSnackbarOpen(true);
+          setSnackbarMessage(
+            "Something went wrong! Please refresh and try again."
+          );
+          setLoading(false);
         });
     } else {
       axios
@@ -915,6 +926,13 @@ export default function FreeEstimate() {
           setDialogOpen(false);
           setMessage("");
           setInputs(defaultInputs);
+          setSnackbarOpen(true);
+          setSnackbarMessage("Request placed successfully");
+          setLoading(false);
+          ReactGA.event({
+            category: "Estimate Send",
+            action: `${service} Estimate`
+          });
 
           axios
             .post(
@@ -936,6 +954,11 @@ export default function FreeEstimate() {
         })
         .catch(function(error) {
           console.log(error);
+          setSnackbarOpen(true);
+          setSnackbarMessage(
+            "Something went wrong! Please refresh and try again."
+          );
+          setLoading(false);
         });
     }
   };
@@ -948,12 +971,6 @@ export default function FreeEstimate() {
 
     setSnackbarOpen(false);
     setSnackbarMessage("");
-  };
-
-  const onMessageSend = () => {
-    setSnackbarOpen(true);
-    setSnackbarMessage("Request placed successfully");
-    onDialogSend();
   };
 
   const disableRequest = () => {
@@ -1135,6 +1152,13 @@ export default function FreeEstimate() {
           </Grid>
         </Grid>
       </Grid>
+    </React.Fragment>
+  );
+
+  const paperAirPlaneIcon = (
+    <React.Fragment>
+      Place Request
+      <img className={classes.send} alt="paper airplane" src={send} />
     </React.Fragment>
   );
 
@@ -1321,17 +1345,16 @@ export default function FreeEstimate() {
                             align={matchesMD ? "center" : null}
                           >
                             <Button
-                              onClick={onMessageSend}
+                              onClick={onDialogSend}
                               disabled={disableRequest()}
                               className={classes.buttonConfirm}
                               variant="contained"
                             >
-                              Place Request
-                              <img
-                                className={classes.send}
-                                alt="paper airplane"
-                                src={send}
-                              />
+                              {loading ? (
+                                <CircularProgress />
+                              ) : (
+                                paperAirPlaneIcon
+                              )}
                             </Button>
                           </Grid>
                         </Grid>
@@ -1346,7 +1369,7 @@ export default function FreeEstimate() {
               open={snackbarOpen}
               message={snackbarMessage}
               onClose={onSnackbarClose}
-              autoHideDuration={35}
+              autoHideDuration={4000}
             />
             <Grid item>
               <Grid container direction="row">

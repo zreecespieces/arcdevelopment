@@ -13,6 +13,7 @@ import {
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Snackbar from "@material-ui/core/Snackbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -274,7 +275,7 @@ export default function ContactPage() {
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const [messageField, setMessage] = useState("");
-  const subject = "Message recieved.";
+  const [loading, setLoading] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -341,18 +342,27 @@ export default function ContactPage() {
   };
 
   const onDialogSend = () => {
+    setLoading(true);
+
     axios
       .post(
-        `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&subj=${subject}&name=${inputs[0].value}&number=${inputs[1].value}&email=${inputs[2].value}&message=${messageField}`
+        `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=zachary@arcsoftwaredevelopment.com&name=${inputs[0].value}&number=${inputs[1].value}&email=${inputs[2].value}&message=${messageField}`
       )
       .then(function(response) {
         setDialogOpen(false);
         setMessage("");
         setInputs(defaultState);
+        setSnackbarOpen(true);
+        setSnackbarMessage("Message sent successfully");
+        setLoading(false);
+        ReactGA.event({
+          category: "Contact Us",
+          action: `Message Sent`
+        });
 
         axios
           .post(
-            `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=${inputs[2].value}&subj=${subject}&name=${inputs[0].value}&number=${inputs[1].value}&email=${inputs[2].value}&message=${messageField}`
+            `https://us-central1-arc-development-website.cloudfunctions.net/sendMail?dest=${inputs[2].value}&name=${inputs[0].value}&number=${inputs[1].value}&email=${inputs[2].value}&message=${messageField}`
           )
           .catch(function(error) {
             console.log(error);
@@ -360,6 +370,11 @@ export default function ContactPage() {
       })
       .catch(function(error) {
         console.log(error);
+        setSnackbarOpen(true);
+        setSnackbarMessage(
+          "Something went wrong! Please refresh and try again."
+        );
+        setLoading(false);
       });
   };
 
@@ -371,12 +386,6 @@ export default function ContactPage() {
 
     setSnackbarOpen(false);
     setSnackbarMessage("");
-  };
-
-  const onMessageSend = () => {
-    setSnackbarOpen(true);
-    setSnackbarMessage("Message sent successfully");
-    onDialogSend();
   };
 
   const arrowSVG = (
@@ -398,6 +407,13 @@ export default function ContactPage() {
       action: `Estimate Button Contact Page Pressed`
     });
   };
+
+  const paperAirPlaneIcon = (
+    <React.Fragment>
+      Send Message
+      <img className={classes.send} alt="paper airplane" src={send} />
+    </React.Fragment>
+  );
 
   return (
     <MuiThemeProvider theme={CustomTheme}>
@@ -493,8 +509,7 @@ export default function ContactPage() {
                 className={classes.buttonStyle}
                 variant="contained"
               >
-                Send Message
-                <img className={classes.send} alt="paper airplane" src={send} />
+                {paperAirPlaneIcon}
               </Button>
             </Grid>
           </Grid>
@@ -556,16 +571,11 @@ export default function ContactPage() {
                 </Grid>
                 <Grid item>
                   <Button
-                    onClick={onMessageSend}
+                    onClick={onDialogSend}
                     className={classes.buttonConfirm}
                     variant="contained"
                   >
-                    Send Message
-                    <img
-                      className={classes.send}
-                      alt="paper airplane"
-                      src={send}
-                    />
+                    {loading ? <CircularProgress /> : paperAirPlaneIcon}
                   </Button>
                 </Grid>
               </Grid>
@@ -577,7 +587,7 @@ export default function ContactPage() {
           open={snackbarOpen}
           message={snackbarMessage}
           onClose={onSnackbarClose}
-          autoHideDuration={35}
+          autoHideDuration={4000}
         />
         <Grid className={classes.backgroundContainer} item>
           <Grid
