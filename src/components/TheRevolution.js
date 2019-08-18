@@ -122,11 +122,7 @@ const useStyles = makeStyles(theme => ({
       maxWidth: "100%"
     },
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "80%"
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingLeft: "2.5%",
-      paddingRight: "2.5%"
+      maxWidth: "90%"
     }
   },
   imageContainer: {
