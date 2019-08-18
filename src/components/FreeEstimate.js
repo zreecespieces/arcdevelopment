@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Fragment } from "react";
 import Lottie from "react-lottie";
 import axios from "axios";
 
@@ -273,8 +273,7 @@ export default function FreeEstimate() {
           cost: 0
         }
       ],
-      active: true,
-      hidden: false
+      active: true
     }
   ];
 
@@ -311,8 +310,7 @@ export default function FreeEstimate() {
           cost: 0
         }
       ],
-      active: false,
-      hidden: false
+      active: false
     },
     {
       id: 2,
@@ -347,8 +345,7 @@ export default function FreeEstimate() {
           cost: 1000
         }
       ],
-      active: true,
-      hidden: false
+      active: true
     },
     {
       id: 3,
@@ -383,8 +380,7 @@ export default function FreeEstimate() {
           cost: 250
         }
       ],
-      active: false,
-      hidden: false
+      active: false
     },
     {
       id: 4,
@@ -419,8 +415,7 @@ export default function FreeEstimate() {
           cost: 250
         }
       ],
-      active: false,
-      hidden: false
+      active: false
     },
     {
       id: 5,
@@ -455,8 +450,7 @@ export default function FreeEstimate() {
           cost: 1000
         }
       ],
-      active: false,
-      hidden: false
+      active: false
     },
     {
       id: 6,
@@ -491,8 +485,7 @@ export default function FreeEstimate() {
           cost: 1.25
         }
       ],
-      active: false,
-      hidden: false
+      active: false
     }
   ];
 
@@ -529,8 +522,7 @@ export default function FreeEstimate() {
           cost: 0
         }
       ],
-      active: false,
-      hidden: false
+      active: false
     },
     {
       id: 2,
@@ -565,8 +557,7 @@ export default function FreeEstimate() {
           cost: 2500
         }
       ],
-      active: true,
-      hidden: false
+      active: true
     }
   ];
 
@@ -585,26 +576,13 @@ export default function FreeEstimate() {
     }
 
     const newQuestions = [...questions];
-
     const currentlyActive = newQuestions.filter(question => question.active);
     const activeIndex = currentlyActive[0].id - 1;
 
-    const filterHidden = newQuestions.filter(question => !question.hidden);
-    const filterActiveIndex = filterHidden.indexOf(currentlyActive[0]);
-
-    if (filterActiveIndex + 1 === filterHidden.length) {
-      return;
-    }
-
-    const nextNotHidden = filterHidden[filterActiveIndex + 1].id;
-
-    const nextActive = newQuestions.filter(
-      question => question.id === nextNotHidden
-    );
-    const nextIndex = nextActive[0].id - 1;
+    const nextIndex = activeIndex + 1;
 
     newQuestions[activeIndex] = { ...currentlyActive[0], active: false };
-    newQuestions[nextIndex] = { ...nextActive[0], active: true };
+    newQuestions[nextIndex] = { ...newQuestions[nextIndex], active: true };
 
     setQuestions(newQuestions);
   };
@@ -619,18 +597,10 @@ export default function FreeEstimate() {
     const currentlyActive = newQuestions.filter(question => question.active);
     const activeIndex = currentlyActive[0].id - 1;
 
-    const filterHidden = newQuestions.filter(question => !question.hidden);
-    const filterActiveIndex = filterHidden.indexOf(currentlyActive[0]);
-
-    const nextNotHidden = filterHidden[filterActiveIndex - 1].id;
-
-    const nextActive = newQuestions.filter(
-      question => question.id === nextNotHidden
-    );
-    const nextIndex = nextActive[0].id - 1;
+    const nextIndex = activeIndex - 1;
 
     newQuestions[activeIndex] = { ...currentlyActive[0], active: false };
-    newQuestions[nextIndex] = { ...nextActive[0], active: true };
+    newQuestions[nextIndex] = { ...newQuestions[nextIndex], active: true };
 
     setQuestions(newQuestions);
   };
@@ -650,9 +620,7 @@ export default function FreeEstimate() {
     const currentlyActive = questions.filter(question => question.active);
     const activeId = currentlyActive[0].id;
 
-    const filterHidden = questions.filter(question => !question.hidden);
-
-    if (activeId === filterHidden[filterHidden.length - 1].id) {
+    if (activeId === questions[questions.length - 1].id) {
       return true;
     } else {
       return false;
@@ -1041,7 +1009,7 @@ export default function FreeEstimate() {
   };
 
   const websiteChoicesGrid = (
-    <React.Fragment>
+    <Fragment>
       <Grid item>
         <Grid className={classes.choicesContainer} container direction="row">
           <Grid item>
@@ -1056,11 +1024,11 @@ export default function FreeEstimate() {
           </Grid>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Fragment>
   );
 
   const softwareChoicesGrid = (
-    <React.Fragment>
+    <Fragment>
       <Grid item>
         <Grid
           className={classes.choicesContainer}
@@ -1152,14 +1120,14 @@ export default function FreeEstimate() {
           </Grid>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Fragment>
   );
 
   const paperAirPlaneIcon = (
-    <React.Fragment>
+    <Fragment>
       Place Request
       <img className={classes.send} alt="paper airplane" src={send} />
-    </React.Fragment>
+    </Fragment>
   );
 
   return (
@@ -1190,9 +1158,9 @@ export default function FreeEstimate() {
         <Grid className={classes.questionsContainer} item>
           <Grid container justify="center" align="center" direction="column">
             {questions
-              .filter(question => question.active && !question.hidden)
+              .filter(question => question.active)
               .map((question, index) => (
-                <React.Fragment key={index}>
+                <Fragment key={index}>
                   <Grid item>
                     <div ref={myRef} className={classes.heading}>
                       {question.title}
@@ -1246,7 +1214,7 @@ export default function FreeEstimate() {
                       ))}
                     </Grid>
                   </Grid>
-                </React.Fragment>
+                </Fragment>
               ))}
             <Dialog
               classes={{
