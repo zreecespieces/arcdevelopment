@@ -1,36 +1,28 @@
 {
-  "name": "arclandingpage",
-  "version": "0.1.0",
+  "name": "nextjs",
+  "version": "4.0.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.0.0-rc.0",
+    "@material-ui/core": "latest",
     "@material-ui/icons": "^4.2.1",
+    "@material-ui/styles": "latest",
     "axios": "^0.19.0",
-    "cors": "^2.8.5",
-    "firebase-tools": "^7.0.2",
-    "nodemailer": "^6.2.1",
-    "npm": "^6.10.0",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "clsx": "latest",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^7.0.0",
+    "imagemin-svgo": "^7.0.0",
+    "next": "latest",
+    "next-compose-plugins": "^2.2.0",
+    "next-optimized-images": "^2.5.3",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
     "react-ga": "^2.6.0",
-    "react-ionicons": "^3.0.1",
-    "react-lottie": "^1.2.3",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "^3.0.1"
+    "react-lottie": "^1.2.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  }
 }
