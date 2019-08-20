@@ -57,6 +57,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   landingAnimation: {
+    marginLeft: "8%",
     maxWidth: "800px"
   },
   estimateButton: {
@@ -423,7 +424,7 @@ export default function LandingPage() {
             </Grid>
           </Grid>
           <Grid sm className={classes.landingAnimation} item>
-            <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+            <Lottie options={defaultOptions} height={350} width={500} />
           </Grid>
         </Grid>
       </Grid>
