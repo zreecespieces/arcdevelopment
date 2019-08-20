@@ -58,7 +58,10 @@ const useStyles = makeStyles(theme => ({
   },
   landingAnimation: {
     marginLeft: "8%",
-    maxWidth: "800px"
+    maxWidth: "800px",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "auto"
+    }
   },
   estimateButton: {
     backgroundColor: theme.palette.secondary.main,
@@ -360,6 +363,7 @@ export default function LandingPage() {
     }
   };
 
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const matchesSmall = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesMedium = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -424,7 +428,11 @@ export default function LandingPage() {
             </Grid>
           </Grid>
           <Grid sm className={classes.landingAnimation} item>
-            <Lottie options={defaultOptions} height={350} width={500} />
+            <Lottie
+              options={defaultOptions}
+              height={"100%"}
+              width={matchesXS ? "25em" : "100%"}
+            />
           </Grid>
         </Grid>
       </Grid>

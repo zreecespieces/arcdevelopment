@@ -160,6 +160,7 @@ function Header(props) {
   };
 
   const handleTabsEstimate = () => {
+    setOpen(false);
     ReactGA.event({
       category: "Estimate Button",
       action: `Estimate Button Tabs Pressed`
