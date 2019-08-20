@@ -13,7 +13,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import background from "../static/pictures/background.jpg";
-import mobileBackground from "../static/pictures/mobileBackground.svg";
+import mobileBackground from "../static/pictures/mobileBackground.jpg";
 import phone from "../static/icons/phone.svg";
 import email from "../static/icons/email.svg";
 import send from "../static/icons/send.svg";

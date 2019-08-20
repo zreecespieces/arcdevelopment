@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
 import background from "../../static/pictures/background.jpg";
-import mobileBackground from "../../static/pictures/mobileBackground.svg";
+import mobileBackground from "../../static/pictures/mobileBackground.jpg";
 
 import ReactGA from "react-ga";
 ReactGA.initialize("UA-145847500-1");
