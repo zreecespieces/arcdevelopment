@@ -1,6 +1,7 @@
 import React from "react";
 import Lottie from "react-lottie";
 import Link from "../src/Link";
+import Head from "next/head";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -163,6 +164,17 @@ export default function MobileApps() {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title>Mobile App Development | Arc Development</title>
+        <meta
+          name="description"
+          content="Arc Development uses cutting-edge technology to create cross-platform native mobile apps for iOS, Android, and tablets. Integrate with a web experience or use a standalone app to reinvent the way your business interacts with its customers. | Wichita, KS"
+        />
+        <link
+          href="https://www.arcsoftwaredevelopment.com/mobileapps"
+          rel="canonical"
+        />
+      </Head>
       <Grid item>
         <Grid container direction="row">
           <Hidden mdDown>
@@ -264,8 +276,8 @@ export default function MobileApps() {
                       <Grid item>
                         <p className={classes.paragraph}>
                           Our cutting-edge development process allows us to
-                          create apps for iPhone, Android, and tablets — all at
-                          the same time.
+                          create apps for iOS, Android, and tablets — all at the
+                          same time.
                         </p>
                         <p className={classes.paragraph}>
                           This significantly reduces costs and creates a more

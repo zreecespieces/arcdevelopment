@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -135,6 +136,17 @@ export default function AboutUs() {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title>About Us | Arc Development</title>
+        <meta
+          name="description"
+          content="Arc Development wants to bring fast, modern, affordable, and aesthetic software to the Midwest. Utilizing Silicon Valley breakthroughs in software development allows us to do exactly that. | Wichita, KS"
+        />
+        <link
+          href="https://www.arcsoftwaredevelopment.com/about"
+          rel="canonical"
+        />
+      </Head>
       <Grid className={classes.titleContainer} item>
         <Grid justify={matchesMD ? "center" : null} container>
           <Grid item>
@@ -173,8 +185,8 @@ export default function AboutUs() {
                   We're the new kid on the block
                 </div>
                 <p className={classes.paragraphMain}>
-                  Founded in 2019, we're ready to get our hands on the world's
-                  business problems.
+                  Founded in 2019 out of Wichita, Kansas, we're ready to get our
+                  hands on the world's business problems.
                 </p>
                 <p className={classes.paragraphMain}>
                   It all started with one question: Why aren’t all businesses

@@ -1,6 +1,7 @@
 import React, { useState, useRef, Fragment } from "react";
 import Lottie from "react-lottie";
 import axios from "axios";
+import Head from "next/head";
 
 import Hidden from "@material-ui/core/Hidden";
 import Grid from "@material-ui/core/Grid";
@@ -1134,6 +1135,17 @@ export default function FreeEstimate() {
       justify={matchesMD ? "center" : "space-between"}
       direction="row"
     >
+      <Head>
+        <title>Estimate | Arc Development</title>
+        <meta
+          name="description"
+          content="Use our free online calculator to get an estimate for your custom software project instantly. | Wichita, KS"
+        />
+        <link
+          href="https://www.arcsoftwaredevelopment.com/estimate"
+          rel="canonical"
+        />
+      </Head>
       <Grid
         className={classes.titleContainer}
         align={matchesMD ? "center" : null}

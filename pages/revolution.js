@@ -1,5 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
+import Head from "next/head";
 
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -293,6 +294,17 @@ export default function TheRevolution() {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title>The Revolution | Arc Development</title>
+        <meta
+          name="description"
+          content="Our business process centers around holistically analyzing your workflow to determine the best implementation of technology using revolutionary new software development techniques. | Wichita, KS"
+        />
+        <link
+          href="https://www.arcsoftwaredevelopment.com/revolution"
+          rel="canonical"
+        />
+      </Head>
       <Grid className={classes.titleContainer} item>
         <Grid justify={matchesMD ? "center" : null} container>
           <Grid item>

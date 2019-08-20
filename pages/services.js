@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "../src/Link";
+import Head from "next/head";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -173,6 +174,17 @@ export default function Services() {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title>Services | Arc Development</title>
+        <meta
+          name="description"
+          content="Arc Development offers Custom Software Development, iOS/Android App Development, and Website Development using the latest and greatest tools and techniques. | Wichita, KS"
+        />
+        <link
+          href="https://www.arcsoftwaredevelopment.com/services"
+          rel="canonical"
+        />
+      </Head>
       <Grid className={classes.gridItemIos} item>
         <Grid container direction="row">
           <Grid

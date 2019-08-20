@@ -1,6 +1,7 @@
 import React from "react";
 import Lottie from "react-lottie";
 import Link from "../src/Link";
+import Head from "next/head";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -340,6 +341,17 @@ export default function CustomSoftware() {
 
   return (
     <Grid className={classes.mainContainer} container direction="column">
+      <Head>
+        <title>Custom Software Development | Arc Development</title>
+        <meta
+          name="description"
+          content="Don't settle for generalized software solutions; custom software from Arc Development is designed from the ground up with your users and needs at the core, producing a finely tuned product which is much more effective at improving your workflow and reducing costs. | Wichita, KS"
+        />
+        <link
+          href="https://www.arcsoftwaredevelopment.com/customsoftware"
+          rel="canonical"
+        />
+      </Head>
       <Grid item>
         <Grid container direction="row">
           <Hidden mdDown>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "../src/Link";
 import axios from "axios";
+import Head from "next/head";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -417,6 +418,17 @@ export default function ContactPage() {
       justify={matchesXS ? "center" : "space-between"}
       direction="row"
     >
+      <Head>
+        <title>Contact Us | Arc Development</title>
+        <meta
+          name="description"
+          content="We would love to hear from you! Send us a message, email, or give us a call so we can talk about how Arc Development will help your business with custom software. | Wichita, KS"
+        />
+        <link
+          href="https://www.arcsoftwaredevelopment.com/contact"
+          rel="canonical"
+        />
+      </Head>
       <Grid className={classes.container} item>
         <Grid container spacing={1} direction="column">
           <Grid
