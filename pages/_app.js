@@ -39,7 +39,7 @@ class MyApp extends App {
             name="description"
             content="Custom software built with cutting-edge technology. Complete design and development for websites, web applications, and cross-platform native mobile apps. Get a free online estimate! | Wichita, KS"
           />
-          <link href="https://www.arcsoftwaredevelopment.com" rel="canonical" />
+          <link href="https://arcsoftwaredevelopment.com" rel="canonical" />
         </Head>
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

@@ -142,10 +142,7 @@ export default function AboutUs() {
           name="description"
           content="Arc Development wants to bring fast, modern, affordable, and aesthetic software to the Midwest. Utilizing Silicon Valley breakthroughs in software development allows us to do exactly that. | Wichita, KS"
         />
-        <link
-          href="https://www.arcsoftwaredevelopment.com/about"
-          rel="canonical"
-        />
+        <link href="https://arcsoftwaredevelopment.com/about" rel="canonical" />
       </Head>
       <Grid className={classes.titleContainer} item>
         <Grid justify={matchesMD ? "center" : null} container>

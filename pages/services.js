@@ -181,7 +181,7 @@ export default function Services() {
           content="Arc Development offers Custom Software Development, iOS/Android App Development, and Website Development using the latest and greatest tools and techniques. | Wichita, KS"
         />
         <link
-          href="https://www.arcsoftwaredevelopment.com/services"
+          href="https://arcsoftwaredevelopment.com/services"
           rel="canonical"
         />
       </Head>

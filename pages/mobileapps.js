@@ -171,7 +171,7 @@ export default function MobileApps() {
           content="Arc Development uses cutting-edge technology to create cross-platform native mobile apps for iOS, Android, and tablets. Integrate with a web experience or use a standalone app to reinvent the way your business interacts with its customers. | Wichita, KS"
         />
         <link
-          href="https://www.arcsoftwaredevelopment.com/mobileapps"
+          href="https://arcsoftwaredevelopment.com/mobileapps"
           rel="canonical"
         />
       </Head>
