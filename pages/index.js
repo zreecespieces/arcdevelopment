@@ -57,7 +57,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   landingAnimation: {
-    marginLeft: "8%",
     maxWidth: "800px"
   },
   estimateButton: {
