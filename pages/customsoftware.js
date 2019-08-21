@@ -350,6 +350,7 @@ export default function CustomSoftware() {
         <link
           href="https://arcsoftwaredevelopment.com/customsoftware"
           rel="canonical"
+          key="canonical"
         />
       </Head>
       <Grid item>

@@ -427,6 +427,7 @@ export default function ContactPage() {
         <link
           href="https://arcsoftwaredevelopment.com/contact"
           rel="canonical"
+          key="canonical"
         />
       </Head>
       <Grid className={classes.container} item>

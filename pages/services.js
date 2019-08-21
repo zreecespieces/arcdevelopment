@@ -183,6 +183,7 @@ export default function Services() {
         <link
           href="https://arcsoftwaredevelopment.com/services"
           rel="canonical"
+          key="canonical"
         />
       </Head>
       <Grid className={classes.gridItemIos} item>

@@ -1,6 +1,5 @@
 import React from "react";
 import App, { Container } from "next/app";
-import Head from "next/head";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
@@ -31,17 +30,6 @@ class MyApp extends App {
 
     return (
       <Container>
-        <Head>
-          <title>
-            Bringing West Coast Technology to the Midwest: Custom Software
-            Development | Arc Development
-          </title>
-          <meta
-            name="description"
-            content="Custom software built with cutting-edge technology. Complete design and development for websites, web applications, and cross-platform native mobile apps. Get a free online estimate! | Wichita, KS"
-          />
-          <link href="https://arcsoftwaredevelopment.com" rel="canonical" />
-        </Head>
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />

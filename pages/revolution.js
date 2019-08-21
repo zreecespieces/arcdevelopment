@@ -305,6 +305,7 @@ export default function TheRevolution() {
         <link
           href="https://arcsoftwaredevelopment.com/revolution"
           rel="canonical"
+          key="canonical"
         />
       </Head>
       <Grid className={classes.titleContainer} item>

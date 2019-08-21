@@ -176,6 +176,7 @@ export default function MobileApps() {
         <link
           href="https://arcsoftwaredevelopment.com/mobileapps"
           rel="canonical"
+          key="canonical"
         />
       </Head>
       <Grid item>

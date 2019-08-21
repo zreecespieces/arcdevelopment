@@ -1,6 +1,7 @@
 import React from "react";
 import ReactGA from "react-ga";
 import Lottie from "react-lottie";
+import Head from "next/head";
 import Link from "../src/Link";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -376,6 +377,21 @@ export default function LandingPage() {
 
   return (
     <Grid className={classes.container} container direction="column">
+      <Head>
+        <title>
+          Bringing West Coast Technology to the Midwest: Custom Software
+          Development | Arc Development
+        </title>
+        <meta
+          name="description"
+          content="Custom software built with cutting-edge technology. Complete design and development for websites, web applications, and cross-platform native mobile apps. Get a free online estimate! | Wichita, KS"
+        />
+        <link
+          href="https://arcsoftwaredevelopment.com"
+          rel="canonical"
+          key="canonical"
+        />
+      </Head>
       <Grid className={classes.heroContainer} item>
         <Grid
           alignItems="center"

@@ -197,6 +197,7 @@ export default function Websites() {
         <link
           href="https://arcsoftwaredevelopment.com/websites"
           rel="canonical"
+          key="canonical"
         />
       </Head>
       <Grid item>

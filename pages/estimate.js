@@ -1144,6 +1144,7 @@ export default function FreeEstimate() {
         <link
           href="https://arcsoftwaredevelopment.com/estimate"
           rel="canonical"
+          key="canonical"
         />
       </Head>
       <Grid
