@@ -18,6 +18,11 @@ class MyDocument extends Document {
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com/"
+            crossorigin
+          />
+          <link
             href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:400,700&display=swap"
             rel="stylesheet"
           />
