@@ -555,9 +555,10 @@ export default function TheRevolution() {
             <p className={classes.paragraphSmall}>
               Using the mockups and notes taken during the consultation as
               guides, we will start ironing out what the final product will look
-              like. This also involves using any brand material like fonts,
-              colors, and logos to extend the experience you've already
-              established.
+              like. Everything is custom from the ground up - we never use
+              templates or drag-and-drop builders. This also involves using any
+              brand material like fonts, colors, and logos to extend the
+              experience you've already established.
             </p>
             <p className={classes.paragraphSmall}>
               No aspect is superfluous, and care will be taken with every

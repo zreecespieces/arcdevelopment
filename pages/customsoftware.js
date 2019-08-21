@@ -46,8 +46,9 @@ const useStyles = makeStyles(theme => ({
   paragraph: {
     ...theme.typography.secondary,
     fontSize: 20,
-    maxWidth: "400px",
+    maxWidth: "300px",
     [theme.breakpoints.down("md")]: {
+      maxWidth: "400px",
       paddingLeft: "5%",
       paddingRight: "5%",
       fontWeight: "normal"
@@ -95,9 +96,10 @@ const useStyles = makeStyles(theme => ({
     marginRight: "2%"
   },
   automationAnimation: {
-    marginLeft: "-35%",
+    marginLeft: "-85%",
     [theme.breakpoints.down("lg")]: {
-      marginTop: "2%"
+      marginTop: "2%",
+      marginLeft: "-75%"
     },
     [theme.breakpoints.down("md")]: {
       marginTop: "0%",
@@ -112,7 +114,7 @@ const useStyles = makeStyles(theme => ({
     height: "30em",
     width: "30em",
     marginBottom: "10%",
-    marginTop: "50%",
+    marginTop: "300px",
     [theme.breakpoints.down("md")]: {
       marginTop: "0%"
     },
@@ -123,9 +125,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
   uxAnimation: {
-    marginTop: "-38%",
+    marginTop: "-45%",
     [theme.breakpoints.down("lg")]: {
-      marginTop: "-30%"
+      marginTop: "-35%"
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "0%",
@@ -134,13 +136,15 @@ const useStyles = makeStyles(theme => ({
     }
   },
   lastRow: {
-    marginTop: "20%",
-    marginBottom: "15%"
+    marginTop: "300px",
+    marginBottom: "15%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "90px"
+    }
   },
   scaleAnimationContainer: {
     marginTop: "-5%",
     [theme.breakpoints.down("lg")]: {
-      marginRight: "-15%",
       marginTop: "5%",
       marginLeft: "10%"
     },

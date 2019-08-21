@@ -20,10 +20,10 @@ class MyDocument extends Document {
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com/"
-            crossorigin
+            crossOrigin="true"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:400,700&display=swap"
+            href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:300,400,700&display=swap"
             rel="stylesheet"
           />
           <link rel="shortcut icon" type="image/x-icon" href={favicon} />
