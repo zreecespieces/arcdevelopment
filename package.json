@@ -10,7 +10,6 @@
     "clsx": "latest",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.0.0",
-    "imagemin-svgo": "^7.0.0",
     "next": "latest",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.5.3",
