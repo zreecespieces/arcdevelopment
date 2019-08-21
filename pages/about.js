@@ -137,7 +137,7 @@ export default function AboutUs() {
   return (
     <Grid container direction="column">
       <Head>
-        <title>About Us | Arc Development</title>
+        <title>About Us: Our History and Team | Arc Development</title>
         <meta
           name="description"
           content="Arc Development wants to bring fast, modern, affordable, and aesthetic software to the Midwest. Utilizing Silicon Valley breakthroughs in software development allows us to do exactly that. | Wichita, KS"

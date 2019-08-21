@@ -295,7 +295,9 @@ export default function TheRevolution() {
   return (
     <Grid container direction="column">
       <Head>
-        <title>The Revolution | Arc Development</title>
+        <title>
+          The Revolution: Our Vision, Technology, and Process | Arc Development
+        </title>
         <meta
           name="description"
           content="Our business process centers around holistically analyzing your workflow to determine the best implementation of technology using revolutionary new software development techniques. | Wichita, KS"

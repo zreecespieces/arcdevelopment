@@ -33,7 +33,8 @@ class MyApp extends App {
       <Container>
         <Head>
           <title>
-            Bringing West Coast Technology to the Midwest | Arc Development
+            Bringing West Coast Technology to the Midwest: Custom Software
+            Development | Arc Development
           </title>
           <meta
             name="description"

@@ -189,7 +189,7 @@ export default function Websites() {
   return (
     <Grid className={classes.mainContainer} container direction="column">
       <Head>
-        <title>Website Development | Arc Development</title>
+        <title>Custom Website Development | Arc Development</title>
         <meta
           name="description"
           content="Our completely custom-designed websites are built from the ground up to be lightning-fast, fully responsive, and Search Engine Optimized by using bleeding-edge technology and techniques from Silicon Valley. | Wichita, KS"

@@ -165,7 +165,10 @@ export default function MobileApps() {
   return (
     <Grid container direction="column">
       <Head>
-        <title>Mobile App Development | Arc Development</title>
+        <title>
+          Custom Mobile App Development: iOS, Android, and tablets | Arc
+          Development
+        </title>
         <meta
           name="description"
           content="Arc Development uses cutting-edge technology to create cross-platform native mobile apps for iOS, Android, and tablets. Integrate with a web experience or use a standalone app to reinvent the way your business interacts with its customers. | Wichita, KS"
