@@ -33,13 +33,13 @@ export default createMuiTheme({
       fontWeight: "bold"
     },
     secondary: {
-      fontFamily: "Roboto-Light, Roboto, sans-serif",
+      fontFamily: "Roboto Light, Roboto, sans-serif",
       fontSize: "1.5em",
       fontWeight: "bold",
       color: `${arcGrey}`
     },
     blueSecondary: {
-      fontFamily: "Roboto-Light, Roboto, sans-serif",
+      fontFamily: "Roboto Light, Roboto, sans-serif",
       fontSize: "1.25em",
       fontWeight: "bold",
       color: `${arcBlue}`
@@ -58,12 +58,12 @@ export default createMuiTheme({
     }
   },
   input: {
-    fontFamily: "Roboto-Light, sans-serif",
+    fontFamily: "Roboto Light, sans-serif",
     color: `${arcGrey}`,
     underline: `${arcBlue}`
   },
   messageInput: {
-    fontFamily: "Roboto-Light, sans-serif",
+    fontFamily: "Roboto Light, sans-serif",
     color: `${arcGrey}`,
     underline: `${arcBlue}`,
     border: `2px solid ${arcBlue}`,
