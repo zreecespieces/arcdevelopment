@@ -121,7 +121,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "5%"
   },
   questionIcon: {
-    width: "80%"
+    width: "150px",
+    height: "150px"
   },
   questionContainer: {
     width: "375px",
@@ -169,11 +170,8 @@ const useStyles = makeStyles(theme => ({
   buttonContainer: {
     marginTop: "40%",
     marginLeft: "20%",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "0%",
-      marginTop: "25%"
-    },
     [theme.breakpoints.down("sm")]: {
+      marginLeft: "0%",
       marginTop: "25%",
       marginBottom: "25%"
     }
@@ -1149,7 +1147,7 @@ export default function FreeEstimate() {
       </Head>
       <Grid
         className={classes.titleContainer}
-        align={matchesMD ? "center" : null}
+        alignItems={matchesMD ? "center" : null}
         item
       >
         <Grid container direction="column">
@@ -1166,7 +1164,13 @@ export default function FreeEstimate() {
         </Grid>
       </Grid>
       <Grid className={classes.questionsContainer} item>
-        <Grid container justify="center" align="center" direction="column">
+        <Grid
+          container
+          justify="center"
+          align="center"
+          alignItems="center"
+          direction="column"
+        >
           {questions
             .filter(question => question.active)
             .map((question, index) => (
@@ -1200,7 +1204,7 @@ export default function FreeEstimate() {
                       >
                         <Grid
                           container
-                          align="center"
+                          alignItems="center"
                           justify="center"
                           direction="column"
                         >
@@ -1287,7 +1291,7 @@ export default function FreeEstimate() {
 
                         <Grid
                           className={classes.paragraphContainer}
-                          align={matchesMD ? "center" : null}
+                          alignItems={matchesMD ? "center" : null}
                           item
                         >
                           <p className={classes.paragraph}>
@@ -1318,7 +1322,7 @@ export default function FreeEstimate() {
 
                         <Grid
                           className={classes.buttonContainer}
-                          align={matchesMD ? "center" : null}
+                          alignItems={matchesMD ? "center" : null}
                         >
                           <Button
                             onClick={onDialogSend}

@@ -106,7 +106,7 @@ export default function CallToAction() {
   return (
     <Grid
       container
-      alignContent="center"
+      alignItems="center"
       justify="space-between"
       className={classes.mainContainer}
     >

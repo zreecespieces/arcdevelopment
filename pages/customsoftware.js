@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "20%",
     [theme.breakpoints.down("md")]: {
       marginTop: "-40%",
-      marginBottom: "-60%"
+      marginBottom: "-600px"
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "-20%",
@@ -136,7 +136,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   lastRow: {
-    marginTop: "300px",
+    marginTop: "350px",
     marginBottom: "15%",
     [theme.breakpoints.down("md")]: {
       marginTop: "90px"

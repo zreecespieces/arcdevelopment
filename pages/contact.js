@@ -261,6 +261,9 @@ const useStyles = makeStyles(theme => ({
   inputContainer: {
     marginTop: "2.5%",
     marginBottom: "2.5%"
+  },
+  phoneIcon: {
+    marginRight: "10px"
   }
 }));
 
@@ -441,9 +444,13 @@ export default function ContactPage() {
             <div className={classes.subtitle}>We're waiting.</div>
           </Grid>
           <Grid className={classes.phoneContainer} item>
-            <Grid container spacing={1} direction="row">
+            <Grid container direction="row">
               <Grid item>
-                <img alt="phone icon" src={phone} />
+                <img
+                  alt="phone icon"
+                  src={phone}
+                  className={classes.phoneIcon}
+                />
               </Grid>
               <Grid className={classes.info} item>
                 <a
@@ -456,17 +463,22 @@ export default function ContactPage() {
             </Grid>
           </Grid>
           <Grid className={classes.emailContainer} item>
-            <Grid container spacing={2} direction="row">
+            <Grid container direction="row">
               <Grid xs={1} item>
                 <img
                   style={{ verticalAlign: "middle" }}
                   alt="email icon"
+                  className={classes.emailIcon}
                   src={email}
                 />
               </Grid>
               <Grid className={classes.info} xs={11} item>
                 <a
-                  style={{ textDecoration: "none", color: "inherit" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginLeft: "5px"
+                  }}
                   href="mailto:zachary@arcsoftwaredevelopment.com"
                 >
                   zachary@arcsoftwaredevelopment.com

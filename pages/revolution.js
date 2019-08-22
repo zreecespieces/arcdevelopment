@@ -138,7 +138,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   processHeading: {
-    marginBottom: "50%",
+    marginBottom: "75px",
     [theme.breakpoints.down("md")]: {
       marginBottom: "0%"
     },

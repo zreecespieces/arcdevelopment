@@ -83,7 +83,11 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     fontSize: "12px",
     zIndex: 2,
-    textDecoration: "none"
+    textDecoration: "none",
+    width: "200px",
+    [theme.breakpoints.down("md")]: {
+      width: "150px"
+    }
   },
   decoration: {
     backgroundColor: "red",
