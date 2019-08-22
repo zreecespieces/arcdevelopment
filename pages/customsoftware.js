@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "-20%",
-      marginBottom: "20%"
+      marginBottom: "35%"
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "0%",
@@ -532,7 +532,13 @@ export default function CustomSoftware() {
       <Grid item>
         <Grid container justify="center" direction="row">
           <Grid className={classes.rootsContainer} item>
-            <Grid container align="center" direction="column">
+            <Grid
+              container
+              align="center"
+              //Needed for Moz support
+              alignItems="center"
+              direction="column"
+            >
               <Grid className={classes.rootsImage} item>
                 <img alt="tree with long roots" src={roots} />
               </Grid>

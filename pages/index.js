@@ -456,6 +456,8 @@ export default function LandingPage() {
         <Grid
           container
           align={matchesMedium ? "center" : null}
+          //Needed for Moz support
+          alignItems={matchesMedium ? "center" : null}
           direction="column"
         >
           <Grid className={classes.gridItem} item>

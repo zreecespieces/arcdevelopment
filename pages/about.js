@@ -81,11 +81,11 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "3%"
   },
   avatar: {
-    width: "40%",
-    height: "40%",
+    width: "500px",
+    height: "500px",
     [theme.breakpoints.down("xs")]: {
-      width: "80%",
-      height: "80%"
+      width: "350px",
+      height: "350px"
     }
   },
   puppyContainer: {

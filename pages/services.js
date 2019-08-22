@@ -156,7 +156,13 @@ export default function Services() {
   );
 
   return (
-    <Grid container direction="column" align={matchesMD ? "center" : null}>
+    <Grid
+      container
+      direction="column"
+      align={matchesMD ? "center" : null}
+      //Needed for Moz support
+      alignItems={matchesMD ? "center" : null}
+    >
       <Head>
         <title>Services | Arc Development</title>
         <meta
