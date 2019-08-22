@@ -16,7 +16,6 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 import ArcLogo from "../../static/pictures/Arc Header.svg";
-import mobileArcLogo from "../../static/pictures/Arc Header.png";
 
 import ReactGA from "react-ga";
 ReactGA.initialize("UA-145847500-1");
@@ -343,7 +342,7 @@ function Header(props) {
             <img
               alt="Arc Logo"
               className={props.classes.arcLogo}
-              src={matches ? mobileArcLogo : ArcLogo}
+              src={ArcLogo}
             />
           </Button>
           {matches ? drawer : tabs}
