@@ -323,7 +323,7 @@ export default function MobileApps() {
                       <img
                         alt="tear one off sign"
                         src={access}
-                        height={matchesMD ? 100 : matchesLG ? 300 : null}
+                        height={matchesMD ? 100 : matchesLG ? 125 : null}
                         width={matchesMD ? 325 : matchesLG ? 450 : null}
                       />
                     </Grid>

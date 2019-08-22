@@ -132,7 +132,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       marginTop: "0%",
       marginRight: "0%",
-      marginBottom: "-35%"
+      marginBottom: "-40%"
     }
   },
   lastRow: {
