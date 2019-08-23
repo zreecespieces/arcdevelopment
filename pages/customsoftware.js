@@ -77,6 +77,10 @@ export default function CustomSoftware() {
           name="description"
           content="Don't settle for generalized software solutions; custom software from Arc Development is designed from the ground up with your users and needs at the core, producing a finely tuned product which is much more effective at improving your workflow and reducing costs. | Wichita, KS"
         />
+        <meta
+          property="og:url"
+          content="https://arcsoftwaredevelopment.com/customsoftware"
+        />
         <link
           href="https://arcsoftwaredevelopment.com/customsoftware"
           rel="canonical"

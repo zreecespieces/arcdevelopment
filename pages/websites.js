@@ -33,6 +33,10 @@ export default function Websites() {
           name="description"
           content="Our completely custom-designed websites are built from the ground up to be lightning-fast, fully responsive, and Search Engine Optimized by using bleeding-edge technology and techniques from Silicon Valley. | Wichita, KS"
         />
+        <meta
+          property="og:url"
+          content="https://arcsoftwaredevelopment.com/websites"
+        />
         <link
           href="https://arcsoftwaredevelopment.com/websites"
           rel="canonical"

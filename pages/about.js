@@ -33,6 +33,10 @@ export default function AboutUs() {
           name="description"
           content="Arc Development wants to bring fast, modern, affordable, and aesthetic software to the Midwest. Utilizing Silicon Valley breakthroughs in software development allows us to do exactly that. | Wichita, KS"
         />
+        <meta
+          property="og:url"
+          content="https://arcsoftwaredevelopment.com/about"
+        />
         <link
           href="https://arcsoftwaredevelopment.com/about"
           rel="canonical"

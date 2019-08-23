@@ -956,6 +956,10 @@ export default function FreeEstimate() {
           name="description"
           content="Use our free online calculator to get an estimate for your custom software project instantly. | Wichita, KS"
         />
+        <meta
+          property="og:url"
+          content="https://arcsoftwaredevelopment.com/estimate"
+        />
         <link
           href="https://arcsoftwaredevelopment.com/estimate"
           rel="canonical"

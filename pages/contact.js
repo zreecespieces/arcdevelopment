@@ -183,6 +183,10 @@ export default function ContactPage() {
           name="description"
           content="We would love to hear from you! Send us a message, email, or give us a call so we can talk about how Arc Development will help your business with custom software. | Wichita, KS"
         />
+        <meta
+          property="og:url"
+          content="https://arcsoftwaredevelopment.com/contact"
+        />
         <link
           href="https://arcsoftwaredevelopment.com/contact"
           rel="canonical"

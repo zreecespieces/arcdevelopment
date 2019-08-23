@@ -9,13 +9,20 @@ class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <meta charSet="utf-8" />
-          {/* Use minimum-scale=1 to enable GPU rasterization */}
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
           {/* PWA primary color */}
+          <meta
+            property="og:title"
+            content="Bringing West Coast Technology to the Midwest"
+          />
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content="https://i.imgur.com/Kf06SE8.png" />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="600" />
+          <meta
+            property="og:image:alt"
+            content="A circle with Arc Development inside, company logo"
+          />
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="preconnect"

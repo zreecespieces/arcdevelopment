@@ -42,6 +42,10 @@ export default function TheRevolution() {
           name="description"
           content="Our business process centers around holistically analyzing your workflow to determine the best implementation of technology using revolutionary new software development techniques. | Wichita, KS"
         />
+        <meta
+          property="og:url"
+          content="https://arcsoftwaredevelopment.com/revolution"
+        />
         <link
           href="https://arcsoftwaredevelopment.com/revolution"
           rel="canonical"

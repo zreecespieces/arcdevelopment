@@ -83,6 +83,7 @@ export default function LandingPage() {
           name="description"
           content="Custom software built with cutting-edge technology. Complete design and development for websites, web applications, and cross-platform native mobile apps. Get a free online estimate! | Wichita, KS"
         />
+        <meta property="og:url" content="https://arcsoftwaredevelopment.com" />
         <link
           href="https://arcsoftwaredevelopment.com"
           rel="canonical"
