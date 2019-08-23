@@ -15,7 +15,7 @@ class MyDocument extends Document {
             content="Bringing West Coast Technology to the Midwest"
           />
           <meta property="og:type" content="website" />
-          <meta property="og:image" content="https://i.imgur.com/Kf06SE8.png" />
+          <meta property="og:image" content="https://i.imgur.com/OwYu7ym.png" />
           <meta property="og:image:type" content="image/png" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
