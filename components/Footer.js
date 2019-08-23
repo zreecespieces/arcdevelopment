@@ -1,13 +1,13 @@
 import React from "react";
-import Link from "../../src/Link";
+import Link from "./Link";
 import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import footerAdornment from "../../static/icons/Footer Adornment.svg";
-import LogoInstagram from "../../static/icons/instagram.svg";
-import LogoTwitter from "../../static/icons/twitter.svg";
-import LogoFacebook from "../../static/icons/facebook.svg";
+import footerAdornment from "../static/icons/Footer Adornment.svg";
+import LogoInstagram from "../static/icons/instagram.svg";
+import LogoTwitter from "../static/icons/twitter.svg";
+import LogoFacebook from "../static/icons/facebook.svg";
 
 const StyledContainer = withStyles({
   root: {

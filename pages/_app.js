@@ -2,10 +2,10 @@ import React from "react";
 import App, { Container } from "next/app";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../src/theme";
+import theme from "../components/theme";
 
-import Header from "./ui/Header";
-import Footer from "./ui/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 class MyApp extends App {
   constructor(props) {

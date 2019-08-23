@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Link from "../../src/Link";
+import Link from "./Link";
 
 import { withStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -15,7 +15,7 @@ import Button from "@material-ui/core/Button";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
-import ArcLogo from "../../static/pictures/Arc Header.svg";
+import ArcLogo from "../static/pictures/Arc Header.svg";
 
 import ReactGA from "react-ga";
 ReactGA.initialize("UA-145847500-1");
