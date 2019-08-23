@@ -5,7 +5,7 @@ import Head from "next/head";
 import Grid from "@material-ui/core/Grid";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import styles from "../components/revolution/styles";
+import styles from "../components/styles/Revolution";
 
 import vision from "../static/icons/vision.svg";
 import technologyAnimation from "../static/animations/technologyAnimation/data";
@@ -16,8 +16,8 @@ const useStyles = styles;
 
 export default function TheRevolution() {
   const classes = useStyles();
-
   const theme = useTheme();
+
   const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));

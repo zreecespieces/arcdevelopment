@@ -7,8 +7,9 @@ import Button from "@material-ui/core/Button";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Hidden from "@material-ui/core/Hidden";
-import styles from "../components/services/styles";
+import styles from "../components/styles/Services";
 
+import Arrow from "../components/Arrow";
 import customSoftwareIcon from "../static/icons/Custom Software Icon.svg";
 import mobileAppsIcon from "../static/icons/mobileIcon.svg";
 import websiteIcon from "../static/icons/websiteIcon.svg";
@@ -17,23 +18,10 @@ const useStyles = styles;
 
 export default function Services() {
   const classes = useStyles();
-
   const theme = useTheme();
+
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const arrowSVG = (
-    <svg
-      className={classes.arrow}
-      xmlns="http://www.w3.org/2000/svg"
-      width="10"
-      height="10"
-      fill={theme.palette.primary.main}
-      viewBox="0 0 18 18"
-    >
-      <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
-    </svg>
-  );
 
   return (
     <Grid
@@ -80,7 +68,12 @@ export default function Services() {
                 variant="outlined"
               >
                 <span style={{ marginRight: 5 }}>Learn More</span>
-                {arrowSVG}
+                <Arrow
+                  class={classes.arrow}
+                  fill={theme.palette.primary.main}
+                  width={10}
+                  height={10}
+                />
               </Button>
             </Grid>
             <Grid sm={5} item>
@@ -120,7 +113,12 @@ export default function Services() {
                     variant="outlined"
                   >
                     <span style={{ marginRight: 5 }}>Learn More</span>
-                    {arrowSVG}
+                    <Arrow
+                      class={classes.arrow}
+                      fill={theme.palette.primary.main}
+                      width={10}
+                      height={10}
+                    />
                   </Button>
                 </Grid>
                 <Grid item>
@@ -158,7 +156,12 @@ export default function Services() {
                     variant="outlined"
                   >
                     <span style={{ marginRight: 5 }}>Learn More</span>
-                    {arrowSVG}
+                    <Arrow
+                      class={classes.arrow}
+                      fill={theme.palette.primary.main}
+                      width={10}
+                      height={10}
+                    />
                   </Button>
                 </Grid>
                 <Grid item>
@@ -197,7 +200,12 @@ export default function Services() {
                 variant="outlined"
               >
                 <span style={{ marginRight: 5 }}>Learn More</span>
-                {arrowSVG}
+                <Arrow
+                  class={classes.arrow}
+                  fill={theme.palette.primary.main}
+                  width={10}
+                  height={10}
+                />
               </Button>
             </Grid>
             <Grid item>
@@ -227,7 +235,12 @@ export default function Services() {
               variant="outlined"
             >
               <span style={{ marginRight: 5 }}>Learn More</span>
-              {arrowSVG}
+              <Arrow
+                class={classes.arrow}
+                fill={theme.palette.primary.main}
+                width={10}
+                height={10}
+              />
             </Button>
           </Grid>
           <Grid lg={7} item>

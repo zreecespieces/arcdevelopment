@@ -8,7 +8,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Hidden from "@material-ui/core/Hidden";
 
 import CallToAction from "../components/CallToAction";
-import styles from "../components/about/styles";
+import styles from "../components/styles/About";
 
 import history from "../static/icons/history.svg";
 import founder from "../static/pictures/founder.jpg";
@@ -19,8 +19,8 @@ const useStyles = styles;
 
 export default function AboutUs() {
   const classes = useStyles();
-
   const theme = useTheme();
+
   const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));

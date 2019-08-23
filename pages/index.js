@@ -10,8 +10,9 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import styles from "../components/index/styles";
+import styles from "../components/styles";
 
+import Arrow from "../components/Arrow";
 import CallToAction from "../components/CallToAction";
 import landingAnimation from "../static/animations/landinganimation/data";
 import customSoftwareIcon from "../static/icons/Custom Software Icon.svg";
@@ -26,30 +27,17 @@ export default function LandingPage() {
   const classes = useStyles();
   const theme = useTheme();
 
-  const arrowSVG = (
-    <svg
-      className={classes.arrow}
-      xmlns="http://www.w3.org/2000/svg"
-      width="10"
-      height="10"
+  const blueArrow = (
+    <Arrow
+      class={classes.arrow}
       fill={theme.palette.primary.main}
-      viewBox="0 0 18 18"
-    >
-      <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
-    </svg>
+      width={10}
+      height={10}
+    />
   );
 
   const whiteArrow = (
-    <svg
-      className={classes.arrow}
-      xmlns="http://www.w3.org/2000/svg"
-      width="10"
-      height="10"
-      fill="white"
-      viewBox="0 0 18 18"
-    >
-      <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
-    </svg>
+    <Arrow class={classes.arrow} fill="white" width={10} height={10} />
   );
 
   const defaultOptions = {
@@ -61,9 +49,9 @@ export default function LandingPage() {
     }
   };
 
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
-  const matchesSmall = useMediaQuery(theme.breakpoints.down("sm"));
-  const matchesMedium = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleHeroEstimate = () => {
     ReactGA.event({
@@ -93,19 +81,19 @@ export default function LandingPage() {
       <Grid className={classes.heroContainer} item>
         <Grid
           alignItems="center"
-          justify={matchesSmall ? "center" : "flex-end"}
+          justify={matchesSM ? "center" : "flex-end"}
           container
           direction="row"
         >
-          <Grid sm align={matchesMedium ? "center" : null} item>
+          <Grid sm align={matchesMD ? "center" : null} item>
             <div className={classes.heroText}>
               Bringing West Coast Technology
               <br />
               to the Midwest
             </div>
             <Grid
-              justify={matchesSmall ? "space-around" : "center"}
-              spacing={matchesSmall ? 0 : 5}
+              justify={matchesSM ? "space-around" : "center"}
+              spacing={matchesSM ? 0 : 5}
               container
             >
               <Grid item>
@@ -127,16 +115,12 @@ export default function LandingPage() {
                   variant="outlined"
                 >
                   <span style={{ marginRight: 10 }}>Learn More</span>
-                  <svg
-                    className={classes.arrow}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="15"
-                    height="15"
+                  <Arrow
+                    class={classes.arrow}
                     fill={theme.palette.primary.main}
-                    viewBox="0 0 18 18"
-                  >
-                    <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
-                  </svg>
+                    width={15}
+                    height={15}
+                  />
                 </Button>
               </Grid>
             </Grid>
@@ -153,9 +137,9 @@ export default function LandingPage() {
       <Grid item>
         <Grid
           container
-          align={matchesMedium ? "center" : null}
+          align={matchesMD ? "center" : null}
           //Needed for Moz support
-          alignItems={matchesMedium ? "center" : null}
+          alignItems={matchesMD ? "center" : null}
           direction="column"
         >
           <Grid className={classes.gridItem} item>
@@ -163,7 +147,7 @@ export default function LandingPage() {
               className={classes.subContainer}
               container
               justify="flex-start"
-              direction={matchesSmall ? "column" : "row"}
+              direction={matchesSM ? "column" : "row"}
             >
               <Grid className={classes.softwareContainer} item>
                 <div className={classes.headline}>
@@ -183,7 +167,7 @@ export default function LandingPage() {
                   variant="outlined"
                 >
                   <span style={{ marginRight: 5 }}>Learn More</span>
-                  {arrowSVG}
+                  {blueArrow}
                 </Button>
               </Grid>
               <Grid item>
@@ -199,8 +183,8 @@ export default function LandingPage() {
             <Grid
               className={classes.subContainerRight}
               container
-              justify={matchesMedium ? "flex-start" : "flex-end"}
-              direction={matchesSmall ? "column" : "row"}
+              justify={matchesMD ? "flex-start" : "flex-end"}
+              direction={matchesSM ? "column" : "row"}
             >
               <Grid item>
                 <div className={classes.headline}>
@@ -221,7 +205,7 @@ export default function LandingPage() {
                   variant="outlined"
                 >
                   <span style={{ marginRight: 5 }}>Learn More</span>
-                  {arrowSVG}
+                  {blueArrow}
                 </Button>
               </Grid>
               <Grid item>
@@ -238,7 +222,7 @@ export default function LandingPage() {
               className={classes.subContainer}
               container
               justify="flex-start"
-              direction={matchesSmall ? "column" : "row"}
+              direction={matchesSM ? "column" : "row"}
             >
               <Grid item>
                 <div className={classes.headline}>Website Development</div>
@@ -255,7 +239,7 @@ export default function LandingPage() {
                   variant="outlined"
                 >
                   <span style={{ marginRight: 5 }}>Learn More</span>
-                  {arrowSVG}
+                  {blueArrow}
                 </Button>
               </Grid>
               <Grid item>
@@ -290,16 +274,12 @@ export default function LandingPage() {
                   variant="outlined"
                 >
                   <span style={{ marginRight: 10 }}>Learn More</span>
-                  <svg
-                    className={classes.arrow}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="15"
-                    height="15"
+                  <Arrow
+                    class={classes.arrow}
                     fill={theme.palette.primary.main}
-                    viewBox="0 0 18 18"
-                  >
-                    <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
-                  </svg>
+                    width={15}
+                    height={15}
+                  />
                 </Button>
               </Grid>
             </Grid>
@@ -309,20 +289,20 @@ export default function LandingPage() {
       </Grid>
       <Grid className={classes.infoContainer} item>
         <Grid
-          justify={matchesSmall ? "center" : "space-between"}
+          justify={matchesSM ? "center" : "space-between"}
           direction="row"
           className={classes.infoSubcontainer}
           container
         >
           <Grid
             className={classes.aboutContainer}
-            xs={matchesSmall ? true : false}
+            xs={matchesSM ? true : null}
             item
           >
             <Grid direction="column" container>
               <Grid item>
                 <div className={classes.infoTitle}>
-                  About{matchesMedium ? <br /> : " "}Us
+                  About{matchesMD ? <br /> : " "}Us
                 </div>
               </Grid>
               <Grid item>
@@ -343,13 +323,13 @@ export default function LandingPage() {
           </Grid>
           <Grid
             className={classes.contactContainer}
-            xs={matchesSmall ? true : false}
+            xs={matchesSM ? true : null}
             item
           >
             <Grid direction="column" align="right" container>
               <Grid item>
                 <div className={classes.infoTitle}>
-                  Contact{matchesMedium ? <br /> : " "}Us
+                  Contact{matchesMD ? <br /> : " "}Us
                 </div>
               </Grid>
               <Grid item>

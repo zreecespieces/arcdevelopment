@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Hidden from "@material-ui/core/Hidden";
-import styles from "../components/websites/styles";
+import styles from "../components/styles/Websites";
 
 import backArrow from "../static/icons/backArrow.svg";
 import forwardArrow from "../static/icons/forwardArrow.svg";
@@ -21,8 +21,8 @@ const useStyles = styles;
 
 export default function Websites() {
   const classes = useStyles();
-
   const theme = useTheme();
+
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   return (

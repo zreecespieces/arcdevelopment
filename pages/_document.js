@@ -18,7 +18,7 @@ class MyDocument extends Document {
           <meta property="og:image" content="https://i.imgur.com/Kf06SE8.png" />
           <meta property="og:image:type" content="image/png" />
           <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="600" />
+          <meta property="og:image:height" content="630" />
           <meta
             property="og:image:alt"
             content="A circle with Arc Development inside, company logo"

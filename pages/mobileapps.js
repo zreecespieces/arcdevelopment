@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Hidden from "@material-ui/core/Hidden";
-import styles from "../components/mobileapps/styles";
+import styles from "../components/styles/MobileApps";
 
 import backArrow from "../static/icons/backArrow.svg";
 import forwardArrow from "../static/icons/forwardArrow.svg";
@@ -23,8 +23,8 @@ const useStyles = styles;
 
 export default function MobileApps() {
   const classes = useStyles();
-
   const theme = useTheme();
+
   const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));

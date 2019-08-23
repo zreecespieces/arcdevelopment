@@ -12,8 +12,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Snackbar from "@material-ui/core/Snackbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import styles from "../components/contact/styles";
+import styles from "../components/styles/Contact";
 
+import Arrow from "../components/Arrow";
 import phone from "../static/icons/phone.svg";
 import email from "../static/icons/email.svg";
 import send from "../static/icons/send.svg";
@@ -25,8 +26,8 @@ const useStyles = styles;
 
 export default function ContactPage() {
   const classes = useStyles();
-
   const theme = useTheme();
+
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -144,19 +145,6 @@ export default function ContactPage() {
     setSnackbarMessage("");
   };
 
-  const arrowSVG = (
-    <svg
-      className={classes.arrow}
-      xmlns="http://www.w3.org/2000/svg"
-      width="10"
-      height="10"
-      fill={theme.palette.primary.main}
-      viewBox="0 0 18 18"
-    >
-      <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
-    </svg>
-  );
-
   const handleContactEstimate = () => {
     ReactGA.event({
       category: "Estimate Button",
@@ -164,7 +152,7 @@ export default function ContactPage() {
     });
   };
 
-  const paperAirPlaneIcon = (
+  const sendMessageButton = (
     <React.Fragment>
       Send Message
       <img className={classes.send} alt="paper airplane" src={send} />
@@ -289,7 +277,7 @@ export default function ContactPage() {
               className={classes.buttonStyle}
               variant="contained"
             >
-              {paperAirPlaneIcon}
+              {sendMessageButton}
             </Button>
           </Grid>
         </Grid>
@@ -355,7 +343,7 @@ export default function ContactPage() {
                   className={classes.buttonConfirm}
                   variant="contained"
                 >
-                  {loading ? <CircularProgress /> : paperAirPlaneIcon}
+                  {loading ? <CircularProgress /> : sendMessageButton}
                 </Button>
               </Grid>
             </Grid>
@@ -394,7 +382,12 @@ export default function ContactPage() {
                   variant="outlined"
                 >
                   <span style={{ marginRight: 5 }}>Learn More</span>
-                  {arrowSVG}
+                  <Arrow
+                    class={classes.arrow}
+                    fill={theme.palette.primary.main}
+                    width={10}
+                    height={10}
+                  />
                 </Button>
               </Grid>
             </Grid>

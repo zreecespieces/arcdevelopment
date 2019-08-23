@@ -13,7 +13,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import TextField from "@material-ui/core/TextField";
 import Snackbar from "@material-ui/core/Snackbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import styles from "../components/estimate/styles";
+import styles from "../components/styles/Estimate";
 
 import check from "../static/icons/check.svg";
 import send from "../static/icons/send.svg";
@@ -46,10 +46,9 @@ const useStyles = styles;
 
 export default function FreeEstimate() {
   const classes = useStyles();
-
+  const theme = useTheme();
   const myRef = useRef(null);
 
-  const theme = useTheme();
   const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));

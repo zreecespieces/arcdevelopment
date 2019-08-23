@@ -16,7 +16,7 @@ import bulb from "../static/icons/bulb.svg";
 import stopwatch from "../static/icons/stopwatch.svg";
 import roots from "../static/icons/root.svg";
 import CallToAction from "../components/CallToAction";
-import styles from "../components/customsoftware/styles";
+import styles from "../components/styles/CustomSoftware";
 
 import documentsAnimation from "../static/animations/documentsAnimation/data";
 import automationAnimation from "../static/animations/automationAnimation/data";
@@ -27,8 +27,8 @@ const useStyles = styles;
 
 export default function CustomSoftware() {
   const classes = useStyles();
-
   const theme = useTheme();
+
   const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
@@ -96,41 +96,38 @@ export default function CustomSoftware() {
               </Button>
             </Grid>
           </Hidden>
-          <Grid className={classes.headingContainer} item>
-            <Grid container>
-              <Grid align={matchesMD ? "center" : null} item>
-                <Grid container direction="column">
-                  <Grid item>
-                    <div className={classes.title}>
-                      Custom Software Development
-                    </div>
-                  </Grid>
-                  <Grid item>
-                    <p className={classes.paragraphMain}>
-                      Whether we’re replacing old software or inventing new
-                      solutions, Arc Development is here to help your business
-                      tackle technology.
-                    </p>
-                    <p className={classes.paragraphMain}>
-                      Using regular commercial software leaves you with a lot of
-                      stuff you don’t need, without some of the stuff you do
-                      need, and ultimately controls the way you work. Without
-                      using any software at all, you risk falling behind
-                      competitors and missing out on huge savings from increased
-                      efficiency.
-                    </p>
-                    <p className={classes.paragraphMain}>
-                      Our custom solutions are designed from the ground up with
-                      your needs, wants, and goals at the core. This
-                      collaborative process produces finely tuned software that
-                      is much more effective at improving your workflow and
-                      reducing costs than generalized options.
-                    </p>
-                    <p className={classes.paragraphMain}>
-                      We create exactly what you what, exactly how you want it.
-                    </p>
-                  </Grid>
-                </Grid>
+          <Grid
+            className={classes.headingContainer}
+            align={matchesMD ? "center" : null}
+            item
+          >
+            <Grid container direction="column">
+              <Grid item>
+                <div className={classes.title}>Custom Software Development</div>
+              </Grid>
+              <Grid item>
+                <p className={classes.paragraphMain}>
+                  Whether we’re replacing old software or inventing new
+                  solutions, Arc Development is here to help your business
+                  tackle technology.
+                </p>
+                <p className={classes.paragraphMain}>
+                  Using regular commercial software leaves you with a lot of
+                  stuff you don’t need, without some of the stuff you do need,
+                  and ultimately controls the way you work. Without using any
+                  software at all, you risk falling behind competitors and
+                  missing out on huge savings from increased efficiency.
+                </p>
+                <p className={classes.paragraphMain}>
+                  Our custom solutions are designed from the ground up with your
+                  needs, wants, and goals at the core. This collaborative
+                  process produces finely tuned software that is much more
+                  effective at improving your workflow and reducing costs than
+                  generalized options.
+                </p>
+                <p className={classes.paragraphMain}>
+                  We create exactly what you what, exactly how you want it.
+                </p>
               </Grid>
             </Grid>
           </Grid>
