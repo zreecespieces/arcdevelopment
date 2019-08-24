@@ -4,6 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
+import Arrow from "./Arrow";
 import background from "../static/pictures/background.jpg";
 import mobileBackground from "../static/pictures/mobileBackground.jpg";
 
@@ -59,12 +60,12 @@ const useStyles = makeStyles(theme => ({
       }
     },
     [theme.breakpoints.down("sm")]: {
-      backgroundImage: `url(${mobileBackground})`,
-      backgroundAttachment: "initial"
+      paddingTop: "35%",
+      paddingBottom: "35%"
     },
     [theme.breakpoints.down("xs")]: {
-      paddingTop: "0%",
-      marginBottom: "0%"
+      paddingTop: "45%",
+      paddingBottom: "45%"
     }
   },
   title: {
@@ -82,19 +83,6 @@ const useStyles = makeStyles(theme => ({
 export default function CallToAction() {
   const classes = useStyles();
   const theme = useTheme();
-
-  const arrowSVG = (
-    <svg
-      className={classes.arrow}
-      xmlns="http://www.w3.org/2000/svg"
-      width="10"
-      height="10"
-      fill={theme.palette.primary.main}
-      viewBox="0 0 18 18"
-    >
-      <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
-    </svg>
-  );
 
   const handleCallToActionEstimate = () => {
     ReactGA.event({
@@ -128,7 +116,12 @@ export default function CallToAction() {
               variant="outlined"
             >
               <span style={{ marginRight: 5 }}>Learn More</span>
-              {arrowSVG}
+              <Arrow
+                width={10}
+                height={10}
+                class={classes.arrow}
+                fill={theme.palette.primary.main}
+              />
             </Button>
           </Grid>
         </Grid>
