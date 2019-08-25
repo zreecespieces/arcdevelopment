@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "./Link";
 
-import { withStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
@@ -14,6 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import Hidden from "@material-ui/core/Hidden";
 
 import ArcLogo from "../static/pictures/Arc Header.svg";
 
@@ -144,10 +144,7 @@ function Header(props) {
     }
   }, [props]);
 
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
   const [open, setOpen] = useState(false);
-  var drawer = null;
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   const handleHeaderEstimate = () => {
@@ -166,168 +163,6 @@ function Header(props) {
     });
   };
 
-  var tabs = (
-    <React.Fragment>
-      <Tabs
-        className={props.classes.tabGroup}
-        indicatorColor="primary"
-        value={props.activeTab}
-      >
-        <Tab
-          classes={{ root: props.classes.tabRoot }}
-          component={Link}
-          href="/"
-          label="Home"
-        />
-        <Tab
-          classes={{ root: props.classes.tabRoot }}
-          component={Link}
-          href="/services"
-          label="Services"
-        />
-        <Tab
-          classes={{ root: props.classes.tabRoot }}
-          component={Link}
-          href="/revolution"
-          label="The Revolution"
-        />
-        <Tab
-          classes={{ root: props.classes.tabRoot }}
-          component={Link}
-          href="/about"
-          label="About Us"
-        />
-        <Tab
-          classes={{ root: props.classes.tabRoot }}
-          component={Link}
-          href="/contact"
-          label="Contact Us"
-        />
-      </Tabs>
-      <Button
-        component={Link}
-        href="/estimate"
-        onClick={handleHeaderEstimate}
-        className={props.classes.buttonStyle}
-        variant="contained"
-      >
-        Free Estimate
-      </Button>
-    </React.Fragment>
-  );
-
-  if (matches) {
-    tabs = null;
-    drawer = (
-      <React.Fragment>
-        <SwipeableDrawer
-          open={open}
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          disableBackdropTransition={!iOS}
-          disableDiscovery={iOS}
-          classes={{
-            paper: props.classes.drawer
-          }}
-        >
-          <List>
-            <ListItem
-              button
-              divider
-              component={Link}
-              href="/"
-              onClick={() => setOpen(false)}
-            >
-              <ListItemText
-                disableTypography
-                className={props.classes.drawerItem}
-              >
-                Home
-              </ListItemText>
-            </ListItem>
-            <ListItem
-              button
-              divider
-              component={Link}
-              href="/services"
-              onClick={() => setOpen(false)}
-            >
-              <ListItemText
-                disableTypography
-                className={props.classes.drawerItem}
-              >
-                Services
-              </ListItemText>
-            </ListItem>
-            <ListItem
-              button
-              divider
-              component={Link}
-              href="/revolution"
-              onClick={() => setOpen(false)}
-            >
-              <ListItemText
-                disableTypography
-                className={props.classes.drawerItem}
-              >
-                The Revolution
-              </ListItemText>
-            </ListItem>
-            <ListItem
-              button
-              divider
-              component={Link}
-              href="/about"
-              onClick={() => setOpen(false)}
-            >
-              <ListItemText
-                disableTypography
-                className={props.classes.drawerItem}
-              >
-                About Us
-              </ListItemText>
-            </ListItem>
-            <ListItem
-              button
-              divider
-              component={Link}
-              href="/contact"
-              onClick={() => setOpen(false)}
-            >
-              <ListItemText
-                disableTypography
-                className={props.classes.drawerItem}
-              >
-                Contact Us
-              </ListItemText>
-            </ListItem>
-            <ListItem
-              button
-              divider
-              component={Link}
-              href="/estimate"
-              onClick={handleTabsEstimate}
-            >
-              <ListItemText
-                disableTypography
-                className={props.classes.drawerItem}
-              >
-                Free Estimate
-              </ListItemText>
-            </ListItem>
-          </List>
-        </SwipeableDrawer>
-        <IconButton
-          className={props.classes.drawerButtonContainer}
-          disableRipple
-          onClick={() => setOpen(!open)}
-        >
-          <MenuIcon className={props.classes.drawerIcon} />
-        </IconButton>
-      </React.Fragment>
-    );
-  }
-
   return (
     <React.Fragment>
       <AppBar className={props.classes.appBar}>
@@ -345,7 +180,163 @@ function Header(props) {
               src={ArcLogo}
             />
           </Button>
-          {matches ? drawer : tabs}
+          <Hidden mdDown>
+            <React.Fragment>
+              <Tabs
+                className={props.classes.tabGroup}
+                indicatorColor="primary"
+                value={props.activeTab}
+              >
+                <Tab
+                  classes={{ root: props.classes.tabRoot }}
+                  component={Link}
+                  href="/"
+                  label="Home"
+                />
+                <Tab
+                  classes={{ root: props.classes.tabRoot }}
+                  component={Link}
+                  href="/services"
+                  label="Services"
+                />
+                <Tab
+                  classes={{ root: props.classes.tabRoot }}
+                  component={Link}
+                  href="/revolution"
+                  label="The Revolution"
+                />
+                <Tab
+                  classes={{ root: props.classes.tabRoot }}
+                  component={Link}
+                  href="/about"
+                  label="About Us"
+                />
+                <Tab
+                  classes={{ root: props.classes.tabRoot }}
+                  component={Link}
+                  href="/contact"
+                  label="Contact Us"
+                />
+              </Tabs>
+              <Button
+                component={Link}
+                href="/estimate"
+                onClick={handleHeaderEstimate}
+                className={props.classes.buttonStyle}
+                variant="contained"
+              >
+                Free Estimate
+              </Button>
+            </React.Fragment>
+          </Hidden>
+          <Hidden lgUp implementation="css">
+            <React.Fragment>
+              <SwipeableDrawer
+                open={open}
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                disableBackdropTransition={!iOS}
+                disableDiscovery={iOS}
+                classes={{
+                  paper: props.classes.drawer
+                }}
+              >
+                <List>
+                  <ListItem
+                    button
+                    divider
+                    component={Link}
+                    href="/"
+                    onClick={() => setOpen(false)}
+                  >
+                    <ListItemText
+                      disableTypography
+                      className={props.classes.drawerItem}
+                    >
+                      Home
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem
+                    button
+                    divider
+                    component={Link}
+                    href="/services"
+                    onClick={() => setOpen(false)}
+                  >
+                    <ListItemText
+                      disableTypography
+                      className={props.classes.drawerItem}
+                    >
+                      Services
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem
+                    button
+                    divider
+                    component={Link}
+                    href="/revolution"
+                    onClick={() => setOpen(false)}
+                  >
+                    <ListItemText
+                      disableTypography
+                      className={props.classes.drawerItem}
+                    >
+                      The Revolution
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem
+                    button
+                    divider
+                    component={Link}
+                    href="/about"
+                    onClick={() => setOpen(false)}
+                  >
+                    <ListItemText
+                      disableTypography
+                      className={props.classes.drawerItem}
+                    >
+                      About Us
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem
+                    button
+                    divider
+                    component={Link}
+                    href="/contact"
+                    onClick={() => setOpen(false)}
+                  >
+                    <ListItemText
+                      disableTypography
+                      className={props.classes.drawerItem}
+                    >
+                      Contact Us
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem
+                    button
+                    divider
+                    component={Link}
+                    href="/estimate"
+                    onClick={handleTabsEstimate}
+                  >
+                    <ListItemText
+                      disableTypography
+                      className={props.classes.drawerItem}
+                    >
+                      Free Estimate
+                    </ListItemText>
+                  </ListItem>
+                </List>
+              </SwipeableDrawer>
+              <IconButton
+                className={props.classes.drawerButtonContainer}
+                disableRipple
+                onClick={() => setOpen(!open)}
+              >
+                <MenuIcon className={props.classes.drawerIcon} />
+              </IconButton>
+            </React.Fragment>
+          </Hidden>
         </Toolbar>
       </AppBar>
       <div className={props.classes.toolbarMargin} />
