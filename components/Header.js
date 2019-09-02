@@ -331,6 +331,7 @@ function Header(props) {
               <IconButton
                 className={props.classes.drawerButtonContainer}
                 disableRipple
+                aria-label="Menu"
                 onClick={() => setOpen(!open)}
               >
                 <MenuIcon className={props.classes.drawerIcon} />

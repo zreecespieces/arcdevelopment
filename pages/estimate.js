@@ -15,28 +15,6 @@ import Snackbar from "@material-ui/core/Snackbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import styles from "../components/styles/Estimate";
 
-import check from "../static/icons/check.svg";
-import send from "../static/icons/send.svg";
-import software from "../static/icons/software.svg";
-import mobile from "../static/icons/mobile.svg";
-import website from "../static/icons/website.svg";
-import backArrow from "../static/icons/backArrow.svg";
-import forwardArrow from "../static/icons/forwardArrow.svg";
-import camera from "../static/icons/camera.svg";
-import upload from "../static/icons/upload.svg";
-import person from "../static/icons/person.svg";
-import persons from "../static/icons/persons.svg";
-import info from "../static/icons/info.svg";
-import bell from "../static/icons/bell.svg";
-import people from "../static/icons/people.svg";
-import usersIcon from "../static/icons/users.svg";
-import iPhone from "../static/icons/iphone.svg";
-import gps from "../static/icons/gps.svg";
-import customized from "../static/icons/customized.svg";
-import data from "../static/icons/data.svg";
-import android from "../static/icons/android.svg";
-import globe from "../static/icons/globe.svg";
-import biometrics from "../static/icons/biometrics.svg";
 import estimateAnimation from "../static/animations/estimateAnimation/data";
 
 import ReactGA from "react-ga";
@@ -62,7 +40,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "Custom Software Development",
           subtitle: null,
-          icon: software,
+          icon: "/static/icons/software.svg",
           iconAlt: "three rectangles floating on top of eachother",
           selected: false,
           cost: 0
@@ -71,7 +49,7 @@ export default function FreeEstimate() {
           id: 2,
           title: "iOS/Android App Development",
           subtitle: null,
-          icon: mobile,
+          icon: "/static/icons/mobile.svg",
           iconAlt: "outlines of phones and tablets",
           selected: false,
           cost: 0
@@ -80,7 +58,7 @@ export default function FreeEstimate() {
           id: 3,
           title: "Website Development",
           subtitle: null,
-          icon: website,
+          icon: "/static/icons/website.svg",
           iconAlt: "computer outline",
           selected: false,
           cost: 0
@@ -99,7 +77,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "Custom Software Development",
           subtitle: null,
-          icon: software,
+          icon: "/static/icons/software.svg",
           iconAlt: "three rectangles floating on top of eachother",
           selected: false,
           cost: 0
@@ -108,7 +86,7 @@ export default function FreeEstimate() {
           id: 2,
           title: "iOS/Android App Development",
           subtitle: null,
-          icon: mobile,
+          icon: "/static/icons/mobile.svg",
           iconAlt: "outlines of phones and tablets",
           selected: false,
           cost: 0
@@ -117,7 +95,7 @@ export default function FreeEstimate() {
           id: 3,
           title: "Website Development",
           subtitle: null,
-          icon: website,
+          icon: "/static/icons/website.svg",
           iconAlt: "computer outline",
           selected: false,
           cost: 0
@@ -134,7 +112,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "Web Application",
           subtitle: null,
-          icon: website,
+          icon: "/static/icons/website.svg",
           iconAlt: "computer outline",
           selected: false,
           cost: 1000
@@ -143,7 +121,7 @@ export default function FreeEstimate() {
           id: 2,
           title: "iOS Application",
           subtitle: null,
-          icon: iPhone,
+          icon: "/static/icons/iphone.svg",
           iconAlt: "outline of iphone",
           selected: false,
           cost: 1000
@@ -152,7 +130,7 @@ export default function FreeEstimate() {
           id: 3,
           title: "Android Application",
           subtitle: null,
-          icon: android,
+          icon: "/static/icons/android.svg",
           iconAlt: "outlines of android phone",
           selected: false,
           cost: 1000
@@ -169,7 +147,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "Photo/Video",
           subtitle: null,
-          icon: camera,
+          icon: "/static/icons/camera.svg",
           iconAlt: "camera outline",
           selected: false,
           cost: 250
@@ -178,7 +156,7 @@ export default function FreeEstimate() {
           id: 2,
           title: "GPS",
           subtitle: null,
-          icon: gps,
+          icon: "/static/icons/gps.svg",
           iconAlt: "gps pin",
           selected: false,
           cost: 250
@@ -187,7 +165,7 @@ export default function FreeEstimate() {
           id: 3,
           title: "File Transfer",
           subtitle: null,
-          icon: upload,
+          icon: "/static/icons/upload.svg",
           iconAlt: "outline of cloud with arrow pointing up",
           selected: false,
           cost: 250
@@ -204,7 +182,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "Users/Authentication",
           subtitle: null,
-          icon: usersIcon,
+          icon: "/static/icons/users.svg",
           iconAlt: "outline of a person with a plus sign",
           selected: false,
           cost: 250
@@ -213,7 +191,7 @@ export default function FreeEstimate() {
           id: 2,
           title: "Biometrics",
           subtitle: null,
-          icon: biometrics,
+          icon: "/static/icons/biometrics.svg",
           iconAlt: "fingerprint",
           selected: false,
           cost: 250
@@ -222,7 +200,7 @@ export default function FreeEstimate() {
           id: 3,
           title: "Push Notifications",
           subtitle: null,
-          icon: bell,
+          icon: "/static/icons/bell.svg",
           iconAlt: "outline of a bell",
           selected: false,
           cost: 250
@@ -239,7 +217,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "Low Complexity",
           subtitle: "(Informational)",
-          icon: info,
+          icon: "/static/icons/info.svg",
           iconAlt: "'i' inside a circle",
           selected: false,
           cost: 250
@@ -248,7 +226,7 @@ export default function FreeEstimate() {
           id: 2,
           title: "Medium Complexity",
           subtitle: "(Interactive, Customizable, Realtime)",
-          icon: customized,
+          icon: "/static/icons/customized.svg",
           iconAlt: "two toggle switches",
           selected: false,
           cost: 500
@@ -257,7 +235,7 @@ export default function FreeEstimate() {
           id: 3,
           title: "High Complexity",
           subtitle: "(Data Modeling and Computation)",
-          icon: data,
+          icon: "/static/icons/data.svg",
           iconAlt: "outline of line graph",
           selected: false,
           cost: 1000
@@ -274,7 +252,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "0-10",
           subtitle: null,
-          icon: person,
+          icon: "/static/icons/person.svg",
           iconAlt: "person outline",
           selected: false,
           cost: 1
@@ -283,7 +261,7 @@ export default function FreeEstimate() {
           id: 2,
           title: "10-100",
           subtitle: null,
-          icon: persons,
+          icon: "/static/icons/persons.svg",
           iconAlt: "outline of two people",
           selected: false,
           cost: 1.125
@@ -292,7 +270,7 @@ export default function FreeEstimate() {
           id: 3,
           title: "100+",
           subtitle: null,
-          icon: people,
+          icon: "/static/icons/people.svg",
           iconAlt: "outline of three people",
           selected: false,
           cost: 1.25
@@ -311,7 +289,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "Custom Software Development",
           subtitle: null,
-          icon: software,
+          icon: "/static/icons/software.svg",
           iconAlt: "three rectangles floating on top of eachother",
           selected: false,
           cost: 0
@@ -320,7 +298,7 @@ export default function FreeEstimate() {
           id: 2,
           title: "iOS/Android App Development",
           subtitle: null,
-          icon: mobile,
+          icon: "/static/icons/mobile.svg",
           iconAlt: "outlines of phones and tablets",
           selected: false,
           cost: 0
@@ -329,7 +307,7 @@ export default function FreeEstimate() {
           id: 3,
           title: "Website Development",
           subtitle: null,
-          icon: website,
+          icon: "/static/icons/website.svg",
           iconAlt: "computer outline",
           selected: false,
           cost: 0
@@ -346,7 +324,7 @@ export default function FreeEstimate() {
           id: 1,
           title: "Basic",
           subtitle: "(Informational)",
-          icon: info,
+          icon: "/static/icons/info.svg",
           iconAlt: "person outline",
           selected: false,
           cost: 1000
@@ -355,7 +333,7 @@ export default function FreeEstimate() {
           id: 2,
           title: "Interactive",
           subtitle: "(Users, API's, Messaging)",
-          icon: customized,
+          icon: "/static/icons/customized.svg",
           iconAlt: "outline of two people",
           selected: false,
           cost: 2000
@@ -364,7 +342,7 @@ export default function FreeEstimate() {
           id: 3,
           title: "E-Commerce",
           subtitle: "(Sales)",
-          icon: globe,
+          icon: "/static/icons/globe.svg",
           iconAlt: "outline of three people",
           selected: false,
           cost: 2500
@@ -826,7 +804,11 @@ export default function FreeEstimate() {
       <Grid item>
         <Grid className={classes.choicesContainer} container direction="row">
           <Grid item>
-            <img className={classes.check} alt="checkmark" src={check} />
+            <img
+              className={classes.check}
+              alt="checkmark"
+              src="/static/icons/check.svg"
+            />
           </Grid>
           <Grid item>
             <p className={classes.choices}>
@@ -850,7 +832,11 @@ export default function FreeEstimate() {
           direction="row"
         >
           <Grid item>
-            <img className={classes.check} alt="checkmark" src={check} />
+            <img
+              className={classes.check}
+              alt="checkmark"
+              src="/static/icons/check.svg"
+            />
           </Grid>
           <Grid item>
             <p className={classes.choices}>
@@ -884,7 +870,11 @@ export default function FreeEstimate() {
       <Grid item>
         <Grid container alignItems="center" direction="row">
           <Grid item>
-            <img className={classes.check} alt="checkmark" src={check} />
+            <img
+              className={classes.check}
+              alt="checkmark"
+              src="/static/icons/check.svg"
+            />
           </Grid>
           <Grid item>
             <p className={classes.choices}>
@@ -912,7 +902,11 @@ export default function FreeEstimate() {
       <Grid item>
         <Grid alignItems="center" container direction="row">
           <Grid item>
-            <img className={classes.check} alt="checkmark" src={check} />
+            <img
+              className={classes.check}
+              alt="checkmark"
+              src="/static/icons/check.svg"
+            />
           </Grid>
           <Grid item>
             <p className={classes.choices}>
@@ -939,7 +933,11 @@ export default function FreeEstimate() {
   const paperAirPlaneIcon = (
     <Fragment>
       Place Request
-      <img className={classes.send} alt="paper airplane" src={send} />
+      <img
+        className={classes.send}
+        alt="paper airplane"
+        src="/static/icons/send.svg"
+      />
     </Fragment>
   );
 
@@ -1177,7 +1175,7 @@ export default function FreeEstimate() {
                   <img
                     className={classes.backArrow}
                     alt="backwards arrow"
-                    src={backArrow}
+                    src="/static/icons/backArrow.svg"
                   />
                 </Button>
               </Grid>
@@ -1192,7 +1190,7 @@ export default function FreeEstimate() {
                   <img
                     className={classes.forwardArrow}
                     alt="forwards arrow"
-                    src={forwardArrow}
+                    src="/static/icons/forwardArrow.svg"
                   />
                 </Button>
               </Grid>
