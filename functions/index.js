@@ -501,7 +501,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                         style="padding:0px 0px 7px 5px;font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:13.70px; font-weight:normal; line-height:14px; color:#ffffff; text-align:left;"
                                         class="font11"
                                       >
-                                        (555) 555-5555
+                                        (316) 358-9320
                                       </td>
                                     </tr>
                                     <tr>
@@ -526,9 +526,9 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                         class="font11"
                                       >
                                         <a
-                                          href="mailto:zachary@gmail.com"
+                                          href="mailto:zachary@arcsoftwaredevelopment.com"
                                           style="color:#ffffff; text-decoration:none!important"
-                                          >zachary@gmail.com</a
+                                          >zachary@arcsoftwaredevelopment.com</a
                                         >
                                       </td>
                                     </tr>
@@ -1085,7 +1085,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                         style="padding:0px 0px 7px 5px;font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:13.70px; font-weight:normal; line-height:14px; color:#ffffff; text-align:left;"
                                         class="font11"
                                       >
-                                        (555) 555-5555
+                                        (316) 358-9320
                                       </td>
                                     </tr>
                                     <tr>
@@ -1110,9 +1110,9 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                         class="font11"
                                       >
                                         <a
-                                          href="mailto:zachary@gmail.com"
+                                          href="mailto:zachary@arcsoftwaredevelopment.com"
                                           style="color:#ffffff; text-decoration:none!important"
-                                          >zachary@gmail.com</a
+                                          >zachary@arcsoftwaredevelopment.com</a
                                         >
                                       </td>
                                     </tr>

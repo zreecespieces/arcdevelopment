@@ -241,10 +241,10 @@ export default function Contact(props) {
                   style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
                 >
                   <a
-                    href="tel:5555555555"
+                    href="tel:3163589320"
                     style={{ textDecoration: "none", color: "inherit" }}
                   >
-                    (555) 555-5555
+                    (316) 358-9320
                   </a>
                 </Typography>
               </Grid>
@@ -263,10 +263,10 @@ export default function Contact(props) {
                   style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
                 >
                   <a
-                    href="mailto:zachary@gmail.com"
+                    href="mailto:zachary@arcsoftwaredevelopment.com"
                     style={{ textDecoration: "none", color: "inherit" }}
                   >
-                    zachary@gmail.com
+                    zachary@arcsoftwaredevelopment.com
                   </a>
                 </Typography>
               </Grid>
