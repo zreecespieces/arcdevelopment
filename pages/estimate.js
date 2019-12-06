@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactGA from "react-ga";
 import Head from "next/head";
 import axios from "axios";
 import Lottie from "react-lottie";
@@ -603,6 +604,7 @@ export default function Estimate() {
   };
 
   const getTotal = () => {
+    ReactGA.event({ category: "Estimate", action: "Estimate Checked" });
     let cost = 0;
 
     const selections = questions
@@ -691,6 +693,7 @@ export default function Estimate() {
 
   const sendEstimate = () => {
     setLoading(true);
+    ReactGA.event({ category: "Estimate", action: "Estimate Sent" });
 
     axios
       .get(

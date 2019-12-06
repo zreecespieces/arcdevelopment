@@ -6,6 +6,9 @@ import theme from "../src/ui/Theme";
 import Header from "../src/ui/Header";
 import Footer from "../src/ui/Footer";
 
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-145847500-1");
+
 export default class MyApp extends App {
   constructor(props) {
     super(props);

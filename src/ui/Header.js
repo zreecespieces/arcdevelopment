@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactGA from "react-ga";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
@@ -129,6 +130,7 @@ export default function Header(props) {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
+  const [previousURL, setPreviousURL] = useState("");
 
   const handleChange = (e, newValue) => {
     props.setValue(newValue);
@@ -188,6 +190,11 @@ export default function Header(props) {
   ];
 
   useEffect(() => {
+    if (window.location.pathname !== previousURL) {
+      ReactGA.pageview(window.location.pathname + window.location.search);
+      setPreviousURL(window.location.pathname);
+    }
+
     [...menuOptions, ...routes].forEach(route => {
       switch (window.location.pathname) {
         case `${route.link}`:
@@ -305,7 +312,13 @@ export default function Header(props) {
                   variant="contained"
                   color="secondary"
                   className={classes.button}
-                  onClick={() => props.setValue(5)}
+                  onClick={() => {
+                    props.setValue(5);
+                    ReactGA.event({
+                      category: "Estimate",
+                      action: "Header Desktop Pressed"
+                    });
+                  }}
                 >
                   Free Estimate
                 </Button>
@@ -379,6 +392,10 @@ export default function Header(props) {
                       onClick={() => {
                         setOpenDrawer(false);
                         props.setValue(5);
+                        ReactGA.event({
+                          category: "Estimate",
+                          action: "Header Mobile Pressed"
+                        });
                       }}
                       divider
                       button

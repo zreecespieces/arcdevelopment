@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactGA from "react-ga";
 import Head from "next/head";
 import axios from "axios";
 import Link from "../src/ui/Link";
@@ -436,7 +437,13 @@ export default function Contact(props) {
                 }
                 variant="contained"
                 className={classes.sendButton}
-                onClick={onConfirm}
+                onClick={() => {
+                  onConfirm();
+                  ReactGA.event({
+                    category: "Message",
+                    action: "Message Sent"
+                  });
+                }}
               >
                 {loading ? <CircularProgress size={30} /> : buttonContents}
               </Button>
@@ -512,7 +519,13 @@ export default function Contact(props) {
             href="/estimate"
             variant="contained"
             className={classes.estimateButton}
-            onClick={() => props.setValue(5)}
+            onClick={() => {
+              props.setValue(5);
+              ReactGA.event({
+                category: "Estimate",
+                action: "Contact Page Pressed"
+              });
+            }}
           >
             Free Estimate
           </Button>
