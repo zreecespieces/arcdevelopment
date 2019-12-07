@@ -38,7 +38,7 @@ export default function Revolution(props) {
 
   const defaultOptions = {
     loop: true,
-    autoplay: false,
+    autoplay: true,
     animationData: technologyAnimation,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
@@ -254,7 +254,6 @@ export default function Revolution(props) {
         <Grid item container justify={matchesMD ? "center" : "flex-end"} lg>
           <Lottie
             options={defaultOptions}
-            isStopped={true}
             style={{ maxWidth: "40em", margin: 0 }}
           />
         </Grid>

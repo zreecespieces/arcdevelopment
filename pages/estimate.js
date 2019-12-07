@@ -430,7 +430,7 @@ export default function Estimate() {
 
   const defaultOptions = {
     loop: true,
-    autoplay: false,
+    autoplay: true,
     animationData: estimateAnimation,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
@@ -886,12 +886,7 @@ export default function Estimate() {
             marginTop: "7.5em"
           }}
         >
-          <Lottie
-            options={defaultOptions}
-            isStopped
-            height="100%"
-            width="100%"
-          />
+          <Lottie options={defaultOptions} height="100%" width="100%" />
         </Grid>
       </Grid>
       <Grid
