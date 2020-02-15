@@ -14,9 +14,7 @@ let transporter = nodemailer.createTransport({
   }
 });
 
-let mailOptions = {
-  from: `Arc Development`
-};
+let mailOptions;
 
 exports.sendMail = functions.https.onRequest((req, res) => {
   cors(req, res, () => {
@@ -37,7 +35,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
     if (total) {
       if (category) {
         mailOptions = {
-          ...mailOptions,
+          from: `Arc Development`,
           to: "zachary@arcsoftwaredevelopment.com",
           subject: "Estimate received!",
           html: `
@@ -60,7 +58,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
         });
       } else {
         mailOptions = {
-          ...mailOptions,
+          from: `Arc Development`,
           to: "zachary@arcsoftwaredevelopment.com",
           subject: "Estimate received!",
           html: `
@@ -87,7 +85,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
       }
 
       mailOptions = {
-        ...mailOptions,
+        from: `Arc Development`,
         to: email,
         subject: "We have received your message!",
         html: `
@@ -291,7 +289,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                         <tr>
                           <td align="center">
                             <a
-                              href="http://www.arcsoftwaredevelopment.com/"
+                              href="https://arcsoftwaredevelopment.com/"
                               target="_blank"
                             >
                               <img
@@ -374,7 +372,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                 border="0"
                                 cellspacing="0"
                                 cellpadding="0"
-                                style="background:#ffffff; border-radius:10px; box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.32);"
+                                style="background:#0b72b9; border-radius:10px; box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.32);"
                               >
                                 <tr>
                                   <td
@@ -391,7 +389,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                       <tr>
                                         <td
                                           align="center"
-                                          style="font-family: 'Pacifico', cursive; font-size:34.28px; font-weight:normal; line-height:35px; color:#0b72b9; text-align:center;"
+                                          style="font-family: 'Pacifico', Tahoma; font-size:34.28px; font-weight:normal; line-height:35px; color:#fff; text-align:center;"
                                         >
                                           We're ready.
                                         </td>
@@ -399,7 +397,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                       <tr>
                                         <td
                                           align="center"
-                                          style="padding:20px 0px 0px 0px; font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:20px; font-weight:normal; line-height:25.50px; color:#868686; text-align:center;"
+                                          style="padding:20px 0px 0px 0px; font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:20px; font-weight:normal; line-height:25.50px; color:#fff; text-align:center;"
                                         >
                                           Thanks for placing your estimate request! We'll go over the details and get back to you as soon as possible.
                                         </td>
@@ -501,7 +499,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                         style="padding:0px 0px 7px 5px;font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:13.70px; font-weight:normal; line-height:14px; color:#ffffff; text-align:left;"
                                         class="font11"
                                       >
-                                        (555) 555-5555
+                                        (316) 358-9320
                                       </td>
                                     </tr>
                                     <tr>
@@ -526,9 +524,9 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                         class="font11"
                                       >
                                         <a
-                                          href="mailto:zachary@gmail.com"
+                                          href="mailto:zachary@arcsoftwaredevelopment.com"
                                           style="color:#ffffff; text-decoration:none!important"
-                                          >zachary@gmail.com</a
+                                          >zachary@arcsoftwaredevelopment.com</a
                                         >
                                       </td>
                                     </tr>
@@ -650,7 +648,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
       transporter.sendMail(mailOptions);
     } else {
       mailOptions = {
-        ...mailOptions,
+        from: `Arc Development`,
         to: "zachary@arcsoftwaredevelopment.com",
         subject: "Message received!",
         html: `
@@ -670,7 +668,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
       });
 
       mailOptions = {
-        ...mailOptions,
+        from: `Arc Development`,
         to: email,
         subject: "We have received your message!",
         html: `
@@ -874,7 +872,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                         <tr>
                           <td align="center">
                             <a
-                              href="http://www.arcsoftwaredevelopment.com/"
+                              href="https://arcsoftwaredevelopment.com/"
                               target="_blank"
                             >
                               <img
@@ -957,7 +955,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                 border="0"
                                 cellspacing="0"
                                 cellpadding="0"
-                                style="background:#ffffff; border-radius:10px; box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.32);"
+                                style="background:#0b72b9; border-radius:10px; box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.32);"
                               >
                                 <tr>
                                   <td
@@ -974,7 +972,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                       <tr>
                                         <td
                                           align="center"
-                                          style="font-family: 'Pacifico', cursive; font-size:34.28px; font-weight:normal; line-height:35px; color:#0b72b9; text-align:center;"
+                                          style="font-family: 'Pacifico', Tahoma; font-size:34.28px; font-weight:normal; line-height:35px; color:#fff; text-align:center;"
                                         >
                                           Hello
                                         </td>
@@ -982,7 +980,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                       <tr>
                                         <td
                                           align="center"
-                                          style="padding:20px 0px 0px 0px; font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:20px; font-weight:normal; line-height:25.50px; color:#868686; text-align:center;"
+                                          style="padding:20px 0px 0px 0px; font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:20px; font-weight:normal; line-height:25.50px; color:#fff; text-align:center;"
                                         >
                                           Thanks for sending us a message! We’ll
                                           get back to you as soon as possible.
@@ -1085,7 +1083,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                         style="padding:0px 0px 7px 5px;font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:13.70px; font-weight:normal; line-height:14px; color:#ffffff; text-align:left;"
                                         class="font11"
                                       >
-                                        (555) 555-5555
+                                        (316) 358-9320
                                       </td>
                                     </tr>
                                     <tr>
@@ -1110,9 +1108,9 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                         class="font11"
                                       >
                                         <a
-                                          href="mailto:zachary@gmail.com"
+                                          href="mailto:zachary@arcsoftwaredevelopment.com"
                                           style="color:#ffffff; text-decoration:none!important"
-                                          >zachary@gmail.com</a
+                                          >zachary@arcsoftwaredevelopment.com</a
                                         >
                                       </td>
                                     </tr>

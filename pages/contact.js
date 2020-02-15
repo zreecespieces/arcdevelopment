@@ -137,7 +137,7 @@ export default function Contact(props) {
 
     axios
       .get(
-        "https://us-central1-material-ui-course.cloudfunctions.net/sendMail",
+        "https://us-central1-arc-development-website.cloudfunctions.net/sendMail",
         {
           params: {
             email: email,
