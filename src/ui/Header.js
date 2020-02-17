@@ -3,7 +3,7 @@ import ReactGA from "react-ga";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
@@ -331,6 +331,7 @@ export default function Header(props) {
                   MenuListProps={{
                     onMouseLeave: handleClose
                   }}
+                  disableAutoFocusItem
                   elevation={0}
                   style={{ zIndex: 1302 }}
                   keepMounted

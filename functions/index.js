@@ -36,7 +36,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
       if (category) {
         mailOptions = {
           from: `Arc Development`,
-          to: "zachary@arcsoftwaredevelopment.com",
+          to: "noreply.arcdevelopment@gmail.com",
           subject: "Estimate received!",
           html: `
             <p style="font-size: 16px;">From: ${name}</p>
@@ -59,7 +59,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
       } else {
         mailOptions = {
           from: `Arc Development`,
-          to: "zachary@arcsoftwaredevelopment.com",
+          to: "noreply.arcdevelopment@gmail.com",
           subject: "Estimate received!",
           html: `
             <p style="font-size: 16px;">From: ${name}</p>
@@ -87,7 +87,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
       mailOptions = {
         from: `Arc Development`,
         to: email,
-        subject: "We have received your message!",
+        subject: "We have received your estimate!",
         html: `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
   <html
@@ -389,7 +389,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                       <tr>
                                         <td
                                           align="center"
-                                          style="font-family: 'Pacifico', Tahoma; font-size:34.28px; font-weight:normal; line-height:35px; color:#fff; text-align:center;"
+                                          style="font-family: 'Pacifico', 'Roboto', Tahoma, sans-serif; font-size:34.28px; font-weight:normal; line-height:35px; color:#fff; text-align:center;"
                                         >
                                           We're ready.
                                         </td>
@@ -520,7 +520,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                       </td>
                                       <td
                                         align="left"
-                                        style="padding:0px 0px 0px 5px;font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:13.70px; font-weight:normal; line-height:14px; color:#ffffff; text-align:left;"
+                                        style="padding:0px 0px 0px 5px;font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:10px; font-weight:normal; line-height:14px; color:#ffffff; text-align:left;"
                                         class="font11"
                                       >
                                         <a
@@ -649,7 +649,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
     } else {
       mailOptions = {
         from: `Arc Development`,
-        to: "zachary@arcsoftwaredevelopment.com",
+        to: "noreply.arcdevelopment@gmail.com",
         subject: "Message received!",
         html: `
           <p style="font-size: 16px;">From: ${name}</p>
@@ -972,7 +972,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                       <tr>
                                         <td
                                           align="center"
-                                          style="font-family: 'Pacifico', Tahoma; font-size:34.28px; font-weight:normal; line-height:35px; color:#fff; text-align:center;"
+                                          style="font-family: 'Pacifico', 'Roboto', Tahoma, sans-serif; font-size:34.28px; font-weight:normal; line-height:35px; color:#fff; text-align:center;"
                                         >
                                           Hello
                                         </td>
@@ -1104,7 +1104,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                                       </td>
                                       <td
                                         align="left"
-                                        style="padding:0px 0px 0px 5px;font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:13.70px; font-weight:normal; line-height:14px; color:#ffffff; text-align:left;"
+                                        style="padding:0px 0px 0px 5px;font-family: 'Roboto', Tahoma, Segoe, sans-serif; font-size:10px; font-weight:normal; line-height:14px; color:#ffffff; text-align:left;"
                                         class="font11"
                                       >
                                         <a
