@@ -216,7 +216,20 @@ export default function About(props) {
               </Typography>
               <Typography variant="body1" align="center" paragraph>
                 Now I’m ready to apply everything I’ve learned, and to help
-                others with the intuition I have developed.
+                others with the intuition I have developed. I'm currently
+                teaching a course about building responsive modern user
+                interfaces on{" "}
+                <a
+                  style={{
+                    textDecoration: "none",
+                    color: theme.palette.common.blue
+                  }}
+                  href="https://www.udemy.com/course/implement-high-fidelity-designs-with-material-ui-and-reactjs/?referralCode=4B2263678CB66B102F96"
+                >
+                  Udemy.com
+                </a>{" "}
+                as well as beginning work on my first machine learning mobile
+                application.
               </Typography>
             </Grid>
           </Hidden>
@@ -251,7 +264,20 @@ export default function About(props) {
               </Typography>
               <Typography variant="body1" align="center" paragraph>
                 Now I’m ready to apply everything I’ve learned, and to help
-                others with the intuition I have developed.
+                others with the intuition I have developed. I'm currently
+                teaching a course about building responsive modern user
+                interfaces on{" "}
+                <a
+                  style={{
+                    textDecoration: "none",
+                    color: theme.palette.common.blue
+                  }}
+                  href="https://www.udemy.com/course/implement-high-fidelity-designs-with-material-ui-and-reactjs/?referralCode=4B2263678CB66B102F96"
+                >
+                  Udemy.com
+                </a>{" "}
+                as well as beginning work on my first machine learning mobile
+                application.
               </Typography>
             </Grid>
           </Hidden>
