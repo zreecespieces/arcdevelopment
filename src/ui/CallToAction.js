@@ -75,12 +75,21 @@ export default function CallToAction(props) {
       >
         <Grid container direction="column">
           <Grid item>
-            <Typography variant="h1">
+            <Typography
+              gutterBottom
+              variant="h1"
+              style={{ lineHeight: matchesSM ? 1.1 : null }}
+            >
               Simple Software.
+              {matchesSM && <br />}
               <br />
               Revolutionary Results.
             </Typography>
-            <Typography variant="subtitle2" style={{ fontSize: "1.5rem" }}>
+            <Typography
+              variant="subtitle2"
+              gutterBottom
+              style={{ fontSize: matchesSM ? "1.25rem" : "1.5rem" }}
+            >
               Take advantage of the 21st Century.
             </Typography>
             <Grid container justify={matchesSM ? "center" : undefined} item>

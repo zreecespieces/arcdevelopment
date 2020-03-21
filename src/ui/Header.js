@@ -209,8 +209,8 @@ export default function Header(props) {
           }
           break;
         case "/estimate":
-          if (props.value !== 5) {
-            props.setValue(5);
+          if (props.value !== false) {
+            props.setValue(false);
           }
           break;
         default:
@@ -313,7 +313,7 @@ export default function Header(props) {
                   color="secondary"
                   className={classes.button}
                   onClick={() => {
-                    props.setValue(5);
+                    props.setValue(false);
                     ReactGA.event({
                       category: "Estimate",
                       action: "Header Desktop Pressed"
@@ -392,7 +392,7 @@ export default function Header(props) {
                     <ListItem
                       onClick={() => {
                         setOpenDrawer(false);
-                        props.setValue(5);
+                        props.setValue(false);
                         ReactGA.event({
                           category: "Estimate",
                           action: "Header Mobile Pressed"

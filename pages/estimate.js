@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ReactGA from "react-ga";
 import Head from "next/head";
 import axios from "axios";
@@ -399,8 +399,11 @@ const websiteQuestions = [
 export default function Estimate() {
   const classes = useStyles();
   const theme = useTheme();
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+
+  const myRef = useRef(null);
 
   const [questions, setQuestions] = useState(defaultQuestions);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -438,6 +441,9 @@ export default function Estimate() {
   };
 
   const nextQuestion = () => {
+    if (matchesXS) {
+      window.scrollTo(0, myRef.current.offsetTop + 75);
+    }
     const newQuestions = cloneDeep(questions);
 
     const currentlyActive = newQuestions.filter(question => question.active);
@@ -451,6 +457,9 @@ export default function Estimate() {
   };
 
   const previousQuestion = () => {
+    if (matchesXS) {
+      window.scrollTo(0, myRef.current.offsetTop + 75);
+    }
     const newQuestions = cloneDeep(questions);
 
     const currentlyActive = newQuestions.filter(question => question.active);
@@ -489,8 +498,18 @@ export default function Estimate() {
     let disabled = true;
 
     const emptySelections = questions
+      .filter(
+        question => question.title !== "Which features do you expect to use?"
+      )
       .map(question => question.options.filter(option => option.selected))
       .filter(question => question.length === 0);
+
+    const featureSelected = questions
+      .filter(
+        question => question.title === "Which features do you expect to use?"
+      )
+      .map(question => question.options.filter(option => option.selected))
+      .filter(selections => selections.length > 0);
 
     if (questions.length === 2) {
       if (emptySelections.length === 1) {
@@ -498,15 +517,8 @@ export default function Estimate() {
       }
     } else if (questions.length === 1) {
       return true;
-    } else {
-      if (
-        emptySelections.length < 3 &&
-        questions[questions.length - 1].options.filter(
-          option => option.selected
-        ).length > 0
-      ) {
-        return false;
-      }
+    } else if (emptySelections.length === 1 && featureSelected.length > 0) {
+      disabled = false;
     }
 
     return disabled;
@@ -538,6 +550,9 @@ export default function Estimate() {
 
     switch (newSelected.title) {
       case "Custom Software Development":
+        if (matchesXS) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(softwareQuestions);
         setService(newSelected.title);
         setPlatforms([]);
@@ -547,6 +562,9 @@ export default function Estimate() {
         setCategory("");
         break;
       case "iOS/Android App Development":
+        if (matchesXS) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(softwareQuestions);
         setService(newSelected.title);
         setPlatforms([]);
@@ -556,6 +574,9 @@ export default function Estimate() {
         setCategory("");
         break;
       case "Website Development":
+        if (matchesXS) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(websiteQuestions);
         setService(newSelected.title);
         setPlatforms([]);
@@ -901,7 +922,7 @@ export default function Estimate() {
           .filter(question => question.active)
           .map((question, index) => (
             <React.Fragment key={index}>
-              <Grid item>
+              <Grid item ref={myRef}>
                 <Typography
                   align="center"
                   variant="h1"
