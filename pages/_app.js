@@ -6,6 +6,8 @@ import theme from "../src/ui/Theme";
 import Header from "../src/ui/Header";
 import Footer from "../src/ui/Footer";
 
+import Fonts from "../src/ui/Fonts";
+
 import ReactGA from "react-ga";
 ReactGA.initialize("UA-145847500-1");
 
@@ -24,6 +26,7 @@ export default class MyApp extends App {
   };
 
   componentDidMount() {
+    Fonts();
     // Check that service workers are supported
     if ("serviceWorker" in navigator) {
       // Use the window load event to keep the page load performant
