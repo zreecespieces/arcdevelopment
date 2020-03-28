@@ -21,6 +21,8 @@ const websitesIcon = "static/assets/websiteIcon.svg";
 const revolutionBackground = "static/assets/repeatingBackground.svg";
 const infoBackground = "static/assets/infoBackground.svg";
 
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+
 const useStyles = makeStyles(theme => ({
   animation: {
     maxWidth: "50em",
@@ -417,94 +419,106 @@ export default function LandingPage(props) {
               </Grid>
             </CardContent>
           </Card>
-          <div className={classes.revolutionBackground} />
+          <LazyLoadComponent
+            threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
+          >
+            <div className={classes.revolutionBackground} />
+          </LazyLoadComponent>
         </Grid>
       </Grid>
       <Grid item>
         {/*-----Information Block-----*/}
-        <Grid
-          container
-          style={{ height: "80em" }}
-          alignItems="center"
-          direction="row"
-          className={classes.infoBackground}
-        >
+        <LazyLoadComponent threshold={matchesSM ? 200 : matchesXS ? 100 : 750}>
           <Grid
-            item
             container
-            style={{
-              textAlign: matchesXS ? "center" : "inherit"
-            }}
-            direction={matchesXS ? "column" : "row"}
+            style={{ height: "80em" }}
+            alignItems="center"
+            direction="row"
+            className={classes.infoBackground}
           >
             <Grid
               item
-              sm
-              style={{ marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em" }}
+              container
+              style={{
+                textAlign: matchesXS ? "center" : "inherit"
+              }}
+              direction={matchesXS ? "column" : "row"}
             >
               <Grid
-                container
-                style={{ marginBottom: matchesXS ? "10em" : 0 }}
-                direction="column"
+                item
+                sm
+                style={{
+                  marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em"
+                }}
               >
-                <Typography variant="h1" style={{ color: "white" }}>
-                  About Us
-                </Typography>
-                <Typography variant="subtitle2">Let's get personal.</Typography>
-                <Grid item>
-                  <Button
-                    component={Link}
-                    href="/about"
-                    variant="outlined"
-                    style={{ color: "white", borderColor: "white" }}
-                    className={classes.learnButton}
-                    onClick={() => props.setValue(3)}
-                  >
-                    <span style={{ marginRight: 10 }}>Learn More</span>
-                    <ButtonArrow width={10} height={10} fill="white" />
-                  </Button>
+                <Grid
+                  container
+                  style={{ marginBottom: matchesXS ? "10em" : 0 }}
+                  direction="column"
+                >
+                  <Typography variant="h1" style={{ color: "white" }}>
+                    About Us
+                  </Typography>
+                  <Typography variant="subtitle2">
+                    Let's get personal.
+                  </Typography>
+                  <Grid item>
+                    <Button
+                      component={Link}
+                      href="/about"
+                      variant="outlined"
+                      style={{ color: "white", borderColor: "white" }}
+                      className={classes.learnButton}
+                      onClick={() => props.setValue(3)}
+                    >
+                      <span style={{ marginRight: 10 }}>Learn More</span>
+                      <ButtonArrow width={10} height={10} fill="white" />
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-            <Grid
-              item
-              sm
-              style={{
-                marginRight: matchesXS ? 0 : matchesSM ? "2em" : "5em",
-                textAlign: matchesXS ? "center" : "right"
-              }}
-            >
-              <Grid container direction="column">
-                <Typography variant="h1" style={{ color: "white" }}>
-                  Contact Us
-                </Typography>
-                <Typography variant="subtitle2">
-                  Say hello!{" "}
-                  <span role="img" aria-label="waving hand">
-                    👋🏻
-                  </span>
-                </Typography>
-                <Grid item>
-                  <Button
-                    component={Link}
-                    href="/contact"
-                    variant="outlined"
-                    style={{ color: "white", borderColor: "white" }}
-                    className={classes.learnButton}
-                    onClick={() => props.setValue(4)}
-                  >
-                    <span style={{ marginRight: 10 }}>Learn More</span>
-                    <ButtonArrow width={10} height={10} fill="white" />
-                  </Button>
+              <Grid
+                item
+                sm
+                style={{
+                  marginRight: matchesXS ? 0 : matchesSM ? "2em" : "5em",
+                  textAlign: matchesXS ? "center" : "right"
+                }}
+              >
+                <Grid container direction="column">
+                  <Typography variant="h1" style={{ color: "white" }}>
+                    Contact Us
+                  </Typography>
+                  <Typography variant="subtitle2">
+                    Say hello!{" "}
+                    <span role="img" aria-label="waving hand">
+                      👋🏻
+                    </span>
+                  </Typography>
+                  <Grid item>
+                    <Button
+                      component={Link}
+                      href="/contact"
+                      variant="outlined"
+                      style={{ color: "white", borderColor: "white" }}
+                      className={classes.learnButton}
+                      onClick={() => props.setValue(4)}
+                    >
+                      <span style={{ marginRight: 10 }}>Learn More</span>
+                      <ButtonArrow width={10} height={10} fill="white" />
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </LazyLoadComponent>
       </Grid>
       <Grid item>
         {/*-----Call To Action Block-----*/}
-        <CallToAction setValue={props.setValue} />
+        <LazyLoadComponent threshold={matchesSM ? 200 : matchesXS ? 100 : 750}>
+          <CallToAction setValue={props.setValue} />
+        </LazyLoadComponent>
       </Grid>
     </Grid>
   );
