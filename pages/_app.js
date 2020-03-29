@@ -11,8 +11,6 @@ import Fonts from "../src/ui/Fonts";
 import ReactGA from "react-ga";
 ReactGA.initialize("UA-145847500-1");
 
-import { LazyLoadComponent } from "react-lazy-load-image-component";
-
 export default class MyApp extends App {
   constructor(props) {
     super(props);
@@ -55,13 +53,11 @@ export default class MyApp extends App {
             selectedIndex={this.state.selectedIndex}
             setSelectedIndex={this.setSelectedIndex}
           />
-          <LazyLoadComponent>
-            <Component
-              {...pageProps}
-              setValue={this.setValue}
-              setSelectedIndex={this.setSelectedIndex}
-            />
-          </LazyLoadComponent>
+          <Component
+            {...pageProps}
+            setValue={this.setValue}
+            setSelectedIndex={this.setSelectedIndex}
+          />
           <Footer
             setValue={this.setValue}
             setSelectedIndex={this.setSelectedIndex}
