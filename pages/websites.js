@@ -96,9 +96,10 @@ export default function Websites(props) {
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
             <Typography
+              gutterBottom={matchesXS}
               style={{
-                lineHeight: matchesXS ? 1.1 : null,
-                marginBottom: matchesXS ? "0.5em" : null
+                lineHeight: matchesXS ? 1.2 : undefined,
+                fontSize: matchesXS ? "2.25em" : undefined
               }}
               align={matchesMD ? "center" : undefined}
               variant="h1"
