@@ -8,7 +8,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
 import Link from "./Link";
-import Menu from "@material-ui/core/Menu";
+import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
@@ -19,6 +19,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Hidden from "@material-ui/core/Hidden";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -153,24 +157,23 @@ export default function Header(props) {
   };
 
   const menuOptions = [
-    { name: "Services", link: "/services", activeIndex: 1, selectedIndex: 0 },
     {
       name: "Custom Software Development",
       link: "/customsoftware",
       activeIndex: 1,
-      selectedIndex: 1
+      selectedIndex: 0
     },
     {
       name: "iOS/Android App Development",
       link: "/mobileapps",
       activeIndex: 1,
-      selectedIndex: 2
+      selectedIndex: 1
     },
     {
       name: "Website Development",
       link: "/websites",
       activeIndex: 1,
-      selectedIndex: 3
+      selectedIndex: 2
     }
   ];
 
@@ -303,6 +306,7 @@ export default function Header(props) {
                       aria-owns={route.ariaOwns}
                       aria-haspopup={route.ariaPopup}
                       onMouseOver={route.mouseOver}
+                      onMouseLeave={() => setOpenMenu(false)}
                     />
                   ))}
                 </Tabs>
@@ -322,37 +326,57 @@ export default function Header(props) {
                 >
                   Free Estimate
                 </Button>
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
+                <Popper
                   open={openMenu}
-                  onClose={handleClose}
-                  classes={{ paper: classes.menu }}
-                  MenuListProps={{
-                    onMouseLeave: handleClose
-                  }}
-                  disableAutoFocusItem
-                  elevation={0}
-                  style={{ zIndex: 1302 }}
-                  keepMounted
+                  anchorEl={anchorEl}
+                  role={undefined}
+                  transition
+                  disablePortal
+                  placement="bottom-start"
                 >
-                  {menuOptions.map((option, i) => (
-                    <MenuItem
-                      key={`${option}${i}`}
-                      component={Link}
-                      href={option.link}
-                      classes={{ root: classes.menuItem }}
-                      onClick={event => {
-                        handleMenuItemClick(event, i);
-                        props.setValue(1);
-                        handleClose();
-                      }}
-                      selected={i === props.selectedIndex && props.value === 1}
+                  {({ TransitionProps, placement }) => (
+                    <Grow
+                      {...TransitionProps}
+                      style={{ transformOrigin: "top left" }}
                     >
-                      {option.name}
-                    </MenuItem>
-                  ))}
-                </Menu>
+                      <Paper
+                        classes={{ root: classes.menu }}
+                        elevation={0}
+                        style={{ zIndex: 1302 }}
+                      >
+                        <ClickAwayListener onClickAway={handleClose}>
+                          <MenuList
+                            disablePadding
+                            onMouseLeave={handleClose}
+                            onMouseOver={() => setOpenMenu(true)}
+                            id="menu-list-grow"
+                          >
+                            {menuOptions.map((option, i) => (
+                              <MenuItem
+                                key={`${option}${i}`}
+                                component={Link}
+                                href={option.link}
+                                classes={{ root: classes.menuItem }}
+                                onClick={event => {
+                                  handleMenuItemClick(event, i);
+                                  props.setValue(1);
+                                  handleClose();
+                                }}
+                                selected={
+                                  i === props.selectedIndex &&
+                                  props.value === 1 &&
+                                  window.location.pathname !== "/services"
+                                }
+                              >
+                                {option.name}
+                              </MenuItem>
+                            ))}
+                          </MenuList>
+                        </ClickAwayListener>
+                      </Paper>
+                    </Grow>
+                  )}
+                </Popper>
               </React.Fragment>
             </Hidden>
             <Hidden lgUp>
