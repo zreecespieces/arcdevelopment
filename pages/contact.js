@@ -322,7 +322,9 @@ export default function Contact(props) {
                   name.length === 0 ||
                   message.length === 0 ||
                   phoneHelper.length !== 0 ||
-                  emailHelper.length !== 0
+                  emailHelper.length !== 0 ||
+                  email.length === 0 ||
+                  phone.length === 0
                 }
                 variant="contained"
                 className={classes.sendButton}
@@ -346,17 +348,17 @@ export default function Contact(props) {
             paddingLeft: matchesXS
               ? 0
               : matchesSM
-              ? 0
-              : matchesMD
-              ? "15em"
-              : "25em",
+                ? 0
+                : matchesMD
+                  ? "15em"
+                  : "25em",
             paddingRight: matchesXS
               ? 0
               : matchesSM
-              ? 0
-              : matchesMD
-              ? "15em"
-              : "25em"
+                ? 0
+                : matchesMD
+                  ? "15em"
+                  : "25em"
           }
         }}
       >
@@ -433,7 +435,9 @@ export default function Contact(props) {
                   name.length === 0 ||
                   message.length === 0 ||
                   phoneHelper.length !== 0 ||
-                  emailHelper.length !== 0
+                  emailHelper.length !== 0 ||
+                  email.length === 0 ||
+                  phone.length === 0
                 }
                 variant="contained"
                 className={classes.sendButton}
