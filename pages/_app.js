@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import App from "next/app";
 import { ThemeProvider } from "@material-ui/core/styles";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 import theme from "../src/ui/Theme";
 
 import Header from "../src/ui/Header";
@@ -58,10 +59,12 @@ export default class MyApp extends App {
             setValue={this.setValue}
             setSelectedIndex={this.setSelectedIndex}
           />
-          <Footer
-            setValue={this.setValue}
-            setSelectedIndex={this.setSelectedIndex}
-          />
+          <LazyLoadComponent>
+            <Footer
+              setValue={this.setValue}
+              setSelectedIndex={this.setSelectedIndex}
+            />
+          </LazyLoadComponent>
         </ThemeProvider>
       </React.Fragment>
     );
