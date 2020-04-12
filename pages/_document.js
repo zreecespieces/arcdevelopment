@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
           <meta property="og:image:height" content="630" />
           <meta property="og:image:alt" content="company logo" />
         </Head>
-        <body>
+        <body style={{ margin: 0 }}>
           <Main />
           <NextScript />
         </body>
