@@ -33,6 +33,8 @@ export default function LandingPage(props) {
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const placeholder = <div style={{ height: "75em", width: "100%" }} />;
+
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Head>
@@ -55,48 +57,66 @@ export default function LandingPage(props) {
           key="canonical"
         />
       </Head>
-      <LazyLoadComponent threshold={matchesSM ? 200 : matchesXS ? 100 : 750}>
+      <LazyLoadComponent
+        placeholder={placeholder}
+        threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
+      >
         <HeroBlock
           setValue={props.setValue}
           setSelectedIndex={props.setSelectedIndex}
         />
       </LazyLoadComponent>
-      <LazyLoadComponent threshold={matchesSM ? 200 : matchesXS ? 100 : 750}>
+      <LazyLoadComponent
+        placeholder={placeholder}
+        threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
+      >
         <CustomSoftwareBlock
           setValue={props.setValue}
           setSelectedIndex={props.setSelectedIndex}
         />
       </LazyLoadComponent>
-      <LazyLoadComponent threshold={matchesSM ? 200 : matchesXS ? 100 : 750}>
+      <LazyLoadComponent
+        placeholder={placeholder}
+        threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
+      >
         <MobileBlock
           setValue={props.setValue}
           setSelectedIndex={props.setSelectedIndex}
         />
       </LazyLoadComponent>
-      <LazyLoadComponent threshold={matchesSM ? 200 : matchesXS ? 100 : 750}>
+      <LazyLoadComponent
+        placeholder={placeholder}
+        threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
+      >
         <WebsiteBlock
           setValue={props.setValue}
           setSelectedIndex={props.setSelectedIndex}
         />
       </LazyLoadComponent>
-      <LazyLoadComponent threshold={matchesSM ? 200 : matchesXS ? 100 : 750}>
+      <LazyLoadComponent
+        placeholder={placeholder}
+        threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
+      >
         <RevolutionBlock
           setValue={props.setValue}
           setSelectedIndex={props.setSelectedIndex}
         />
       </LazyLoadComponent>
-      <LazyLoadComponent threshold={matchesSM ? 200 : matchesXS ? 100 : 750}>
+      <LazyLoadComponent
+        placeholder={placeholder}
+        threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
+      >
         <InfoBlock
           setValue={props.setValue}
           setSelectedIndex={props.setSelectedIndex}
         />
       </LazyLoadComponent>
-      <Grid item>
-        {/*-----Call To Action Block-----*/}
-        <LazyLoadComponent threshold={matchesSM ? 200 : matchesXS ? 100 : 750}>
+      <LazyLoadComponent placeholder={placeholder}>
+        <Grid item>
+          {/*-----Call To Action Block-----*/}
           <CallToAction setValue={props.setValue} />
-        </LazyLoadComponent>
-      </Grid>
+        </Grid>
+      </LazyLoadComponent>
     </Grid>
   );
 }
