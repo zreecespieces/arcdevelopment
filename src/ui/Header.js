@@ -481,7 +481,20 @@ export default function Header(props) {
                                         className={classes.drawerItem}
                                         disableTypography
                                       >
-                                        {route.name}
+                                        {route.name
+                                          .split(" ")
+                                          .filter(
+                                            word => word !== "Development"
+                                          )
+                                          .join(" ")}
+                                        <br />
+                                        <span
+                                          style={{
+                                            fontSize: "0.75em"
+                                          }}
+                                        >
+                                          Development
+                                        </span>
                                       </ListItemText>
                                     </ListItem>
                                   </Grid>
