@@ -258,7 +258,11 @@ export default function Header(props) {
               component={Link}
               href="/"
               disableRipple
-              onClick={() => props.setValue(0)}
+              onClick={() => {
+                props.setValue(0);
+                setOpenMenu(false);
+                setOpenDrawer(false);
+              }}
               className={classes.logoContainer}
             >
               <svg
