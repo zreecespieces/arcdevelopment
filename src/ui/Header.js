@@ -147,6 +147,9 @@ const useStyles = makeStyles(theme => ({
   },
   expansionSummary: {
     padding: "0 24px 0 16px",
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.08)"
+    },
     backgroundColor: props =>
       props.value === 1 ? "rgba(0 , 0, 0, 0.14)" : "inherit"
   }
