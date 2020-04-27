@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState, lazy, Suspense } from "react";
 import ReactGA from "react-ga";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Lottie from "react-lottie";
 
 import animationData from "../../animations/landinganimation/data.json";
 import Link from "../../ui/Link";
 import ButtonArrow from "../../ui/ButtonArrow";
+
+const Lottie = lazy(() => import("react-lottie"));
 
 const useStyles = makeStyles(theme => ({
   buttonContainer: {
@@ -46,12 +47,19 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       maxWidth: "30em"
     }
+  },
+  placeholder: {
+    marginBottom: "10em",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: 0
+    }
   }
 }));
 
 export default function HeroBlock(props) {
   const classes = useStyles();
   const theme = useTheme();
+  const [hydrated, setHydrated] = useState(false);
 
   const defaultOptions = {
     loop: true,
@@ -61,6 +69,18 @@ export default function HeroBlock(props) {
       preserveAspectRatio: "xMidYMid slice"
     }
   };
+
+  const placeholder = (
+    <img
+      src="static/assets/landing-still.svg"
+      alt="animation placeholder"
+      className={classes.placeholder}
+    />
+  );
+
+  setTimeout(function() {
+    setHydrated(true);
+  }, 3000);
 
   return (
     <Grid item>
@@ -109,7 +129,13 @@ export default function HeroBlock(props) {
           </Grid>
         </Grid>
         <Grid sm item className={classes.animation}>
-          <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+          {hydrated ? (
+            <Suspense fallback={placeholder}>
+              <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+            </Suspense>
+          ) : (
+            placeholder
+          )}
         </Grid>
       </Grid>
     </Grid>

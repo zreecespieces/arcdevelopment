@@ -40,11 +40,6 @@ export default class MyApp extends App {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-
-    var x = document.body;
-    setTimeout(function() {
-      x.style.backgroundColor = "red";
-    }, 3000);
   }
 
   render() {
