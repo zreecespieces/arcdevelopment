@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import ReactGA from "react-ga";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -78,9 +78,18 @@ export default function HeroBlock(props) {
     />
   );
 
-  setTimeout(function() {
-    setHydrated(true);
-  }, 3000);
+  useEffect(() => {
+    const timer = () =>
+      setTimeout(function() {
+        setHydrated(true);
+      }, 2000);
+
+    const timerId = timer();
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, []);
 
   return (
     <Grid item>
@@ -131,7 +140,12 @@ export default function HeroBlock(props) {
         <Grid sm item className={classes.animation}>
           {hydrated ? (
             <Suspense fallback={placeholder}>
-              <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+              <Lottie
+                options={defaultOptions}
+                height={"100%"}
+                width={"100%"}
+                eventListeners={[]}
+              />
             </Suspense>
           ) : (
             placeholder

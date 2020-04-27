@@ -162,7 +162,7 @@ export default function Header(props) {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(<div />);
   const [openMenu, setOpenMenu] = useState(false);
   const [previousURL, setPreviousURL] = useState("");
 
@@ -176,13 +176,13 @@ export default function Header(props) {
   };
 
   const handleMenuItemClick = (e, i) => {
-    setAnchorEl(null);
+    setAnchorEl(<div />);
     setOpenMenu(false);
     props.setSelectedIndex(i);
   };
 
   const handleClose = e => {
-    setAnchorEl(null);
+    setAnchorEl(<div />);
     setOpenMenu(false);
   };
 
