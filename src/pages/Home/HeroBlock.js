@@ -82,7 +82,7 @@ export default function HeroBlock(props) {
     const timer = () =>
       setTimeout(function() {
         setHydrated(true);
-      }, 2000);
+      }, 2500);
 
     const timerId = timer();
 
