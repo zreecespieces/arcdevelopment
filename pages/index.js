@@ -57,24 +57,14 @@ export default function LandingPage(props) {
           key="canonical"
         />
       </Head>
-      <LazyLoadComponent
-        placeholder={placeholder}
-        threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
-      >
-        <HeroBlock
-          setValue={props.setValue}
-          setSelectedIndex={props.setSelectedIndex}
-        />
-      </LazyLoadComponent>
-      <LazyLoadComponent
-        placeholder={placeholder}
-        threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
-      >
-        <CustomSoftwareBlock
-          setValue={props.setValue}
-          setSelectedIndex={props.setSelectedIndex}
-        />
-      </LazyLoadComponent>
+      <HeroBlock
+        setValue={props.setValue}
+        setSelectedIndex={props.setSelectedIndex}
+      />
+      <CustomSoftwareBlock
+        setValue={props.setValue}
+        setSelectedIndex={props.setSelectedIndex}
+      />
       <LazyLoadComponent
         placeholder={placeholder}
         threshold={matchesSM ? 200 : matchesXS ? 100 : 750}
