@@ -54,7 +54,8 @@ export default function HeroBlock(props) {
   const theme = useTheme();
 
   const defaultOptions = {
-    autoplay: false,
+    loop: true,
+    autoplay: true,
     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
@@ -108,12 +109,7 @@ export default function HeroBlock(props) {
           </Grid>
         </Grid>
         <Grid sm item className={classes.animation}>
-          <Lottie
-            isStopped
-            options={defaultOptions}
-            height={"100%"}
-            width={"100%"}
-          />
+          <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
         </Grid>
       </Grid>
     </Grid>
