@@ -54,7 +54,7 @@ export default function HeroBlock(props) {
   const theme = useTheme();
 
   const defaultOptions = {
-    loop: true,
+    autoplay: false,
     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
