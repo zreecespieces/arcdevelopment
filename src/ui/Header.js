@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Router from "next/router";
 import ReactGA from "react-ga";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -222,12 +223,7 @@ export default function Header(props) {
     { name: "Contact Us", link: "/contact", activeIndex: 4 }
   ];
 
-  useEffect(() => {
-    if (window.location.pathname !== previousURL) {
-      ReactGA.pageview(window.location.pathname + window.location.search);
-      setPreviousURL(window.location.pathname);
-    }
-
+  function checkPath() {
     [...menuOptions, ...routes].forEach(route => {
       switch (window.location.pathname) {
         case `${route.link}`:
@@ -245,12 +241,30 @@ export default function Header(props) {
           if (props.value !== false) {
             props.setValue(false);
           }
+
           break;
         default:
           break;
       }
     });
+  }
+
+  useEffect(() => {
+    if (previousURL !== window.location.pathname) {
+      setPreviousURL(window.location.pathname);
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
+    if (window.performance) {
+      if (performance.navigation.type == 1) {
+        checkPath();
+      }
+    }
   }, [props.value, menuOptions, props.selectedIndex, routes, props]);
+
+  Router.events.on("routeChangeComplete", url => {
+    checkPath();
+  });
 
   return (
     <React.Fragment>
